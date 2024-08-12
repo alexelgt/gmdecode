@@ -47,7 +47,7 @@ def main():
         gamemaster_filename = args.gamemaster_filename
 
         call(
-            f"protoc --proto_path={proto_folder} --python_out={pythonfiles_folder} --pyi_out={pythonfiles_folder} {proto_filename}", shell=True)
+            f'protoc --proto_path="{proto_folder}" --python_out="{pythonfiles_folder}" --pyi_out="{pythonfiles_folder}" {proto_filename}', shell=True)
 
         if gamemaster_filename:
             proto_file = f"{proto_folder}/{proto_filename}"
@@ -55,7 +55,7 @@ def main():
             gamemaster_output_file = f"{gamemaster_output_folder}/{gamemaster_filename}.txt"
 
             call(
-                f"protoc --proto_path={proto_folder} --decode {pogo_gm_protos_target} {proto_file} <{gamemaster_input_folder}/{gamemaster_filename}> {gamemaster_output_file}", shell=True)
+                f'protoc --proto_path="{proto_folder}" --decode {pogo_gm_protos_target} "{proto_file}" <"{gamemaster_input_folder}/{gamemaster_filename}"> "{gamemaster_output_file}"', shell=True)
 
             try:
                 from pyproto.gamemaster_pb2 import DownloadGmTemplatesResponseProto
@@ -75,8 +75,8 @@ def main():
 
                 with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
                     json.dump(gamemaster_json["template"], f, indent=4)
-            except Exception as e:
-                print(e)
+            except:
+                pass
     except:
         pass
 
