@@ -3417,6 +3417,8 @@ enum HoloPokemonMove {
 	SUNSTEEL_STRIKE = 404;
 	MOONGEIST_BEAM = 405;
 	HIGH_JUMP_KICK = 408;
+	FORCE_PALM_FAST = 462;
+	SPARKLING_ARIA = 463;
 }
 
 enum HoloPokemonMovementType {
@@ -12137,6 +12139,7 @@ message GymBattleSettingsProto {
 	float shadowPokemonAttackBonusMultiplier = 17;
 	float shadowPokemonDefenseBonusMultiplier = 18;
 	float purifiedPokemonAttackMultiplierVsShadow = 19;
+	float obGymBattleSettingsNumber1 = 20;
 }
 
 message GymDefenderProto {
@@ -17869,6 +17872,9 @@ message PokemonDisplayProto {
 		EEVEE_GOFEST_2024_MTIARA = 2846;
 		ESPEON_GOFEST_2024_SSCARF = 2847;
 		UMBREON_GOFEST_2024_MSCARF = 2848;
+		CORSOLA_NORMAL = 1283;
+		CORSOLA_GALARIAN = 2340;
+		PIKACHU_WCS_2024 = 3015;
 	}
 
 	Costume bbehociokka = 1;
