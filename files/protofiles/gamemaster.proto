@@ -3417,6 +3417,26 @@ enum HoloPokemonMove {
 	SUNSTEEL_STRIKE = 404;
 	MOONGEIST_BEAM = 405;
 	HIGH_JUMP_KICK = 408;
+	VN_BM_001 = 409;
+	VN_BM_002 = 410;
+	VN_BM_003 = 411;
+	VN_BM_004 = 412;
+	VN_BM_005 = 413;
+	VN_BM_006 = 414;
+	VN_BM_007 = 415;
+	VN_BM_008 = 416;
+	VN_BM_009 = 417;
+	VN_BM_010 = 418;
+	VN_BM_011 = 419;
+	VN_BM_012 = 420;
+	VN_BM_013 = 421;
+	VN_BM_014 = 422;
+	VN_BM_015 = 423;
+	VN_BM_016 = 424;
+	VN_BM_017 = 425;
+	VN_BM_018 = 426;
+	VN_BM_052 = 460;
+	VN_BM_053 = 461;
 	FORCE_PALM_FAST = 462;
 	SPARKLING_ARIA = 463;
 }
@@ -6979,9 +6999,9 @@ message ClientDialogueLineProto {
 }
 
 message ClientEvolutionQuestTemplateProto {
-	string ejlojcjmifh = 1;
-	QuestType felhpbliafd = 2;
-	repeated QuestGoalProto elnibndckke = 3;
+	string questTemplateId = 1;
+	QuestType questType = 2;
+	repeated QuestGoalProto goals = 3;
 	QuestProto.Context context = 4;
 	QuestDisplayProto display = 5;
 }
@@ -10593,7 +10613,35 @@ message PokemonExtendedSettingsProto {
 	repeated TempEvoOverrideProto temp_evo_overrides = 51;
 }
 
-message GameMasterSettings13Proto {
+message BootSettingsProto {
+	bool bootLazyInjectEnabled = 2;
+	bool obBootSettingsProtoBool1 = 3;
+	bool obBootSettingsProtoBool3 = 5;
+	bool obBootSettingsProtoBool6 = 8;
+}
+
+message MpSettingsProto {
+	message BattleMpCostPerTier {
+		enum BattleLevel {
+			UNSET = 0;
+			BREAD_BATTLE_LEVEL_1 = 1;
+			BREAD_BATTLE_LEVEL_3 = 3;
+			BREAD_BATTLE_LEVEL_5 = 5;
+		}
+
+		int32 breadBattleCatchMpCost = 1;
+		BattleLevel battleLevel = 2;
+	}
+
+	int32 numMpFromWalkQuest = 2;
+	int32 numMetersGoal = 3;
+	bool debugAllowRemoveWalkQuest = 4;
+	int32 numMpFromLootStation = 5;
+	int32 numExtraMpFromFirstLootStation = 6;
+	int32 mpCapacity = 9;
+	int32 mpBaseDailyLimit = 10;
+	float mpClaimParticleSpeedMultiplier = 13;
+	repeated BattleMpCostPerTier battleMpCostPerTier = 14;
 }
 
 message BreadBattleClientSettingsProto {
@@ -10611,14 +10659,14 @@ message BreadBattleClientSettingsProto {
 }
 
 message BreadMoveLevelSettingsProto {
-	message SettingsProto {
+	message Settings {
 		int32 mpCost = 1;
 		int32 candyCost = 2;
 		int32 xlCandyCost = 3;
 		int32 xpRewards = 5;
 	}
 
-	enum GroupProto {
+	enum Group {
 		UNSET = 0;
 		GROUP_1 = 1;
 		GROUP_2 = 2;
@@ -10626,14 +10674,23 @@ message BreadMoveLevelSettingsProto {
 		GROUP_4 = 4;
 	}
 
-	GroupProto group = 1;
-	repeated SettingsProto aSettings = 2;
-	repeated SettingsProto bSettings = 3;
-	repeated SettingsProto cSettings = 4;
+	Group group = 1;
+	repeated Settings aSettingsProto = 2;
+	repeated Settings bSettingsProto = 3;
+	repeated Settings cSettingsProto = 4;
+}
+
+message BreadMoveMappingsProto {
+	message Mappings {
+		HoloPokemonType type = 1;
+		HoloPokemonMove move = 2;
+	}
+
+	repeated Mappings mappings = 1;
 }
 
 message BreadFeatureFlagsProto {
-	enum StationDiscoveryModeProto {
+	enum StationDiscoveryMode {
 		UNSET = 0;
 		DYNAMIC_STATIONS = 2;
 	}
@@ -10641,8 +10698,51 @@ message BreadFeatureFlagsProto {
 	bool enabled = 1;
 	bool discoveryEnabled = 2;
 	bool mpEnabled = 3;
-	StationDiscoveryModeProto stationDiscoveryMode = 5;
+	StationDiscoveryMode stationDiscoveryMode = 5;
 	int32 minimumPlayerLevel = 9;
+}
+
+enum BreadMode {
+	UNSET = 0;
+	BREAD_MODE = 1;
+	BREAD_DOUGH_MODE = 2;
+	BREAD_DOUGH_MODE_2 = 3;
+}
+
+message BreadSettingsProto {
+	message AllowedSourdoughPokemon {
+		HoloPokemonId pokemonId = 1;
+		repeated PokemonDisplayProto.Form form = 2;
+		BreadMode obBreadMode = 3;
+	}
+
+	message BreadBattleAvailability {
+		int32 breadBattleAvailabilityStartMinute = 1;
+		int32 breadBattleAvailabilityEndMinute = 2;
+	}
+
+	repeated AllowedSourdoughPokemon allowedSourdoughPokemon = 3;
+	int32 maxStationedPokemon = 5;
+	int32 numStationedPokemonToReturn = 6;
+	int32 maxStationedPokemonDisplayCount = 7;
+	int32 maxRangeForNearbyStateMeters = 8;
+	bool showTimerWhenFar = 9;
+	BreadBattleAvailability breadBattleAvailability = 10;
+}
+
+message ObGameMasterSettings10Proto {
+	enum ObBoostTableSettings {
+		UNSET = 0;
+		STATIONED_POKEMON_POWER_BOOST_TABLE_SETTINGS = 3;
+	}
+
+	message ObStationedTierBoosts {
+		int32 obStationedTierBoostsNumber1 = 1;
+		int32 obStationedTierBoostsNumber3 = 3;
+	}
+
+	ObBoostTableSettings obBoostTableSettings = 1;
+	repeated ObStationedTierBoosts obStationedTierBoosts = 2;
 }
 
 message BreadLobbyCounterSettingsProto {
@@ -10650,6 +10750,71 @@ message BreadLobbyCounterSettingsProto {
 	int32 subscribeS2Level = 2;
 	string subscriptionNamespace = 3;
 	int64 publishCutoffTimeMs = 4;
+}
+
+message BreadPokemonScalingSettingsProto {
+	message VisualData {
+		message BreadVisiualData {
+			float scale = 1;
+			float cameraDistance = 2;
+			float maxReticleSize = 3;
+			float xOffset = 4;
+			float yOffset = 5;
+		}
+
+		BreadMode breadMode = 1;
+		BreadVisiualData breadEncounterVisiualData = 2;
+		BreadVisiualData breadBattleVisualData = 3;
+		BreadVisiualData breadBattleBossVisualData = 4;
+	}
+
+	message PokemonFormData {
+		PokemonDisplayProto.Form pokemonForm = 1;
+		repeated VisualData visualData = 2;
+	}
+
+	message VisualSettings {
+		HoloPokemonId pokemonId = 1;
+		repeated PokemonFormData pokemonFormData = 2;
+	}
+
+	repeated VisualSettings visualSettingsProto = 1;
+	int32 subscribeS2Level = 2;
+	string subscriptionNamespace = 3;
+	int64 publishCutoffTimeMs = 4;
+}
+
+message PokeballThrowPropertySettingsProto {
+	message ThrowProperties {
+		enum ThrowProertiesCategory {
+			UNSET = 0;
+			BREAD = 1;
+		}
+
+		message CurveballModifierLaunchVelocityMultiplier {
+			float x = 1;
+			float y = 2;
+			float z = 3;
+		}
+
+		ThrowProertiesCategory throwProertiesCategory = 1;
+		float minSpinParticleAmount = 2;
+		float maxAngularVelocity = 3;
+		float dragSnapSpeed = 4;
+		float overshootCorrection = 5;
+		float undershootCorrection = 6;
+		float minLaunchAngle = 7;
+		float maxLaunchAngle = 8;
+		float maxLaunchAngleHeight = 9;
+		float maxLaunchSpeed = 10;
+		float launchSpeedThreshold = 11;
+		float flyTimeoutDuration = 12;
+		float belowGroundFlyTimeoutSeconds = 13;
+		CurveballModifierLaunchVelocityMultiplier curveballModifier = 14;
+		CurveballModifierLaunchVelocityMultiplier launchVelocityMultiplier = 15;
+	}
+
+	repeated ThrowProperties throwProperties = 1;
 }
 
 message VsSeekerScheduleSettings {
@@ -10818,11 +10983,17 @@ message GameMasterClientTemplateProto {
 	VsSeekerScheduleSettings vsSeekerScheduleSettings = 155;
 	AssetRefreshSettingsProto ob_asset_refresh_settings = 157;
 	PokemonExtendedSettingsProto pokemonExtendedSettings = 162;
-	GameMasterSettings13Proto ob_game_master_settings13 = 189;
+	BootSettingsProto bootSettingsProto = 189;
+	MpSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto obBreadFeatureFlags = 222;
-	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
-	BreadMoveLevelSettingsProto breadMoveLevelSettings = 230;
-	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
+	BreadSettingsProto breadSettingsProto = 223;
+	BreadBattleClientSettingsProto breadBattleClientSettingsProto = 228;
+	BreadMoveLevelSettingsProto breadMoveLevelSettingsProto = 230;
+	BreadMoveMappingsProto breadMoveMappingsProto = 232;
+	ObGameMasterSettings10Proto obGameMasterSettings10 = 234;
+	BreadLobbyCounterSettingsProto breadLobbyCounterSettingsProto = 236;
+	BreadPokemonScalingSettingsProto breadPokemonScalingSettingsProto = 237;
+	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
 }
 
 message GameMasterLocalProto {
@@ -13078,14 +13249,14 @@ message IapItemCategoryDisplayProto {
 }
 
 message IapItemDisplayProto {
-	string hcnenjilhpk = 1;
-	HoloIapItemCategory jeipgnjohmk = 2;
-	int32 kjmkbpepdhk = 3;
+	string sku = 1;
+	HoloIapItemCategory category = 2;
+	int32 sortOrder = 3;
 	bool acodngdaaie = 6;
 	bool ifphdgakjgk = 7;
-	string jolekgjlbeg = 8;
-	string poijigbinjg = 9;
-	string liangffdfec = 10;
+	string spriteId = 8;
+	string title = 9;
+	string description = 10;
 	string mpmomiddoii = 11;
 	string bnenabhhaad = 12;
 	int64 gpmdndcafnn = 13;
@@ -19029,8 +19200,8 @@ message QuestDialogProto {
 message QuestDisplayProto {
 	string ofnpmcbogpe = 1;
 	repeated QuestDialogProto dialog = 2;
-	string liangffdfec = 3;
-	string poijigbinjg = 4;
+	string description = 3;
+	string title = 4;
 	int32 dpapfbidhki = 5;
 	repeated QuestDisplayProto khdmoljbgfm = 6;
 	bool eghppmhejmp = 7;
@@ -19072,8 +19243,8 @@ message QuestGlobalSettingsProto {
 }
 
 message QuestGoalProto {
-	repeated QuestConditionProto cgbcjoddlej = 1;
-	int32 bmfaancakig = 2;
+	repeated QuestConditionProto condition = 1;
+	int32 target = 2;
 }
 
 message QuestIncidentProto {
