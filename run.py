@@ -76,6 +76,12 @@ def main():
                 gamemaster_template_json = gamemaster_json["template"]
                 gamemaster_template_json.sort(key=lambda x: x["templateId"])
 
+                # # BADGE_TYPE
+                # for element in gamemaster_template_json:
+                #     if "BADGE_" in element["templateId"] and isinstance(element["data"]["badgeSettings"]["badgeType"], int):
+                #         print(element["templateId"], "=", element["data"]
+                #               ["badgeSettings"]["badgeType"], ";")
+
                 with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
                     json.dump(gamemaster_template_json, f, indent=4)
             except:
