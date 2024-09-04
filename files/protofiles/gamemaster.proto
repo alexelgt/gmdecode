@@ -5639,7 +5639,7 @@ message AvatarCustomizationProto {
 	string bhfmgbpojll = 15;
 	bool fimkeafaejn = 16;
 	repeated string hgmmmokgeho = 17;
-	repeated string obStyleShopV2SetNames = 18;
+	repeated string setNames = 18;
 }
 
 message AvatarCustomizationTelemetry {
