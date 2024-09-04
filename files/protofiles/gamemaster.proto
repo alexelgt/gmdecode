@@ -10579,12 +10579,18 @@ message SizeSettingsProto {
 	float mUpperBound = 4;
 	float xlUpperBound = 5;
 	float xxlUpperBound = 6;
+	float xxsScaleMultiplier = 7;
+	float xsScaleMultiplier = 8;
+	float xlScaleMultiplier = 9;
+	float xxlScaleMultiplier = 10;
+	bool disablePokedexRecordDisplayForForms = 12;
 }
 
 message PokemonExtendedSettingsProto {
 	HoloPokemonId uniqueId = 1;
 	PokemonDisplayProto.Form form = 28;
 	SizeSettingsProto sizeSettings = 66;
+	repeated TempEvoOverrideProto temp_evo_overrides = 51;
 }
 
 message GameMasterSettings13Proto {
@@ -15965,19 +15971,6 @@ message ObNewGlobalSetting6 {
 	bool pjalicafdng = 1;
 }
 
-message ObPokemonSetting {
-	float npokhobpfil = 1;
-	float ejkdinhfllc = 2;
-	float eekilpeanpg = 3;
-	float egilelkdmag = 4;
-	float dlaejikgbme = 5;
-	float ccbfmoeoflj = 6;
-	float dkoljmkhdib = 7;
-	float nhaidndchmh = 8;
-	float dfamdijbbgj = 9;
-	float dndblhclakk = 10;
-}
-
 message ObRaidClientSetting {
 	RaidLevel bkdlbfkmahg = 1;
 	string llpblhhhcmh = 2;
@@ -18284,7 +18277,7 @@ message PokemonSettingsProto {
 	repeated FormChangeProto form_change = 63;
 	repeated float fcnpgmocmjk = 64;
 	repeated float bbllaaeajpk = 65;
-	ObPokemonSetting ob_pokemon_setting = 66;
+	SizeSettingsProto sizeSettings = 66;
 	repeated PokemonDisplayProto.Costume fnkkbonlpem = 67;
 }
 
@@ -21194,7 +21187,7 @@ message TempEvoOverrideProto {
 	repeated float buddyOffsetFemale = 13;
 	repeated float fmhoomdchfg = 14;
 	float raidBossDistanceOffset = 15;
-	ObPokemonSetting ob_pokemon_setting = 16;
+	SizeSettingsProto sizeSettings = 16;
 }
 
 message TemplateVariable {
