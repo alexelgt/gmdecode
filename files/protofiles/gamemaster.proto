@@ -131,6 +131,7 @@ enum BattlePartyTelemetryIds {
 	BATTLE_PARTY_TELEMETRY_IDS_BATTLE_POKEMON_CHANGED = 5;
 }
 
+// BUDDY_ACTIVITY
 enum BuddyActivity {
 	BUDDY_ACTIVITY_UNSET = 0;
 	BUDDY_ACTIVITY_FEED = 1;
@@ -149,8 +150,11 @@ enum BuddyActivity {
 	BUDDY_ACTIVITY_INVASION_GIOVANNI = 14;
 	BUDDY_ACTIVITY_ATTRACTIVE_POI = 15;
 	BUDDY_ACTIVITY_VISIT_POWERED_UP_FORT = 16;
+	BUDDY_ACTIVITY_WAINA_SLEEP = 17;
+	BUDDY_ACTIVITY_ROUTE = 18;
 }
 
+// BUDDY_CATEGORY_ROUTE
 enum BuddyActivityCategory {
 	BUDDY_CATEGORY_UNSET = 0;
 	BUDDY_CATEGORY_FEED = 1;
@@ -160,6 +164,7 @@ enum BuddyActivityCategory {
 	BUDDY_CATEGORY_BATTLE = 5;
 	BUDDY_CATEGORY_EXPLORE = 6;
 	BUDDY_CATEGORY_BONUS = 7;
+	BUDDY_CATEGORY_ROUTE = 8;
 }
 
 enum BuddyAnimation {
@@ -6092,7 +6097,7 @@ message BackgroundModeSettingsProto {
 	double weeklyFitnessGoalLevel2DistanceKm = 2;
 	double weeklyFitnessGoalLevel3DistanceKm = 3;
 	double weeklyFitnessGoalLevel4DistanceKm = 4;
-	double obWeeklyFitnessGoalLevel5DistanceKm = 5;
+	double weeklyFitnessGoalReminderKm = 5;
 }
 
 message BackgroundToken {
@@ -6301,9 +6306,9 @@ message BattleUpdateProto {
 }
 
 message BattleVisualSettings {
-	bool obBattleVisualStadiumEnabled = 1;
-	string obStadiumCrowdAsset = 2;
-	string obStadiumBannerAsset = 4;
+	bool enhancementsEnabled = 1;
+	string crowdTextureAsset = 2;
+	string bannerTextureAsset = 4;
 }
 
 message BelugaBleFinalizeTransfer {
@@ -6588,15 +6593,15 @@ message BuddyGlobalSettingsProto {
 }
 
 message BuddyHungerSettings {
-	int32 nndfppihkmd = 1;
-	int32 aoogemogpgl = 2;
-	int64 pgbbfghdkai = 3;
-	int64 bbaccaifoal = 4;
-	int64 gnklfaopldd = 5;
+	int32 numHungerPointsRequiredForFull = 1;
+	int32 decayPointsPerBucket = 2;
+	int64 millisecondsPerBucket = 3;
+	int64 cooldownDurationMs = 4;
+	int64 decayDurationAfterFullMs = 5;
 }
 
 message BuddyInteractionSettings {
-	repeated Item glfmhcfkcdp = 1;
+	repeated Item feedItemWhitelist = 1;
 	repeated Item hacnbnofngb = 2;
 }
 
@@ -6613,9 +6618,9 @@ message BuddyLevelSettings {
 		CP_BOOST = 8;
 	}
 
-	BuddyLevel hcnnhpdajbh = 1;
-	int32 lmpdnidpogj = 2;
-	repeated BuddyTrait gpdepjfmepd = 3;
+	BuddyLevel level = 1;
+	int32 minNonCumulativePointsRequired = 2;
+	repeated BuddyTrait unlockedTraits = 3;
 }
 
 message BuddyMapEmotionCheckTelemetry {
@@ -6722,12 +6727,13 @@ message BuddyStatsShownHearts {
 }
 
 message BuddySwapSettings {
-	int32 ohbnhgnboim = 1;
-	bool ljgemomoepe = 2;
+	int32 maxSwapsPerDay = 1;
+	bool enableSwapFreeEvolution = 2;
+	bool obEnableQuickSwapButton = 3;
 }
 
 message BuddyWalkSettings {
-	float alcglholafa = 1;
+	float kmRequiredPerAffectionPoint = 1;
 }
 
 message BuildingMetadata {
@@ -7630,13 +7636,13 @@ message CombatLeagueProto {
 
 	message PokemonConditionProto {
 		oneof Condition {
-			WithPokemonCpLimitProto with_pokemon_cp_limit = 2;
-			WithPokemonTypeProto with_pokemon_type = 3;
-			WithPokemonCategoryProto with_pokemon_category = 4;
-			PokemonWhitelist pokemon_whitelist = 5;
-			PokemonBanlist pokemon_banlist = 6;
-			PokemonCaughtTimestamp pokemon_caught_timestamp = 7;
-			PokemonLevelRange pokemon_level_range = 8;
+			WithPokemonCpLimitProto withPokemonCpLimit = 2;
+			WithPokemonTypeProto withPokemonType = 3;
+			WithPokemonCategoryProto withPokemonCategory = 4;
+			PokemonWhitelist pokemonWhiteList = 5;
+			PokemonBanlist pokemonBanList = 6;
+			PokemonCaughtTimestamp pokemonCaughtTimestamp = 7;
+			PokemonLevelRange pokemonLevelRange = 8;
 		}
 
 		ConditionType type = 1;
@@ -7649,14 +7655,14 @@ message CombatLeagueProto {
 
 	message UnlockConditionProto {
 		oneof Condition {
-			WithPlayerLevelProto with_player_level = 3;
-			WithPokemonCpLimitProto with_pokemon_cp_limit = 4;
-			WithPokemonTypeProto with_pokemon_type = 5;
-			WithPokemonCategoryProto with_pokemon_category = 6;
-			PokemonWhitelist pokemon_whitelist = 7;
-			PokemonBanlist pokemon_banlist = 8;
-			PokemonCaughtTimestamp pokemon_caught_timestamp = 9;
-			PokemonLevelRange pokemon_level_range = 10;
+			WithPlayerLevelProto withPlayerLevel = 3;
+			WithPokemonCpLimitProto withPokemonCpLimit = 4;
+			WithPokemonTypeProto withPokemonType = 5;
+			WithPokemonCategoryProto withPokemonCategory = 6;
+			PokemonWhitelist pokemonWhiteList = 7;
+			PokemonBanlist pokemonBanList = 8;
+			PokemonCaughtTimestamp pokemonCaughtTimestamp = 9;
+			PokemonLevelRange pokemonLevelRange = 10;
 		}
 
 		ConditionType type = 1;
@@ -10821,9 +10827,9 @@ message PokemonExtendedSettingsProto {
 
 message BootSettingsProto {
 	bool bootLazyInjectEnabled = 2;
-	bool obBootSettingsProtoBool1 = 3;
-	bool obBootSettingsProtoBool3 = 5;
-	bool obBootSettingsProtoBool6 = 8;
+	bool obBootSettingsBool1 = 3;
+	bool obBootSettingsBool3 = 5;
+	bool obBootSettingsBool6 = 8;
 }
 
 message MpSettingsProto {
@@ -10881,9 +10887,9 @@ message BreadMoveLevelSettingsProto {
 	}
 
 	Group group = 1;
-	repeated Settings aSettingsProto = 2;
-	repeated Settings bSettingsProto = 3;
-	repeated Settings cSettingsProto = 4;
+	repeated Settings aSettings = 2;
+	repeated Settings bSettings = 3;
+	repeated Settings cSettings = 4;
 }
 
 message BreadMoveMappingsProto {
@@ -11092,7 +11098,7 @@ message GameMasterClientTemplateProto {
 	CombatCompetitiveSeasonSettingsProto combat_competitive_season_settings = 49;
 	CombatRankingSettingsProto combat_ranking_proto_settings = 50;
 	CombatTypeProto combat_type = 51;
-	BuddyLevelSettings aiemaiihhje = 52;
+	BuddyLevelSettings buddyLevelSettings = 52;
 	BuddyActivityCategorySettings buddy_activity_category_settings = 53;
 	BuddyActivitySettings buddy_activity_settings = 54;
 	BuddySwapSettings buddy_swap_settings = 56;
@@ -11150,7 +11156,7 @@ message GameMasterClientTemplateProto {
 	GM2SettingsProto ob_gm_2_settings = 111;
 	AppraisalStarThresholdSettings appraisal_star_threshold_settings = 112;
 	PokedexCategoriesSettings pokedex_categories_settings = 114;
-	BattleVisualSettings ob_battle_visual_settings = 115;
+	BattleVisualSettings battleVisualSettings = 115;
 	AddressablePokemonSettings addressable_pokemon_settings = 116;
 	VerboseLogRaidSettings verbose_log_raid_settings = 117;
 	FormsRefactorSettings forms_refactor_settings = 118;
@@ -17961,6 +17967,7 @@ message PokemonDisplayProto {
 		VENUSAUR_COPY_2019 = 950;
 		CHARIZARD_COPY_2019 = 951;
 		BLASTOISE_COPY_2019 = 952;
+		BUTTERFREE_NORMAL = 959;
 		PONYTA_NORMAL = 1011;
 		RAPIDASH_NORMAL = 1014;
 		SLOWPOKE_NORMAL = 1017;
@@ -18048,12 +18055,14 @@ message PokemonDisplayProto {
 		DARUMAKA_NORMAL = 2063;
 		YAMASK_NORMAL = 2084;
 		COFAGRIGUS_NORMAL = 2087;
+		GARBODOR_NORMAL = 2105;
 		FRILLISH_NORMAL = 2168;
 		JELLICENT_NORMAL = 2171;
 		CUBCHOO_NORMAL = 2231;
 		BEARTIC_NORMAL = 2234;
 		STUNFISK_NORMAL = 2246;
 		BRAVIARY_NORMAL = 2276;
+		MELMETAL_NORMAL = 2324;
 		FRILLISH_FEMALE = 2330;
 		JELLICENT_FEMALE = 2331;
 		PIKACHU_COSTUME_2020 = 2332;

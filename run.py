@@ -77,10 +77,31 @@ def main():
                 gamemaster_template_json.sort(key=lambda x: x["templateId"])
 
                 # # BADGE_TYPE
-                # for element in gamemaster_template_json:
-                #     if "BADGE_" in element["templateId"] and isinstance(element["data"]["badgeSettings"]["badgeType"], int):
-                #         print(element["templateId"], "=", element["data"]
-                #               ["badgeSettings"]["badgeType"], ";")
+                # try:
+                #     for element in gamemaster_template_json:
+                #         if "BADGE_" in element["templateId"] and isinstance(element["data"]["badgeSettings"]["badgeType"], int):
+                #             print(
+                #                 f'{element["templateId"]} = {element["data"]["badgeSettings"]["badgeType"]};')
+                # except:
+                #     pass
+
+                # # BUDDY_ACTIVITY
+                # try:
+                #     for element in gamemaster_template_json:
+                #         if "BUDDY_ACTIVITY_" in element["templateId"] and isinstance(element["data"]["buddyActivitySettings"]["activity"], int):
+                #             print(
+                #                 f'{element["templateId"]} = {element["data"]["buddyActivitySettings"]["activity"]};')
+                # except:
+                #     pass
+
+                # # BUDDY_CATEGORY_ROUTE
+                # try:
+                #     for element in gamemaster_template_json:
+                #         if "BUDDY_CATEGORY_ROUTE" in element["templateId"] and isinstance(element["data"]["buddyActivityCategorySettings"]["activityCategory"], int):
+                #             print(
+                #                 f'{element["templateId"]} = {element["data"]["buddyActivityCategorySettings"]["activityCategory"]};')
+                # except:
+                #     pass
 
                 with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
                     json.dump(gamemaster_template_json, f, indent=4)
