@@ -13465,14 +13465,14 @@ message IapItemDisplayProto {
 	HoloIapItemCategory category = 2;
 	int32 sortOrder = 3;
 	bool acodngdaaie = 6;
-	bool ifphdgakjgk = 7;
+	bool sale = 7;
 	string spriteId = 8;
 	string title = 9;
 	string description = 10;
-	string mpmomiddoii = 11;
-	string bnenabhhaad = 12;
-	int64 gpmdndcafnn = 13;
-	int64 hcodkohefig = 14;
+	string skuEnableTime = 11;
+	string skuDisableTime = 12;
+	int64 skuEnableTimeUtcMs = 13;
+	int64 skuDisableTimeUtcMs = 14;
 	repeated string gnblpmajede = 15;
 	string jhggooloene = 16;
 }
@@ -15564,7 +15564,7 @@ message MotivatedPokemonProto {
 }
 
 message MoveSequenceSettingsProto {
-	repeated string ogpipobicik = 1;
+	repeated string sequence = 1;
 }
 
 message MoveSettingsProto {
@@ -22484,9 +22484,9 @@ message UserIssueWeatherReport {
 }
 
 message UsernameSuggestionSettings {
-	bool jagllhilmee = 1;
-	int32 fgnnkdoimhf = 2;
-	int32 ibnocpgjklo = 3;
+	bool featureEnabled = 1;
+	int32 numSuggestionsDisplayed = 2;
+	int32 numSuggestionsGenerated = 3;
 }
 
 message UsernameSuggestionTelemetry {
