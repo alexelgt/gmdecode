@@ -10572,6 +10572,20 @@ message AssetRefreshSettingsProto {
 	int32 obCheckForNewAssetsTimeSeconds = 5;
 }
 
+message SizeSettingsProto {
+	float xxsLowerBound = 1;
+	float xsLowerBound = 2;
+	float mLowerBound = 3;
+	float mUpperBound = 4;
+	float xlUpperBound = 5;
+	float xxlUpperBound = 6;
+}
+
+message PokemonExtendedSettingsProto {
+	HoloPokemonId uniqueId = 1;
+	SizeSettingsProto sizeSettings = 66;
+}
+
 message GameMasterSettings13Proto {
 }
 
@@ -10739,6 +10753,7 @@ message GameMasterClientTemplateProto {
 	GM16SettingsProto ob_gm_16_settings = 151;
 	VsSeekerScheduleSettings vsSeekerScheduleSettings = 155;
 	AssetRefreshSettingsProto ob_asset_refresh_settings = 157;
+	PokemonExtendedSettingsProto pokemonExtendedSettings = 162;
 	GameMasterSettings13Proto ob_game_master_settings13 = 189;
 }
 
