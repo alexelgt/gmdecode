@@ -10986,13 +10986,13 @@ message GameMasterClientTemplateProto {
 	BootSettingsProto bootSettingsProto = 189;
 	MpSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto obBreadFeatureFlags = 222;
-	BreadSettingsProto breadSettingsProto = 223;
-	BreadBattleClientSettingsProto breadBattleClientSettingsProto = 228;
-	BreadMoveLevelSettingsProto breadMoveLevelSettingsProto = 230;
-	BreadMoveMappingsProto breadMoveMappingsProto = 232;
+	BreadSettingsProto breadSettings = 223;
+	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
+	BreadMoveLevelSettingsProto breadMoveLevelSettings = 230;
+	BreadMoveMappingsProto breadMoveMappings = 232;
 	ObGameMasterSettings10Proto obGameMasterSettings10 = 234;
-	BreadLobbyCounterSettingsProto breadLobbyCounterSettingsProto = 236;
-	BreadPokemonScalingSettingsProto breadPokemonScalingSettingsProto = 237;
+	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
+	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
 }
 
