@@ -10596,6 +10596,62 @@ message PokemonExtendedSettingsProto {
 message GameMasterSettings13Proto {
 }
 
+message BreadBattleClientSettingsProto {
+	int32 breadBattleMinPlayerLevel = 3;
+	int32 maxNumFriendInvites = 5;
+	int32 friendInviteCutoffTimeSec = 6;
+	int32 maxPlayersPerBreadLobby = 9;
+	int64 inviteCooldownDurationMillis = 11;
+	int32 maxNumFriendInvitesPerAction = 12;
+	bool prepareBreadLobbyEnabled = 13;
+	int32 minPlayersToPrepareBreadLobby = 16;
+	int32 prepareBreadLobbyCutoffMs = 17;
+	int32 prepareBreadLobbySoloMs = 18;
+	int32 rvnVersion = 19;
+}
+
+message BreadMoveLevelSettingsProto {
+	message SettingsProto {
+		int32 mpCost = 1;
+		int32 candyCost = 2;
+		int32 xlCandyCost = 3;
+		int32 xpRewards = 5;
+	}
+
+	enum GroupProto {
+		UNSET = 0;
+		GROUP_1 = 1;
+		GROUP_2 = 2;
+		GROUP_3 = 3;
+		GROUP_4 = 4;
+	}
+
+	GroupProto group = 1;
+	repeated SettingsProto aSettings = 2;
+	repeated SettingsProto bSettings = 3;
+	repeated SettingsProto cSettings = 4;
+}
+
+message BreadFeatureFlagsProto {
+	enum StationDiscoveryModeProto {
+		UNSET = 0;
+		DYNAMIC_STATIONS = 2;
+	}
+
+	bool enabled = 1;
+	bool discoveryEnabled = 2;
+	bool mpEnabled = 3;
+	StationDiscoveryModeProto stationDiscoveryMode = 5;
+	int32 minimumPlayerLevel = 9;
+}
+
+message BreadLobbyCounterSettingsProto {
+	float showCounterRadiusMeters = 1;
+	int32 subscribeS2Level = 2;
+	string subscriptionNamespace = 3;
+	int64 publishCutoffTimeMs = 4;
+}
+
 message VsSeekerScheduleSettings {
 	message VsSeekerSchedule {
 		message VsSeekerScheduleWindowDetails {
@@ -10615,6 +10671,7 @@ message VsSeekerScheduleSettings {
 	repeated VsSeekerSchedule seasonSchedules = 4;
 }
 
+// MAIN_PART
 message GameMasterClientTemplateProto {
 	string template_id = 1;
 	PokemonSettingsProto pokemon_settings = 2;
@@ -10762,6 +10819,10 @@ message GameMasterClientTemplateProto {
 	AssetRefreshSettingsProto ob_asset_refresh_settings = 157;
 	PokemonExtendedSettingsProto pokemonExtendedSettings = 162;
 	GameMasterSettings13Proto ob_game_master_settings13 = 189;
+	BreadFeatureFlagsProto obBreadFeatureFlags = 222;
+	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
+	BreadMoveLevelSettingsProto breadMoveLevelSettings = 230;
+	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
 }
 
 message GameMasterLocalProto {
