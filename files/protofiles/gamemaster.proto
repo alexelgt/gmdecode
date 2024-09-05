@@ -297,6 +297,7 @@ enum CombatExperimentProto {
 	CLIENT_SWAP_WIDGET_DISMISS = 11;
 	CLIENT_COMBAT_NULL_RPC_GUARD = 12;
 	SWAP_DELAY_TY_GREIL = 13;
+	ENABLE_FOG = 16;
 }
 
 enum CombatRewardStatus {
@@ -8438,8 +8439,8 @@ message CrossGameSocialGlobalSettingsProto {
 }
 
 message CrossGameSocialSettingsProto {
-	bool eenmpaeglao = 1;
-	bool epeimhloall = 2;
+	bool onlineStatusEnabledOverrideLevel = 1;
+	bool nianticProfileEnabledOverrideLevel = 2;
 	bool gldijncolkg = 3;
 }
 
@@ -8870,10 +8871,11 @@ message DeepLinkingEnumWrapperProto {
 }
 
 message DeepLinkingSettingsProto {
-	int32 naacmdepmmb = 1;
-	int32 plcdbgkbmda = 2;
-	repeated DeepLinkingEnumWrapperProto.DeepLinkingActionName eelhpkdbcmj = 3;
-	repeated DeepLinkingEnumWrapperProto.DeepLinkingActionName abfdkjjbeai = 4;
+	int32 minPlayerLevelForExternalLink = 1;
+	int32 minPlayerLevelForNotificationLink = 2;
+	repeated DeepLinkingEnumWrapperProto.DeepLinkingActionName actionsThatIgnoreMinLevel = 3;
+	repeated DeepLinkingEnumWrapperProto.DeepLinkingActionName actionsThatExecuteBeforeMapLoads = 4;
+	bool iosActionButtonEnabled = 5;
 }
 
 message DeepLinkingTelemetry {
@@ -9461,9 +9463,9 @@ message EggDistributionProto {
 }
 
 message EggHatchImprovementsSettings {
-	bool jagllhilmee = 1;
-	int32 iekcedabfbe = 2;
-	int32 kgheogmdebh = 3;
+	bool featureEnabled = 1;
+	int32 bootDelayMs = 2;
+	int32 raidInviteHardCapMs = 3;
 }
 
 message EggHatchTelemetry {
@@ -9497,7 +9499,7 @@ message EggTelemetryProto {
 }
 
 message EggTransparencySettingsProto {
-	bool ocbfibkahkk = 1;
+	bool enableEggDistribution = 1;
 }
 
 message EnabledPokemonSettingsProto {
@@ -9558,14 +9560,14 @@ message EncounterPokemonTelemetry {
 }
 
 message EncounterSettingsProto {
-	float kannbplhpen = 1;
-	float mhcgcggfadk = 2;
-	float nnfphdncndb = 3;
-	float mcfkpeabbal = 4;
-	int32 dgdadojicfj = 5;
-	bool jlpcjnmnlpf = 6;
-	float fmnkdiallgm = 7;
-	float gipjpifobjb = 8;
+	float spinBonusThreshold = 1;
+	float excellentThrowThreshold = 2;
+	float greatThrowThreshold = 3;
+	float niceThrowThreshold = 4;
+	int32 milestoneThreshold = 5;
+	bool arPlusModeEnabled = 6;
+	float arCloseProximityThreshold = 7;
+	float arLowAwarenessThreshold = 8;
 	float dhppfbjiioj = 9;
 	float fgahleegpme = 10;
 	float fddclciagkj = 11;
@@ -9818,19 +9820,19 @@ message EvolutionBranchProto {
 }
 
 message EvolutionChainDataProto {
-	string hoijbgbblam = 1;
-	repeated EvolutionChainEntryProto evolution_chain_entry = 2;
+	string headerMessage = 1;
+	repeated EvolutionChainEntryProto evolutionInfos = 2;
 }
 
 message EvolutionChainDisplaySettingsProto {
 	HoloPokemonId pokemon = 1;
-	repeated EvolutionChainDataProto chain = 2;
+	repeated EvolutionChainDataProto evolutionChains = 2;
 }
 
 message EvolutionChainEntryProto {
 	HoloPokemonId pokemon = 1;
 	HoloTemporaryEvolutionId hfjdnmmbgge = 2;
-	PokemonDisplayProto.Form bmopheeeicj = 3;
+	PokemonDisplayProto.Form form = 3;
 	PokemonDisplayProto.Gender gender = 4;
 }
 
@@ -10498,7 +10500,7 @@ message FriendDetailsProto {
 }
 
 message FriendProfileSettingsProto {
-	bool mfjcjhpmiil = 1;
+	bool enableSwiping = 1;
 }
 
 message FriendshipLevelDataProto {
@@ -10677,11 +10679,13 @@ message CampfireSettingsProto {
 	int64 obCampfireSettingsNumber1 = 10;
 }
 
-message GM16SettingsProto {
-	bool pjalicafdng = 1;
-	int32 jioklhbkjdn = 2;
-	LootProto hmkbldkknpk = 3;
-	string blnkpjnajpo = 4;
+message DailyAdventureIncenseSettingsProto {
+	bool enabled = 1;
+	int32 pokeballGrantThreshold = 2;
+	LootProto pokeballGrant = 3;
+	string localDeliveryTime = 4;
+	bool enablePushNotification = 5;
+	int32 pushNotificationHourOfDay = 6;
 }
 
 message GM1SettingsProto {
@@ -10863,6 +10867,9 @@ message PokemonExtendedSettingsProto {
 	PokemonDisplayProto.Form form = 28;
 	SizeSettingsProto sizeSettings = 66;
 	repeated TempEvoOverrideProto temp_evo_overrides = 51;
+}
+
+message ConversationSettingsProto {
 }
 
 message CatchRadiusMultiplierSettingsProto {
@@ -11339,12 +11346,13 @@ message GameMasterClientTemplateProto {
 	GM10SettingsProto ob_gm_10_settings = 148;
 	CampfireSettingsProto campfireSettings = 149;
 	GM14SettingsProto ob_gm_14_settings = 150;
-	GM16SettingsProto ob_gm_16_settings = 151;
+	DailyAdventureIncenseSettingsProto dailyAdventureIncenseSettings = 151;
 	StickerCategorySettingsProto stickerCategorySettings = 153;
 	VsSeekerScheduleSettings vsSeekerScheduleSettings = 155;
 	AssetRefreshSettingsProto assetRefreshProto = 157;
 	ButterflyCollectorSettingsProto butterflyCollectorSettings = 160;
 	PokemonExtendedSettingsProto pokemonExtendedSettings = 162;
+	ConversationSettingsProto conversationSettings = 171;
 	CatchRadiusMultiplierSettingsProto catchRadiusMultiplierSettings = 173;
 	ContestSettingsProto contestSettings = 178;
 	BuffSettingsProto buffSettings = 183;
@@ -15185,11 +15193,11 @@ message LootItemProto {
 		HoloPokemonId xl_candy = 11;
 	}
 
-	int32 hmilnejcmlk = 5;
+	int32 count = 5;
 }
 
 message LootProto {
-	repeated LootItemProto coomjebojgb = 1;
+	repeated LootItemProto lootItem = 1;
 }
 
 message LuckyPokemonSettingsProto {
@@ -18648,12 +18656,12 @@ message PokemonGoPlusTelemetry {
 }
 
 message PokemonHomeEnergyCostsProto {
-	HoloPokemonClass odgconomgej = 1;
-	int32 kmcjpikbpdc = 2;
-	int32 kglealcogbg = 3;
+	HoloPokemonClass pokemonClass = 1;
+	int32 base = 2;
+	int32 shiny = 3;
 	int32 gjnghdfcapl = 4;
-	int32 omhgcbjccbg = 5;
-	int32 jahboecenif = 6;
+	int32 cp1001To2000 = 5;
+	int32 cp2001ToInf = 6;
 }
 
 message PokemonHomeFormReversionProto {
