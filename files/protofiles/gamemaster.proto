@@ -282,7 +282,7 @@ enum CombatPlayerFinishState {
 	COMBAT_PLAYER_FINISH_STATE_DRAW = 2;
 }
 
-enum CombatRefactorToggleProto {
+enum CombatExperimentProto {
 	BASELINE = 0;
 	FAST_MOVE_ALWAYS_LEAK = 1;
 	MINIGAME_FAST_MOVE_CLEAR = 2;
@@ -7536,9 +7536,9 @@ message CombatChallengeProto {
 }
 
 message CombatCompetitiveSeasonSettingsProto {
-	repeated uint64 dpoflkcjbgm = 1;
-	float cpfbnanlejp = 2;
-	float pkokakeopjg = 3;
+	repeated uint64 seasonEndTimeTimestamp = 1;
+	float ratingAdjustmentPercentage = 2;
+	float rankingAdjustmentPercentage = 3;
 }
 
 message CombatDefensiveInputChallengeSettings {
@@ -7702,11 +7702,11 @@ message CombatLeagueProto {
 	LeagueType leagueType = 11;
 	string goieepknooc = 12;
 	bool allowTempEvos = 13;
-	repeated CombatRefactorToggleProto ob_combat_refactor_toggle = 14;
+	repeated CombatExperimentProto combatExperiment = 14;
 }
 
 message CombatLeagueSettingsProto {
-	repeated string moldhmcjdbo = 1;
+	repeated string combatLeagueTemplateId = 1;
 }
 
 message CombatLogEntry {
@@ -8004,19 +8004,19 @@ message CombatSettingsProto {
 	float shadowPokemonAttackBonusMultiplier = 30;
 	float shadowPokemonDefenseBonusMultiplier = 31;
 	float purifiedPokemonAttackMultiplierVsShadow = 32;
-	repeated CombatRefactorToggleProto combat_refactor_toggle = 35;
-	bool obCombatSettingsBool1 = 36;
+	repeated CombatExperimentProto combatExperiment = 35;
+	bool showQuickSwapButtonsDuringCountdown = 36;
 	bool obCombatSettingsNotPushedBool2 = 37;
-	ObCombatSettings1 ob_combat_settings_1 = 38;
-	ObCombatSettings2 ob_combat_settings_2 = 39;
-	int32 obCombatSettingsNumber1 = 40;
+	ClockSyncSettings clockSyncSettings = 38;
+	CombatFeatureFlags combatFeatureFlags = 39;
+	int32 flyinDurationTurns = 40;
 }
 
 message CombatStatStageSettingsProto {
-	int32 ppdhpfcohci = 1;
-	int32 bnaijkjoamg = 2;
-	repeated float dhlngmpopfp = 3;
-	repeated float opcapipoejh = 4;
+	int32 minimumStatStage = 1;
+	int32 maximumStatStage = 2;
+	repeated float attackBuffMultiplier = 3;
+	repeated float defenseBuffMultiplier = 4;
 }
 
 message CombatSyncServerDataProto {
@@ -10869,6 +10869,79 @@ message CatchRadiusMultiplierSettingsProto {
 	bool catchRadiusMultiplierSettingsEnabled = 1;
 }
 
+message ContestSettingsProto {
+	enum ContestOccurrence {
+		CONTEST_OCCURRENCE_UNSET = 0;
+		DAILY = 1;
+		HOURLY = 6;
+	}
+
+	message ContestLimits {
+		message ContestMetric {
+			enum PokemonMetric {
+				POKEMON_METRIC_UNSET = 0;
+				POKEMON_SIZE = 1;
+			}
+
+			enum RankingStandard {
+				RANKING_STANDARD_UNSET = 0;
+				MIN = 1;
+				MAX = 2;
+			}
+
+			PokemonMetric pokemonMetric = 1;
+			RankingStandard rankingStandard = 2;
+		}
+
+		ContestMetric contestMetric = 1;
+		ContestOccurrence contestOccurrence = 2;
+		int32 perContestMaxEntries = 3;
+	}
+
+	message ContestWarmupAndCooldownDurationsMs {
+		ContestOccurrence contestOccurrence = 2;
+		int64 cycleWarmupDurationMs = 3;
+		int64 cycleCooldownDurationMs = 4;
+	}
+
+	message ContestScoreCoefficient {
+		message PokemonSize {
+			double heightCoefficient = 1;
+			double weightCoefficient = 2;
+			double ivCoefficient = 3;
+			double xxlAdjustmentFactor = 4;
+		}
+
+		PokemonSize pokemonSize = 1;
+	}
+
+	message ContestLengthThresholds {
+		string length = 1;
+		int64 minDurationMs = 2;
+		int64 maxDurationMs = 3;
+	}
+
+	bool isFeatureEnabled = 1;
+	int32 playerContestMaxEntries = 2;
+	repeated ContestLimits contestLimits = 3;
+	int32 defaultContestMaxEntries = 4;
+	int64 minCooldownBeforeSeasonEndMs = 5;
+	repeated ContestWarmupAndCooldownDurationsMs contestWarmupAndCooldownDurationsMs = 6;
+	int64 defaultCycleWarmupDurationMs = 7;
+	int64 defaultCycleCooldownDurationMs = 8;
+	double maxCatchPromptRange = 9;
+	float catchPromptTimeoutMs = 10;
+	repeated ContestScoreCoefficient contestScoreCoefficient = 11;
+	repeated ContestLengthThresholds contestLengthThresholds = 12;
+	bool isFriendsDisplayEnabled = 13;
+	bool isV2FeatureEnabled = 17;
+	bool isAnticheatRemovalEnabled = 18;
+	bool isNormalizedScoreToSpecies = 19;
+	bool isV2FocusesEnabled = 20;
+	bool isContestInNearbyMenu = 21;
+	bool isPokemonScalarEnabled = 22;
+}
+
 message BuffSettingsProto {
 	int32 countdownReminderS = 1;
 	bool clickExtensionEnabled = 2;
@@ -11092,6 +11165,18 @@ message PokeballThrowPropertySettingsProto {
 	repeated ThrowProperties throwProperties = 1;
 }
 
+message StickerCategorySettingsProto {
+	message StickerCategory {
+		string category = 1;
+		int32 sortOrder = 2;
+		bool active = 3;
+		string preferredCategoryIcon = 5;
+	}
+
+	bool enabled = 1;
+	repeated StickerCategory stickerCategory = 2;
+}
+
 message VsSeekerScheduleSettings {
 	message VsSeekerSchedule {
 		message VsSeekerScheduleWindowDetails {
@@ -11233,7 +11318,7 @@ message GameMasterClientTemplateProto {
 	GM3SettingsProto ob_gm_3_settings = 126;
 	PushGatewaySettings push_gateway_settings = 127;
 	UsernameSuggestionSettings username_suggestion_settings = 128;
-	TutorialsSettings tutorials_settings = 129;
+	TutorialSettings tutorialSettings = 129;
 	EggHatchImprovementsSettings egg_hatch_improvements_settings = 130;
 	GM4SettingsProto ob_gm_4_settings = 131;
 	SurveySettings survey_settings = 132;
@@ -11255,11 +11340,13 @@ message GameMasterClientTemplateProto {
 	CampfireSettingsProto campfireSettings = 149;
 	GM14SettingsProto ob_gm_14_settings = 150;
 	GM16SettingsProto ob_gm_16_settings = 151;
+	StickerCategorySettingsProto stickerCategorySettings = 153;
 	VsSeekerScheduleSettings vsSeekerScheduleSettings = 155;
-	AssetRefreshSettingsProto obAssetRefreshSettings = 157;
+	AssetRefreshSettingsProto assetRefreshProto = 157;
 	ButterflyCollectorSettingsProto butterflyCollectorSettings = 160;
 	PokemonExtendedSettingsProto pokemonExtendedSettings = 162;
 	CatchRadiusMultiplierSettingsProto catchRadiusMultiplierSettings = 173;
+	ContestSettingsProto contestSettings = 178;
 	BuffSettingsProto buffSettings = 183;
 	BootSettingsProto bootSettings = 189;
 	BulkHealingSettingsProto bulkHealingSettings = 212;
@@ -13972,8 +14059,8 @@ message IsMyFriendProto {
 }
 
 message ItemProto {
-	Item item_id_settings = 1;
-	int32 hmilnejcmlk = 2;
+	Item itemId = 1;
+	int32 count = 2;
 	bool iapoppldbnc = 3;
 }
 
@@ -16322,13 +16409,13 @@ message ObCombatMismatchData {
 	MismatchState bdgcdhmhgff = 1;
 }
 
-message ObCombatSettings1 {
-	int32 obCombatSettings1Number1 = 1;
+message ClockSyncSettings {
+	int32 syncAttemptCount = 1;
 	bool enabled = 2;
 }
 
-message ObCombatSettings2 {
-	bool obCombatSettings2Bool1 = 1;
+message CombatFeatureFlags {
+	bool realDeviceTimeEnabled = 1;
 	bool jbmhclbpeja = 2;
 	bool nbnpgbbbdaj = 3;
 	bool ehfddahoigj = 4;
@@ -16629,7 +16716,7 @@ message OpenCombatSessionOutProto {
 	Result result = 1;
 	CombatProto gojmdloblde = 2;
 	bool alhidolenbb = 3;
-	repeated CombatRefactorToggleProto combat_refactor_toggle = 4;
+	repeated CombatExperimentProto combat_refactor_toggle = 4;
 	string khokkhgibne = 5;
 }
 
@@ -21936,8 +22023,8 @@ message TriangleList {
 	bytes exterior_edges = 2;
 }
 
-message TutorialCompletRewards {
-	TutorialCompletion fimldchmioj = 1;
+message TutorialItemRewards {
+	TutorialCompletion tutorial = 1;
 	repeated ItemProto item = 2;
 }
 
@@ -21985,19 +22072,20 @@ message TutorialTelemetry {
 	TutorialTelemetryId telemetry_id = 1;
 }
 
-message TutorialsSettings {
+message TutorialSettings {
 	bool cjfohihgfcg = 1;
-	bool mhooambompj = 2;
-	bool hlmbakneafc = 3;
-	bool aihgbmdbikc = 4;
-	bool inekaihijic = 5;
-	bool hhobgphameh = 6;
-	bool adhjhijckbn = 7;
-	bool pfpglfggbjj = 8;
-	bool kaapooiopfh = 9;
-	bool mmbonmjblhb = 10;
-	bool kgdhgbkakhi = 11;
-	repeated TutorialCompletRewards tutorial_complete_reward = 12;
+	bool friendsTutorialEnabled = 2;
+	bool giftsTutorialEnabled = 3;
+	bool taskHelpTutorialsEnabled = 4;
+	bool revivesAndPotionsTutorialEnabled = 5;
+	bool razzberryCatchTutorialEnabled = 6;
+	bool luresTutorialEnabled = 7;
+	bool tradingTutorialEnabled = 8;
+	bool luckyTradeTutorialEnabled = 9;
+	bool luckyFriendTutorialEnabled = 10;
+	bool pokemonTaggingTutorialEnabled = 11;
+	repeated TutorialItemRewards tutorialItemRewards = 12;
+	bool typeEffectivenessTipsEnabled = 13;
 }
 
 message TypeEffectiveSettingsProto {
