@@ -112,6 +112,15 @@ def main():
                 # except:
                 #     pass
 
+                # # ITEM_ID
+                # try:
+                #     for element in gamemaster_template_json:
+                #         if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["itemId"], int):
+                #             print(
+                #                 f'{element["templateId"]} = {element["data"]["itemSettings"]["itemId"]};')
+                # except:
+                #     pass
+
                 with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
                     json.dump(gamemaster_template_json, f, indent=4)
             except:
