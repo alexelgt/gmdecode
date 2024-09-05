@@ -6960,21 +6960,21 @@ message CPPHBAPCCGI {
 
 message CameraSettingsProto {
 	string ikdlnmmcjij = 1;
-	repeated CameraInterpolation niiihnjdddh = 2;
-	repeated CameraTarget bodccnblefe = 3;
-	repeated float lmmfhigbihe = 4;
-	repeated float ceagdlfdalm = 5;
-	repeated float gncmicdkkfj = 6;
-	repeated float ajbaijhnnhk = 7;
-	repeated float ggahoipmpkg = 8;
-	repeated float gmeedmjnajp = 9;
-	repeated float bpadepilbbk = 10;
-	repeated float mflpipinbbn = 11;
-	repeated float kfbjiepglkd = 12;
-	repeated float gaoblpokblf = 13;
-	repeated float dngaacfhaan = 14;
-	repeated float hlglmhlpdeo = 15;
-	repeated float cpmbjbmckip = 16;
+	repeated CameraInterpolation interpolation = 2;
+	repeated CameraTarget targetType = 3;
+	repeated float easeInSpeed = 4;
+	repeated float easeOutSpeed = 5;
+	repeated float durationSeconds = 6;
+	repeated float waitSeconds = 7;
+	repeated float transitionSeconds = 8;
+	repeated float angleDegree = 9;
+	repeated float angleOffsetDegree = 10;
+	repeated float pitchDegree = 11;
+	repeated float pitchOffsetDegree = 12;
+	repeated float rollDegree = 13;
+	repeated float distanceMeters = 14;
+	repeated float heightPercent = 15;
+	repeated float vertCtrRatio = 16;
 }
 
 message CancelCombatChallengeDataProto {
@@ -9254,11 +9254,6 @@ message ECBEDMKJBPP {
 	bool fpcmomofojn = 2;
 }
 
-message ECDPDPKAJMA {
-	int32 debcjfamkmh = 1;
-	int32 mmblfncfhee = 2;
-}
-
 message ECJPHGFLLFL {
 	enum AMGKKMACMBN {
 		CLICK = 0;
@@ -9339,14 +9334,14 @@ message EHEMGPAEIKB {
 	bool dhojlenigpm = 7;
 }
 
-message EIDKIIJMOJM {
+message GuaranteedLimitedPokemonRewardProto {
 	oneof MOHHEHEOGPB {
 		int32 lifetime_max_count = 3;
 		int32 per_competitive_combat_season_max_count = 4;
 	}
 
 	PokemonEncounterRewardProto pokemon = 1;
-	string ngmpncdoeel = 2;
+	string identifier = 2;
 }
 
 message EKIHFAMGOAI {
@@ -18440,7 +18435,7 @@ message PokemonDisplayProto {
 	Costume bbehociokka = 1;
 	Gender gender = 2;
 	bool kglealcogbg = 3;
-	Form bmopheeeicj = 4;
+	Form form = 4;
 	GameplayWeatherProto.WeatherCondition gnmbfkmefop = 5;
 	Alignment hmnjdjmldim = 6;
 	PokemonBadge pmofmfphnji = 7;
@@ -18484,7 +18479,7 @@ message PokemonEncounterRewardProto {
 		bool use_quest_pokemon_encounter_distribuition = 2;
 	}
 
-	PokemonDisplayProto lneeglandmd = 3;
+	PokemonDisplayProto pokemonDisplay = 3;
 	bool ggacglmkmjh = 4;
 	PokemonDisplayProto cholbdicbii = 5;
 	Item nkchocbeefb = 6;
@@ -22682,8 +22677,13 @@ message VsSeekerLootProto {
 
 message VsSeekerPokemonRewardsProto {
 	message KEPJHPMGAIC {
+		message Range {
+			int32 min = 1;
+			int32 max = 2;
+		}
+
 		oneof ECBPMCOAIND {
-			ECDPDPKAJMA range = 1;
+			Range range = 1;
 			bool zero = 2;
 		}
 	}
@@ -22691,15 +22691,15 @@ message VsSeekerPokemonRewardsProto {
 	message PGMFGBAPCKI {
 		oneof PHPODDCDGHL {
 			PokemonEncounterRewardProto pokemon = 1;
-			EIDKIIJMOJM limited_pokemon_reward = 2;
-			EIDKIIJMOJM guaranteed_limited_pokemon_reward = 3;
+			GuaranteedLimitedPokemonRewardProto limited_pokemon_reward = 2;
+			GuaranteedLimitedPokemonRewardProto guaranteedLimitedPokemonReward = 3;
 		}
 
-		int32 boolnlgldpc = 4;
+		int32 unlockedAtRank = 4;
 		float nggapifnilc = 5;
-		KEPJHPMGAIC bebfpcenoje = 6;
-		KEPJHPMGAIC eodniomjcdd = 7;
-		KEPJHPMGAIC ikfhefffkhl = 8;
+		KEPJHPMGAIC attackIvOverride = 6;
+		KEPJHPMGAIC defenseIvOverride = 7;
+		KEPJHPMGAIC staminaIvOverride = 8;
 	}
 
 	repeated PGMFGBAPCKI available_pokemon = 1;
