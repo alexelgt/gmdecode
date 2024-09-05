@@ -13525,8 +13525,8 @@ message IapItemCategoryDisplayProto {
 	HoloIapItemCategory category = 1;
 	string lgdbihdlhod = 2;
 	bool hidden = 3;
-	int32 kjmkbpepdhk = 4;
-	bool ipaeeimjili = 5;
+	int32 sortOrder = 4;
+	bool bannerEnabled = 5;
 	string mlmiofcbilg = 6;
 	string jhggooloene = 7;
 	string liangffdfec = 8;
@@ -13549,6 +13549,9 @@ message IapItemDisplayProto {
 	int64 skuDisableTimeUtcMs = 14;
 	repeated string gnblpmajede = 15;
 	string imageUrl = 16;
+	bool showDiscountTag = 19;
+	bool showStrikethroughPrice = 20;
+	int32 totalValue = 21;
 }
 
 message IapSettingsProto {
