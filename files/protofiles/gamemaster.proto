@@ -4422,6 +4422,7 @@ enum PushNotificationTelemetryIds {
 	PUSH_NOTIFICATION_TELEMETRY_IDS_OPEN_APP = 1;
 }
 
+// EVOLUTION_QUEST
 enum QuestType {
 	QUEST_UNSET = 0;
 	QUEST_FIRST_CATCH_OF_THE_DAY = 1;
@@ -4480,6 +4481,7 @@ enum QuestType {
 	QUEST_OPEN_GIFT = 59;
 	QUEST_EARN_XP = 60;
 	QUEST_BATTLE_PLAYER_TEAM_LEADER = 61;
+	QUEST_FIGHT_POKEMON = 71;
 }
 
 enum RaidLevel {
@@ -5309,7 +5311,7 @@ message AddressBookImportTelemetry {
 
 message AddressablePokemonSettings {
 	int32 jbpgnldjapk = 1;
-	repeated HoloPokemonId obAddressablePokemonId = 2;
+	repeated HoloPokemonId addressablePokemonIds = 2;
 }
 
 message AdvancedPerformanceTelemetry {
@@ -5634,6 +5636,7 @@ message ArTelemetrySettingsProto {
 	bool measureFramerate = 5;
 	int32 framerateSamplingIntervalMs = 6;
 	float percentageSessionsToSample = 7;
+	bool enableArdkTelemetry = 8;
 }
 
 message ArdkConfigSettingsProto {
@@ -5870,7 +5873,7 @@ message AvatarGroupOrderSettingsProto {
 	message AvatarGroupOrderProto {
 		string name = 1;
 		int32 order = 2;
-		bool obShowNewTag = 3;
+		bool newTagEnabled = 3;
 	}
 
 	repeated AvatarGroupOrderProto group = 1;
@@ -6107,8 +6110,14 @@ message BackgroundToken {
 }
 
 message BadgeCaptureReward {
+	enum Type {
+		UNSET = 0;
+		POKEMON_ENCOUNTER = 2;
+	}
+
 	float gdlhpebfpfh = 1;
 	repeated string olippecblin = 2;
+	repeated Type rewardTypes = 7;
 }
 
 message BadgeData {
@@ -6123,7 +6132,7 @@ message BadgeSettingsProto {
 	HoloBadgeType badgeType = 1;
 	int32 badgeRank = 2;
 	repeated int32 targets = 3;
-	repeated BadgeCaptureReward capture_reward = 4;
+	repeated BadgeCaptureReward captureReward = 4;
 	bool eventBadge = 5;
 	EventBadgeSettingsProto event_badge_settings = 6;
 	string moldhmcjdbo = 7;
@@ -8033,9 +8042,9 @@ message CombatSyncServerResponseStateDataProto {
 
 message CombatTypeProto {
 	HoloPokemonType type = 1;
-	float clhhbepbggc = 2;
-	float hbbmhnfieie = 3;
-	float onlnnnnbneh = 4;
+	float niceLevelThreshold = 2;
+	float greatLevelThreshold = 3;
+	float excellentLevelThreshold = 4;
 }
 
 message CommonFilterProto {
@@ -10662,9 +10671,15 @@ message GM14SettingsProto {
 	float jgbnefldeni = 1;
 }
 
-message GM15SettingsProto {
-	bool kfbkkibljce = 1;
-	bool cakpeiaioam = 2;
+message CampfireSettingsProto {
+	bool campfireEnabled = 1;
+	bool mapButtonsEnabled = 2;
+	bool catchCardEnabled = 3;
+	bool arCatchCardEnabled = 4;
+	int32 catchCardAvailableSeconds = 6;
+	bool catchCardShareCampfireEnabled = 8;
+	bool arCatchCardShareCampfireEnabled = 9;
+	int64 obCampfireSettingsNumber1 = 10;
 }
 
 message GM16SettingsProto {
@@ -10704,7 +10719,7 @@ message AdvancedSettingsProto {
 	repeated int32 lephfeklhhm = 3;
 	repeated int32 mjglogomhlh = 4;
 	repeated int32 imdjmhmcdhg = 5;
-	bool obDownloadAllAssetsEnabled = 6;
+	bool downloadAllAssetsEnabled = 6;
 }
 
 message GM6SettingsProto {
@@ -10801,7 +10816,7 @@ message GameItemContentProto {
 }
 
 message AssetRefreshSettingsProto {
-	int32 obCheckForNewAssetsTimeSeconds = 5;
+	int32 stringRefreshSeconds = 5;
 }
 
 message SizeSettingsProto {
@@ -10818,6 +10833,36 @@ message SizeSettingsProto {
 	bool disablePokedexRecordDisplayForForms = 12;
 }
 
+message ButterflyCollectorSettingsProto {
+	enum Region {
+		UNSET = 0;
+		VIVILLON_REGION_ARCHIPELAGO = 1;
+		VIVILLON_REGION_CONTINENTAL = 2;
+		VIVILLON_REGION_ELEGANT = 3;
+		VIVILLON_REGION_GARDEN = 5;
+		VIVILLON_REGION_HIGH_PLAINS = 6;
+		VIVILLON_REGION_ICY_SNOW = 7;
+		VIVILLON_REGION_JUNGLE = 8;
+		VIVILLON_REGION_MARINE = 9;
+		VIVILLON_REGION_MEADOW = 10;
+		VIVILLON_REGION_MODERN = 11;
+		VIVILLON_REGION_MONSOON = 12;
+		VIVILLON_REGION_OCEAN = 13;
+		VIVILLON_REGION_POLAR = 15;
+		VIVILLON_REGION_RIVER = 16;
+		VIVILLON_REGION_SANDSTORM = 17;
+		VIVILLON_REGION_SAVANNA = 18;
+		VIVILLON_REGION_SUN = 19;
+		VIVILLON_REGION_TUNDRA = 20;
+	}
+
+	bool enabled = 1;
+	int32 version = 2;
+	repeated Region region = 3;
+	int32 dailyProgressFromInventory = 5;
+
+}
+
 message PokemonExtendedSettingsProto {
 	HoloPokemonId uniqueId = 1;
 	PokemonDisplayProto.Form form = 28;
@@ -10825,11 +10870,34 @@ message PokemonExtendedSettingsProto {
 	repeated TempEvoOverrideProto temp_evo_overrides = 51;
 }
 
+message CatchRadiusMultiplierSettingsProto {
+	bool catchRadiusMultiplierSettingsEnabled = 1;
+}
+
+message BuffSettingsProto {
+	int32 countdownReminderS = 1;
+	bool clickExtensionEnabled = 2;
+	bool friendshipLuckyEggEnabled = 4;
+}
+
 message BootSettingsProto {
 	bool bootLazyInjectEnabled = 2;
 	bool obBootSettingsBool1 = 3;
 	bool obBootSettingsBool3 = 5;
 	bool obBootSettingsBool6 = 8;
+}
+
+message BulkHealingSettingsProto {
+	bool enabled = 1;
+	int32 maxPokemonsPerHeal = 2;
+}
+
+message AndroidBackButtonRefactorSettingsProto {
+	bool enabled = 1;
+}
+
+message AdditiveSceneSettingsProto {
+	bool enabled = 1;
 }
 
 message MpSettingsProto {
@@ -10990,7 +11058,7 @@ message BreadPokemonScalingSettingsProto {
 		repeated PokemonFormData pokemonFormData = 2;
 	}
 
-	repeated VisualSettings visualSettingsProto = 1;
+	repeated VisualSettings visualSettings = 1;
 	int32 subscribeS2Level = 2;
 	string subscriptionNamespace = 3;
 	int64 publishCutoffTimeMs = 4;
@@ -11133,7 +11201,7 @@ message GameMasterClientTemplateProto {
 	MapDisplaySettingsProto map_display_settings = 87;
 	PokemonHomeEnergyCostsProto pokemon_home_energy_costs = 88;
 	PokemonHomeSettingsProto pokemon_home_settings = 89;
-	ArTelemetrySettingsProto ar_telemetry_settings = 90;
+	ArTelemetrySettingsProto arTelemetrySettings = 90;
 	BattlePartySettingsProto battle_party_settings = 91;
 	QuestEvolutionSettingsProto quest_evolution_settings = 93;
 	PokemonHomeFormReversionProto pokemon_home_form_reversions = 94;
@@ -11179,7 +11247,7 @@ message GameMasterClientTemplateProto {
 	GM6SettingsProto ob_gm_6_settings = 135;
 	VerboseLogCombatSettingsProto verbose_log_combat_settings = 136;
 	MegaLevelSettingsProto mega_level_settings = 137;
-	AdvancedSettingsProto obAdvancedSettings = 138;
+	AdvancedSettingsProto advancedSettings = 138;
 	GM9SettingsProto ob_gm_9_settings = 139;
 	ImpressionTrackingSettingsProto impression_tracking_setting = 140;
 	GM11SettingsProto ob_gm_11_settings = 141;
@@ -11189,13 +11257,19 @@ message GameMasterClientTemplateProto {
 	TicketGiftingSettingsProto ticket_gifting_settings = 146;
 	GM8SettingsProto ob_gm_8_settings = 147;
 	GM10SettingsProto ob_gm_10_settings = 148;
-	GM15SettingsProto ob_gm_15_settings = 149;
+	CampfireSettingsProto campfireSettings = 149;
 	GM14SettingsProto ob_gm_14_settings = 150;
 	GM16SettingsProto ob_gm_16_settings = 151;
 	VsSeekerScheduleSettings vsSeekerScheduleSettings = 155;
-	AssetRefreshSettingsProto ob_asset_refresh_settings = 157;
+	AssetRefreshSettingsProto obAssetRefreshSettings = 157;
+	ButterflyCollectorSettingsProto butterflyCollectorSettings = 160;
 	PokemonExtendedSettingsProto pokemonExtendedSettings = 162;
+	CatchRadiusMultiplierSettingsProto catchRadiusMultiplierSettings = 173;
+	BuffSettingsProto buffSettings = 183;
 	BootSettingsProto bootSettings = 189;
+	BulkHealingSettingsProto bulkHealingSettings = 212;
+	AndroidBackButtonRefactorSettingsProto obAndroidBackButtonRefactorSettings = 214;
+	AdditiveSceneSettingsProto obAdditiveSceneSettings = 219;
 	MpSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto obBreadFeatureFlags = 222;
 	BreadSettingsProto breadSettings = 223;
@@ -13694,17 +13768,18 @@ message InvasionFinishedDisplayProto {
 }
 
 message InvasionNpcDisplaySettingsProto {
-	string agagemlfbfj = 1;
+	string trainerName = 1;
 	PlayerAvatarProto avatar = 2;
-	string mjhlfhjdkof = 3;
-	string fcfcfododmc = 4;
-	string dggajfchbde = 5;
-	string djjbcdlnbln = 6;
-	string bobladgfmnp = 7;
-	string bacaamanadf = 8;
-	bool hfifcopfclp = 9;
-	string fbpabfafkbd = 10;
-	string jkcdfgfgohp = 11;
+	string trainerTitle = 3;
+	string trainerQuote = 4;
+	string iconUrl = 5;
+	string backdropImageBundle = 6;
+	string modelName = 7;
+	string tutorialOnLossString = 8;
+	bool isMale = 9;
+	string customIncidentMusic = 10;
+	string customCombatMusic = 11;
+	HoloPokemonType tipsType = 12;
 }
 
 message InvasionOpenCombatSessionDataProto {
@@ -17080,7 +17155,7 @@ message PlayerAttributesProto {
 }
 
 message PlayerAvatarProto {
-	int32 kaelbgnigbl = 2;
+	int32 skin = 2;
 	int32 ahkeifhbikm = 3;
 	int32 gklaomcfhko = 4;
 	int32 mgbhcoimjed = 5;
@@ -17089,21 +17164,21 @@ message PlayerAvatarProto {
 	int32 avatar = 8;
 	int32 eheajokhdjk = 9;
 	string gcjbabhleaf = 10;
-	string pcnifkpgcnn = 11;
-	string agdgbckogae = 12;
-	string jakalkkhfie = 13;
-	string kdipbihingn = 14;
-	string dkjngddocnk = 15;
-	string dnefagmfodn = 16;
-	string oiaefgnhnej = 17;
-	string jaecmfgogbg = 18;
-	string bcllbfgfnok = 19;
-	string jflgcifipae = 20;
-	string fiamglnaaif = 21;
-	string maldclahmdm = 22;
+	string avatarHair = 11;
+	string avatarShirt = 12;
+	string avatarPants = 13;
+	string avatarHat = 14;
+	string avatarShoes = 15;
+	string avatarEyes = 16;
+	string avatarBackpack = 17;
+	string avatarGloves = 18;
+	string avatarSocks = 19;
+	string avatarBelt = 20;
+	string avatarGlasses = 21;
+	string avatarNecklace = 22;
 	string nbajbeoblfo = 23;
-	string coelaimflga = 24;
-	string lkkomgemefh = 25;
+	string avatarPose = 24;
+	string avatarFace = 25;
 }
 
 message PlayerBadgeProto {
@@ -19303,6 +19378,7 @@ message QuestConditionProto {
 		WithRaidLocationProto with_raid_location = 37;
 		WithFriendsRaidProto with_friends_raid = 38;
 		WithPokemonCostumeProto with_pokemon_costume = 39;
+		WithOpponentPokemonBattleStatusProto withOpponentPokemonBattleStatus = 46;
 	}
 
 	enum ConditionType {
@@ -19358,6 +19434,7 @@ message QuestConditionProto {
 		WITH_FRIENDS_RAID = 49;
 		WITH_POKEMON_COSTUME = 50;
 		WITH_APPLIED_ITEM = 51;
+		WITH_OPPONENT_POKEMON_BATTLE_STATUS = 62;
 	}
 
 	ConditionType type = 1;
@@ -22902,6 +22979,11 @@ message WithPokemonCategoryProto {
 
 message WithPokemonCostumeProto {
 	bool hkpfibmnooh = 1;
+}
+
+message WithOpponentPokemonBattleStatusProto {
+	bool requireDefeat = 1;
+	repeated HoloPokemonType opponentPokemonType = 2;
 }
 
 message WithPokemonCpLimitProto {

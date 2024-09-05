@@ -103,6 +103,15 @@ def main():
                 # except:
                 #     pass
 
+                # # EVOLUTION_QUEST
+                # try:
+                #     for element in gamemaster_template_json:
+                #         if "_EVOLUTION_QUEST" in element["templateId"] and isinstance(element["data"]["evolutionQuestTemplate"]["questType"], int):
+                #             print(
+                #                 f'??? = {element["data"]["evolutionQuestTemplate"]["questType"]};')
+                # except:
+                #     pass
+
                 with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
                     json.dump(gamemaster_template_json, f, indent=4)
             except:
