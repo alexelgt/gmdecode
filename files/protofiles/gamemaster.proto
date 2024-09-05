@@ -13522,9 +13522,9 @@ message IPNBCMONNEH {
 }
 
 message IapItemCategoryDisplayProto {
-	HoloIapItemCategory jeipgnjohmk = 1;
+	HoloIapItemCategory category = 1;
 	string lgdbihdlhod = 2;
-	bool acodngdaaie = 3;
+	bool hidden = 3;
 	int32 kjmkbpepdhk = 4;
 	bool ipaeeimjili = 5;
 	string mlmiofcbilg = 6;
@@ -13538,7 +13538,7 @@ message IapItemDisplayProto {
 	string sku = 1;
 	HoloIapItemCategory category = 2;
 	int32 sortOrder = 3;
-	bool acodngdaaie = 6;
+	bool hidden = 6;
 	bool sale = 7;
 	string spriteId = 8;
 	string title = 9;
@@ -13548,7 +13548,7 @@ message IapItemDisplayProto {
 	int64 skuEnableTimeUtcMs = 13;
 	int64 skuDisableTimeUtcMs = 14;
 	repeated string gnblpmajede = 15;
-	string jhggooloene = 16;
+	string imageUrl = 16;
 }
 
 message IapSettingsProto {
