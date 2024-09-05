@@ -4917,8 +4917,8 @@ enum TweenAction {
 }
 
 enum VsSeekerRewardTrack {
-	VS_SEEKER_REWARD_TRACK_FREE = 0;
-	VS_SEEKER_REWARD_TRACK_PREMIUM = 1;
+	FREE = 0;
+	PREMIUM = 1;
 }
 
 enum WebTelemetryIds {
@@ -22925,9 +22925,9 @@ message VsSeekerLootProto {
 		}
 	}
 
-	int32 blcdmpkjpkj = 1;
-	repeated RewardProto jnnhloabdke = 2;
-	VsSeekerRewardTrack fbejflngkfn = 3;
+	int32 rankLevel = 1;
+	repeated RewardProto reward = 2;
+	VsSeekerRewardTrack rewardTrack = 3;
 }
 
 message VsSeekerPokemonRewardsProto {
