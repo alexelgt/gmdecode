@@ -3719,13 +3719,14 @@ enum IdentityProvider {
 
 enum IncidentDisplayType {
 	INCIDENT_DISPLAY_TYPE_NONE = 0;
-	INCIDENT_DISPLAY_TYPE_INVASION_GRUNT = 1;
-	INCIDENT_DISPLAY_TYPE_INVASION_LEADER = 2;
-	INCIDENT_DISPLAY_TYPE_INVASION_GIOVANNI = 3;
-	INCIDENT_DISPLAY_TYPE_INVASION_GRUNTB = 4;
-	INCIDENT_DISPLAY_TYPE_INVASION_EVENT_NPC = 5;
-	INCIDENT_DISPLAY_TYPE_INVASION_ROUTES_NPC = 6;
+	INVASION_GRUNT = 1;
+	INVASION_LEADER = 2;
+	INVASION_GIOVANNI = 3;
+	INVASION_GRUNTB = 4;
+	INVASION_EVENT_NPC = 5;
+	INVASION_ROUTES_NPC = 6;
 	INVASION_GENERIC = 7;
+	INCIDENT_POKESTOP_ENCOUNTER = 8;
 	INCIDENT_CONTEST = 9;
 }
 
@@ -6452,7 +6453,7 @@ message BelugaPokemonWhitelist {
 	int32 maxAllowedPokemonPokedexNumber = 1;
 	repeated HoloPokemonId additionalPokemonAllowed = 2;
 	repeated PokemonDisplayProto.Form ndeaniggidp = 3;
-	repeated PokemonDisplayProto.Costume costumesAllowed = 4;
+	repeated Costume costumesAllowed = 4;
 }
 
 message BelugaTransactionCompleteOutProto {
@@ -12693,7 +12694,7 @@ message GlobalEventTicketAttributesProto {
 	string jneadbijfod = 10;
 	repeated string lophgdaniib = 11;
 	bool giftable = 12;
-	Item hengmcijmbj = 13;
+	Item ticketItem = 13;
 	Item giftItem = 14;
 	string cnnkfighcfj = 15;
 	string eventBannerUrl = 16;
@@ -14224,7 +14225,7 @@ message ItemProto {
 
 message ItemRewardProto {
 	Item item = 1;
-	int32 lndgdlpphjj = 2;
+	int32 amount = 2;
 }
 
 message ItemSettingsProto {
@@ -14367,7 +14368,7 @@ message JFGBIGOPCLO {
 	PlayerAvatarProto olnakeaadno = 14;
 	Team biofkfhcocf = 15;
 	HoloTemporaryEvolutionId ciimkamlabn = 16;
-	PokemonDisplayProto.Costume jgbcmgjgcgp = 17;
+	Costume jgbcmgjgcgp = 17;
 }
 
 message JFIBJODIHHL {
@@ -17805,11 +17806,11 @@ message PokedexEntryProto {
 	int32 oninlmgeoaj = 3;
 	int32 jijpjflodmg = 4;
 	int32 eaoliakffbj = 5;
-	repeated PokemonDisplayProto.Costume gjlcapfpdgb = 6;
+	repeated Costume gjlcapfpdgb = 6;
 	repeated PokemonDisplayProto.Form gjanmbfoooo = 7;
 	repeated PokemonDisplayProto.Gender opbhohdcnpd = 8;
 	bool lpcpnbibbli = 9;
-	repeated PokemonDisplayProto.Costume djncmbjfhae = 10;
+	repeated Costume djncmbjfhae = 10;
 	repeated PokemonDisplayProto.Form jnnpmfaecge = 11;
 	repeated PokemonDisplayProto.Gender enkphpjfbgn = 12;
 	bool encpkfeccdb = 13;
@@ -17877,6 +17878,69 @@ message PokemonCreateDetail {
 	}
 }
 
+enum Costume {
+	COSTUME_UNSET = 0;
+	HOLIDAY_2016 = 1;
+	ANNIVERSARY = 2;
+	ONE_YEAR_ANNIVERSARY = 3;
+	HALLOWEEN_2017 = 4;
+	SUMMER_2018 = 5;
+	FALL_2018 = 6;
+	NOVEMBER_2018 = 7;
+	WINTER_2018 = 8;
+	FEB_2019 = 9;
+	MAY_2019_NOEVOLVE = 10;
+	JAN_2020_NOEVOLVE = 11;
+	APRIL_2020_NOEVOLVE = 12;
+	SAFARI_2020_NOEVOLVE = 13;
+	SPRING_2020_NOEVOLVE = 14;
+	SUMMER_2020_NOEVOLVE = 15;
+	FALL_2020_NOEVOLVE = 16;
+	WINTER_2020_NOEVOLVE = 17;
+	NOT_FOR_RELEASE_ALPHA = 18;
+	NOT_FOR_RELEASE_BETA = 19;
+	NOT_FOR_RELEASE_GAMMA = 20;
+	NOT_FOR_RELEASE_NOEVOLVE = 21;
+	KANTO_2020_NOEVOLVE = 22;
+	JOHTO_2020_NOEVOLVE = 23;
+	HOENN_2020_NOEVOLVE = 24;
+	SINNOH_2020_NOEVOLVE = 25;
+	HALLOWEEN_2020_NOEVOLVE = 26;
+	COSTUME_1 = 27;
+	COSTUME_2 = 28;
+	COSTUME_3 = 29;
+	COSTUME_4 = 30;
+	COSTUME_5 = 31;
+	COSTUME_6 = 32;
+	COSTUME_7 = 33;
+	COSTUME_8 = 34;
+	COSTUME_9 = 35;
+	COSTUME_10 = 36;
+	COSTUME_1_NOEVOLVE = 37;
+	COSTUME_2_NOEVOLVE = 38;
+	COSTUME_3_NOEVOLVE = 39;
+	COSTUME_4_NOEVOLVE = 40;
+	COSTUME_5_NOEVOLVE = 41;
+	COSTUME_6_NOEVOLVE = 42;
+	COSTUME_7_NOEVOLVE = 43;
+	COSTUME_8_NOEVOLVE = 44;
+	COSTUME_9_NOEVOLVE = 45;
+	COSTUME_10_NOEVOLVE = 46;
+	GOFEST_2021_NOEVOLVE = 47;
+	FASHION_2021_NOEVOLVE = 48;
+	HALLOWEEN_2021_NOEVOLVE = 49;
+	GEMS_1_2021_NOEVOLVE = 50;
+	GEMS_2_2021_NOEVOLVE = 51;
+	HOLIDAY_2021_NOEVOLVE = 52;
+	TCG_2022_NOEVOLVE = 53;
+	JAN_2022_NOEVOLVE = 54;
+	GOFEST_2022_NOEVOLVE = 55;
+	ANNIVERSARY_2022_NOEVOLVE = 56;
+	SPRING_2023 = 63;
+	LAPRAS_NORMAL = 64;
+	SPRING_2023_INSTINCT = 66;
+}
+
 message PokemonDisplayProto {
 	enum Alignment {
 		ALIGNMENT_UNSET = 0;
@@ -17889,66 +17953,6 @@ message PokemonDisplayProto {
 		MALE = 1;
 		FEMALE = 2;
 		GENDERLESS = 3;
-	}
-
-	enum Costume {
-		COSTUME_UNSET = 0;
-		HOLIDAY_2016 = 1;
-		ANNIVERSARY = 2;
-		ONE_YEAR_ANNIVERSARY = 3;
-		HALLOWEEN_2017 = 4;
-		SUMMER_2018 = 5;
-		FALL_2018 = 6;
-		NOVEMBER_2018 = 7;
-		WINTER_2018 = 8;
-		FEB_2019 = 9;
-		MAY_2019_NOEVOLVE = 10;
-		JAN_2020_NOEVOLVE = 11;
-		APRIL_2020_NOEVOLVE = 12;
-		SAFARI_2020_NOEVOLVE = 13;
-		SPRING_2020_NOEVOLVE = 14;
-		SUMMER_2020_NOEVOLVE = 15;
-		FALL_2020_NOEVOLVE = 16;
-		WINTER_2020_NOEVOLVE = 17;
-		NOT_FOR_RELEASE_ALPHA = 18;
-		NOT_FOR_RELEASE_BETA = 19;
-		NOT_FOR_RELEASE_GAMMA = 20;
-		NOT_FOR_RELEASE_NOEVOLVE = 21;
-		KANTO_2020_NOEVOLVE = 22;
-		JOHTO_2020_NOEVOLVE = 23;
-		HOENN_2020_NOEVOLVE = 24;
-		SINNOH_2020_NOEVOLVE = 25;
-		HALLOWEEN_2020_NOEVOLVE = 26;
-		COSTUME_1 = 27;
-		COSTUME_2 = 28;
-		COSTUME_3 = 29;
-		COSTUME_4 = 30;
-		COSTUME_5 = 31;
-		COSTUME_6 = 32;
-		COSTUME_7 = 33;
-		COSTUME_8 = 34;
-		COSTUME_9 = 35;
-		COSTUME_10 = 36;
-		COSTUME_1_NOEVOLVE = 37;
-		COSTUME_2_NOEVOLVE = 38;
-		COSTUME_3_NOEVOLVE = 39;
-		COSTUME_4_NOEVOLVE = 40;
-		COSTUME_5_NOEVOLVE = 41;
-		COSTUME_6_NOEVOLVE = 42;
-		COSTUME_7_NOEVOLVE = 43;
-		COSTUME_8_NOEVOLVE = 44;
-		COSTUME_9_NOEVOLVE = 45;
-		COSTUME_10_NOEVOLVE = 46;
-		GOFEST_2021_NOEVOLVE = 47;
-		FASHION_2021_NOEVOLVE = 48;
-		HALLOWEEN_2021_NOEVOLVE = 49;
-		GEMS_1_2021_NOEVOLVE = 50;
-		GEMS_2_2021_NOEVOLVE = 51;
-		HOLIDAY_2021_NOEVOLVE = 52;
-		TCG_2022_NOEVOLVE = 53;
-		JAN_2022_NOEVOLVE = 54;
-		GOFEST_2022_NOEVOLVE = 55;
-		ANNIVERSARY_2022_NOEVOLVE = 56;
 	}
 
 	// FORM_BLOCK
@@ -18682,7 +18686,7 @@ message PokemonDisplayProto {
 		PIKACHU_WCS_2024 = 3015;
 	}
 
-	Costume bbehociokka = 1;
+	Costume costume = 1;
 	Gender gender = 2;
 	bool kglealcogbg = 3;
 	Form form = 4;
@@ -18865,7 +18869,7 @@ message PokemonLoadDelay {
 
 message PokemonLoadTelemetry {
 	HoloPokemonId pokemon_id = 1;
-	PokemonDisplayProto.Costume costume = 2;
+	Costume costume = 2;
 	PokemonDisplayProto.Gender gender = 3;
 	bool shiny = 4;
 	PokemonDisplayProto.Form form = 5;
@@ -19048,7 +19052,7 @@ message PokemonSettingsProto {
 	repeated float fcnpgmocmjk = 64;
 	repeated float bbllaaeajpk = 65;
 	SizeSettingsProto sizeSettings = 66;
-	repeated PokemonDisplayProto.Costume fnkkbonlpem = 67;
+	repeated Costume fnkkbonlpem = 67;
 }
 
 message PokemonStaminaUpdateProto {
