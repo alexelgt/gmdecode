@@ -79,45 +79,84 @@ def main():
                 # # BADGE_TYPE
                 # try:
                 #     for element in gamemaster_template_json:
-                #         if "BADGE_" in element["templateId"] and isinstance(element["data"]["badgeSettings"]["badgeType"], int):
-                #             print(
-                #                 f'{element["templateId"]} = {element["data"]["badgeSettings"]["badgeType"]};')
+                #         try:
+                #             if "BADGE_" in element["templateId"] and isinstance(element["data"]["badgeSettings"]["badgeType"], int):
+                #                 print(
+                #                     f'{element["templateId"]} = {element["data"]["badgeSettings"]["badgeType"]};')
+                #         except:
+                #             pass
                 # except:
                 #     pass
 
                 # # BUDDY_ACTIVITY
                 # try:
                 #     for element in gamemaster_template_json:
-                #         if "BUDDY_ACTIVITY_" in element["templateId"] and isinstance(element["data"]["buddyActivitySettings"]["activity"], int):
-                #             print(
-                #                 f'{element["templateId"]} = {element["data"]["buddyActivitySettings"]["activity"]};')
+                #         try:
+                #             if "BUDDY_ACTIVITY_" in element["templateId"] and isinstance(element["data"]["buddyActivitySettings"]["activity"], int):
+                #                 print(
+                #                     f'{element["templateId"]} = {element["data"]["buddyActivitySettings"]["activity"]};')
+                #         except:
+                #             pass
                 # except:
                 #     pass
 
                 # # BUDDY_CATEGORY_ROUTE
                 # try:
                 #     for element in gamemaster_template_json:
-                #         if "BUDDY_CATEGORY_ROUTE" in element["templateId"] and isinstance(element["data"]["buddyActivityCategorySettings"]["activityCategory"], int):
-                #             print(
-                #                 f'{element["templateId"]} = {element["data"]["buddyActivityCategorySettings"]["activityCategory"]};')
+                #         try:
+                #             if "BUDDY_CATEGORY_ROUTE" in element["templateId"] and isinstance(element["data"]["buddyActivityCategorySettings"]["activityCategory"], int):
+                #                 print(
+                #                     f'{element["templateId"]} = {element["data"]["buddyActivityCategorySettings"]["activityCategory"]};')
+                #         except:
+                #             pass
                 # except:
                 #     pass
 
                 # # EVOLUTION_QUEST
                 # try:
                 #     for element in gamemaster_template_json:
-                #         if "_EVOLUTION_QUEST" in element["templateId"] and isinstance(element["data"]["evolutionQuestTemplate"]["questType"], int):
-                #             print(
-                #                 f'??? = {element["data"]["evolutionQuestTemplate"]["questType"]};')
+                #         try:
+                #             if "_EVOLUTION_QUEST" in element["templateId"] and isinstance(element["data"]["evolutionQuestTemplate"]["questType"], int):
+                #                 print(
+                #                     f'??? = {element["data"]["evolutionQuestTemplate"]["questType"]};')
+                #         except:
+                #             pass
                 # except:
                 #     pass
 
                 # # ITEM_ID
                 # try:
                 #     for element in gamemaster_template_json:
-                #         if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["itemId"], int):
-                #             print(
-                #                 f'{element["templateId"]} = {element["data"]["itemSettings"]["itemId"]};')
+                #         try:
+                #             if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["itemId"], int):
+                #                 print(
+                #                     f'{element["templateId"]} = {element["data"]["itemSettings"]["itemId"]};')
+                #         except:
+                #             pass
+                # except:
+                #     pass
+
+                # # ITEM_TYPE
+                # try:
+                #     for element in gamemaster_template_json:
+                #         try:
+                #             if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["itemType"], int):
+                #                 print(
+                #                     f'{element["templateId"].replace("ITEM_", "ITEM_TYPE_")} = {element["data"]["itemSettings"]["itemType"]};')
+                #         except:
+                #             pass
+                # except:
+                #     pass
+
+                # # ITEM_CATEGORY
+                # try:
+                #     for element in gamemaster_template_json:
+                #         try:
+                #             if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["category"], int):
+                #                 print(
+                #                     f'{element["templateId"].replace("ITEM_", "ITEM_CATEGORY_")} = {element["data"]["itemSettings"]["category"]};')
+                #         except:
+                #             pass
                 # except:
                 #     pass
 

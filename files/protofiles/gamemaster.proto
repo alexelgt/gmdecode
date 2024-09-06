@@ -1188,6 +1188,13 @@ enum HoloBadgeType {
 	BADGE_SAFARI_2024_TAINAN_DAY_00 = 5581;
 	BADGE_SAFARI_2024_TAINAN_DAY_01 = 5582;
 	BADGE_SAFARI_2024_TAINAN_DAY_02 = 5583;
+	BADGE_SAFARI_2024_JAKARTA_ADD_ON_HATCH = 5682;
+	BADGE_SAFARI_2024_JAKARTA_ADD_ON_HATCH_TEST = 5683;
+	BADGE_SAFARI_2024_JAKARTA_ADD_ON_RAID = 5684;
+	BADGE_SAFARI_2024_JAKARTA_ADD_ON_RAID_TEST = 5685;
+	BADGE_SAFARI_2024_JAKARTA_DAY_00 = 5679;
+	BADGE_SAFARI_2024_JAKARTA_DAY_01 = 5680;
+	BADGE_SAFARI_2024_JAKARTA_DAY_02 = 5681;
 }
 
 enum HoloIapItemCategory {
@@ -1209,6 +1216,7 @@ enum HoloIapItemCategory {
 	IAP_CATEGORY_FLAIR_BUNDLE = 17;
 }
 
+// ITEM_CATEGORY
 enum HoloItemCategory {
 	ITEM_CATEGORY_NONE = 0;
 	ITEM_CATEGORY_POKEBALL = 1;
@@ -1237,6 +1245,8 @@ enum HoloItemCategory {
 	ITEM_CATEGORY_STICKER = 24;
 	ITEM_CATEGORY_POSTCARD_INVENTORY = 25;
 	ITEM_CATEGORY_EVENT_TICKET_GIFT = 26;
+	ITEM_CATEGORY_MP = 27;
+	ITEM_CATEGORY_BREAD = 28;
 }
 
 enum HoloItemEffect {
@@ -1259,6 +1269,7 @@ enum HoloItemEffect {
 	ITEM_EFFECT_FULL_MOTIVATION = 1016;
 }
 
+// ITEM_TYPE
 enum HoloItemType {
 	ITEM_TYPE_NONE = 0;
 	ITEM_TYPE_POKEBALL = 1;
@@ -1288,6 +1299,8 @@ enum HoloItemType {
 	ITEM_TYPE_POSTCARD_INVENTORY = 25;
 	ITEM_TYPE_EVENT_TICKET_GIFT = 26;
 	ITEM_TYPE_BREAKFAST = 27;
+	ITEM_TYPE_MP = 28;
+	ITEM_TYPE_MP_REPLENISH = 29;
 }
 
 enum HoloPokemonClass {
@@ -3820,6 +3833,7 @@ enum Item {
 	ITEM_MOVE_REROLL_SPECIAL_ATTACK = 1202;
 	ITEM_MOVE_REROLL_ELITE_FAST_ATTACK = 1203;
 	ITEM_MOVE_REROLL_ELITE_SPECIAL_ATTACK = 1204;
+	ITEM_MOVE_REROLL_OTHER_SPECIAL_ATTACK_A = 1250;
 	ITEM_RARE_CANDY = 1301;
 	ITEM_XL_RARE_CANDY = 1302;
 	FUSION_RESOURCE_DAWNWINGS_NECROZMA = 1350;
@@ -3861,6 +3875,16 @@ enum Item {
 	ITEM_INCENSE_DAY_BONUS = 408;
 	ITEM_INCENSE_NIGHT_BONUS = 409;
 	ITEM_INCENSE_SPARKLY = 407;
+	ITEM_MP = 1506;
+	ITEM_MP_REPLENISH = 1507;
+	ITEM_OTHER_EVOLUTION_STONE_A = 1150;
+	ITEM_POSTCARD_STORAGE_UPGRADE = 1003;
+	ITEM_SHADOW_GEM = 1505;
+	ITEM_SHADOW_GEM_FRAGMENT = 1504;
+	ITEM_TICKET_CITY_SAFARI_00 = 1610;
+	ITEM_TICKET_CITY_SAFARI_01 = 1611;
+	ITEM_TICKET_CITY_SAFARI_02 = 1612;
+	ITEM_TROY_DISK_SPARKLY = 506;
 }
 
 enum ItemUseTelemetryIds {
@@ -6453,7 +6477,7 @@ message BelugaPokemonWhitelist {
 	int32 maxAllowedPokemonPokedexNumber = 1;
 	repeated HoloPokemonId additionalPokemonAllowed = 2;
 	repeated PokemonDisplayProto.Form ndeaniggidp = 3;
-	repeated Costume costumesAllowed = 4;
+	repeated PokemonDisplayProto.Costume costumesAllowed = 4;
 }
 
 message BelugaTransactionCompleteOutProto {
@@ -9503,9 +9527,9 @@ message EggHatchTelemetry {
 }
 
 message EggIncubatorAttributesProto {
-	EggIncubatorType kphnaeaomoe = 1;
-	int32 hihcnblbpjj = 2;
-	float lklhlhcjmeh = 3;
+	EggIncubatorType incubatorType = 1;
+	int32 uses = 2;
+	float distanceMultiplier = 3;
 }
 
 message EggIncubatorProto {
@@ -9924,8 +9948,8 @@ message ExclusiveTicketInfoProto {
 }
 
 message ExperienceBoostAttributesProto {
-	float cpobabhcgla = 1;
-	int32 apenddaekba = 2;
+	float xpMultiplier = 1;
+	int32 boostDurationMs = 2;
 }
 
 message ExternalAddressableAssetsSettings {
@@ -10259,12 +10283,12 @@ message FoodAttributesProto {
 	repeated HoloItemEffect itemEffect = 1;
 	repeated float itemEffectPercent = 2;
 	float growthPercent = 3;
-	float cmflkplookb = 4;
-	float gfenpkebaip = 5;
-	int32 gpaebajbbhp = 6;
-	int64 ilhkemhmbpf = 7;
-	int64 ibkddjlnpop = 8;
-	int32 lhifjjdoaok = 9;
+	float berryMultiplier = 4;
+	float remoteBerryMultiplier = 5;
+	int32 numBuddyAffectionPoints = 6;
+	int64 mapDurationMs = 7;
+	int64 timeFullDurationMs = 8;
+	int32 numBuddyHungerPoints = 9;
 }
 
 message FoodValue {
@@ -11273,6 +11297,17 @@ message PokeballThrowPropertySettingsProto {
 	repeated ThrowProperties throwProperties = 1;
 }
 
+message ItemInventoryUpdateSettingsProto {
+	message CategoryProto {
+		repeated HoloItemCategory category = 1;
+		string categoryName = 2;
+		int32 sortOrder = 3;
+	}
+
+	bool featureEnabled = 1;
+	repeated CategoryProto categoryProto = 2;
+}
+
 message StickerCategorySettingsProto {
 	message StickerCategory {
 		string category = 1;
@@ -11448,6 +11483,7 @@ message GameMasterClientTemplateProto {
 	CampfireSettingsProto campfireSettings = 149;
 	GM14SettingsProto ob_gm_14_settings = 150;
 	DailyAdventureIncenseSettingsProto dailyAdventureIncenseSettings = 151;
+	ItemInventoryUpdateSettingsProto itemInventoryUpdateSettings = 152;
 	StickerCategorySettingsProto stickerCategorySettings = 153;
 	VsSeekerScheduleSettings vsSeekerScheduleSettings = 155;
 	AssetRefreshSettingsProto assetRefreshProto = 157;
@@ -12683,8 +12719,8 @@ message GlobalEventTicketAttributesProto {
 		PlayerAttributeRewardProto player_attribute = 15;
 	}
 
-	HoloBadgeType jhkkjchcopf = 1;
-	int64 bagookbdebh = 2;
+	HoloBadgeType eventBadge = 1;
+	int64 grantBadgeBeforeEventStartMs = 2;
 	string eventStartTime = 3;
 	string eventEndTime = 4;
 	string itemBagDescriptionKey = 6;
@@ -12700,6 +12736,7 @@ message GlobalEventTicketAttributesProto {
 	string eventBannerUrl = 16;
 	bool displayV2Enabled = 20;
 	string backgroundImageUrl = 21;
+	string titleImageUrl = 22;
 	string eventDatetimeRangeKey = 23;
 	string textRewardsKey = 24;
 	repeated IconRewards iconRewards = 25;
@@ -13881,7 +13918,7 @@ message InGamePurchaseDetails {
 }
 
 message IncenseAttributesProto {
-	int32 cenpoigmdmp = 1;
+	int32 incenseLifetimeSeconds = 1;
 	repeated HoloPokemonType phfpaeajfkd = 2;
 	float fihjichepmj = 3;
 	int32 gjhencmnipc = 4;
@@ -13889,7 +13926,7 @@ message IncenseAttributesProto {
 	int32 ielkffcnpod = 6;
 	int32 mgbfdjifpfh = 7;
 	repeated SpawnTablePokemonProto spawn_table = 8;
-	float edcacghmcdn = 9;
+	float spawnTableProbability = 9;
 }
 
 message IncidentGlobalSettingsProto {
@@ -13920,9 +13957,9 @@ message IncidentRewardProto {
 }
 
 message IncidentTicketAttributesProto {
-	bool npenmbecbpm = 1;
-	int32 occipgkgjce = 2;
-	Item lidpicgefmj = 3;
+	bool ignoreFullInventory = 1;
+	int32 upgradeRequirementCount = 2;
+	Item upgradedItem = 3;
 }
 
 message IncidentVisibilitySettingsProto {
@@ -14123,8 +14160,8 @@ message InventorySettingsProto {
 }
 
 message InventoryUpgradeAttributesProto {
-	int32 dofnkeobaeh = 1;
-	InventoryUpgradeType agajflfbhhd = 2;
+	int32 additionalStorage = 1;
+	InventoryUpgradeType upgradeType = 2;
 }
 
 message InventoryUpgradeProto {
@@ -14368,7 +14405,7 @@ message JFGBIGOPCLO {
 	PlayerAvatarProto olnakeaadno = 14;
 	Team biofkfhcocf = 15;
 	HoloTemporaryEvolutionId ciimkamlabn = 16;
-	Costume jgbcmgjgcgp = 17;
+	PokemonDisplayProto.Costume jgbcmgjgcgp = 17;
 }
 
 message JFIBJODIHHL {
@@ -17806,11 +17843,11 @@ message PokedexEntryProto {
 	int32 oninlmgeoaj = 3;
 	int32 jijpjflodmg = 4;
 	int32 eaoliakffbj = 5;
-	repeated Costume gjlcapfpdgb = 6;
+	repeated PokemonDisplayProto.Costume gjlcapfpdgb = 6;
 	repeated PokemonDisplayProto.Form gjanmbfoooo = 7;
 	repeated PokemonDisplayProto.Gender opbhohdcnpd = 8;
 	bool lpcpnbibbli = 9;
-	repeated Costume djncmbjfhae = 10;
+	repeated PokemonDisplayProto.Costume djncmbjfhae = 10;
 	repeated PokemonDisplayProto.Form jnnpmfaecge = 11;
 	repeated PokemonDisplayProto.Gender enkphpjfbgn = 12;
 	bool encpkfeccdb = 13;
@@ -17878,69 +17915,6 @@ message PokemonCreateDetail {
 	}
 }
 
-enum Costume {
-	COSTUME_UNSET = 0;
-	HOLIDAY_2016 = 1;
-	ANNIVERSARY = 2;
-	ONE_YEAR_ANNIVERSARY = 3;
-	HALLOWEEN_2017 = 4;
-	SUMMER_2018 = 5;
-	FALL_2018 = 6;
-	NOVEMBER_2018 = 7;
-	WINTER_2018 = 8;
-	FEB_2019 = 9;
-	MAY_2019_NOEVOLVE = 10;
-	JAN_2020_NOEVOLVE = 11;
-	APRIL_2020_NOEVOLVE = 12;
-	SAFARI_2020_NOEVOLVE = 13;
-	SPRING_2020_NOEVOLVE = 14;
-	SUMMER_2020_NOEVOLVE = 15;
-	FALL_2020_NOEVOLVE = 16;
-	WINTER_2020_NOEVOLVE = 17;
-	NOT_FOR_RELEASE_ALPHA = 18;
-	NOT_FOR_RELEASE_BETA = 19;
-	NOT_FOR_RELEASE_GAMMA = 20;
-	NOT_FOR_RELEASE_NOEVOLVE = 21;
-	KANTO_2020_NOEVOLVE = 22;
-	JOHTO_2020_NOEVOLVE = 23;
-	HOENN_2020_NOEVOLVE = 24;
-	SINNOH_2020_NOEVOLVE = 25;
-	HALLOWEEN_2020_NOEVOLVE = 26;
-	COSTUME_1 = 27;
-	COSTUME_2 = 28;
-	COSTUME_3 = 29;
-	COSTUME_4 = 30;
-	COSTUME_5 = 31;
-	COSTUME_6 = 32;
-	COSTUME_7 = 33;
-	COSTUME_8 = 34;
-	COSTUME_9 = 35;
-	COSTUME_10 = 36;
-	COSTUME_1_NOEVOLVE = 37;
-	COSTUME_2_NOEVOLVE = 38;
-	COSTUME_3_NOEVOLVE = 39;
-	COSTUME_4_NOEVOLVE = 40;
-	COSTUME_5_NOEVOLVE = 41;
-	COSTUME_6_NOEVOLVE = 42;
-	COSTUME_7_NOEVOLVE = 43;
-	COSTUME_8_NOEVOLVE = 44;
-	COSTUME_9_NOEVOLVE = 45;
-	COSTUME_10_NOEVOLVE = 46;
-	GOFEST_2021_NOEVOLVE = 47;
-	FASHION_2021_NOEVOLVE = 48;
-	HALLOWEEN_2021_NOEVOLVE = 49;
-	GEMS_1_2021_NOEVOLVE = 50;
-	GEMS_2_2021_NOEVOLVE = 51;
-	HOLIDAY_2021_NOEVOLVE = 52;
-	TCG_2022_NOEVOLVE = 53;
-	JAN_2022_NOEVOLVE = 54;
-	GOFEST_2022_NOEVOLVE = 55;
-	ANNIVERSARY_2022_NOEVOLVE = 56;
-	SPRING_2023 = 63;
-	LAPRAS_NORMAL = 64;
-	SPRING_2023_INSTINCT = 66;
-}
-
 message PokemonDisplayProto {
 	enum Alignment {
 		ALIGNMENT_UNSET = 0;
@@ -17953,6 +17927,71 @@ message PokemonDisplayProto {
 		MALE = 1;
 		FEMALE = 2;
 		GENDERLESS = 3;
+	}
+
+	// COSTUME
+	enum Costume {
+		COSTUME_UNSET = 0;
+		HOLIDAY_2016 = 1;
+		ANNIVERSARY = 2;
+		ONE_YEAR_ANNIVERSARY = 3;
+		HALLOWEEN_2017 = 4;
+		SUMMER_2018 = 5;
+		FALL_2018 = 6;
+		NOVEMBER_2018 = 7;
+		WINTER_2018 = 8;
+		FEB_2019 = 9;
+		MAY_2019_NOEVOLVE = 10;
+		JAN_2020_NOEVOLVE = 11;
+		APRIL_2020_NOEVOLVE = 12;
+		SAFARI_2020_NOEVOLVE = 13;
+		SPRING_2020_NOEVOLVE = 14;
+		SUMMER_2020_NOEVOLVE = 15;
+		FALL_2020_NOEVOLVE = 16;
+		WINTER_2020_NOEVOLVE = 17;
+		NOT_FOR_RELEASE_ALPHA = 18;
+		NOT_FOR_RELEASE_BETA = 19;
+		NOT_FOR_RELEASE_GAMMA = 20;
+		NOT_FOR_RELEASE_NOEVOLVE = 21;
+		KANTO_2020_NOEVOLVE = 22;
+		JOHTO_2020_NOEVOLVE = 23;
+		HOENN_2020_NOEVOLVE = 24;
+		SINNOH_2020_NOEVOLVE = 25;
+		HALLOWEEN_2020_NOEVOLVE = 26;
+		COSTUME_1 = 27;
+		COSTUME_2 = 28;
+		COSTUME_3 = 29;
+		COSTUME_4 = 30;
+		COSTUME_5 = 31;
+		COSTUME_6 = 32;
+		COSTUME_7 = 33;
+		COSTUME_8 = 34;
+		COSTUME_9 = 35;
+		COSTUME_10 = 36;
+		COSTUME_1_NOEVOLVE = 37;
+		COSTUME_2_NOEVOLVE = 38;
+		COSTUME_3_NOEVOLVE = 39;
+		COSTUME_4_NOEVOLVE = 40;
+		COSTUME_5_NOEVOLVE = 41;
+		COSTUME_6_NOEVOLVE = 42;
+		COSTUME_7_NOEVOLVE = 43;
+		COSTUME_8_NOEVOLVE = 44;
+		COSTUME_9_NOEVOLVE = 45;
+		COSTUME_10_NOEVOLVE = 46;
+		GOFEST_2021_NOEVOLVE = 47;
+		FASHION_2021_NOEVOLVE = 48;
+		HALLOWEEN_2021_NOEVOLVE = 49;
+		GEMS_1_2021_NOEVOLVE = 50;
+		GEMS_2_2021_NOEVOLVE = 51;
+		HOLIDAY_2021_NOEVOLVE = 52;
+		TCG_2022_NOEVOLVE = 53;
+		JAN_2022_NOEVOLVE = 54;
+		GOFEST_2022_NOEVOLVE = 55;
+		ANNIVERSARY_2022_NOEVOLVE = 56;
+		SPRING_2023 = 63;
+		SPRING_2023_MYSTIC = 64;
+		SPRING_2023_VALOR = 65;
+		SPRING_2023_INSTINCT = 66;
 	}
 
 	// FORM_BLOCK
@@ -18869,7 +18908,7 @@ message PokemonLoadDelay {
 
 message PokemonLoadTelemetry {
 	HoloPokemonId pokemon_id = 1;
-	Costume costume = 2;
+	PokemonDisplayProto.Costume costume = 2;
 	PokemonDisplayProto.Gender gender = 3;
 	bool shiny = 4;
 	PokemonDisplayProto.Form form = 5;
@@ -19052,7 +19091,7 @@ message PokemonSettingsProto {
 	repeated float fcnpgmocmjk = 64;
 	repeated float bbllaaeajpk = 65;
 	SizeSettingsProto sizeSettings = 66;
-	repeated Costume fnkkbonlpem = 67;
+	repeated PokemonDisplayProto.Costume fnkkbonlpem = 67;
 }
 
 message PokemonStaminaUpdateProto {
@@ -19224,8 +19263,8 @@ message PostcardDisplayProto {
 }
 
 message PotionAttributesProto {
-	float hpmlfefojab = 1;
-	int32 ajaaolkgign = 2;
+	float staPercent = 1;
+	int32 staAmount = 2;
 }
 
 message PowerUpPokestopSharedSettings {
@@ -20636,7 +20675,7 @@ message ReportAdInteractionResponse {
 }
 
 message ReviveAttributesProto {
-	float hpmlfefojab = 1;
+	float staPercent = 1;
 }
 
 message RoadMetadata {
