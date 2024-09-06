@@ -19104,9 +19104,9 @@ message PokemonFamilyProto {
 }
 
 message PokemonFamilySettingsProto {
-	HoloPokemonFamilyId lcolkilojpi = 1;
-	int32 bchfbnbkcpj = 2;
-	HoloPokemonId hdgndppjmae = 3;
+	HoloPokemonFamilyId familyId = 1;
+	int32 candyPerXlCandy = 2;
+	HoloPokemonId megaEvolvablePokemonId = 3;
 }
 
 message PokemonFortProto {
@@ -19357,7 +19357,7 @@ message PokemonSettingsProto {
 	repeated float animationTime = 11;
 	repeated HoloPokemonId evolutionIds = 12;
 	int32 evolutionPips = 13;
-	HoloPokemonClass odgconomgej = 14;
+	HoloPokemonClass pokemonClass = 14;
 	float pokedexHeightM = 15;
 	float pokedexWeightKg = 16;
 	HoloPokemonId parentPokemonId = 17;
