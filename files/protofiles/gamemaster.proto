@@ -7294,9 +7294,9 @@ message ClientGameMasterTemplateProto {
 }
 
 message ClientGenderProto {
-	float lbeomaiffnc = 1;
-	float amaolbmbofm = 2;
-	float ejpfjaimigb = 3;
+	float malePercent = 1;
+	float femalePercent = 2;
+	float genderlessPercent = 3;
 }
 
 message ClientGenderSettingsProto {
@@ -10725,8 +10725,10 @@ message GM11SettingsProto {
 	float obcghljpkce = 5;
 }
 
-message GM14SettingsProto {
-	float jgbnefldeni = 1;
+message PhotoSettingsProto {
+	float screenCaptureSize = 1;
+	bool isIrisEnabled = 2;
+	int32 irisFlags = 5;
 }
 
 message CampfireSettingsProto {
@@ -11110,6 +11112,8 @@ message NeutralAvatarSettingsProto {
 			UNSET = 0;
 			DEFAULT = 1;
 			KITE = 2;
+			LEGACYFEMALE = 7;
+			LEGACYMALE = 8;
 			OPTION_FIVE = 5004;
 		}
 
@@ -11214,6 +11218,10 @@ message BootSettingsProto {
 	bool obBootSettingsBool6 = 8;
 }
 
+message OptimizationsProtoProto {
+	bool optimizationPhysicsToggleEnabled = 1;
+}
+
 message NearbyPokemonSettingsProto {
 	bool obEnabled = 1;
 	bool obNearbyPokemonSettingsBool1 = 2;
@@ -11221,6 +11229,25 @@ message NearbyPokemonSettingsProto {
 
 message ExtendedPrimalSettingsProto {
 	bool extendedPrimalsEnabled = 1;
+}
+
+message PartyDarkLaunchSettingsProto {
+	message CreateOrJoinWaitProbability {
+		int32 weight = 1;
+		int32 waitTimeMs = 2;
+	}
+
+	message LeavePartyProbablity {
+		int32 weight = 1;
+		int32 maxDurationMs = 2;
+	}
+
+	int32 rolloutPlayersPerBillion = 2;
+	repeated CreateOrJoinWaitProbability createOrJoinWaitProbability = 3;
+	int32 probabilityToCreatePercent = 4;
+	repeated LeavePartyProbablity leavePartyProbablity = 6;
+	bool updateLocationEnabled = 7;
+	int32 updateLocationOverridePeriodMs = 8;
 }
 
 message NonCombatMoveSettingsProto {
@@ -11240,14 +11267,21 @@ message NonCombatMoveSettingsProto {
 			double serverAllowableEncounterRangeMeters = 3;
 		}
 
+		message DayNightBonus {
+			Item obItemId = 1;
+		}
+
 		TimeBonus timeBonus = 1;
 		SpaceBonus spaceBonus = 2;
+		DayNightBonus dayNightBonus = 3;
 	}
 
 	enum BonusType {
 		UNSET = 0;
 		TIME_BONUS = 1;
 		SPACE_BONUS = 2;
+		DAY_BONUS = 3;
+		NIGHT_BONUS = 4;
 	}
 
 	HoloPokemonMove uniqueId = 1;
@@ -11267,6 +11301,19 @@ message BulkHealingSettingsProto {
 
 message AndroidBackButtonRefactorSettingsProto {
 	bool enabled = 1;
+}
+
+message ObPhotoSetSettingsProto {
+	message PhotoSetSettingsPokemon {
+		HoloPokemonId pokemonId = 1;
+		PokemonDisplayProto.Form form = 2;
+	}
+
+	string nameKey = 1;
+	string obPhotoSetString2 = 2;
+	int32 obPhotoSetNumber1 = 3;
+	repeated PhotoSetSettingsPokemon pokemon = 4;
+	int32 obPhotoSetNumber2 = 5;
 }
 
 message ObMainMenuCameraButtonSettingsProto {
@@ -11307,6 +11354,31 @@ message MpSettingsProto {
 	int32 mpBaseDailyLimit = 10;
 	float mpClaimParticleSpeedMultiplier = 13;
 	repeated BattleMpCostPerTier battleMpCostPerTier = 14;
+}
+
+enum BoolString {
+	UNSET_BOOL = 0;
+	TRUE = 1;
+	FALSE = 2;
+}
+
+message ObSettingsOverrideRulesProto {
+	enum DeviceProperty {
+		UNSET = 0;
+		ALL = 1;
+		PLATFORM = 6;
+		DEVICE_MODEL_CONTAINS = 17;
+		DEVICE_MODEL = 18;
+	}
+
+	DeviceProperty obDeviceProperty = 1;
+	int32 sortOrder = 2;
+	string obSettingsOverrideRulesString1 = 3;
+	BoolString obSettingsOverrideRulesFlag1 = 4;
+	BoolString obSettingsOverrideRulesFlag2 = 5;
+	BoolString obSettingsOverrideRulesFlag4 = 7;
+	BoolString obSettingsOverrideRulesFlag7 = 15;
+	
 }
 
 message ObIrisSocialUxFunnelSettingsProto {
@@ -11642,7 +11714,7 @@ message GameMasterClientTemplateProto {
 	TappableSettingsProto tappable_settings = 82;
 	RoutePlaySettingsProto route_play_settings = 83;
 	SponsoredGeofenceGiftSettingsProto sponsored_geofence_gift_settings = 84;
-	StickerMetadataProto sticker_metadata = 85;
+	StickerMetadataProto stickerMetadata = 85;
 	CrossGameSocialSettingsProto cross_game_social_settings = 86;
 	MapDisplaySettingsProto map_display_settings = 87;
 	PokemonHomeEnergyCostsProto pokemon_home_energy_costs = 88;
@@ -11704,7 +11776,7 @@ message GameMasterClientTemplateProto {
 	LanguageSelectorSettingsProto languageSelectorSettings = 147;
 	GiftingSettingsProto giftingSettings = 148;
 	CampfireSettingsProto campfireSettings = 149;
-	GM14SettingsProto ob_gm_14_settings = 150;
+	PhotoSettingsProto photoSettings = 150;
 	DailyAdventureIncenseSettingsProto dailyAdventureIncenseSettings = 151;
 	ItemInventoryUpdateSettingsProto itemInventoryUpdateSettings = 152;
 	StickerCategorySettingsProto stickerCategorySettings = 153;
@@ -11723,17 +11795,21 @@ message GameMasterClientTemplateProto {
 	NeutralAvatarSettingsProto neutralAvatarSettings = 180;
 	BuffSettingsProto buffSettings = 183;
 	BootSettingsProto bootSettings = 189;
+	OptimizationsProtoProto optimizationsProto = 190;
 	NearbyPokemonSettingsProto nearbyPokemonSettings = 191;
 	ExtendedPrimalSettingsProto extendedPrimalSettings = 193;
+	PartyDarkLaunchSettingsProto partyDarkLaunchSettings = 200;
 	NonCombatMoveSettingsProto nonCombatMoveSettings = 204;
 	BulkHealingSettingsProto bulkHealingSettings = 212;
 	AndroidBackButtonRefactorSettingsProto obAndroidBackButtonRefactorSettings = 214;
+	ObPhotoSetSettingsProto obPhotoSetSettings = 215;
 	ObMainMenuCameraButtonSettingsProto obMainMenuCameraButtonSettings = 216;
 	ObIrisSocialSettingsProto obIrisSocialSettings = 218;
 	AdditiveSceneSettingsProto obAdditiveSceneSettings = 219;
 	MpSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto obBreadFeatureFlags = 222;
 	BreadSettingsProto breadSettings = 223;
+	ObSettingsOverrideRulesProto obSettingsOverrideRules = 224;
 	ObIrisSocialUxFunnelSettingsProto obIrisSocialUxFunnelSettings = 226;
 	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
 	BreadMoveLevelSettingsProto breadMoveLevelSettings = 230;
@@ -17037,9 +17113,9 @@ message OnApplicationQuitDataProto {
 
 message OnboardingSettingsProto {
 	bool ppnpiehjfah = 1;
-	bool apgmgnphhgb = 2;
-	uint32 mkeohcmoiid = 3;
-	int32 jeilonikokp = 4;
+	bool disableInitialArPrompt = 2;
+	uint32 arPromptPlayerLevel = 3;
+	int32 adventureSyncPromptStep = 4;
 	int32 mgbkfmhnoaf = 5;
 }
 
@@ -17053,9 +17129,9 @@ message OnboardingTelemetry {
 
 message OnboardingV2SettingsProto {
 	bool fnicnkeofig = 1;
-	repeated HoloPokemonId hgmpmheafnb = 2;
+	repeated HoloPokemonId pokedexId = 2;
 	HoloPokemonId hgpdkkigcdf = 3;
-	int32 debfejhcbcf = 4;
+	int32 eggKmUntilHatch = 4;
 }
 
 message OpenBuddyGiftOutProto {
@@ -17656,8 +17732,8 @@ message PlannedDowntimeSettingsProto {
 }
 
 message PlatypusRolloutSettingsProto {
-	int32 kpmngpfhcio = 1;
-	int32 aajpjklchhe = 2;
+	int32 buddyV2MinPlayerLevel = 1;
+	int32 buddyMultiplayerMinPlayerLevel = 2;
 	bool nkhmfbjgbma = 3;
 	WallabySettingsProto wallaby_settings = 4;
 }
@@ -18030,8 +18106,8 @@ message PokecoinPurchaseDisplaySettingsProto {
 
 message PokedexCategoriesSettings {
 	message PLMGBNBLIGC {
-		PokedexCategory obemkoeenjl = 1;
-		int32 miklokkgjdo = 2;
+		PokedexCategory pokedexCategory = 1;
+		int32 milestoneGoal = 2;
 		bool cndjnoodpgl = 3;
 	}
 
@@ -20571,9 +20647,9 @@ message ReadPointOfInterestDescriptionTelemetry {
 }
 
 message RecommendedSearchProto {
-	string lchefdhpenp = 1;
+	string searchLabel = 1;
 	string cghopdmkdkf = 2;
-	string jdmeigohlbp = 3;
+	string searchKey = 3;
 	string chabomlkdpm = 4;
 }
 
@@ -21661,8 +21737,8 @@ message SkuStorePrice {
 }
 
 message SmeargleMovesSettingsProto {
-	repeated HoloPokemonMove dhdhmmmkjcd = 1;
-	repeated HoloPokemonMove fclhcmaklie = 2;
+	repeated HoloPokemonMove quickMoves = 1;
+	repeated HoloPokemonMove cinematicMoves = 2;
 }
 
 message SocialClientFeatures {
@@ -21953,10 +22029,13 @@ message StartTutorialOutProto {
 }
 
 message StickerMetadataProto {
-	string klgphmefdhj = 1;
+	string stickerId = 1;
 	string oeckphbaifo = 2;
-	int32 igmpckjefhi = 3;
-	HoloPokemonId ghegmkffbcn = 4;
+	int32 maxCount = 3;
+	HoloPokemonId pokemonId = 4;
+	repeated string category = 5;
+	int32 releaseDate = 6;
+	int32 regionId = 7;
 }
 
 message StickerProto {
