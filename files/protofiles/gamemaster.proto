@@ -3764,6 +3764,7 @@ enum InventoryUpgradeType {
 	UPGRADE_UNSET = 0;
 	INCREASE_ITEM_STORAGE = 1;
 	INCREASE_POKEMON_STORAGE = 2;
+	INCREASE_POSTCARD_STORAGE = 3;
 }
 
 enum InvitationType {
@@ -10795,8 +10796,8 @@ message GM7SettingsProto {
 	bool ccalpbnnngp = 5;
 }
 
-message GM8SettingsProto {
-	bool dnpoeibbehk = 1;
+message LanguageSelectorSettingsProto {
+	bool languageSelectorEnabled = 1;
 }
 
 message GM9SettingsProto {
@@ -10940,6 +10941,54 @@ message IncubatorFlowSettingsProto {
 	bool pokemonPageIconEnabled = 2;
 }
 
+message LocationCardFeatureSettingsProto {
+	bool enabled = 1;
+}
+
+message LocationCardSettingsProto {
+	enum LocationCard {
+		LC_UNSET = 0;
+		LC_2023_BARCELONA_CITYSAFARI_001 = 7;
+		LC_2023_JEJU_AIRADVENTURES_001 = 2;
+		LC_2023_LASVEGAS_GOTOUR_001 = 1;
+		LC_2023_LONDON_GOFEST_001 = 4;
+		LC_2023_MEXICOCITY_CITYSAFARI_001 = 8;
+		LC_2023_NYC_GOFEST_001 = 3;
+		LC_2023_OSAKA_GOFEST_001 = 5;
+		LC_2023_SEOUL_CITYSAFARI_001 = 6;
+		LC_2024_BALI_AIRADVENTURES_001 = 10;
+		LC_2024_HONOLULU_WORLD_CHAMPIONSHIPS_001 = 28;
+		LC_2024_LOSANGELES_GOTOUR_001 = 9;
+		LC_2024_MADRID_GOFEST_001 = 13;
+		LC_2024_MLB_001 = 29;
+		LC_2024_MLB_002 = 30;
+		LC_2024_NYC_GOFEST_001 = 14;
+		LC_2024_SENDAI_GOFEST_001 = 12;
+		LC_2024_SURABAYA_AIRADVENTURES_001 = 21;
+		LC_2024_TAINAN_CITYSAFARI_001 = 11;
+		LC_2024_YOGYAKARTA_AIRADVENTURES_001 = 22;
+		LC_SPECIALBACKGROUND_2024_GLOBAL_GOFEST_RADIANCE_001 = 15;
+		LC_SPECIALBACKGROUND_2024_GLOBAL_GOFEST_UMBRA_001 = 16;
+		LC_SPECIALBACKGROUND_TEAM_BLUE = 18;
+		LC_SPECIALBACKGROUND_TEAM_RED = 19;
+		LC_SPECIALBACKGROUND_TEAM_YELLOW = 20;
+		LC_SPECIAL_BACKGROUND_2024_GLOBAL_GOFEST_MOON_ULTRA_WORMHOLE_001 = 26;
+		LC_SPECIAL_BACKGROUND_2024_GLOBAL_GOFEST_SUN_ULTRA_WORMHOLE_001 = 25;
+		LC_SPECIAL_BACKGROUND_2024_GLOBAL_GOFEST_ULTRA_WORMHOLE_001 = 24;
+	}
+
+	enum CardType {
+		CARD_TYPE_UNSET = 0;
+		LOCATION_CARD = 1;
+		SPECIAL_BACKGROUND = 2;
+	}
+
+	LocationCard locationCard = 1;
+	string imageUrl = 2;
+	CardType obCardType = 3;
+	string obLocationCardString1 = 4;
+}
+
 message ConversationSettingsProto {
 }
 
@@ -11047,6 +11096,10 @@ message BulkHealingSettingsProto {
 }
 
 message AndroidBackButtonRefactorSettingsProto {
+	bool enabled = 1;
+}
+
+message ObMainMenuCameraButtonSettingsProto {
 	bool enabled = 1;
 }
 
@@ -11384,7 +11437,7 @@ message GameMasterClientTemplateProto {
 	SmeargleMovesSettingsProto smeargle_moves_settings = 44;
 	PokecoinPurchaseDisplayGmtProto pokecoin_purchase_display_gmt = 45;
 	AdventureSyncV2GmtProto adventure_sync_v2_gmt = 46;
-	LoadingScreenProto loading_screen_settings = 47;
+	LoadingScreenProto loadingScreenSettings = 47;
 	InvasionNpcDisplaySettingsProto invasion_npc_display_settings = 48;
 	CombatCompetitiveSeasonSettingsProto combat_competitive_season_settings = 49;
 	CombatRankingSettingsProto combat_ranking_proto_settings = 50;
@@ -11469,7 +11522,7 @@ message GameMasterClientTemplateProto {
 	PostcardCollectionSettings postcard_collection_settings = 134;
 	GM6SettingsProto ob_gm_6_settings = 135;
 	VerboseLogCombatSettingsProto verbose_log_combat_settings = 136;
-	MegaLevelSettingsProto mega_level_settings = 137;
+	MegaEvoLevelSettingsProto megaEvoLevelSettings = 137;
 	AdvancedSettingsProto advancedSettings = 138;
 	GM9SettingsProto ob_gm_9_settings = 139;
 	ImpressionTrackingSettingsProto impression_tracking_setting = 140;
@@ -11478,7 +11531,7 @@ message GameMasterClientTemplateProto {
 	GM7SettingsProto ob_gm_7_settings = 143;
 	PopupControlSettingsProto popup_control_settings = 145;
 	TicketGiftingSettingsProto ticket_gifting_settings = 146;
-	GM8SettingsProto ob_gm_8_settings = 147;
+	LanguageSelectorSettingsProto languageSelectorSettings = 147;
 	GiftingSettingsProto giftingSettings = 148;
 	CampfireSettingsProto campfireSettings = 149;
 	GM14SettingsProto ob_gm_14_settings = 150;
@@ -11491,6 +11544,8 @@ message GameMasterClientTemplateProto {
 	LanguageSettingsProto languageSettings = 161;
 	PokemonExtendedSettingsProto pokemonExtendedSettings = 162;
 	IncubatorFlowSettingsProto incubatorFlowSettings = 164;
+	LocationCardFeatureSettingsProto locationCardFeatureSettings = 169;
+	LocationCardSettingsProto locationCardSettings = 170;
 	ConversationSettingsProto conversationSettings = 171;
 	CatchRadiusMultiplierSettingsProto catchRadiusMultiplierSettings = 173;
 	HapticsSettingsProto hapticsSettings = 174;
@@ -11500,6 +11555,7 @@ message GameMasterClientTemplateProto {
 	ExtendedPrimalSettingsProto extendedPrimalSettings = 193;
 	BulkHealingSettingsProto bulkHealingSettings = 212;
 	AndroidBackButtonRefactorSettingsProto obAndroidBackButtonRefactorSettings = 214;
+	ObMainMenuCameraButtonSettingsProto obMainMenuCameraButtonSettings = 216;
 	ObIrisSocialSettingsProto obIrisSocialSettings = 218;
 	AdditiveSceneSettingsProto obAdditiveSceneSettings = 219;
 	MpSettingsProto mpSettings = 221;
@@ -14266,6 +14322,10 @@ message ItemRewardProto {
 }
 
 message ItemSettingsProto {
+	message ObItemSettingsMessage {
+		int32 obItemSettingsMessageNumber1 = 1;
+	}
+
 	Item itemId = 1;
 	HoloItemType itemType = 2;
 	HoloItemCategory category = 3;
@@ -14287,6 +14347,7 @@ message ItemSettingsProto {
 	bool ignoreInventorySpace = 19;
 	int32 itemCap = 22;
 	string descriptionOverride = 26;
+	ObItemSettingsMessage obItemSettingsMessage = 29;
 }
 
 message ItemTelemetry {
@@ -15168,11 +15229,11 @@ message LimitedPurchaseSkuRecordProto {
 }
 
 message LimitedPurchaseSkuSettingsProto {
-	int32 ajonfpfkiea = 1;
-	int32 fdhbdainccg = 2;
+	int32 purchaseLimit = 1;
+	int32 version = 2;
 	LimitedPurchaseSkuRecordProto.ChronoUnit chrono_unit = 3;
-	string khmlgddhppc = 4;
-	int32 jpggdklifjp = 20;
+	string lootTableId = 4;
+	int32 resetInterval = 20;
 }
 
 message LinkLoginTelemetry {
@@ -15289,9 +15350,9 @@ message ListLoginActionOutProto {
 }
 
 message LoadingScreenProto {
-	string odibjnpkgnh = 1;
-	int64 ohpcjegdcfh = 2;
-	map<string, string> fbffkgldlid = 3;
+	string url = 1;
+	int64 displayAfterTimestampMs = 2;
+	map<string, string> colorSettings = 3;
 }
 
 message LobbyClientSettingsProto {
@@ -15391,7 +15452,7 @@ message LootProto {
 }
 
 message LuckyPokemonSettingsProto {
-	float hdcfcilmcmh = 1;
+	float powerUpStardustDiscountPercent = 1;
 }
 
 message MAONNJGAAGD {
@@ -15628,7 +15689,7 @@ message MapDisplaySettingsProto {
 	MapEffect map_effect = 1;
 	string mbmchdofgdg = 2;
 	MusicType bgm = 3;
-	bool nfcohelmamj = 4;
+	bool showEnhancedSky = 4;
 	string phbneljaohk = 5;
 	string ldpknncjnlg = 6;
 	string ioighhgbhbc = 7;
@@ -15644,9 +15705,10 @@ message MapEventsTelemetry {
 }
 
 message MapObjectsInteractionRangeSettings {
-	double ljalnhomaih = 1;
-	double fppnebefphb = 2;
-	double bdbgjpacnlf = 3;
+	double interactionRangeMeters = 1;
+	double farInteractionRangeMeters = 2;
+	double remoteInteractionRangeMeters = 3;
+	double whitePulseRadiusMeters = 4;
 }
 
 message MapPokemonProto {
@@ -15813,32 +15875,32 @@ message MegaEvolvePokemonSpeciesProto {
 }
 
 message MegaLevelCooldownSettingsProto {
-	int64 jncpmilfkbb = 1;
-	int32 joehkiedcjf = 2;
+	int64 durationMs = 1;
+	int32 bypassCostInitial = 2;
 	int32 mhcfeepjcmd = 3;
-	int32 ddchbenkcmh = 4;
+	int32 bypassCostRoundingValue = 4;
 }
 
 message MegaLevelPerksProto {
-	float nilnkdekcmi = 1;
-	float pblfcgdpicc = 2;
-	int32 mbimgebmhjm = 3;
-	int32 pmnclcfcfpp = 4;
-	float dfbcggbdaeg = 5;
+	float differentTypeAttackBoost = 1;
+	float sameTypeAttackBoost = 2;
+	int32 sameTypeExtraCatchCandy = 3;
+	int32 sameTypeExtraCatchXp = 4;
+	float sameTypeExtraCatchCandyXlChance = 5;
 }
 
-message MegaLevelSettingsProto {
-	int32 hcnnhpdajbh = 1;
-	HoloPokemonId ghegmkffbcn = 2;
-	MegaLevelUnlockSettingsProto mega_level_unlock_settings = 3;
-	MegaLevelCooldownSettingsProto mega_level_cooldown_settings = 4;
-	MegaLevelPerksProto mega_level_perks = 5;
+message MegaEvoLevelSettingsProto {
+	int32 level = 1;
+	HoloPokemonId pokemonId = 2;
+	MegaLevelUnlockSettingsProto progression = 3;
+	MegaLevelCooldownSettingsProto cooldown = 4;
+	MegaLevelPerksProto effects = 5;
 }
 
 message MegaLevelUnlockSettingsProto {
-	int32 nipfonakffm = 1;
-	int32 ckbapmbffnk = 2;
-	int32 hekajlkkacb = 3;
+	int32 pointsRequired = 1;
+	int32 pointsLimitPerPeriod = 2;
+	int32 pointsPerMegaEvoAction = 3;
 }
 
 message MetricData {
@@ -21654,8 +21716,8 @@ message SponsoredPoiFeedbackSettingsProto {
 }
 
 message StardustBoostAttributesProto {
-	float cnelainmgje = 1;
-	int32 apenddaekba = 2;
+	float stardustMultiplier = 1;
+	int32 boostDurationMs = 2;
 }
 
 message StartIncidentOutProto {

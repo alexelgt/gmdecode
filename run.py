@@ -160,6 +160,18 @@ def main():
                 # except:
                 #     pass
 
+                # # LOCATION_CARD
+                # try:
+                #     for element in gamemaster_template_json:
+                #         try:
+                #             if "LC_" in element["templateId"] and isinstance(element["data"]["locationCardSettings"]["locationCard"], int):
+                #                 print(
+                #                     f'{element["templateId"].replace("ITEM_", "ITEM_CATEGORY_")} = {element["data"]["locationCardSettings"]["locationCard"]};')
+                #         except:
+                #             pass
+                # except:
+                #     pass
+
                 with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
                     json.dump(gamemaster_template_json, f, indent=4)
             except:
