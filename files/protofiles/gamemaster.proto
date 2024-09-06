@@ -10946,6 +10946,7 @@ message LocationCardFeatureSettingsProto {
 }
 
 message LocationCardSettingsProto {
+	// LOCATION_CARD
 	enum LocationCard {
 		LC_UNSET = 0;
 		LC_2023_BARCELONA_CITYSAFARI_001 = 7;
@@ -11073,6 +11074,133 @@ message ContestSettingsProto {
 	bool isPokemonScalarEnabled = 22;
 }
 
+message NeutralAvatarSettingsProto {
+	message NeutralAvatar {
+		message Articles {
+			message ArticleInfo {
+				string articleId = 1;
+			}
+
+			ArticleInfo hair = 1;
+			ArticleInfo shirt = 2;
+			ArticleInfo pants = 3;
+			ArticleInfo hat = 4;
+			ArticleInfo shoes = 5;
+			ArticleInfo backpack = 7;
+			ArticleInfo gloves = 8;
+			ArticleInfo socks = 9;
+			ArticleInfo belt = 10;
+			ArticleInfo necklace = 12;
+			ArticleInfo pose = 14;
+			ArticleInfo eyebrow = 20;
+			ArticleInfo eyelash = 21;
+			ArticleInfo facePreset = 22;
+			ArticleInfo bodyPreset = 23;
+		}
+
+		message BodyBlend {
+			float size = 1;
+			float musculature = 2;
+			float bust = 3;
+			float hips = 4;
+			float shoulders = 5;
+		}
+
+		enum Selection {
+			UNSET = 0;
+			DEFAULT = 1;
+			KITE = 2;
+			OPTION_FIVE = 5004;
+		}
+
+		message HeadSelection {
+			Selection selection = 1;
+		}
+
+		message NoseSelection {
+			Selection selection = 1;
+		}
+
+		message EarSelection {
+			Selection selection = 1;
+		}
+
+		message MouthSelection {
+			Selection selection = 1;
+		}
+
+		message EyeSelection {
+			Selection selection = 1;
+		}
+
+		message ColorKeys {
+			float keyPosition = 1;
+			float red = 2;
+			float green = 3;
+			float blue = 4;
+		}
+
+		message SkinGradient {
+			repeated ColorKeys colorKeys = 1;
+		}
+
+		message HairGradient {
+			repeated ColorKeys colorKeys = 1;
+		}
+
+		message FacePositions {
+			float browDepth = 1;
+			float browHorizontal = 2;
+			float browVertical = 3;
+			float eyeDepth = 4;
+			float eyeHorizontal = 5;
+			float eyeVertical = 6;
+			float mouthDepth = 7;
+			float mouthHorizontal = 8;
+			float mouthVertical = 9;
+			float noseDepth = 10;
+			float noseVertical = 11;
+		}
+
+		message EyeGradient {
+			repeated ColorKeys colorKeys = 1;
+		}
+
+		Articles articles = 1;
+		BodyBlend bodyBlend = 3;
+		HeadSelection headSelection = 4;
+		SkinGradient skinGradient = 5;
+		HairGradient hairGradient = 6;
+		NoseSelection noseSelection = 7;
+		EarSelection earSelection = 8;
+		MouthSelection mouthSelection = 9;
+		FacePositions facePositions = 11;
+		EyeGradient eyeGradient = 12;
+		EyeSelection eyeSelection = 13;
+	}
+
+	message ObMessageMessageSetting {
+		float obMessageSettingNumber1 = 1;
+		float obMessageSettingNumber2 = 2;
+	}
+
+	message ObNeutralAvatarMessage1 {
+		ObMessageMessageSetting obMessageMessageSetting1 = 1;
+		ObMessageMessageSetting obMessageMessageSetting2 = 2;
+		ObMessageMessageSetting obMessageMessageSetting3 = 3;
+		ObMessageMessageSetting obMessageMessageSetting4 = 4;
+		ObMessageMessageSetting obMessageMessageSetting5 = 5;
+	}
+
+	bool neutralAvatarSettingsEnabled = 1;
+	int32 neutralAvatarSettingsSentinelValue = 2;
+	NeutralAvatar defaultNeutralAvatar = 10;
+	NeutralAvatar femaleNeutralAvatar = 11;
+	NeutralAvatar maleNeutralAvatar = 12;
+	ObNeutralAvatarMessage1 obNeutralAvatarMessage1 = 20;
+	int32 neutralAvatarLegacyMappingVersion = 100;
+}
+
 message BuffSettingsProto {
 	int32 countdownReminderS = 1;
 	bool clickExtensionEnabled = 2;
@@ -11086,8 +11214,50 @@ message BootSettingsProto {
 	bool obBootSettingsBool6 = 8;
 }
 
+message NearbyPokemonSettingsProto {
+	bool obEnabled = 1;
+	bool obNearbyPokemonSettingsBool1 = 2;
+}
+
 message ExtendedPrimalSettingsProto {
 	bool extendedPrimalsEnabled = 1;
+}
+
+message NonCombatMoveSettingsProto {
+	message Cost {
+		int32 candyCost = 1;
+		int32 stardustCost = 2;
+	}
+
+	message BonusEffect {
+		message TimeBonus {
+			repeated Item affectedItems = 1;
+		}
+
+		message SpaceBonus {
+			double pokemonVisibleRangeMeters = 1;
+			double encounterRangeMeters = 2;
+			double serverAllowableEncounterRangeMeters = 3;
+		}
+
+		TimeBonus timeBonus = 1;
+		SpaceBonus spaceBonus = 2;
+	}
+
+	enum BonusType {
+		UNSET = 0;
+		TIME_BONUS = 1;
+		SPACE_BONUS = 2;
+	}
+
+	HoloPokemonMove uniqueId = 1;
+	Cost cost = 2;
+	BonusEffect bonusEffect = 3;
+	int64 durationMs = 4;
+	BonusType bonusType = 5;
+	bool enableMultiUse = 6;
+	int64 extraDurationMs = 7;
+	bool obNonCombatMoveSettingsBool1 = 8;
 }
 
 message BulkHealingSettingsProto {
@@ -11550,9 +11720,12 @@ message GameMasterClientTemplateProto {
 	CatchRadiusMultiplierSettingsProto catchRadiusMultiplierSettings = 173;
 	HapticsSettingsProto hapticsSettings = 174;
 	ContestSettingsProto contestSettings = 178;
+	NeutralAvatarSettingsProto neutralAvatarSettings = 180;
 	BuffSettingsProto buffSettings = 183;
 	BootSettingsProto bootSettings = 189;
+	NearbyPokemonSettingsProto nearbyPokemonSettings = 191;
 	ExtendedPrimalSettingsProto extendedPrimalSettings = 193;
+	NonCombatMoveSettingsProto nonCombatMoveSettings = 204;
 	BulkHealingSettingsProto bulkHealingSettings = 212;
 	AndroidBackButtonRefactorSettingsProto obAndroidBackButtonRefactorSettings = 214;
 	ObMainMenuCameraButtonSettingsProto obMainMenuCameraButtonSettings = 216;
@@ -15844,11 +16017,11 @@ message MegaEvoSettingsProto {
 	int32 maxCandyHoardSize = 4;
 	bool enableBuddyWalkingMegaEnergyAward = 5;
 	int32 activeMegaBonusCatchCandy = 6;
-	bool obMegaLevelSettingsSharedBool1 = 7;
-	bool obMegaLevelSettingsSharedBool2 = 8;
-	int32 obMaxMegaLevels = 9;
-	int32 obSharedMegaEvoNumber1 = 10;
-	bool obMegaLevelEnabled = 11;
+	bool enableMegaLevel = 7;
+	bool enableMegaEvolveInLobby = 8;
+	int32 numMegaLevels = 9;
+	int32 clientMegaCooldownBufferMs = 10;
+	bool enableMegaLevelLegacyAward = 11;
 }
 
 message MegaEvolvePokemonOutProto {
@@ -15963,12 +16136,12 @@ message MonodepthDownloadTelemetry {
 }
 
 message MonodepthSettingsProto {
-	bool fhmihdfkgmp = 1;
+	bool enableOcclusions = 1;
 	bool injldcnppmc = 2;
-	bool pdndpfhkbbn = 3;
-	bool ckllllimflp = 4;
-	float dgeglmlofkh = 5;
-	uint32 nilnagdaefo = 6;
+	bool occlusionsToggleVisible = 3;
+	bool enableGroundSuppression = 4;
+	float minGroundSuppressionThresh = 5;
+	uint32 suppressionChannelId = 6;
 	string nnniiihgcaj = 7;
 }
 
@@ -16213,8 +16386,8 @@ message NewsArticleProto {
 }
 
 message NewsFeedClientSettings {
-	bool ccfgkcodail = 1;
-	int32 cedmbkbjfag = 2;
+	bool newsFeedPollingEnabled = 1;
+	int32 newsFeedPollingRateMinutes = 2;
 }
 
 message NewsGlobalSettingsProto {
