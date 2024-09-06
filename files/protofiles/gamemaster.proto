@@ -9870,7 +9870,7 @@ message EvolutionBranchProto {
 	int32 temporaryEvolutionEnergyCostSubsequent = 16;
 	repeated EvolutionQuestInfoProto questDisplay = 17;
 	bool onlyUpsideDown = 18;
-	int32 obPurificationEvolutionCandyCost = 19;
+	int32 candyCostPurified = 19;
 }
 
 message EvolutionChainDataProto {
@@ -19377,7 +19377,7 @@ message PokemonSettingsProto {
 	repeated float buddyOffsetMale = 31;
 	repeated float buddyOffsetFemale = 32;
 	float buddyScale = 33;
-	repeated float fmhoomdchfg = 34;
+	repeated float buddyPortraitOffset = 34;
 	PokemonDisplayProto.Form glofkallhib = 35;
 	PokemonThirdMoveAttributesProto third_move = 36;
 	bool isTransferable = 37;
@@ -19402,7 +19402,13 @@ message PokemonSettingsProto {
 	repeated float fcnpgmocmjk = 64;
 	repeated float bbllaaeajpk = 65;
 	SizeSettingsProto sizeSettings = 66;
-	repeated PokemonDisplayProto.Costume fnkkbonlpem = 67;
+	repeated PokemonDisplayProto.Costume allowNoevolveEvolution = 67;
+	// repeated int32 obPokemonSettingsNumber76 = 76;
+	// int32 obPokemonSettingsNumber83 = 83;
+	// string obPokemonSettingsString84 = 84;
+	// float obPokemonSettingsNumber86 = 86;
+	// repeated string obPokemonSettingsString87 = 87;
+	// int32 obPokemonSettingsNumber88 = 88;
 }
 
 message PokemonStaminaUpdateProto {
@@ -22310,13 +22316,14 @@ message TempEvoOverrideProto {
 	float cfafihakkck = 7;
 	PokemonCameraAttributesProto camera = 8;
 	PokemonEncounterAttributesProto encounter = 9;
-	float bhfnhmhoach = 10;
-	float elfhmnejmod = 11;
+	float modelScaleV2 = 10;
+	float modelHeight = 11;
 	repeated float buddyOffsetMale = 12;
 	repeated float buddyOffsetFemale = 13;
-	repeated float fmhoomdchfg = 14;
+	repeated float buddyPortraitOffset = 14;
 	float raidBossDistanceOffset = 15;
 	SizeSettingsProto sizeSettings = 16;
+	repeated float buddyPortraitRotation = 17;
 }
 
 message TemplateVariable {
