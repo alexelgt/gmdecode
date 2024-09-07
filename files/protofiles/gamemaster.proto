@@ -131,7 +131,7 @@ enum BattlePartyTelemetryIds {
 	BATTLE_PARTY_TELEMETRY_IDS_BATTLE_POKEMON_CHANGED = 5;
 }
 
-// BUDDY_ACTIVITY
+// BUDDY_ACTIVITY_BLOCK
 enum BuddyActivity {
 	BUDDY_ACTIVITY_UNSET = 0;
 	BUDDY_ACTIVITY_FEED = 1;
@@ -154,7 +154,7 @@ enum BuddyActivity {
 	BUDDY_ACTIVITY_ROUTE = 18;
 }
 
-// BUDDY_CATEGORY_ROUTE
+// BUDDY_CATEGORY_BLOCK
 enum BuddyActivityCategory {
 	BUDDY_CATEGORY_UNSET = 0;
 	BUDDY_CATEGORY_FEED = 1;
@@ -579,7 +579,7 @@ enum HoloActivityType {
 	ACTIVITY_EARN_BUDDY_WALKED_CANDY = 56;
 }
 
-// BADGE_TYPE
+// BADGE_TYPE_BLOCK
 enum HoloBadgeType {
 	BADGE_UNSET = 0;
 	BADGE_TRAVEL_KM = 1;
@@ -1216,7 +1216,7 @@ enum HoloIapItemCategory {
 	IAP_CATEGORY_FLAIR_BUNDLE = 17;
 }
 
-// ITEM_CATEGORY
+// ITEM_CATEGORY_BLOCK
 enum HoloItemCategory {
 	ITEM_CATEGORY_NONE = 0;
 	ITEM_CATEGORY_POKEBALL = 1;
@@ -1269,7 +1269,7 @@ enum HoloItemEffect {
 	ITEM_EFFECT_FULL_MOTIVATION = 1016;
 }
 
-// ITEM_TYPE
+// ITEM_TYPE_BLOCK
 enum HoloItemType {
 	ITEM_TYPE_NONE = 0;
 	ITEM_TYPE_POKEBALL = 1;
@@ -1996,6 +1996,7 @@ enum HoloPokemonFamilyId {
 	FAMILY_FURFROU = 676;
 	FAMILY_ESPURR = 677;
 	FAMILY_MEOWSTIC = 678;
+	FAMILY_HONEDGE = 679;
 	FAMILY_SPRITZEE = 682;
 	FAMILY_AROMATISSE = 683;
 	FAMILY_SWIRLIX = 684;
@@ -3780,7 +3781,7 @@ enum InvitationType {
 	INVITATION_TYPE_INVITATION_TYPE_ADDRESS_BOOK_IMPORT = 5;
 }
 
-// ITEM_ID
+// ITEM_ID_BLOCK
 enum Item {
 	ITEM_UNKNOWN = 0;
 	ITEM_POKE_BALL = 1;
@@ -4483,7 +4484,7 @@ enum PushNotificationTelemetryIds {
 	PUSH_NOTIFICATION_TELEMETRY_IDS_OPEN_APP = 1;
 }
 
-// QUEST_TYPE
+// QUEST_TYPE_BLOCK
 enum QuestType {
 	QUEST_UNSET = 0;
 	QUEST_FIRST_CATCH_OF_THE_DAY = 1;
@@ -9883,6 +9884,7 @@ message EvolutionBranchProto {
 	repeated EvolutionQuestInfoProto questDisplay = 17;
 	bool onlyUpsideDown = 18;
 	int32 candyCostPurified = 19;
+	bool onlyDuskPeriod = 20;
 	bool onlyFullMoon = 21;
 	int32 evolutionItemRequirementCost = 22;
 	HoloPokemonMove evolutionMoveRequirement = 23;
@@ -10314,11 +10316,32 @@ message FoodValue {
 }
 
 message FormChangeProto {
+	message ComponentPokemonSettings {
+		enum FormChangeType {
+			UNSET = 0;
+			FUSE = 1;
+			UNFUSE = 2;
+		}
+
+		message FormChangeLocationCardSettings {
+			LocationCardSettingsProto.LocationCard basePokemonLocationCard = 1;
+			LocationCardSettingsProto.LocationCard componentPokemonLocationCard = 2;
+			LocationCardSettingsProto.LocationCard fusionPokemonLocationCard = 3;
+		}
+
+		HoloPokemonId pokedexId = 1;
+		int32 componentCandyCost = 3;
+		FormChangeType formChangeType = 4;
+		repeated FormChangeLocationCardSettings locationCardSettings = 7;
+	}
+
 	repeated PokemonDisplayProto.Form availableForm = 1;
 	int32 candyCost = 2;
 	int32 stardustCost = 3;
-	Item genefgijhem = 4;
+	Item item = 4;
 	repeated EvolutionQuestInfoProto icfedihocdc = 5;
+	int32 itemCostCount = 6;
+	ComponentPokemonSettings componentPokemonSettings = 7;
 }
 
 message FormChangeSettingsProto {
@@ -10992,7 +11015,7 @@ message LocationCardFeatureSettingsProto {
 }
 
 message LocationCardSettingsProto {
-	// LOCATION_CARD
+	// LOCATION_CARD_BLOCK
 	enum LocationCard {
 		LC_UNSET = 0;
 		LC_2023_BARCELONA_CITYSAFARI_001 = 7;
@@ -11887,7 +11910,7 @@ message GameMasterClientTemplateProto {
 	MegaEvoSettingsProto mega_evo_settings = 74;
 	TemporaryEvolutionSettingsProto temporaryEvolutionSettings = 75;
 	AvatarGroupOrderSettingsProto avatar_group_order_settings = 76;
-	PokemonFamilySettingsProto pokemon_family = 77;
+	PokemonFamilySettingsProto pokemonFamily = 77;
 	MonodepthSettingsProto monodepth_settings = 78;
 	LevelUpRewardsSettingsProto level_up_reward_settings = 79;
 	RaidClientSettingsProto raid_settings = 81;
@@ -19607,7 +19630,7 @@ message PokemonSettingsProto {
 	int32 buddyWalkedMegaEnergyAward = 52;
 	bool disableTransferToPokemonHome = 61;
 	float raidBossDistanceOffset = 62;
-	repeated FormChangeProto form_change = 63;
+	repeated FormChangeProto formChange = 63;
 	repeated float fcnpgmocmjk = 64;
 	repeated float bbllaaeajpk = 65;
 	SizeSettingsProto sizeSettings = 66;
@@ -23590,8 +23613,8 @@ message VsSeekerPokemonRewardsProto {
 		KEPJHPMGAIC staminaIvOverride = 8;
 	}
 
-	repeated PGMFGBAPCKI available_pokemon = 1;
-	VsSeekerRewardTrack fbejflngkfn = 2;
+	repeated PGMFGBAPCKI availablePokemon = 1;
+	VsSeekerRewardTrack rewardTrack = 2;
 }
 
 message VsSeekerRewardEncounterOutProto {

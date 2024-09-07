@@ -6,7 +6,7 @@ from subprocess import call
 from google.protobuf import text_format
 from google.protobuf import json_format
 
-from sharedmodules.pokemon.regex import MOVE_GYMS_REGEX
+from sharedmodules.pokemon.regex import MOVE_GYMS_REGEX, FAMILY_REGEX, EXTENDED_POKEMON_REGEX
 
 parser = argparse.ArgumentParser()
 
@@ -30,6 +30,141 @@ pythonfiles_folder = f"{RUN_FOLDER}pyproto"
 
 pogo_gm_protos_target = "POGOProtos.Rpc.DownloadGmTemplatesResponseProto"
 pogo_ga_protos_target = "POGOProtos.Rpc.AssetDigestOutProto"
+
+blocks_meta_info = [
+    {
+        "block_name": "BADGE_TYPE_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "BADGE_",
+        "element_first_level": "badgeSettings",
+        "element_second_level": "badgeType",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "BUDDY_ACTIVITY_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "BUDDY_ACTIVITY_",
+        "element_first_level": "buddyActivitySettings",
+        "element_second_level": "activity",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "BUDDY_CATEGORY_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "BUDDY_CATEGORY_",
+        "element_first_level": "buddyActivityCategorySettings",
+        "element_second_level": "activityCategory",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "QUEST_TYPE_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "_EVOLUTION_QUEST",
+        "element_first_level": "evolutionQuestTemplate",
+        "element_second_level": "questType",
+        "enum_key_default_value": "???",
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "QUEST_TYPE_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "QUEST_",
+        "element_first_level": "questSettings",
+        "element_second_level": "questType",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "ITEM_ID_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "ITEM_",
+        "element_first_level": "itemSettings",
+        "element_second_level": "itemId",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "ITEM_TYPE_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "ITEM_",
+        "element_first_level": "itemSettings",
+        "element_second_level": "itemType",
+        "enum_key_default_value": "???",
+        "enum_key_prefix": None,
+        "enum_key_replace": ["ITEM_", "ITEM_TYPE_"],
+    },
+    {
+        "block_name": "ITEM_CATEGORY_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "ITEM_",
+        "element_first_level": "itemSettings",
+        "element_second_level": "category",
+        "enum_key_default_value": "???",
+        "enum_key_prefix": None,
+        "enum_key_replace": ["ITEM_", "ITEM_CATEGORY_"],
+    },
+    {
+        "block_name": "LOCATION_CARD_BLOCK",
+        "block_elements": [],
+        "regex_find": None,
+        "string_find": "LC_",
+        "element_first_level": "locationCardSettings",
+        "element_second_level": "locationCard",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "MOVES_BLOCK",
+        "block_elements": [],
+        "regex_find": MOVE_GYMS_REGEX,
+        "string_find": None,
+        "element_first_level": "moveSettings",
+        "element_second_level": "movementId",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "FAMILY_BLOCK",
+        "block_elements": [],
+        "regex_find": FAMILY_REGEX,
+        "string_find": None,
+        "element_first_level": "pokemonFamily",
+        "element_second_level": "familyId",
+        "enum_key_default_value": None,
+        "enum_key_prefix": "FAMILY_",
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "FORM_BLOCK",
+        "block_elements": [],
+        "regex_find": EXTENDED_POKEMON_REGEX,
+        "string_find": None,
+        "element_first_level": "pokemonExtendedSettings",
+        "element_second_level": "form",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+]
 
 
 def read_txt_file(path_to_file):
@@ -78,130 +213,62 @@ def main():
                 gamemaster_template_json = gamemaster_json["template"]
                 gamemaster_template_json.sort(key=lambda x: x["templateId"])
 
-                # # BADGE_TYPE
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "BADGE_" in element["templateId"] and isinstance(element["data"]["badgeSettings"]["badgeType"], int):
-                #                 print(
-                #                     f'{element["templateId"]} = {element["data"]["badgeSettings"]["badgeType"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
+                try:
+                    for element in gamemaster_template_json:
+                        for blocks_meta_element in blocks_meta_info:
+                            try:
+                                if blocks_meta_element["regex_find"] is not None:
+                                    is_template_id = bool(
+                                        blocks_meta_element["regex_find"].search(element["templateId"]))
+                                elif blocks_meta_element["string_find"] is not None:
+                                    is_template_id = blocks_meta_element["string_find"] in element["templateId"]
+                                else:
+                                    is_template_id = False
 
-                # # BUDDY_ACTIVITY
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "BUDDY_ACTIVITY_" in element["templateId"] and isinstance(element["data"]["buddyActivitySettings"]["activity"], int):
-                #                 print(
-                #                     f'{element["templateId"]} = {element["data"]["buddyActivitySettings"]["activity"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
+                                if is_template_id and isinstance(
+                                        element["data"][blocks_meta_element["element_first_level"]][blocks_meta_element["element_second_level"]], int):
+                                    if blocks_meta_element["enum_key_default_value"]:
+                                        enum_key = blocks_meta_element["enum_key_default_value"]
+                                    elif blocks_meta_element["regex_find"] is not None:
+                                        _, enum_key = blocks_meta_element["regex_find"].search(
+                                            element["templateId"]).groups()
+                                    else:
+                                        enum_key = element["templateId"]
 
-                # # BUDDY_CATEGORY_ROUTE
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "BUDDY_CATEGORY_ROUTE" in element["templateId"] and isinstance(element["data"]["buddyActivityCategorySettings"]["activityCategory"], int):
-                #                 print(
-                #                     f'{element["templateId"]} = {element["data"]["buddyActivityCategorySettings"]["activityCategory"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
+                                    if blocks_meta_element["enum_key_prefix"]:
+                                        enum_key = blocks_meta_element["enum_key_prefix"] + enum_key
 
-                # # QUEST_TYPE
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "_EVOLUTION_QUEST" in element["templateId"] and isinstance(element["data"]["evolutionQuestTemplate"]["questType"], int):
-                #                 print(
-                #                     f'??? = {element["data"]["evolutionQuestTemplate"]["questType"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
+                                    if len(blocks_meta_element["enum_key_replace"]) == 2:
+                                        enum_key.replace(
+                                            *blocks_meta_element["enum_key_replace"])
 
-                # # QUEST_TYPE
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "QUEST_" in element["templateId"] and isinstance(element["data"]["questSettings"]["questType"], int):
-                #                 print(
-                #                     f'{element["templateId"]} = {element["data"]["questSettings"]["questType"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
+                                    enum_value = element["data"][blocks_meta_element["element_first_level"]
+                                                                 ][blocks_meta_element["element_second_level"]]
 
-                # # ITEM_ID
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["itemId"], int):
-                #                 print(
-                #                     f'{element["templateId"]} = {element["data"]["itemSettings"]["itemId"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
-
-                # # ITEM_TYPE
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["itemType"], int):
-                #                 print(
-                #                     f'{element["templateId"].replace("ITEM_", "ITEM_TYPE_")} = {element["data"]["itemSettings"]["itemType"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
-
-                # # ITEM_CATEGORY
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "ITEM_" in element["templateId"] and isinstance(element["data"]["itemSettings"]["category"], int):
-                #                 print(
-                #                     f'{element["templateId"].replace("ITEM_", "ITEM_CATEGORY_")} = {element["data"]["itemSettings"]["category"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
-
-                # # LOCATION_CARD
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if "LC_" in element["templateId"] and isinstance(element["data"]["locationCardSettings"]["locationCard"], int):
-                #                 print(
-                #                     f'{element["templateId"].replace("ITEM_", "ITEM_CATEGORY_")} = {element["data"]["locationCardSettings"]["locationCard"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
-
-                # # MOVES_BLOCK
-                # try:
-                #     for element in gamemaster_template_json:
-                #         try:
-                #             if bool(MOVE_GYMS_REGEX.search(element["templateId"])) and isinstance(element["data"]["moveSettings"]["movementId"], int):
-                #                 _, move_gym_name_id = MOVE_GYMS_REGEX.search(
-                #                     element["templateId"]).groups()
-                #                 print(
-                #                     f'{move_gym_name_id} = {element["data"]["moveSettings"]["movementId"]};')
-                #         except:
-                #             pass
-                # except:
-                #     pass
+                                    blocks_meta_element["block_elements"].append({
+                                        enum_key: enum_value
+                                    })
+                            except:
+                                pass
+                except:
+                    pass
 
                 with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
                     json.dump(gamemaster_template_json, f, indent=4)
+
+                blocks_missing_enums_info = [{
+                    "block_name": blocks_meta_element["block_name"],
+                    "block_elements": [dict(t) for t in {tuple(d.items()) for d in blocks_meta_element["block_elements"]}]
+                } for blocks_meta_element in blocks_meta_info if len(blocks_meta_element["block_elements"]) > 0]
+
+                for blocks_missing_enums_element in blocks_missing_enums_info:
+                    print(blocks_missing_enums_element["block_name"])
+
+                    for block_element in blocks_missing_enums_element["block_elements"]:
+                        for enum_key, enum_value in block_element.items():
+                            print(f'{enum_key} = {enum_value};')
+
+                        print("-"*10)
             except:
                 pass
     except:
