@@ -6,6 +6,8 @@ from subprocess import call
 from google.protobuf import text_format
 from google.protobuf import json_format
 
+from sharedmodules.pokemon.regex import MOVE_GYMS_REGEX
+
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-g", "--gamemaster_filename",
@@ -179,6 +181,20 @@ def main():
                 #             if "LC_" in element["templateId"] and isinstance(element["data"]["locationCardSettings"]["locationCard"], int):
                 #                 print(
                 #                     f'{element["templateId"].replace("ITEM_", "ITEM_CATEGORY_")} = {element["data"]["locationCardSettings"]["locationCard"]};')
+                #         except:
+                #             pass
+                # except:
+                #     pass
+
+                # # MOVES_BLOCK
+                # try:
+                #     for element in gamemaster_template_json:
+                #         try:
+                #             if bool(MOVE_GYMS_REGEX.search(element["templateId"])) and isinstance(element["data"]["moveSettings"]["movementId"], int):
+                #                 _, move_gym_name_id = MOVE_GYMS_REGEX.search(
+                #                     element["templateId"]).groups()
+                #                 print(
+                #                     f'{move_gym_name_id} = {element["data"]["moveSettings"]["movementId"]};')
                 #         except:
                 #             pass
                 # except:
