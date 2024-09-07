@@ -33,6 +33,50 @@ pogo_ga_protos_target = "POGOProtos.Rpc.AssetDigestOutProto"
 
 blocks_meta_info = [
     {
+        "block_name": "POKEMON_ID_BLOCK",
+        "block_elements": [],
+        "regex_find": EXTENDED_POKEMON_REGEX,
+        "string_find": None,
+        "element_first_level": "pokemonExtendedSettings",
+        "element_second_level": "uniqueId",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "FORM_BLOCK",
+        "block_elements": [],
+        "regex_find": EXTENDED_POKEMON_REGEX,
+        "string_find": None,
+        "element_first_level": "pokemonExtendedSettings",
+        "element_second_level": "form",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "FAMILY_BLOCK",
+        "block_elements": [],
+        "regex_find": FAMILY_REGEX,
+        "string_find": None,
+        "element_first_level": "pokemonFamily",
+        "element_second_level": "familyId",
+        "enum_key_default_value": None,
+        "enum_key_prefix": "FAMILY_",
+        "enum_key_replace": [],
+    },
+    {
+        "block_name": "MOVES_BLOCK",
+        "block_elements": [],
+        "regex_find": MOVE_GYMS_REGEX,
+        "string_find": None,
+        "element_first_level": "moveSettings",
+        "element_second_level": "movementId",
+        "enum_key_default_value": None,
+        "enum_key_prefix": None,
+        "enum_key_replace": [],
+    },
+    {
         "block_name": "BADGE_TYPE_BLOCK",
         "block_elements": [],
         "regex_find": None,
@@ -131,39 +175,6 @@ blocks_meta_info = [
         "enum_key_prefix": None,
         "enum_key_replace": [],
     },
-    {
-        "block_name": "MOVES_BLOCK",
-        "block_elements": [],
-        "regex_find": MOVE_GYMS_REGEX,
-        "string_find": None,
-        "element_first_level": "moveSettings",
-        "element_second_level": "movementId",
-        "enum_key_default_value": None,
-        "enum_key_prefix": None,
-        "enum_key_replace": [],
-    },
-    {
-        "block_name": "FAMILY_BLOCK",
-        "block_elements": [],
-        "regex_find": FAMILY_REGEX,
-        "string_find": None,
-        "element_first_level": "pokemonFamily",
-        "element_second_level": "familyId",
-        "enum_key_default_value": None,
-        "enum_key_prefix": "FAMILY_",
-        "enum_key_replace": [],
-    },
-    {
-        "block_name": "FORM_BLOCK",
-        "block_elements": [],
-        "regex_find": EXTENDED_POKEMON_REGEX,
-        "string_find": None,
-        "element_first_level": "pokemonExtendedSettings",
-        "element_second_level": "form",
-        "enum_key_default_value": None,
-        "enum_key_prefix": None,
-        "enum_key_replace": [],
-    },
 ]
 
 
@@ -225,6 +236,10 @@ def main():
                                 else:
                                     is_template_id = False
 
+                                if blocks_meta_element["block_name"] == "POKEMON_ID_BLOCK":
+                                    if "form" in element["data"][blocks_meta_element["element_first_level"]]:
+                                        continue
+
                                 if is_template_id and isinstance(
                                         element["data"][blocks_meta_element["element_first_level"]][blocks_meta_element["element_second_level"]], int):
                                     if blocks_meta_element["enum_key_default_value"]:
@@ -268,7 +283,7 @@ def main():
                         for enum_key, enum_value in block_element.items():
                             print(f'{enum_key} = {enum_value};')
 
-                        print("-"*10)
+                    print("-"*10)
             except:
                 pass
     except:

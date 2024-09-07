@@ -2325,6 +2325,7 @@ enum HoloPokemonFamilyId {
 	FAMILY_MIRAIDON = 1008;
 }
 
+// POKEMON_ID_BLOCK
 enum HoloPokemonId {
 	MISSINGNO = 0;
 	BULBASAUR = 1;
