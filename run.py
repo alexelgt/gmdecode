@@ -112,13 +112,25 @@ def main():
                 # except:
                 #     pass
 
-                # # EVOLUTION_QUEST
+                # # QUEST_TYPE
                 # try:
                 #     for element in gamemaster_template_json:
                 #         try:
                 #             if "_EVOLUTION_QUEST" in element["templateId"] and isinstance(element["data"]["evolutionQuestTemplate"]["questType"], int):
                 #                 print(
                 #                     f'??? = {element["data"]["evolutionQuestTemplate"]["questType"]};')
+                #         except:
+                #             pass
+                # except:
+                #     pass
+
+                # # QUEST_TYPE
+                # try:
+                #     for element in gamemaster_template_json:
+                #         try:
+                #             if "QUEST_" in element["templateId"] and isinstance(element["data"]["questSettings"]["questType"], int):
+                #                 print(
+                #                     f'{element["templateId"]} = {element["data"]["questSettings"]["questType"]};')
                 #         except:
                 #             pass
                 # except:
