@@ -4379,17 +4379,17 @@ enum PoiInvalidReason {
 
 enum PokedexCategory {
 	POKEDEX_CATEGORY_UNSET = 0;
-	POKEDEX_CATEGORY_ALL = 1;
-	POKEDEX_CATEGORY_MEGA = 2;
-	POKEDEX_CATEGORY_SHINY = 11;
-	POKEDEX_CATEGORY_LUCKY = 12;
-	POKEDEX_CATEGORY_THREE_STAR = 13;
-	POKEDEX_CATEGORY_FOUR_STAR = 14;
-	POKEDEX_CATEGORY_SHADOW = 15;
-	POKEDEX_CATEGORY_PURIFIED = 16;
-	POKEDEX_CATEGORY_COSTUME = 17;
-	POKEDEX_CATEGORY_SHINY_THREE_STAR = 101;
-	POKEDEX_CATEGORY_SHINY_FOUR_STAR = 102;
+	ALL = 1;
+	MEGA = 2;
+	SHINY = 11;
+	LUCKY = 12;
+	THREE_STAR = 13;
+	FOUR_STAR = 14;
+	SHADOW = 15;
+	PURIFIED = 16;
+	COSTUME = 17;
+	SHINY_THREE_STAR = 101;
+	SHINY_FOUR_STAR = 102;
 }
 
 enum PokemonBadge {
@@ -8783,10 +8783,10 @@ message DailyQuestProto {
 }
 
 message DailyQuestSettings {
-	int32 gnfeepjojpb = 1;
-	int32 iambkkjihap = 2;
-	float glnndmemfff = 3;
-	float emblmeeoimi = 4;
+	int32 bucketsPerDay = 1;
+	int32 streakLength = 2;
+	float bonusMultiplier = 3;
+	float streakBonusMultiplier = 4;
 	bool lopfgceifco = 5;
 }
 
@@ -11405,13 +11405,13 @@ message ObSettingsOverrideRulesProto {
 		DEVICE_MODEL = 18;
 	}
 
-	DeviceProperty obDeviceProperty = 1;
+	DeviceProperty ruleType = 1;
 	int32 sortOrder = 2;
-	string obSettingsOverrideRulesString1 = 3;
-	BoolString obSettingsOverrideRulesFlag1 = 4;
-	BoolString obSettingsOverrideRulesFlag2 = 5;
-	BoolString obSettingsOverrideRulesFlag4 = 7;
-	BoolString obSettingsOverrideRulesFlag7 = 15;
+	string ruleValue = 3;
+	BoolString meshingEnabled = 4;
+	BoolString occlusionEnabled = 5;
+	BoolString semanticsEnabled = 7;
+	BoolString vpsEnabled = 15;
 	
 }
 
@@ -17850,7 +17850,7 @@ message PlayerLevelSettingsProto {
 	int32 agdmjeefmhj = 6;
 	int32 maxQuestEncounterPlayerLevel = 7;
 	int32 dbcflbcpokl = 8;
-	int32 obMaxMegaLevel = 9;
+	int32 extendedPlayerLevelThreshold = 9;
 }
 
 message PlayerPreferencesProto {
@@ -19229,10 +19229,10 @@ message PokemonHomeProto {
 }
 
 message PokemonHomeSettingsProto {
-	int32 npcghjaklid = 1;
-	int32 jokjldjdcml = 2;
-	string jedakfnkgck = 3;
-	int32 nacgfofghig = 4;
+	int32 playerMinLevel = 1;
+	int32 transporterMaxEnergy = 2;
+	string energySkuId = 3;
+	int32 transporterEnergyGainPerHour = 4;
 }
 
 message PokemonHomeTelemetry {
@@ -19346,18 +19346,18 @@ message PokemonProto {
 }
 
 message PokemonScaleSettingProto {
-	enum IEEIJICODPH {
-		natural_scale = 0;
-		gui_scale = 1;
-		battle_pokemon_scale = 2;
-		raid_boss_scale = 3;
-		gym_topper_scale = 4;
-		map_pokemon_scale = 5;
+	enum PokemonScaleMode {
+		NaturalScale = 0;
+		GuiScale = 1;
+		BattlePokemonScale = 2;
+		RaidBossScale = 3;
+		GymTopperScale = 4;
+		MapPokemonScale = 5;
 	}
 
-	IEEIJICODPH bnbolkkbdbd = 1;
-	float ibfliideneg = 2;
-	float aadmpljjpba = 3;
+	PokemonScaleMode pokemonScaleMode = 1;
+	float minHeight = 2;
+	float maxHeight = 3;
 }
 
 message PokemonSearchTelemetry {
@@ -19475,8 +19475,8 @@ message PokemonSurvivalTimeInfo {
 }
 
 message PokemonTagColorBinding {
-	PokemonTagColor clhgfphjfkl = 1;
-	string eokkhejhndi = 2;
+	PokemonTagColor color = 1;
+	string hexCode = 2;
 }
 
 message PokemonTagProto {
@@ -19487,9 +19487,9 @@ message PokemonTagProto {
 }
 
 message PokemonTagSettingsProto {
-	int32 ohpacfhleao = 1;
-	repeated PokemonTagColorBinding color_binding = 2;
-	int32 ohajiccaffe = 3;
+	int32 minPlayerLevelForPokemonTagging = 1;
+	repeated PokemonTagColorBinding colorBinding = 2;
+	int32 maxNumTagsAllowed = 3;
 	int32 apdpngmklfc = 4;
 }
 
@@ -19507,19 +19507,19 @@ message PokemonThirdMoveAttributesProto {
 }
 
 message PokemonUpgradeSettingsProto {
-	int32 dkfpdlmjmeh = 1;
-	int32 nmlhdncclil = 2;
-	repeated int32 iodphcgglhk = 3;
-	repeated int32 ihlecbfdckk = 4;
-	float kgbacgaogbo = 5;
-	float bcdmmjapfkf = 6;
-	float cldnjgaehah = 7;
-	float embmcfokheo = 8;
-	int32 gpmnenokeko = 9;
-	int32 ofbehibbkjl = 10;
-	int32 bddmhenflik = 11;
-	repeated int32 mkiclijhfoe = 12;
-	int32 kooiljgdcjm = 13;
+	int32 upgradesPerLevel = 1;
+	int32 allowedLevelsAbovePlayer = 2;
+	repeated int32 candyCost = 3;
+	repeated int32 stardustCost = 4;
+	float shadowStardustMultiplier = 5;
+	float shadowCandyMultiplier = 6;
+	float purifiedStardustMultiplier = 7;
+	float purifiedCandyMultiplier = 8;
+	int32 maxNormalUpgradeLevel = 9;
+	int32 defaultCpBoostAdditionalLevel = 10;
+	int32 xlCandyMinPlayerLevel = 11;
+	repeated int32 xlCandyCost = 12;
+	int32 xlCandyMinPokemonLevel = 13;
 }
 
 message PokestopIncidentDisplayProto {
@@ -20169,8 +20169,9 @@ message QuestEvolutionGlobalSettingsProto {
 }
 
 message QuestEvolutionSettingsProto {
-	bool hfffeagjchl = 1;
-	bool ppjgpniclni = 2;
+	bool enableQuestEvolutions = 1;
+	bool enableWalkingQuestEvolutions = 2;
+	bool enableEvolveInBuddyPage = 3;
 }
 
 message QuestGlobalSettingsProto {
@@ -20398,7 +20399,7 @@ message QuestRewardProto {
 }
 
 message QuestSettingsProto {
-	QuestType felhpbliafd = 1;
+	QuestType questType = 1;
 	DailyQuestSettings daily_quest = 2;
 }
 
