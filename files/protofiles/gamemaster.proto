@@ -4553,6 +4553,7 @@ enum RaidLevel {
 	RAID_LEVEL_MEGA_5 = 7;
 	RAID_LEVEL_ULTRA_BEAST = 8;
 	RAID_LEVEL_EXTENDED_EGG = 9;
+	RAID_LEVEL_PRIMAL = 10;
 	RAID_LEVEL_1_SHADOW = 11;
 	RAID_LEVEL_3_SHADOW = 13;
 	RAID_LEVEL_5_SHADOW = 15;
@@ -5421,7 +5422,7 @@ message AdventureSyncSettingsProto {
 }
 
 message AdventureSyncV2GmtProto {
-	bool jagllhilmee = 1;
+	bool featureEnabled = 1;
 }
 
 message AndroidDataSource {
@@ -7021,7 +7022,7 @@ message CPPHBAPCCGI {
 }
 
 message CameraSettingsProto {
-	string ikdlnmmcjij = 1;
+	string nextCamera = 1;
 	repeated CameraInterpolation interpolation = 2;
 	repeated CameraTarget targetType = 3;
 	repeated float easeInSpeed = 4;
@@ -7823,13 +7824,13 @@ message CombatMoveSettingsProto {
 }
 
 message CombatNpcPersonalityProto {
-	string fpnehakpfbk = 1;
-	float jibkjmjadbg = 2;
-	float mlipjeplnel = 3;
+	string personalityName = 1;
+	float superEffectiveChance = 2;
+	float specialChance = 3;
 	float ekhmfchghbj = 4;
 	float eidmfjaoioa = 5;
-	float calfnhdfmjj = 6;
-	float cgalnpgdooj = 7;
+	float offensiveMinimumScore = 6;
+	float offensiveMaximumScore = 7;
 }
 
 message CombatNpcTrainerProto {
@@ -9878,6 +9879,7 @@ message EvolutionBranchProto {
 	repeated EvolutionQuestInfoProto questDisplay = 17;
 	bool onlyUpsideDown = 18;
 	int32 candyCostPurified = 19;
+	int32 evolutionItemRequirementCost = 22;
 }
 
 message EvolutionChainDataProto {
@@ -11267,6 +11269,10 @@ message BuffSettingsProto {
 	bool friendshipLuckyEggEnabled = 4;
 }
 
+message TodayViewSettingsProto {
+	bool notificationServerAuthoritative = 8;
+}
+
 message RoutePinSettingsProto {
 	message PinMessage {
 		enum Category {
@@ -11338,6 +11344,14 @@ message NearbyPokemonSettingsProto {
 
 message ExtendedPrimalSettingsProto {
 	bool extendedPrimalsEnabled = 1;
+}
+
+message VistaGeneralSettingsProto {
+	bool isFeatureEnabled = 1;
+	bool isVistaBattleEnabled = 2;
+	bool isVistaEncounterEnabled = 3;
+	bool isVistaMapEnabled = 4;
+	bool isVistaSpawnsEnabled = 5;
 }
 
 message RouteBadgeSettingsProto {
@@ -11785,6 +11799,7 @@ message VsSeekerScheduleSettings {
 		string seasonTitle = 1;
 		string description_key = 2;
 		repeated VsSeekerScheduleWindowDetails vsSeekerSchedules = 3;
+		string blogUrl = 4;
 	}
 
 	bool enableCombatHubMain = 1;
@@ -11807,7 +11822,7 @@ message GameMasterClientTemplateProto {
 	GymLevelSettingsProto gym_level = 13;
 	GymBattleSettingsProto battle_settings = 14;
 	EncounterSettingsProto encounter_settings = 15;
-	IapItemDisplayProto iap_item_display = 16;
+	IapItemDisplayProto iapItemDisplay = 16;
 	IapSettingsProto iap_settings = 17;
 	PokemonUpgradeSettingsProto pokemon_upgrades = 18;
 	EquippedBadgeSettingsProto equipped_badges = 19;
@@ -11903,7 +11918,7 @@ message GameMasterClientTemplateProto {
 	PokedexCategoriesSettings pokedex_categories_settings = 114;
 	BattleVisualSettings battleVisualSettings = 115;
 	AddressablePokemonSettings addressable_pokemon_settings = 116;
-	VerboseLogRaidSettings verbose_log_raid_settings = 117;
+	VerboseLogRaidSettingsProto verboseLogRaidSettings = 117;
 	FormsRefactorSettings forms_refactor_settings = 118;
 	SharedMoveSettings shared_move_settings = 119;
 	AddressBookImportSettingsProto address_book_import_settings = 120;
@@ -11922,11 +11937,11 @@ message GameMasterClientTemplateProto {
 	IncidentVisibilitySettingsProto incident_visibility_settings = 133;
 	PostcardCollectionSettingsProto postcardCollectionSettings = 134;
 	GM6SettingsProto ob_gm_6_settings = 135;
-	VerboseLogCombatSettingsProto verbose_log_combat_settings = 136;
+	VerboseLogCombatSettingsProto verboseLogCombatSettings = 136;
 	MegaEvoLevelSettingsProto megaEvoLevelSettings = 137;
 	AdvancedSettingsProto advancedSettings = 138;
 	GM9SettingsProto ob_gm_9_settings = 139;
-	ImpressionTrackingSettingsProto impression_tracking_setting = 140;
+	ImpressionTrackingSettingsProto impressionTrackingSettings = 140;
 	GM11SettingsProto ob_gm_11_settings = 141;
 	EvolutionChainDisplaySettingsProto evolution_chain_display_settings = 142;
 	RouteStampCategorySettingsProto routeStampCategorySettings = 143;
@@ -11958,6 +11973,7 @@ message GameMasterClientTemplateProto {
 	NeutralAvatarSettingsProto neutralAvatarSettings = 180;
 	SquashSettingsProto squashSettings = 181;
 	BuffSettingsProto buffSettings = 183;
+	TodayViewSettingsProto todayViewSettings = 184;
 	RoutePinSettingsProto routePinSettings = 186;
 	StyleShopSettingsProto styleShopSettings = 187;
 	PartyPlayGeneralSettingsProto partyPlayGeneralSettings = 188;
@@ -11965,6 +11981,7 @@ message GameMasterClientTemplateProto {
 	OptimizationsProtoProto optimizationsProto = 190;
 	NearbyPokemonSettingsProto nearbyPokemonSettings = 191;
 	ExtendedPrimalSettingsProto extendedPrimalSettings = 193;
+	VistaGeneralSettingsProto vistaGeneralSettings = 198;
 	RouteBadgeSettingsProto routeBadgeSettings = 199;
 	PartyDarkLaunchSettingsProto partyDarkLaunchSettings = 200;
 	RoutesPartyPlayInteropSettingsProto routesPartyPlayInteropSettings = 201;
@@ -14290,6 +14307,7 @@ message IapItemDisplayProto {
 	int64 skuDisableTimeUtcMs = 14;
 	repeated string gnblpmajede = 15;
 	string imageUrl = 16;
+	int32 maxLevel = 18;
 	bool showDiscountTag = 19;
 	bool showStrikethroughPrice = 20;
 	int32 totalValue = 21;
@@ -14336,12 +14354,12 @@ message ImageTextCreativeProto {
 }
 
 message ImpressionTrackingSettingsProto {
-	bool mohpkobfofd = 1;
-	bool pbogkkhknap = 2;
+	bool impressionTrackingEnabled = 1;
+	bool fullScreenAdViewTrackingEnabled = 2;
 	bool fcckjpimhfg = 3;
-	bool flfggahpeob = 4;
-	bool illlgdghipl = 5;
-	bool lifchgnpgff = 6;
+	bool pokestopSpinnerInteractionTrackingEnabled = 4;
+	bool approachGymTrackingEnabled = 5;
+	bool approachRaidTrackingEnabled = 6;
 }
 
 message ImpressionTrackingTag {
@@ -19547,7 +19565,7 @@ message PokemonSettingsProto {
 	float kmBuddyDistance = 23;
 	BuddySize buddy_size = 24;
 	float modelHeight = 25;
-	repeated EvolutionBranchProto evolution_branch = 26;
+	repeated EvolutionBranchProto evolutionBranch = 26;
 	float modelScaleV2 = 27;
 	PokemonDisplayProto.Form form = 28;
 	HoloPokemonMove jfclgfiilbi = 29;
@@ -19560,11 +19578,11 @@ message PokemonSettingsProto {
 	PokemonThirdMoveAttributesProto third_move = 36;
 	bool isTransferable = 37;
 	bool isDeployable = 38;
-	repeated float gljkepnbolm = 39;
+	repeated float combatShoulderCameraAngle = 39;
 	bool isTradable = 40;
-	repeated float bkkdipkgoda = 41;
+	repeated float combatDefaultCameraAngle = 41;
 	repeated float oaacmbpknnb = 42;
-	repeated float aenllkhflfe = 43;
+	repeated float combatPlayerFocusCameraAngle = 43;
 	repeated float combatPlayerPokemonPositionOffset = 44;
 	repeated AnimationOverrideProto photobomb_animation_overrides = 45;
 	ShadowAttributesProto shadow = 46;
@@ -19581,7 +19599,7 @@ message PokemonSettingsProto {
 	repeated float bbllaaeajpk = 65;
 	SizeSettingsProto sizeSettings = 66;
 	repeated PokemonDisplayProto.Costume allowNoevolveEvolution = 67;
-	// repeated int32 obPokemonSettingsNumber76 = 76;
+	repeated float buddyPortraitRotation = 76;
 	// int32 obPokemonSettingsNumber83 = 83;
 	// string obPokemonSettingsString84 = 84;
 	// float obPokemonSettingsNumber86 = 86;
@@ -22596,9 +22614,9 @@ message ThirdMoveGlobalSettingsProto {
 }
 
 message TicketGiftingSettingsProto {
-	int32 amghlanpjld = 1;
-	int32 onjlbblhgjp = 2;
-	string janleogngfa = 3;
+	int32 minPlayerLevel = 1;
+	int32 dailyPlayerGiftingLimit = 2;
+	string minRequiredFriendshipLevel = 3;
 }
 
 message TiledBlob {
@@ -23425,36 +23443,36 @@ message UsernameSuggestionTelemetry {
 }
 
 message VerboseLogCombatSettingsProto {
-	bool pjalicafdng = 1;
-	bool nfhenifjldd = 2;
-	bool gfbjljlenld = 3;
-	bool ommbkojomlg = 4;
-	bool bandonbeike = 5;
-	bool kikeofdpgkc = 6;
-	bool bimadmolgii = 7;
-	bool kjcefomoneb = 8;
-	bool nlfofegkhga = 9;
-	int32 nhbonaegbgl = 10;
-	bool llmmdmlaejm = 11;
-	int32 denfpjpmfni = 12;
+	bool enabled = 1;
+	bool enableCoreCombat = 2;
+	bool enableCombatChallengeSetup = 3;
+	bool enableCombatVsSeekerSetup = 4;
+	bool enableWebSocket = 5;
+	bool enableOnApplicationFocus = 6;
+	bool enableOnApplicationPause = 7;
+	bool enableOnApplicationQuit = 8;
+	bool enableExceptionCaught = 9;
+	int32 progressTokenPriority = 10;
+	bool enableRpcErrorData = 11;
+	int32 clientLogDecayTimeInHours = 12;
 }
 
-message VerboseLogRaidSettings {
-	bool pjalicafdng = 1;
-	bool bgemmnalppn = 2;
-	bool hpkgabbbkjg = 3;
+message VerboseLogRaidSettingsProto {
+	bool enabled = 1;
+	bool enableJoinLobby = 2;
+	bool enableLeaveLobby = 3;
 	bool okihiglpfgl = 4;
-	bool fpalnbjgjld = 5;
-	bool hegldiakhoo = 6;
-	bool hicjphflmpo = 7;
-	bool aoomliiimle = 8;
-	bool kikeofdpgkc = 9;
-	bool bimadmolgii = 10;
-	bool kjcefomoneb = 11;
-	bool nlfofegkhga = 12;
-	bool djfkhakngdl = 13;
-	bool llmmdmlaejm = 14;
-	bool piolmkibodm = 15;
+	bool enableGetRaidDetails = 5;
+	bool enableStartRaidBattle = 6;
+	bool enableAttackRaid = 7;
+	bool enableSendRaidInvitation = 8;
+	bool enableOnApplicationFocus = 9;
+	bool enableOnApplicationPause = 10;
+	bool enableOnApplicationQuit = 11;
+	bool enableExceptionCaught = 12;
+	bool enableProgressToken = 13;
+	bool enableRpcErrorData = 14;
+	bool enableClientPredictionInconsistencyData = 15;
 	int32 denfpjpmfni = 16;
 }
 
