@@ -16812,7 +16812,7 @@ message NpcDialogueProto {
 }
 
 message NpcPokemonProto {
-	HoloPokemonId pokemonType = 1; // Should be pokemonId?
+	HoloPokemonId pokemonType = 1;
 	PokemonDisplayProto pokemonDisplay = 2;
 }
 
