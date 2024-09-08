@@ -177,6 +177,16 @@ blocks_meta_info = [
     },
 ]
 
+# Regex to obtain enums data
+# .*"(.*)".*\n\tpublic const.* = (\d{1,});
+# .*".*POKEMON_(.*)".*\n\tpublic const.* = (\d{1,});
+# .*".*FAMILY_(.*)".*\n\tpublic const.* = (\d{1,});
+#   $1 = $2;
+
+
+# .*".*(MOVE|VN_BM)_(.*)".*\n\tpublic const.* = (\d{1,});
+#   $1_$2 = $3;
+
 
 def read_txt_file(path_to_file):
     try:
