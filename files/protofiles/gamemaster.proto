@@ -11621,7 +11621,7 @@ message GameMasterClientTemplateProto {
 	string template_id = 1;
 	PokemonSettingsProto pokemon_settings = 2;
 	ItemSettingsProto itemSettings = 3;
-	MoveSettingsProto move_settings = 4;
+	MoveSettingsProto moveSettings = 4;
 	MoveSequenceSettingsProto move_sequence_settings = 5;
 	TypeEffectiveSettingsProto type_effective = 8;
 	BadgeSettingsProto badge_settings = 10;
@@ -16256,6 +16256,7 @@ message MoveSettingsProto {
 	int32 damageWindowEndMs = 14;
 	int32 energyDelta = 15;
 	bool isLocked = 16;
+	repeated float obMoveSettingsNumber18 = 18;
 }
 
 message MultiPartQuestProto {
