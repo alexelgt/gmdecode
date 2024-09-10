@@ -11435,15 +11435,26 @@ message BreadMoveMappingsProto {
 
 message BreadFeatureFlagsProto {
 	enum StationDiscoveryMode {
-		UNSET = 0;
+		NONE = 0;
+		STATIC_STATIONS = 1;
 		DYNAMIC_STATIONS = 2;
+	}
+
+	enum BattleSpawnMode {
+		NO_SPAWN = 0;
+		STATIC_SPAWN = 1;
+		GMT_SPAWN = 2;
 	}
 
 	bool enabled = 1;
 	bool discoveryEnabled = 2;
 	bool mpEnabled = 3;
 	StationDiscoveryMode stationDiscoveryMode = 5;
+	BattleSpawnMode battleSpawnMode = 6;
+	bool battleEnabled = 7;
+	bool nearbyLobbyCounterEnabled = 8;
 	int32 minimumPlayerLevel = 9;
+	bool breadPostBattleRecoveryEnabled = 10;
 }
 
 message BreadSettingsProto {
