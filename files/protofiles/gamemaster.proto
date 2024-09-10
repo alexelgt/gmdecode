@@ -11573,6 +11573,11 @@ message PokeballThrowPropertySettingsProto {
 	repeated ThrowProperties throwProperties = 1;
 }
 
+message obGm245SettingsProto {
+	string obGm245SettingsText1 = 1;
+	string obGm245SettingsText2 = 2;
+}
+
 message ItemInventoryUpdateSettingsProto {
 	message CategoryProto {
 		repeated HoloItemCategory category = 1;
@@ -11819,6 +11824,7 @@ message GameMasterClientTemplateProto {
 	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
 	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
+	obGm245SettingsProto obGm245Settings = 245;
 }
 
 message GameMasterLocalProto {
@@ -19747,6 +19753,16 @@ message PokemonSettingsProto {
 		int32 count = 2;
 	}
 
+	enum BreadTierGroup {
+		BREAD_TIER_GROUPS_UNSET = 0;
+		GROUP_1 = 1;
+		GROUP_2 = 2;
+		GROUP_3 = 3;
+		GROUP_4 = 4;
+		GROUP_5 = 5;
+		GROUP_6 = 6;
+	}
+
 	HoloPokemonId pokemonId = 1;
 	float modelScale = 3;
 	HoloPokemonType type = 4;
@@ -19812,7 +19828,7 @@ message PokemonSettingsProto {
 	// string obPokemonSettingsString84 = 84;
 	// float obPokemonSettingsNumber86 = 86;
 	// repeated string obPokemonSettingsString87 = 87;
-	// int32 obPokemonSettingsNumber88 = 88;
+	BreadTierGroup breadTierGroup = 88;
 }
 
 message PokemonStaminaUpdateProto {
