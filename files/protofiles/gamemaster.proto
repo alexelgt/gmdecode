@@ -11585,9 +11585,9 @@ message PokeballThrowPropertySettingsProto {
 	repeated ThrowProperties throwProperties = 1;
 }
 
-message obGm245SettingsProto {
-	string obGm245SettingsText1 = 1;
-	string obGm245SettingsText2 = 2;
+message AvatarItemDisplay {
+	string iconAddress = 1;
+	string displayStringId = 2;
 }
 
 message ItemInventoryUpdateSettingsProto {
@@ -11836,7 +11836,7 @@ message GameMasterClientTemplateProto {
 	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
 	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
-	// obGm245SettingsProto obGm245Settings = 245;
+	AvatarItemDisplay avatarItemDisplay = 245;
 }
 
 message GameMasterLocalProto {
