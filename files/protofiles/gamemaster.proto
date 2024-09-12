@@ -10076,6 +10076,11 @@ message FoodValue {
 	Item elgmpfimgii = 3;
 }
 
+message MoveReassignmentProto {
+	repeated HoloPokemonMove existingMoves = 1;
+	repeated HoloPokemonMove replacementMoves = 2;
+}
+
 message FormChangeProto {
 	message ComponentPokemonSettings {
 		enum FormChangeType {
@@ -10094,6 +10099,12 @@ message FormChangeProto {
 		int32 componentCandyCost = 3;
 		FormChangeType formChangeType = 4;
 		repeated FormChangeLocationCardSettings locationCardSettings = 7;
+		HoloPokemonFamilyId familyId = 8;
+	}
+
+	message FormChangeMoveReassignmentProto {
+		repeated MoveReassignmentProto quickMoves = 1;
+		repeated MoveReassignmentProto cinematicMoves = 2;
 	}
 
 	repeated PokemonDisplayProto.Form availableForm = 1;
@@ -10103,6 +10114,7 @@ message FormChangeProto {
 	repeated EvolutionQuestInfoProto icfedihocdc = 5;
 	int32 itemCostCount = 6;
 	ComponentPokemonSettings componentPokemonSettings = 7;
+	FormChangeMoveReassignmentProto moveReassignment = 8;
 }
 
 message FormChangeSettingsProto {
@@ -11824,7 +11836,7 @@ message GameMasterClientTemplateProto {
 	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
 	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
-	obGm245SettingsProto obGm245Settings = 245;
+	// obGm245SettingsProto obGm245Settings = 245;
 }
 
 message GameMasterLocalProto {
@@ -19763,6 +19775,10 @@ message PokemonSettingsProto {
 		GROUP_6 = 6;
 	}
 
+	message IbfcProto {
+
+	}
+
 	HoloPokemonId pokemonId = 1;
 	float modelScale = 3;
 	HoloPokemonType type = 4;
@@ -19824,10 +19840,10 @@ message PokemonSettingsProto {
 	repeated float buddyPortraitRotation = 76;
 	repeated HoloPokemonMove nonTmCinematicMoves = 77;
 	ExclusiveKeyItem exclusiveKeyItem = 79;
-	// int32 obPokemonSettingsNumber83 = 83;
-	// string obPokemonSettingsString84 = 84;
-	// float obPokemonSettingsNumber86 = 86;
-	// repeated string obPokemonSettingsString87 = 87;
+	bool useIrisFlyingPlacement = 83;
+	string irisPhotoEmote1 = 84;
+	float irisFlyingHeightLimitMeters = 86;
+	IbfcProto ibfc = 87;
 	BreadTierGroup breadTierGroup = 88;
 }
 
