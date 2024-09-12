@@ -9649,6 +9649,7 @@ message EvolutionBranchProto {
 	bool onlyFullMoon = 21;
 	int32 evolutionItemRequirementCost = 22;
 	HoloPokemonMove evolutionMoveRequirement = 23;
+	int32 evolutionLikelihoodWeight = 24;
 }
 
 message EvolutionChainDataProto {
@@ -19842,6 +19843,7 @@ message PokemonSettingsProto {
 	ExclusiveKeyItem exclusiveKeyItem = 79;
 	bool useIrisFlyingPlacement = 83;
 	string irisPhotoEmote1 = 84;
+	string irisPhotoEmote2 = 85;
 	float irisFlyingHeightLimitMeters = 86;
 	IbfcProto ibfc = 87;
 	BreadTierGroup breadTierGroup = 88;
