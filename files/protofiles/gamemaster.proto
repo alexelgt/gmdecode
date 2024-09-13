@@ -11077,6 +11077,7 @@ message BuffSettingsProto {
 
 message TodayViewSettingsProto {
 	bool notificationServerAuthoritative = 8;
+	bool favoriteQuestEnabled = 9;
 }
 
 message RoutePinSettingsProto {
@@ -11245,6 +11246,13 @@ message RouteNpcGiftSettingsProto {
 message PlayerBonusSystemSettingsProto {
 	int64 obPlayerBonusSystemSettingsNumber1 = 1;
 	bool obPlayerBonusSystemSettingsBool1 = 2;
+}
+
+message PtcOAuthSettingsProto {
+	bool ptcAccountLinkingEnabled = 1;
+	bool validationEnabled = 2;
+	int64 endTimeMs = 3;
+	Item linkingRewardItem = 4;
 }
 
 message SharedNonCombatMoveSettingsProto {
@@ -11710,10 +11718,10 @@ message GameMasterClientTemplateProto {
 	PokemonFamilySettingsProto pokemonFamily = 77;
 	MonodepthSettingsProto monodepth_settings = 78;
 	LevelUpRewardsSettingsProto level_up_reward_settings = 79;
-	RaidClientSettingsProto raid_settings = 81;
+	RaidClientSettingsProto raidSettings = 81;
 	TappableSettingsProto tappable_settings = 82;
 	RoutePlaySettingsProto routePlaySettings = 83;
-	SponsoredGeofenceGiftSettingsProto sponsored_geofence_gift_settings = 84;
+	SponsoredGeofenceGiftSettingsProto sponsoredGeofenceGiftSettings = 84;
 	StickerMetadataProto stickerMetadata = 85;
 	CrossGameSocialSettingsProto cross_game_social_settings = 86;
 	MapDisplaySettingsProto map_display_settings = 87;
@@ -11815,6 +11823,7 @@ message GameMasterClientTemplateProto {
 	NonCombatMoveSettingsProto nonCombatMoveSettings = 204;
 	RouteNpcGiftSettingsProto routeNpcGiftSettings = 205;
 	PlayerBonusSystemSettingsProto obPlayerBonusSystemSettings = 206;
+	PtcOAuthSettingsProto ptcOauthSettings = 207;
 	SharedNonCombatMoveSettingsProto sharedNonCombatMoveSettings = 208;
 	PartyIapBoostsSettingsProto partyIapBoostsSettings = 210;
 	BulkHealingSettingsProto bulkHealingSettings = 212;
@@ -19998,6 +20007,10 @@ message PostcardCollectionGlobalSettingsProto {
 
 message PostcardCollectionSettingsProto {
 	bool enabled = 1;
+	string obPostcardCollectionSettingsString2 = 2;
+	float obPostcardCollectionSettingsNumber3 = 3;
+	string obPostcardCollectionSettingsString4 = 4;
+	string obPostcardCollectionSettingsString5 = 5;
 }
 
 message PostcardDisplayProto {
@@ -20945,6 +20958,7 @@ message RaidClientSettingsProto {
 	int32 bootCutoffMs = 26;
 	int32 bootSoloMs = 27;
 	int32 obRaidClientSettingsNumber1 = 28;
+	int32 obRaidClientSettingsNumber29 = 29;
 }
 
 message RaidCreateDetail {
@@ -21586,6 +21600,10 @@ message RoutePlaySettingsProto {
 	int32 resumeRangeMeters = 21;
 	int32 routeEngagementStatsShardCount = 22;
 	bool enableRouteRatingDetails = 26;
+	int32 obRoutePlaySettingsNumber29 = 29;
+	float obRoutePlaySettingsNumber30 = 30;
+	float obRoutePlaySettingsNumber33 = 33;
+	int32 obRoutePlaySettingsNumber45 = 35;
 }
 
 message RoutePlayStatus {
@@ -22425,8 +22443,8 @@ message SponsoredGeofenceGiftSettingsProto {
 		bool ebmbejcgekm = 3;
 		bool aljmfiffjon = 4;
 		int32 getWasabiAdRpcIntervalMs = 5;
-		SponsoredBalloonMovementSettingsProto balloon_movement_settings = 6;
-		// bool pnmoijojdlp = 7;
+		SponsoredBalloonMovementSettingsProto balloonMovementSettings = 6;
+		bool enableBalloonWebView = 7;
 	}
 
 	message SponsoredGeofenceGiftDetailsProto {
@@ -22439,6 +22457,12 @@ message SponsoredGeofenceGiftSettingsProto {
 		string mmcmlkodidh = 7;
 	}
 
+	message GamVideoAdUnitSettings {
+		string iosAdUnitId = 1;
+		string androidAdUnitId = 2;
+		string otherAdUnitId = 3;
+	}
+
 	bool nkagepacfpg = 1;
 	int32 giftPersistenceTimeMs = 2;
 	int32 mapPresentationTimeMs = 3;
@@ -22449,11 +22473,13 @@ message SponsoredGeofenceGiftSettingsProto {
 	bool ebpfnoodaka = 8;
 	int32 fullscreenDisableExitButtonTimeMs = 9;
 	SponsoredBalloonGiftSettingsProto balloonGiftSettings = 10;
-	// bool aioppmmanje = 11;
+	bool externalAdServiceAdsEnabled = 11;
 	ObSponsoredBalloon ob_sponsored_balloon = 12;
 	SponsoredGeofenceGiftDetailsProto sponsored_geofence_gift_details = 13;
-	// int32 ifohhaadpem = 14;
+	int32 webViewDisableExitButtonTimeMs = 14;
 	int32 jpinegmaocm = 15;
+	bool gamVideoAdsEnabled = 16;
+	GamVideoAdUnitSettings gamVideoAdUnitSettings = 17;
 }
 
 message SponsoredPoiFeedbackSettingsProto {
