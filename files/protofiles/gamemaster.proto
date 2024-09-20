@@ -11507,7 +11507,7 @@ message BreadSharedSettingsProto {
 	int32 maxRangeForNearbyStateMeters = 8;
 	bool showTimerWhenFar = 9;
 	BreadBattleAvailability breadBattleAvailability = 10;
-	int32 obBreadSharedSettingsNumber11 = 11;
+	int64 obBreadSharedSettingsNumber11 = 11;
 }
 
 message StationedPokemonTableSettingsProto {
