@@ -11480,7 +11480,7 @@ message BreadFeatureFlagsProto {
 	bool breadPostBattleRecoveryEnabled = 10;
 }
 
-message BreadSettingsProto {
+message BreadSharedSettingsProto {
 	enum BreadMode {
 		UNSET = 0;
 		BREAD_MODE = 1;
@@ -11499,6 +11499,7 @@ message BreadSettingsProto {
 		int32 breadBattleAvailabilityEndMinute = 2;
 	}
 
+	int64 startOfDayOffsetDurationMs = 1;
 	repeated AllowedSourdoughPokemon allowedSourdoughPokemon = 3;
 	int32 maxStationedPokemon = 5;
 	int32 numStationedPokemonToReturn = 6;
@@ -11506,6 +11507,7 @@ message BreadSettingsProto {
 	int32 maxRangeForNearbyStateMeters = 8;
 	bool showTimerWhenFar = 9;
 	BreadBattleAvailability breadBattleAvailability = 10;
+	int32 obBreadSharedSettingsNumber11 = 11;
 }
 
 message StationedPokemonTableSettingsProto {
@@ -11540,7 +11542,7 @@ message BreadPokemonScalingSettingsProto {
 			float yOffset = 5;
 		}
 
-		BreadSettingsProto.BreadMode breadMode = 1;
+		BreadSharedSettingsProto.BreadMode breadMode = 1;
 		BreadVisualData breadEncounterVisiualData = 2;
 		BreadVisualData breadBattleVisualData = 3;
 		BreadVisualData breadBattleBossVisualData = 4;
@@ -11838,7 +11840,7 @@ message GameMasterClientTemplateProto {
 	AdditiveSceneSettingsProto additiveSceneSettings = 219;
 	MpSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto breadFeatureFlags = 222;
-	BreadSettingsProto breadSettings = 223;
+	BreadSharedSettingsProto breadSettings = 223;
 	ObSettingsOverrideRulesProto obSettingsOverrideRules = 224;
 	ObIrisSocialUxFunnelSettingsProto obIrisSocialUxFunnelSettings = 226;
 	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
