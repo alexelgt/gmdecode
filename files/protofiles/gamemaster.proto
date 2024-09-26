@@ -10563,6 +10563,9 @@ message DailyAdventureIncenseSettingsProto {
 	string localDeliveryTime = 4;
 	bool enablePushNotification = 5;
 	int32 pushNotificationHourOfDay = 6;
+	bool canBePaused = 7;
+	int32 obDailyAdventureIncenseSettingsNumber8 = 8;
+	int32 obDailyAdventureIncenseSettingsNumber9 = 9;
 }
 
 message GM1SettingsProto {
@@ -11534,7 +11537,7 @@ message BreadLobbyCounterSettingsProto {
 
 message BreadPokemonScalingSettingsProto {
 	message VisualData {
-		message BreadVisualData {
+		message BreadPokemonVisualDataProto {
 			float scale = 1;
 			float cameraDistance = 2;
 			float maxReticleSize = 3;
@@ -11543,10 +11546,11 @@ message BreadPokemonScalingSettingsProto {
 		}
 
 		BreadSharedSettingsProto.BreadMode breadMode = 1;
-		BreadVisualData breadEncounterVisiualData = 2;
-		BreadVisualData breadBattleVisualData = 3;
-		BreadVisualData breadBattleBossVisualData = 4;
-		BreadVisualData breadStationVisualData = 6;
+		BreadPokemonVisualDataProto breadEncounterVisiualData = 2;
+		BreadPokemonVisualDataProto breadBattleVisualData = 3;
+		BreadPokemonVisualDataProto breadBattleBossVisualData = 4;
+		BreadPokemonVisualDataProto breadBattleTrainerVisualData = 5;
+		BreadPokemonVisualDataProto breadStationVisualData = 6;
 	}
 
 	message PokemonFormData {
