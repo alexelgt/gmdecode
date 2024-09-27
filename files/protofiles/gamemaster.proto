@@ -11321,7 +11321,7 @@ message AdditiveSceneSettingsProto {
 	bool enabled = 1;
 }
 
-message MpSettingsProto {
+message MpSharedSettingsProto {
 	message BattleMpCostPerTier {
 		enum BattleLevel {
 			BREAD_BATTLE_LEVEL_UNSET = 0;
@@ -11347,6 +11347,7 @@ message MpSettingsProto {
 	int32 mpBaseDailyLimit = 10;
 	float mpClaimParticleSpeedMultiplier = 13;
 	repeated BattleMpCostPerTier battleMpCostPerTier = 14;
+	int32 obMpSettingsNumber15 = 15;
 }
 
 enum BoolString {
@@ -11842,7 +11843,7 @@ message GameMasterClientTemplateProto {
 	SharedFusionSettingsProto obSharedFusionSettings = 217;
 	IrisSocialSettingsProto obIrisSocialSettings = 218;
 	AdditiveSceneSettingsProto additiveSceneSettings = 219;
-	MpSettingsProto mpSettings = 221;
+	MpSharedSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto breadFeatureFlags = 222;
 	BreadSharedSettingsProto breadSettings = 223;
 	ObSettingsOverrideRulesProto obSettingsOverrideRules = 224;
