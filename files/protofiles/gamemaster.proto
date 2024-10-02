@@ -11654,7 +11654,7 @@ message VsSeekerScheduleSettings {
 // MAIN_PART
 message GameMasterClientTemplateProto {
 	string template_id = 1;
-	PokemonSettingsProto pokemon_settings = 2;
+	PokemonSettingsProto pokemonSettings = 2;
 	ItemSettingsProto itemSettings = 3;
 	MoveSettingsProto moveSettings = 4;
 	MoveSequenceSettingsProto move_sequence_settings = 5;
@@ -13123,7 +13123,7 @@ message GlobalSettingsProto {
 	HelpshiftSettingsProto helpshift_settings = 33;
 	ArPhotoGlobalSettings ar_photo_settings = 34;
 	PoiGlobalSettingsProto poi_settings = 35;
-	PokemonGlobalSettingsProto pokemon_settings = 36;
+	PokemonGlobalSettingsProto pokemonSettings = 36;
 	AvatarGlobalSettingsProto avatar_settings = 37;
 	EvolutionV2SettingsProto evolution_v2_settings = 38;
 	IncidentGlobalSettingsProto incident_settings = 39;
@@ -14635,6 +14635,7 @@ message ItemSettingsProto {
 	GlobalEventTicketAttributesProto globalEventTicket = 18;
 	bool ignoreInventorySpace = 19;
 	int32 itemCap = 22;
+	string nameOverride = 24;
 	string descriptionOverride = 26;
 	ReplensihMp replensihMp = 29;
 }
@@ -19770,6 +19771,26 @@ message PokemonSearchTelemetry {
 	repeated int32 experiment_id = 5;
 }
 
+enum AnimationPlayPoint {
+	UNSET_PLAY_POINT = 0;
+	BEFORE_CM_ATTACKER = 1;
+	AFTER_CM_ATTACKER = 2;
+}
+
+enum IbfcVfxKey {
+	DEFAULT_NO_CHANGE = 0;
+	DEFAULT_TO_ALTERNATE = 1;
+	ALTERNATE_TO_DEFAULT = 2;
+}
+
+message IbfcTransitionSettings {
+	int32 animationDurationTurns = 1;
+	AnimationPlayPoint animationPlayPoint = 2;
+	IbfcVfxKey ibfcVfxKey = 3;
+	HoloPokemonMove currentMove = 4;
+	HoloPokemonMove replacementMove = 5;
+}
+
 message PokemonSettingsProto {
 	enum BuddySize {
 		BUDDY_MEDIUM = 0;
@@ -19795,7 +19816,12 @@ message PokemonSettingsProto {
 	}
 
 	message IbfcProto {
+		bool combatEnable = 3;
+		PokemonDisplayProto.Form defaultForm = 5;
+		PokemonDisplayProto.Form alternateForm = 6;
 
+		IbfcTransitionSettings defaultToAlternateIbfcSettings = 7;
+		IbfcTransitionSettings alternateToDefaultIbfcSettings = 8;
 	}
 
 	HoloPokemonId pokemonId = 1;
@@ -19865,6 +19891,8 @@ message PokemonSettingsProto {
 	float irisFlyingHeightLimitMeters = 86;
 	IbfcProto ibfc = 87;
 	BreadTierGroup breadTierGroup = 88;
+	int32 irisPhotoHueOrder = 89;
+	int32 irisPhotoShinyHueOrder = 90;
 }
 
 message PokemonStaminaUpdateProto {
