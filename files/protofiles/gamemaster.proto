@@ -1351,6 +1351,27 @@ enum HoloBadgeType {
 	BADGE_SAFARI_2024_INCHEON_DAY_01_CITYWIDE = 5691;
 	BADGE_SAFARI_2024_INCHEON_DAY_02_CITYWIDE = 5692;
 	BADGE_SAFARI_2024_INCHEON_DAY_03_CITYWIDE = 5693;
+	BADGE_GOWA_2024_IRL_SUNDAY_CITY = 5700;
+	BADGE_GOWA_2024_IRL_ADDON_HATCH = 5702;
+	BADGE_GOWA_2024_IRL_ADDON_HATCH_TEST = 5708;
+	BADGE_GOWA_2024_SPECIAL_RESEARCH_B = 5714;
+	BADGE_GOWA_2024_IRL_SATURDAY_CITY = 5696;
+	BADGE_GOWA_2024_IRL_SUNDAY_PARK_MORNING = 5698;
+	BADGE_GOWA_2024_IRL_TEST_PARK_AFTERNOON = 5705;
+	BADGE_GOWA_2024_IRL_SATURDAY_PARK_MORNING = 5694;
+	BADGE_GOWA_2024_TEST = 5712;
+	BADGE_GOWA_2024_IRL_SUNDAY_PARK_AFTERNOON = 5699;
+	BADGE_GOWA_2024_IRL_SATURDAY_ESSENTIAL = 5697;
+	BADGE_GOWA_2024_IRL_FULLTEST = 5710;
+	BADGE_GOWA_2024_IRL_SATURDAY_PARK_AFTERNOON = 5695;
+	BADGE_GOWA_2024_IRL_SUNDAY_ESSENTIAL = 5701;
+	BADGE_GOWA_2024_IRL_TEST_PARK_MORNING = 5704;
+	BADGE_GOWA_2024_GLOBAL = 5711;
+	BADGE_GOWA_2024_IRL_ADDON_RAID = 5703;
+	BADGE_GOWA_2024_IRL_TEST_CITY = 5706;
+	BADGE_GOWA_2024_SPECIAL_RESEARCH_A = 5713;
+	BADGE_GOWA_2024_IRL_TEST_ESSENTIAL = 5707;
+	BADGE_GOWA_2024_IRL_ADDON_RAID_TEST = 5709;
 }
 
 enum HoloIapItemCategory {
@@ -10707,7 +10728,7 @@ message AssetRefreshSettingsProto {
 	int32 stringRefreshSeconds = 5;
 }
 
-message SizeSettingsProto {
+message PokemonSizeSettingsProto {
 	float xxsLowerBound = 1;
 	float xsLowerBound = 2;
 	float mLowerBound = 3;
@@ -10760,11 +10781,19 @@ message LanguageSettingsProto {
 	bool isEnabled = 2;
 }
 
+message BreadOverrideExtendedProto {
+	BreadSharedSettingsProto.BreadMode breadMode = 1;
+	float averageHeightM = 2;
+	float averageWeightKg = 3;
+	PokemonSizeSettingsProto sizeSettings = 4;
+}
+
 message PokemonExtendedSettingsProto {
 	HoloPokemonId uniqueId = 1;
 	PokemonDisplayProto.Form form = 28;
-	SizeSettingsProto sizeSettings = 66;
+	PokemonSizeSettingsProto sizeSettings = 66;
 	repeated TempEvoOverrideProto temp_evo_overrides = 51;
+	repeated BreadOverrideExtendedProto breadOverrides = 67;
 }
 
 message IncubatorFlowSettingsProto {
@@ -10827,6 +10856,8 @@ message LocationCardSettingsProto {
 		LC_2024_HONOLULU_WORLD_CHAMPIONSHIPS_001 = 28;
 		LC_2024_MLB_001 = 29;
 		LC_2024_MLB_002 = 30;
+		LC_2024_FUKUOKA_GOWA_001 = 59;
+		LC_SPECIALBACKGROUND_2024_GLOBAL_GOWA_001 = 60;
 	}
 
 	enum CardType {
@@ -11081,8 +11112,9 @@ message BuffSettingsProto {
 }
 
 message TodayViewSettingsProto {
-	bool notificationServerAuthoritative = 8;
-	bool favoriteQuestEnabled = 9;
+	bool pinClaimableQuestEnabled = 8;
+	bool notificationServerAuthoritative = 9;
+	bool favoriteQuestEnabled = 10;
 }
 
 message RoutePinSettingsProto {
@@ -11451,6 +11483,13 @@ message BreadMoveLevelSettingsProto {
 	repeated Settings cSettings = 4;
 }
 
+message ItemExpirationSettingsProto {
+	Item item = 1;
+	string expirationTime = 2;
+	bool emergencyExpirationEnabled = 3;
+	string emergencyExpirationTime = 4;
+}
+
 message BreadMoveMappingsProto {
 	message Mappings {
 		HoloPokemonType type = 1;
@@ -11748,7 +11787,7 @@ message GameMasterClientTemplateProto {
 	GeotargetedQuestSettingsProto geotargeted_quest_settings = 100;
 	PokemonTagSettingsProto pokemon_tag_settings = 101;
 	RecommendedSearchProto recommended_search_settings = 102;
-	InventorySettingsProto inventory_settings = 103;
+	InventorySettingsProto inventorySettings = 103;
 	RouteDiscoverySettingsProto route_discovery_settings = 104;
 	EggTransparencySettingsProto egg_transparency_settings = 105;
 	FortPowerUpLevelSettings fort_power_up_level_settings = 106;
@@ -11850,6 +11889,7 @@ message GameMasterClientTemplateProto {
 	ObIrisSocialUxFunnelSettingsProto obIrisSocialUxFunnelSettings = 226;
 	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
 	BreadMoveLevelSettingsProto breadMoveLevelSettings = 230;
+	ItemExpirationSettingsProto itemExpirationSettings = 231;
 	BreadMoveMappingsProto breadMoveMappings = 232;
 	StationedPokemonTableSettingsProto stationedPokemonTableSettings = 234;
 	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
@@ -14502,6 +14542,7 @@ message InventorySettingsProto {
 	bool bagUpgradeBannerEnabled = 19;
 	repeated ObInventorySettingsMessage1 bagUpgradeTimerStages = 20;
 	repeated BagUpgradeBannerContexts bagUpgradeBannerContexts = 21;
+	bool easyIncubatorBuyEnabled = 22;
 }
 
 message InventoryUpgradeAttributesProto {
@@ -19881,7 +19922,7 @@ message PokemonSettingsProto {
 	repeated FormChangeProto formChange = 63;
 	repeated float fcnpgmocmjk = 64;
 	repeated float bbllaaeajpk = 65;
-	SizeSettingsProto sizeSettings = 66;
+	PokemonSizeSettingsProto sizeSettings = 66;
 	repeated PokemonDisplayProto.Costume allowNoevolveEvolution = 67;
 	repeated float buddyPortraitRotation = 76;
 	repeated HoloPokemonMove nonTmCinematicMoves = 77;
@@ -22886,7 +22927,7 @@ message TempEvoOverrideProto {
 	repeated float buddyOffsetFemale = 13;
 	repeated float buddyPortraitOffset = 14;
 	float raidBossDistanceOffset = 15;
-	SizeSettingsProto sizeSettings = 16;
+	PokemonSizeSettingsProto sizeSettings = 16;
 	repeated float buddyPortraitRotation = 17;
 }
 
