@@ -11342,11 +11342,33 @@ message SharedFusionSettingsProto {
 }
 
 message IrisSocialSettingsProto {
-	bool obIrisSocialSettingsBool1 = 5;
+	int32 maxNumPokemonPerPlayer = 1;
+	int32 maxNumPokemonPerScene = 2;
+	int64 pokemonExpireAfterMs = 3;
+	repeated HoloPokemonId bannedPokedexIds = 4;
+	bool enableHintImageFallbackToDefault = 5;
+	bool allowAdminVpsWayspots = 6;
+	float minBoundaryAreaSqMeters = 7;
+	float maxBoundaryAreaSqMeters = 8;
+	bool pushGatewayEnabled = 9;
+	bool useBoundaryVerticesFromDataFlow = 10;
+	bool irisSocialEnabled = 11;
+	int64 maxTimeBgModeBeforeExpulsionMs = 12;
+	int64 maxDistanceAllowLocalizationMeters = 13;
+	int64 maxTimeNoActivityPlayerInactiveMs = 14;
+	repeated HoloPokemonId limitedPokedexIds = 15;
+	int64 playersRecentActivityTimeoutMs = 16;
+	int64 pokemonSpawnStaggerDurationMs = 17;
 	bool enableSurveyAndReporting = 18;
 	bool useVpsEnabledStatus = 19;
 	bool sunThresholdCheckEnabled = 20;
+	int64 sunriseThresholdOffsetMs = 21;
+	int64 sunsetThresholdOffsetMs = 22;
+	bool hintImageBoundaryFallbackEnabled = 23;
+	float staticBoundaryAreaSqMeters = 24;
 	int64 irisSocialPoiDeactivationCooldownMs = 25;
+	bool combinedShadowsEnabled = 26;
+	bool useContinuousLocalization = 27;
 }
 
 message AdditiveSceneSettingsProto {
@@ -11880,7 +11902,7 @@ message GameMasterClientTemplateProto {
 	PhotoSetSettingsProto obPhotoSetSettings = 215;
 	ObMainMenuCameraButtonSettingsProto obMainMenuCameraButtonSettings = 216;
 	SharedFusionSettingsProto obSharedFusionSettings = 217;
-	IrisSocialSettingsProto obIrisSocialSettings = 218;
+	IrisSocialSettingsProto irisSocialSettings = 218;
 	AdditiveSceneSettingsProto additiveSceneSettings = 219;
 	MpSharedSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto breadFeatureFlags = 222;
