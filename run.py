@@ -294,6 +294,8 @@ def main():
                             print(f'{enum_key} = {enum_value};')
 
                     print("-"*10)
+
+                print(f"batchId: {gamemaster_json['batchId']}")
             except:
                 pass
     except:
