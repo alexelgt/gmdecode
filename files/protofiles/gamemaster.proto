@@ -10563,7 +10563,13 @@ message GM11SettingsProto {
 message PhotoSettingsProto {
 	float screenCaptureSize = 1;
 	bool isIrisEnabled = 2;
+	bool isIrisAutoplaceEnabled = 3;
+	bool isIrisSocialEnabled = 4;
 	int32 irisFlags = 5;
+	string playbackCloudId = 6;
+	string playbackCloudSecret = 7;
+	string playbackCouldBucketName = 8;
+	repeated string bannerImageUrl = 9;
 }
 
 message CampfireSettingsProto {
@@ -11320,7 +11326,7 @@ message AndroidBackButtonRefactorSettingsProto {
 	bool enabled = 1;
 }
 
-message PhotoSetSettingsProto {
+message PokemonPhotoSetsProto {
 	message PhotoSetSettingsPokemon {
 		HoloPokemonId pokemonId = 1;
 		PokemonDisplayProto.Form form = 2;
@@ -11401,7 +11407,7 @@ message MpSharedSettingsProto {
 	int32 mpBaseDailyLimit = 10;
 	float mpClaimParticleSpeedMultiplier = 13;
 	repeated BattleMpCostPerTier battleMpCostPerTier = 14;
-	int32 obMpSettingsNumber15 = 15;
+	int32 ftueMpCapacity = 15;
 }
 
 enum BoolString {
@@ -11410,7 +11416,7 @@ enum BoolString {
 	FALSE = 2;
 }
 
-message ObSettingsOverrideRulesProto {
+message SettingsOverrideRuleProto {
 	enum DeviceProperty {
 		UNSET = 0;
 		ALL = 1;
@@ -11543,6 +11549,9 @@ message BreadFeatureFlagsProto {
 	bool nearbyLobbyCounterEnabled = 8;
 	int32 minimumPlayerLevel = 9;
 	bool breadPostBattleRecoveryEnabled = 10;
+	bool powerSpotEditsEnabled = 11;
+	bool canUseMasterBallPostBattle = 12;
+	bool boostItemEnabled = 13;
 }
 
 message BreadSharedSettingsProto {
@@ -11553,10 +11562,10 @@ message BreadSharedSettingsProto {
 		BREAD_DOUGH_MODE_2 = 3;
 	}
 
-	message AllowedSourdoughPokemon {
+	message BreadPokemonAllowlist {
 		HoloPokemonId pokemonId = 1;
 		repeated PokemonDisplayProto.Form form = 2;
-		BreadMode obBreadMode = 3;
+		BreadMode breadMode = 3;
 	}
 
 	message BreadBattleAvailability {
@@ -11565,14 +11574,15 @@ message BreadSharedSettingsProto {
 	}
 
 	int64 startOfDayOffsetDurationMs = 1;
-	repeated AllowedSourdoughPokemon allowedSourdoughPokemon = 3;
+	repeated BreadPokemonAllowlist allowedSourdoughPokemon = 3;
 	int32 maxStationedPokemon = 5;
 	int32 numStationedPokemonToReturn = 6;
 	int32 maxStationedPokemonDisplayCount = 7;
 	int32 maxRangeForNearbyStateMeters = 8;
 	bool showTimerWhenFar = 9;
 	BreadBattleAvailability breadBattleAvailability = 10;
-	int64 obBreadSharedSettingsNumber11 = 11;
+	int64 minMsToReceiveReleaseStationRewards = 11;
+	int32 maxStationedPokemonPerPlayer = 12;
 }
 
 message StationedPokemonTableSettingsProto {
@@ -11595,6 +11605,8 @@ message BreadLobbyCounterSettingsProto {
 	int32 subscribeS2Level = 2;
 	string subscriptionNamespace = 3;
 	int64 publishCutoffTimeMs = 4;
+	int64 serverPublishRateLimitIntervalMs = 5;
+	int32 breadDoughLobbyMaxCountToUpdate = 6;
 }
 
 message BreadPokemonScalingSettingsProto {
@@ -11899,7 +11911,7 @@ message GameMasterClientTemplateProto {
 	BulkHealingSettingsProto bulkHealingSettings = 212;
 	PokemonCutsceneRefactorSettingsProto pokemonCutsceneRefactorSettings = 213;
 	AndroidBackButtonRefactorSettingsProto androidBackButtonRefactorSettings = 214;
-	PhotoSetSettingsProto obPhotoSetSettings = 215;
+	PokemonPhotoSetsProto pokemonPhotoSets = 215;
 	ObMainMenuCameraButtonSettingsProto obMainMenuCameraButtonSettings = 216;
 	SharedFusionSettingsProto obSharedFusionSettings = 217;
 	IrisSocialSettingsProto irisSocialSettings = 218;
@@ -11907,7 +11919,7 @@ message GameMasterClientTemplateProto {
 	MpSharedSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto breadFeatureFlags = 222;
 	BreadSharedSettingsProto breadSettings = 223;
-	ObSettingsOverrideRulesProto obSettingsOverrideRules = 224;
+	SettingsOverrideRuleProto settingsOverrideRule = 224;
 	ObIrisSocialUxFunnelSettingsProto obIrisSocialUxFunnelSettings = 226;
 	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
 	BreadMoveLevelSettingsProto breadMoveLevelSettings = 230;
