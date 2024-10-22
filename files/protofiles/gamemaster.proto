@@ -11268,11 +11268,30 @@ message ExtendedPrimalSettingsProto {
 }
 
 message VistaGeneralSettingsProto {
+	message Types {
+		message PokedexIdRange {
+			int32 minInclusive = 1;
+			int32 maxInclusive = 2;
+		}
+
+		enum EnvironmentSeason {
+			SEASON_UNSET = 0;
+			SEASON_WINTER = 1;
+			SEASON_SPRING = 2;
+			SEASON_SUMMER = 3;
+			SEASON_FALL = 4;
+		}
+	}
+
 	bool isFeatureEnabled = 1;
 	bool isVistaBattleEnabled = 2;
 	bool isVistaEncounterEnabled = 3;
 	bool isVistaMapEnabled = 4;
 	bool isVistaSpawnsEnabled = 5;
+	repeated VistaGeneralSettingsProto.Types.PokedexIdRange baseEnvironmentPokedexIdRange = 6;
+	repeated int32 baseEnvironmentPokedexId = 7;
+	string themeOverride = 8;
+	VistaGeneralSettingsProto.Types.EnvironmentSeason environmentSeason = 9;
 }
 
 message RouteBadgeSettingsProto {
@@ -11877,7 +11896,7 @@ message GameMasterClientTemplateProto {
 	SponsoredGeofenceGiftSettingsProto sponsoredGeofenceGiftSettings = 84;
 	StickerMetadataProto stickerMetadata = 85;
 	CrossGameSocialSettingsProto cross_game_social_settings = 86;
-	MapDisplaySettingsProto map_display_settings = 87;
+	MapDisplaySettingsProto mapDisplaySettings = 87;
 	PokemonHomeEnergyCostsProto pokemon_home_energy_costs = 88;
 	PokemonHomeSettingsProto pokemon_home_settings = 89;
 	ArTelemetrySettingsProto arTelemetrySettings = 90;
@@ -16107,10 +16126,12 @@ message MapDisplaySettingsProto {
 	string mbmchdofgdg = 2;
 	MusicType bgm = 3;
 	bool showEnhancedSky = 4;
-	string phbneljaohk = 5;
-	string ldpknncjnlg = 6;
-	string ioighhgbhbc = 7;
-	bool lonacnhhhfd = 8;
+	string skyOverride = 5;
+	string musicName = 6;
+	string mapEffectName = 7;
+	bool showMapShoreLines = 8;
+	string skyEffectName = 9;
+	string eventThemeName = 10;
 }
 
 message MapEventsTelemetry {
