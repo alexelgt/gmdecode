@@ -180,7 +180,7 @@ blocks_meta_info = [
 # Regex to obtain enums data
 # .*"(.*)".*\n\tpublic const.* = (\d{1,});
 # .*".*POKEMON_(.*)".*\n\tpublic const.* = (\d{1,});
-# .*".*FAMILY_(.*)".*\n\tpublic const.* = (\d{1,});
+# .*".*(FAMILY_.*)".*\n\tpublic const.* = (\d{1,});
 #   $1 = $2;
 
 
