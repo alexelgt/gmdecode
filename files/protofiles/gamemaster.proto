@@ -11928,7 +11928,7 @@ message GameMasterClientTemplateProto {
 	FormsRefactorSettings forms_refactor_settings = 118;
 	SharedMoveSettings shared_move_settings = 119;
 	AddressBookImportSettingsProto address_book_import_settings = 120;
-	MusicSettings music_settings = 121;
+	MusicSettingsProto musicSettings = 121;
 	NewsFeedClientSettings news_feed_client_settings = 122;
 	MapObjectsInteractionRangeSettings map_objects_interaction_range_settings = 123;
 	ExternalAddressableAssetsSettings external_addressable_assets_settings = 124;
@@ -16449,15 +16449,15 @@ message MultiPartQuestProto {
 	repeated QuestProto pgjfjjlhfmp = 1;
 }
 
-message MusicSettings {
-	string cbbdobfmoil = 1;
-	string eiikceoolfp = 2;
-	string bgopdpkcgch = 3;
-	string nipnmgokkfe = 4;
-	string mleodcakmmg = 5;
-	bool eajmlnilmam = 6;
-	string bdangdgpaje = 7;
-	string lonbcpipanc = 8;
+message MusicSettingsProto {
+	string mapMusicDayOverride = 1;
+	string mapMusicNightOverride = 2;
+	string encounterMusicDayOverride = 3;
+	string encounterMusicNightOverride = 4;
+	string mapMusicMeloettaBuddyOverride = 5;
+	bool startTimesEnabled = 6;
+	string encounterRaidMusicDayOverride = 7;
+	string encounterRaidMusicNightOverride = 8;
 }
 
 message NADMPBIMEKB {
