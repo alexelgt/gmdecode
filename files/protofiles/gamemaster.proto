@@ -10831,10 +10831,22 @@ message LanguageSettingsProto {
 }
 
 message BreadOverrideExtendedProto {
+	message Types {
+		message BreadCatchOverrideProto {
+			float collisionRadiusM = 1;
+			float collisionHeightM = 2;
+			float collisionHeadRadiusM = 3;
+		}
+	}
+
 	BreadSharedSettingsProto.BreadMode breadMode = 1;
 	float averageHeightM = 2;
 	float averageWeightKg = 3;
 	PokemonSizeSettingsProto sizeSettings = 4;
+	PokemonCameraAttributesProto camera = 5;
+	float modelScaleV2 = 6;
+	float modelHeight = 7;
+	BreadOverrideExtendedProto.Types.BreadCatchOverrideProto catchOverrideSettings = 8;
 }
 
 message PokemonExtendedSettingsProto {
@@ -11766,6 +11778,16 @@ message PokeballThrowPropertySettingsProto {
 	repeated ThrowProperties throwProperties = 1;
 }
 
+message SourdoughMoveMappingProto {
+	HoloPokemonId pokemonId = 1;
+	PokemonDisplayProto.Form form = 2;
+	HoloPokemonMove move = 3;
+}
+
+message SourdoughMoveMappingSettingsProto {
+	repeated SourdoughMoveMappingProto mappings = 1;
+}
+
 message AvatarItemDisplay {
 	string iconAddress = 1;
 	string displayStringId = 2;
@@ -12019,6 +12041,7 @@ message GameMasterClientTemplateProto {
 	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
 	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
+	SourdoughMoveMappingSettingsProto sourdoughMoveMappingSettings = 239;
 	AvatarItemDisplay avatarItemDisplay = 245;
 }
 
