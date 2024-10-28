@@ -6633,7 +6633,7 @@ message BuddyStatsShownHearts {
 message BuddySwapSettings {
 	int32 maxSwapsPerDay = 1;
 	bool enableSwapFreeEvolution = 2;
-	bool obEnableQuickSwapButton = 3;
+	bool enableQuickSwap = 3;
 }
 
 message BuddyWalkSettings {
@@ -7880,22 +7880,22 @@ message CombatSettingsProto {
 	float defenderMinigameMultiplier = 11;
 	float changePokemonDurationSeconds = 12;
 	float minigameSubmitScoreDurationSeconds = 13;
-	float galclmolghm = 14;
+	float quickSwapCombatStartAvailableSeconds = 14;
 	float quickSwapCooldownDurationSeconds = 15;
-	CombatOffensiveInputChallengeSettings offensive_input_challenge_settings = 16;
-	CombatDefensiveInputChallengeSettings defensive_input_challenge_settings = 17;
+	CombatOffensiveInputChallengeSettings offensiveInputChallengeSettings = 16;
+	CombatDefensiveInputChallengeSettings defensiveInputChallengeSettings = 17;
 	float chargeScoreBase = 18;
 	float chargeScoreNice = 19;
 	float chargeScoreGreat = 20;
 	float chargeScoreExcellent = 21;
-	int32 gbecfjhhppl = 22;
+	int32 swapAnimationDurationTurns = 22;
 	int32 superEffectiveFlyoutDurationTurns = 23;
 	int32 notVeryEffectiveFlyoutDurationTurns = 24;
-	int32 blockedEffectiveFlyoutDurationTurns = 25;
+	int32 blockedFlyoutDurationTurns = 25;
 	int32 normalEffectiveFlyoutDurationTurns = 26;
-	int32 kicaeiobcec = 27;
-	int32 obepclfgpfc = 28;
-	int32 mannpbcfmhl = 29;
+	int32 faintAnimationDurationTurns = 27;
+	int32 npcSwapDelayTurns = 28;
+	int32 npcChargedAttackDelayTurns = 29;
 	float shadowPokemonAttackBonusMultiplier = 30;
 	float shadowPokemonDefenseBonusMultiplier = 31;
 	float purifiedPokemonAttackMultiplierVsShadow = 32;
@@ -10623,7 +10623,7 @@ message CampfireSettingsProto {
 	int32 catchCardAvailableSeconds = 6;
 	bool catchCardShareCampfireEnabled = 8;
 	bool arCatchCardShareCampfireEnabled = 9;
-	int64 obCampfireSettingsNumber1 = 10;
+	int64 meetupQueryTimerMs = 10;
 }
 
 message DailyAdventureIncenseSettingsProto {
@@ -10634,8 +10634,8 @@ message DailyAdventureIncenseSettingsProto {
 	bool enablePushNotification = 5;
 	int32 pushNotificationHourOfDay = 6;
 	bool canBePaused = 7;
-	int32 obDailyAdventureIncenseSettingsNumber8 = 8;
-	int32 obDailyAdventureIncenseSettingsNumber9 = 9;
+	int32 pushNotificationAfterTimeOfDayMinutes = 8;
+	int32 pushNotificationBeforeTimeOfDayMinutes = 9;
 }
 
 message GM1SettingsProto {
@@ -11270,7 +11270,7 @@ message OptimizationsProtoProto {
 	bool optimizationPhysicsToggleEnabled = 1;
 }
 
-message NearbyPokemonSettingsProto {
+message NearbyPokemonSettings {
 	bool obEnabled = 1;
 	bool obNearbyPokemonSettingsBool1 = 2;
 }
@@ -11389,8 +11389,8 @@ message RouteNpcGiftSettingsProto {
 }
 
 message PlayerBonusSystemSettingsProto {
-	int64 obPlayerBonusSystemSettingsNumber1 = 1;
-	bool obPlayerBonusSystemSettingsBool1 = 2;
+	int64 maxBonusDurationMs = 1;
+	bool dayNightEvoEnabled = 2;
 }
 
 message PtcOAuthSettingsProto {
@@ -11402,7 +11402,7 @@ message PtcOAuthSettingsProto {
 
 message SharedNonCombatMoveSettingsProto {
 	bool nonCombatMoveEnabled = 1;
-	bool obSharedNonCombatMoveSettingsBool1 = 2;
+	bool pokemonRarityIndicatorEnabled = 2;
 }
 
 message PartyIapBoostsSettingsProto {
@@ -11441,7 +11441,7 @@ message PokemonPhotoSetsProto {
 	int32 displayOrder = 5;
 }
 
-message ObMainMenuCameraButtonSettingsProto {
+message MainMenuCameraButtonSettingsProto {
 	bool enabled = 1;
 }
 
@@ -11539,8 +11539,8 @@ message SettingsOverrideRuleProto {
 	
 }
 
-message ObIrisSocialUxFunnelSettingsProto {
-	message ObIrisSocialUxFunnelMessage {
+message IrisSocialUserExperienceFunnelSettingsProto {
+	message IrisSocialEventStepProto {
 		enum ObIrisSocialEvent {
 			UNSET = 0;
 			USER_ENTERED_EXPERIENCE = 1;
@@ -11574,7 +11574,7 @@ message ObIrisSocialUxFunnelSettingsProto {
 	}
 
 	int32 uxFunnelVersion = 1;
-	repeated ObIrisSocialUxFunnelMessage eventStep = 2;
+	repeated IrisSocialEventStepProto eventStep = 2;
 }
 
 message BreadBattleClientSettingsProto {
@@ -11867,7 +11867,7 @@ message GameMasterClientTemplateProto {
 	OnboardingSettingsProto onboarding_settings = 30;
 	FriendshipLevelMilestoneSettingsProto friendship_milestone_settings = 31;
 	LuckyPokemonSettingsProto lucky_pokemon_settings = 32;
-	CombatSettingsProto combat_settings = 33;
+	CombatSettingsProto combatSettings = 33;
 	CombatLeagueSettingsProto combat_league_settings = 34;
 	CombatLeagueProto combat_league = 35;
 	ExRaidSettingsProto ex_raid_settings = 36;
@@ -11889,7 +11889,7 @@ message GameMasterClientTemplateProto {
 	BuddyLevelSettings buddyLevelSettings = 52;
 	BuddyActivityCategorySettings buddy_activity_category_settings = 53;
 	BuddyActivitySettings buddy_activity_settings = 54;
-	BuddySwapSettings buddy_swap_settings = 56;
+	BuddySwapSettings buddySwapSettings = 56;
 	RoutesCreationSettingsProto route_creation_settings = 57;
 	VsSeekerClientSettingsProto vs_seeker_client_settings = 58;
 	BuddyEncounterCameoSettings buddy_encounter_cameo_settings = 59;
@@ -11963,7 +11963,7 @@ message GameMasterClientTemplateProto {
 	FeatureUnlockLevelSettingsProto featureUnlockLevelSettings = 131;
 	InAppSurveySettings inAppSurveySettings = 132;
 	IncidentVisibilitySettingsProto incident_visibility_settings = 133;
-	PostcardCollectionSettingsProto postcardCollectionSettings = 134;
+	PostcardCollectionGmtSettingsProto postcardCollectionSettings = 134;
 	GM6SettingsProto ob_gm_6_settings = 135;
 	VerboseLogCombatSettingsProto verboseLogCombatSettings = 136;
 	MegaEvoLevelSettingsProto megaEvoLevelSettings = 137;
@@ -12007,7 +12007,7 @@ message GameMasterClientTemplateProto {
 	PartyPlayGeneralSettingsProto partyPlayGeneralSettings = 188;
 	BootSettingsProto bootSettings = 189;
 	OptimizationsProtoProto optimizationsProto = 190;
-	NearbyPokemonSettingsProto nearbyPokemonSettings = 191;
+	NearbyPokemonSettings nearbyPokemonSettings = 191;
 	ExtendedPrimalSettingsProto extendedPrimalSettings = 193;
 	VistaGeneralSettingsProto vistaGeneralSettings = 198;
 	RouteBadgeSettingsProto routeBadgeSettings = 199;
@@ -12016,23 +12016,23 @@ message GameMasterClientTemplateProto {
 	RoutesNearbyNotifSettingsProto routesNearbyNotifSettings = 202;
 	NonCombatMoveSettingsProto nonCombatMoveSettings = 204;
 	RouteNpcGiftSettingsProto routeNpcGiftSettings = 205;
-	PlayerBonusSystemSettingsProto obPlayerBonusSystemSettings = 206;
+	PlayerBonusSystemSettingsProto playerBonusSystemSettings = 206;
 	PtcOAuthSettingsProto ptcOauthSettings = 207;
 	SharedNonCombatMoveSettingsProto sharedNonCombatMoveSettings = 208;
 	PartyIapBoostsSettingsProto partyIapBoostsSettings = 210;
 	BulkHealingSettingsProto bulkHealingSettings = 212;
 	PokemonCutsceneRefactorSettingsProto pokemonCutsceneRefactorSettings = 213;
 	AndroidBackButtonRefactorSettingsProto androidBackButtonRefactorSettings = 214;
-	PokemonPhotoSetsProto pokemonPhotoSets = 215;
-	ObMainMenuCameraButtonSettingsProto obMainMenuCameraButtonSettings = 216;
-	SharedFusionSettingsProto obSharedFusionSettings = 217;
+	PokemonPhotoSetsProto photoSetsSettingsProto = 215;
+	MainMenuCameraButtonSettingsProto mainMenuChanges = 216;
+	SharedFusionSettingsProto sharedFusionSettings = 217;
 	IrisSocialSettingsProto irisSocialSettings = 218;
 	AdditiveSceneSettingsProto additiveSceneSettings = 219;
 	MpSharedSettingsProto mpSettings = 221;
 	BreadFeatureFlagsProto breadFeatureFlags = 222;
 	BreadSharedSettingsProto breadSettings = 223;
 	SettingsOverrideRuleProto settingsOverrideRule = 224;
-	ObIrisSocialUxFunnelSettingsProto obIrisSocialUxFunnelSettings = 226;
+	IrisSocialUserExperienceFunnelSettingsProto irisSocialUxFunnelSettings = 226;
 	BreadBattleClientSettingsProto breadBattleClientSettings = 228;
 	BreadMoveLevelSettingsProto breadMoveLevelSettings = 230;
 	ItemExpirationSettingsProto itemExpirationSettings = 231;
@@ -20215,12 +20215,12 @@ message PostcardCollectionGlobalSettingsProto {
 	bool gchkebkpgia = 3;
 }
 
-message PostcardCollectionSettingsProto {
+message PostcardCollectionGmtSettingsProto {
 	bool enabled = 1;
-	string obPostcardCollectionSettingsString2 = 2;
-	float obPostcardCollectionSettingsNumber3 = 3;
-	string obPostcardCollectionSettingsString4 = 4;
-	string obPostcardCollectionSettingsString5 = 5;
+	string backgroundPatternName = 2;
+	float backgroundPatternTileScale = 3;
+	string postcardUiElementColor = 4;
+	string postcardUiTextStrokeColor = 5;
 }
 
 message PostcardDisplayProto {
