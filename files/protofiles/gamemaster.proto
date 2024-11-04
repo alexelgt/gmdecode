@@ -11961,7 +11961,7 @@ message GameMasterClientTemplateProto {
 	TutorialSettings tutorialSettings = 129;
 	EggHatchImprovementsSettings egg_hatch_improvements_settings = 130;
 	FeatureUnlockLevelSettingsProto featureUnlockLevelSettings = 131;
-	InAppSurveySettings inAppSurveySettings = 132;
+	InAppSurveySettingsProto inAppSurveySettings = 132;
 	IncidentVisibilitySettingsProto incident_visibility_settings = 133;
 	PostcardCollectionGmtSettingsProto postcardCollectionSettings = 134;
 	GM6SettingsProto ob_gm_6_settings = 135;
@@ -22953,9 +22953,11 @@ message SuperAwesomeTokenProto {
 	string token = 1;
 }
 
-message InAppSurveySettings {
-	bool jagllhilmee = 1;
+message InAppSurveySettingsProto {
+	bool featureEnabled = 1;
 	int32 surveyPollFrequencyS = 2;
+	bool automatedSurveyTargetingEnabled = 3;
+	int64 minSurveyCooldownMs = 4;
 }
 
 message SyncContactListRequest {
