@@ -11654,6 +11654,7 @@ message BreadFeatureFlagsProto {
 	bool powerSpotEditsEnabled = 11;
 	bool canUseMasterBallPostBattle = 12;
 	bool boostItemEnabled = 13;
+	bool debugRpcEnabled = 14;
 }
 
 message BreadSharedSettingsProto {
@@ -11788,9 +11789,15 @@ message SourdoughMoveMappingSettingsProto {
 	repeated SourdoughMoveMappingProto mappings = 1;
 }
 
-message AvatarItemDisplay {
+message AvatarItemDisplayProto {
 	string iconAddress = 1;
 	string displayStringId = 2;
+}
+
+message BreadLobbyUpdateSettingsProto {
+	string subscriptionNamespace = 1;
+	int64 joinPublishCutoffTimeMs = 2;
+	int64 serverPublishRateLimitIntervalMs = 3;
 }
 
 message ItemInventoryUpdateSettingsProto {
@@ -12042,7 +12049,8 @@ message GameMasterClientTemplateProto {
 	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
 	SourdoughMoveMappingSettingsProto sourdoughMoveMappingSettings = 239;
-	AvatarItemDisplay avatarItemDisplay = 245;
+	AvatarItemDisplayProto avatarItemDisplay = 245;
+	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 }
 
 message GameMasterLocalProto {
