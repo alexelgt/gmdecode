@@ -11187,6 +11187,7 @@ message NeutralAvatarSettingsProto {
 	NeutralAvatar maleNeutralAvatar = 12;
 	SliderSettings bodySliderSettings = 20;
 	int32 neutralAvatarLegacyMappingVersion = 100;
+	bool obMoveSettingsNumber120 = 120;
 }
 
 message SquashSettingsProto {
@@ -11789,6 +11790,11 @@ message SourdoughMoveMappingSettingsProto {
 	repeated SourdoughMoveMappingProto mappings = 1;
 }
 
+message PokemonInfoPanelSettingsProto{
+	bool originSectionV2Enabled = 1;
+	bool bottomOriginSectionV2Enabled = 2;
+} 
+
 message AvatarItemDisplayProto {
 	string iconAddress = 1;
 	string displayStringId = 2;
@@ -12049,6 +12055,7 @@ message GameMasterClientTemplateProto {
 	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
 	SourdoughMoveMappingSettingsProto sourdoughMoveMappingSettings = 239;
+	PokemonInfoPanelSettingsProto pokemonInfoPanelSettings = 242;
 	AvatarItemDisplayProto avatarItemDisplay = 245;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 }
