@@ -11687,6 +11687,8 @@ message BreadSharedSettingsProto {
 	BreadBattleAvailability breadBattleAvailability = 10;
 	int64 minMsToReceiveReleaseStationRewards = 11;
 	int32 maxStationedPokemonPerPlayer = 12;
+	bool showCoinForUpcomingStation = 13;
+	float tutorialMaxBoostItemDurationS = 14;
 }
 
 message StationedPokemonTableSettingsProto {
