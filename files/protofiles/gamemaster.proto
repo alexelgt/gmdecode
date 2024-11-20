@@ -11802,6 +11802,13 @@ message AvatarItemDisplayProto {
 	string displayStringId = 2;
 }
 
+message JoinRaidViaFriendListSettingsProto {
+	bool enabled = 1;
+	int32 minPlayerLevel = 2;
+	int32 minFriendshipScore = 3;
+	int64 friendActivitiesBackgroundUpdatePeriodMs = 4;
+}
+
 message BreadLobbyUpdateSettingsProto {
 	string subscriptionNamespace = 1;
 	int64 joinPublishCutoffTimeMs = 2;
@@ -12059,6 +12066,7 @@ message GameMasterClientTemplateProto {
 	SourdoughMoveMappingSettingsProto sourdoughMoveMappingSettings = 239;
 	PokemonInfoPanelSettingsProto pokemonInfoPanelSettings = 242;
 	AvatarItemDisplayProto avatarItemDisplay = 245;
+	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 }
 
