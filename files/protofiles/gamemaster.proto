@@ -18,6 +18,19 @@
 *
 */
 
+/*
+Type conversion:
+
+int: int32
+long: int64
+uint: uint32
+ulong: uint64
+bool: bool
+float: float
+double: double
+ByteString: bytes
+*/
+
 syntax = "proto3";
 package POGOProtos.Rpc;
 
@@ -1372,6 +1385,20 @@ enum HoloBadgeType {
 	BADGE_GOWA_2024_TEST = 5712;
 	BADGE_GOWA_2024_SPECIAL_RESEARCH_A = 5713;
 	BADGE_GOWA_2024_SPECIAL_RESEARCH_B = 5714;
+	BADGE_SAFARI_2024_SAO_PAULO_TEST = 5715;
+	BADGE_SAFARI_2024_SAO_PAULO_DAY_01 = 5716;
+	BADGE_SAFARI_2024_SAO_PAULO_DAY_02 = 5717;
+	BADGE_SAFARI_2024_SAO_PAULO_ADD_ON_HATCH_TEST = 5718;
+	BADGE_SAFARI_2024_SAO_PAULO_ADD_ON_HATCH = 5719;
+	BADGE_SAFARI_2024_SAO_PAULO_ADD_ON_RAID_TEST = 5720;
+	BADGE_SAFARI_2024_SAO_PAULO_ADD_ON_RAID = 5721;
+	BADGE_SAFARI_2024_HONG_KONG_TEST = 5722;
+	BADGE_SAFARI_2024_HONG_KONG_DAY_01 = 5723;
+	BADGE_SAFARI_2024_HONG_KONG_DAY_02 = 5724;
+	BADGE_SAFARI_2024_HONG_KONG_ADD_ON_HATCH_TEST = 5725;
+	BADGE_SAFARI_2024_HONG_KONG_ADD_ON_HATCH = 5726;
+	BADGE_SAFARI_2024_HONG_KONG_ADD_ON_RAID_TEST = 5727;
+	BADGE_SAFARI_2024_HONG_KONG_ADD_ON_RAID = 5728;
 }
 
 enum HoloIapItemCategory {
@@ -11478,6 +11505,7 @@ message IrisSocialSettingsProto {
 	int64 irisSocialPoiDeactivationCooldownMs = 25;
 	bool combinedShadowsEnabled = 26;
 	bool useContinuousLocalization = 27;
+	double minVpsScore = 48;
 }
 
 message AdditiveSceneSettingsProto {
