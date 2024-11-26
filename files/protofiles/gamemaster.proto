@@ -10215,11 +10215,23 @@ message FormChangeSettingsProto {
 	bool pjalicafdng = 1;
 }
 
+message SillouetteObfuscationGroup {
+	int32 groupNumber = 1;
+	PokemonDisplayProto.Form overrideDisplayForm = 2;
+}
+
+message FormPokedexSizeProto {
+	bool isAlias = 1;
+	PokemonDisplayProto.Form aliasForm = 2;
+}
+
 message FormProto {
 	PokemonDisplayProto.Form form = 1;
 	int32 assetBundleValue = 2;
 	string assetBundleSuffix = 3;
 	bool isCostume = 4;
+	FormPokedexSizeProto sizeData = 5;
+	SillouetteObfuscationGroup sillouetteObfuscationGroup = 6;
 }
 
 message FormSettingsProto {
@@ -11906,7 +11918,7 @@ message GameMasterClientTemplateProto {
 	EquippedBadgeSettingsProto equipped_badges = 19;
 	QuestSettingsProto quest_settings = 20;
 	AvatarCustomizationProto avatar_customization = 21;
-	FormSettingsProto form_settings = 22;
+	FormSettingsProto formSettings = 22;
 	ClientGenderSettingsProto genderSettings = 23;
 	GymBadgeGmtSettingsProto gym_badge_settings = 24;
 	WeatherAffinityProto weather_affinities = 25;
