@@ -10986,6 +10986,8 @@ message LocationCardSettingsProto {
 		LC_2024_MLB_030 = 58;
 		LC_2024_FUKUOKA_GOWA_001 = 59;
 		LC_SPECIALBACKGROUND_2024_GLOBAL_GOWA_001 = 60;
+		LC_2024_HONGKONG_CITYSAFARI_001 = 61;
+		LC_2024_SAOPAULO_CITYSAFARI_001 = 62;
 	}
 
 	enum CardType {
@@ -11001,6 +11003,17 @@ message LocationCardSettingsProto {
 }
 
 message ConversationSettingsProto {
+	message Types {
+		message PokemonFormAppraisalOverrides {
+			HoloPokemonId id = 1;
+			PokemonDisplayProto.Form form = 2;
+			string appraisalKey = 3;
+			bool addToStart = 4;
+		}
+	}
+
+	string appraisalConvOverrideConfig = 1;
+	repeated ConversationSettingsProto.Types.PokemonFormAppraisalOverrides pokemonFormAppraisalOverrides = 2;
 }
 
 message CatchRadiusMultiplierSettingsProto {
