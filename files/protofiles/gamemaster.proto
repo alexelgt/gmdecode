@@ -11855,6 +11855,19 @@ message AvatarItemDisplayProto {
 	string displayStringId = 2;
 }
 
+message CodeGateProto {
+	message Types {
+		message SubCodeGateProto {
+			string name = 1;
+			bool isEnabled = 2;
+		}
+	}
+
+	bool isEnabled = 1;
+	int32 blockedRolloutPercentage = 2;
+	CodeGateProto.Types.SubCodeGateProto subCodeGateList = 3;
+}
+
 message JoinRaidViaFriendListSettingsProto {
 	bool enabled = 1;
 	int32 minPlayerLevel = 2;
@@ -12119,6 +12132,7 @@ message GameMasterClientTemplateProto {
 	SourdoughMoveMappingSettingsProto sourdoughMoveMappingSettings = 239;
 	PokemonInfoPanelSettingsProto pokemonInfoPanelSettings = 242;
 	AvatarItemDisplayProto avatarItemDisplay = 245;
+	CodeGateProto codeGateProto = 247;
 	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 }
