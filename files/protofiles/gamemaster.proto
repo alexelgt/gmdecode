@@ -11759,6 +11759,11 @@ message StationedPokemonTableSettingsProto {
 	repeated TierBoosts tierBoosts = 2;
 }
 
+message AccessibilitySettingsProto {
+	bool enabled = 1;
+	bool pluginEnabled = 2;
+}
+
 message BreadLobbyCounterSettingsProto {
 	float showCounterRadiusMeters = 1;
 	int32 subscribeS2Level = 2;
@@ -12126,6 +12131,7 @@ message GameMasterClientTemplateProto {
 	ItemExpirationSettingsProto itemExpirationSettings = 231;
 	BreadMoveMappingsProto breadMoveMappings = 232;
 	StationedPokemonTableSettingsProto stationedPokemonTableSettings = 234;
+	AccessibilitySettingsProto accessibilitySettings = 235;
 	BreadLobbyCounterSettingsProto breadLobbyCounterSettings = 236;
 	BreadPokemonScalingSettingsProto breadPokemonScalingSettings = 237;
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
