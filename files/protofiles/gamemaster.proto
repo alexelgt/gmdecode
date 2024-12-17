@@ -19813,6 +19813,7 @@ message PokemonFamilySettingsProto {
 	HoloPokemonFamilyId familyId = 1;
 	int32 candyPerXlCandy = 2;
 	HoloPokemonId megaEvolvablePokemonId = 3;
+	repeated HoloPokemonId megaEvolvablePokemonIds = 4;
 }
 
 message PokemonFortProto {
@@ -20062,6 +20063,12 @@ message IbfcTransitionSettings {
 	HoloPokemonMove replacementMove = 5;
 }
 
+message BuddyWalkedMegaEnergyProto {
+	HoloPokemonId megaPokemonId = 1;
+	int32 megaEnergyAwardAmount = 2;
+	PokemonDisplayProto.Gender genderRequirement = 3;
+}
+
 message PokemonSettingsProto {
 	enum BuddySize {
 		BUDDY_MEDIUM = 0;
@@ -20146,6 +20153,7 @@ message PokemonSettingsProto {
 	repeated HoloPokemonMove eliteCinematicMove = 50;
 	repeated TempEvoOverrideProto temp_evo_overrides = 51;
 	int32 buddyWalkedMegaEnergyAward = 52;
+	repeated BuddyWalkedMegaEnergyProto buddyWalkedMegaEnergyAwards = 53;
 	bool disableTransferToPokemonHome = 61;
 	float raidBossDistanceOffset = 62;
 	repeated FormChangeProto formChange = 63;
