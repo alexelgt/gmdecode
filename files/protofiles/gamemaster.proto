@@ -10988,6 +10988,8 @@ message LocationCardSettingsProto {
 		LC_SPECIALBACKGROUND_2024_GLOBAL_GOWA_001 = 60;
 		LC_2024_HONGKONG_CITYSAFARI_001 = 61;
 		LC_2024_SAOPAULO_CITYSAFARI_001 = 62;
+		LC_SPECIALBACKGROUND_2025_SEASON17 = 69;
+		LC_SPECIALBACKGROUND_2024_DECEMBERCDRECAP = 70;
 	}
 
 	enum CardType {
@@ -11502,6 +11504,17 @@ message SharedFusionSettingsProto {
 	bool fusionEnabled = 1;
 }
 
+enum IrisFtueVersion {
+	CLASSIC = 0;
+	MVP_AUG_30 = 1;
+}
+
+enum ExpressionUpdateBroadcastMethod {
+	BROADCAST_METHOD_UNSET = 0;
+	BROADCAST_TO_ALL_POKEMON = 1;
+	BROADCAST_TO_SPECIFIED_POKEMON = 2;
+}
+
 message IrisSocialSettingsProto {
 	int32 maxNumPokemonPerPlayer = 1;
 	int32 maxNumPokemonPerScene = 2;
@@ -11530,7 +11543,28 @@ message IrisSocialSettingsProto {
 	int64 irisSocialPoiDeactivationCooldownMs = 25;
 	bool combinedShadowsEnabled = 26;
 	bool useContinuousLocalization = 27;
+	IrisFtueVersion ftueVersion = 28;
+	ExpressionUpdateBroadcastMethod expressionUpdateBroadcastMethod = 29;
+	bool showProductionWayspots = 30;
+	bool disableVpsIngestion = 31;
+	bool localizationGuidancePathEnabled = 32;
+	bool groundFocusGuardrailEnabled = 33;
+	float groundFocusGuardrailEnterAngle = 34;
+	float groundFocusGuardrailExitAngle = 35;
+	float groundFocusGuardrailDurationSeconds = 36;
+	int64 localizationTimeoutDurationMs = 37;
+	int64 limitedLocalizationTimeoutDurationMs = 38;
+	int64 localizationMaxAttempts = 39;
+	bool limitedLocalizationBoundaryOffsetEnabled = 40;
+	float pokeballPingTimeDelayMs = 41;
+	float addPokemonModalDelayMs = 42;
+	float guidancePathNearbyFinishDelayMs = 43;
+	float guidancePathNearbyFinishDistanceMeters = 44;
+	float guidanceInCarThreshold = 45;
+	uint32 locationManagerJpegCompressionQuality = 46;
+	bool removeAllVpsPgoBans = 47;
 	double minVpsScore = 48;
+	bool gameplayReportsActive = 49;
 }
 
 message AdditiveSceneSettingsProto {
