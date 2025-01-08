@@ -3517,6 +3517,8 @@ enum HoloPokemonMove {
 	SPARKLING_ARIA = 463;
 	RAGE_FIST = 464;
 	FLOWER_TRICK = 465;
+	FREEZE_SHOCK = 466;
+	ICE_BURN = 467;
 }
 
 enum HoloPokemonMovementType {
