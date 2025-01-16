@@ -6115,7 +6115,7 @@ message BadgeSettingsProto {
 	repeated int32 targets = 3;
 	repeated BadgeCaptureReward captureReward = 4;
 	bool eventBadge = 5;
-	EventBadgeSettingsProto event_badge_settings = 6;
+	EventBadgeSettingsProto eventBadgeSettings = 6;
 	string moldhmcjdbo = 7;
 	bool ecbakgdfldk = 8;
 }
@@ -9745,10 +9745,11 @@ message EquippedBadgeSettingsProto {
 }
 
 message EventBadgeSettingsProto {
-	int64 cabjajofplf = 1;
-	int64 hmcnfbponab = 2;
-	repeated HoloBadgeType hmoipnlemmi = 3;
-	bool ggfhdnnnjif = 4;
+	int64 validFromMs = 1;
+	int64 validToMs = 2;
+	repeated HoloBadgeType mutuallyExclusiveBadges = 3;
+	bool automaticallyAwardBadge = 4;
+	int32 obEventBadgeSettingsNumber6 = 6;
 }
 
 message EventInfoProto {
@@ -10561,6 +10562,7 @@ message FriendshipLevelMilestoneSettingsProto {
 	int32 raidBallBonus = 4;
 	repeated PokemonTradingType unlockedTrading = 5;
 	float tradingDiscount = 6;
+	int32 obFriendshipLevelMilestoneSettingsNumber7 = 7;
 }
 
 message GAFGIKCOEKH {
@@ -12036,7 +12038,7 @@ message GameMasterClientTemplateProto {
 	MoveSettingsProto moveSettings = 4;
 	MoveSequenceSettingsProto move_sequence_settings = 5;
 	TypeEffectiveSettingsProto type_effective = 8;
-	BadgeSettingsProto badge_settings = 10;
+	BadgeSettingsProto badgeSettings = 10;
 	CameraSettingsProto camera = 11;
 	PlayerLevelSettingsProto player_level = 12;
 	GymLevelSettingsProto gym_level = 13;
@@ -12057,7 +12059,7 @@ message GameMasterClientTemplateProto {
 	IapItemCategoryDisplayProto iapCategoryDisplay = 28;
 	BelugaPokemonWhitelist beluga_pokemon_whitelist = 29;
 	OnboardingSettingsProto onboarding_settings = 30;
-	FriendshipLevelMilestoneSettingsProto friendship_milestone_settings = 31;
+	FriendshipLevelMilestoneSettingsProto friendshipMilestoneSettings = 31;
 	LuckyPokemonSettingsProto lucky_pokemon_settings = 32;
 	CombatSettingsProto combatSettings = 33;
 	CombatLeagueSettingsProto combat_league_settings = 34;
@@ -14976,8 +14978,12 @@ message ItemRewardProto {
 	int32 amount = 2;
 }
 
+message EventPassPointAttributesProto {
+	string eventPassId = 1;
+}
+
 message ItemSettingsProto {
-	message ReplensihMp {
+	message ReplenishMpAttributesProto {
 		int32 mpAmount = 1;
 	}
 
@@ -15003,7 +15009,8 @@ message ItemSettingsProto {
 	int32 itemCap = 22;
 	string nameOverride = 24;
 	string descriptionOverride = 26;
-	ReplensihMp replensihMp = 29;
+	ReplenishMpAttributesProto replenishMp = 29;
+	EventPassPointAttributesProto eventPassPoint = 31;
 }
 
 message ItemTelemetry {
