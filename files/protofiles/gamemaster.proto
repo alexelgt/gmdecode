@@ -11956,6 +11956,14 @@ message PokemonInfoPanelSettingsProto{
 	bool bottomOriginSectionV2Enabled = 2;
 } 
 
+message StampCollectionSettingsProto {
+	int32 version = 1;
+	repeated string defaultColorPool = 2;
+	int32 giftingMinFriendshipLevel = 3;
+	bool showStampPreview = 4;
+	int32 minPlayerLevel = 5;
+}
+
 message AvatarItemDisplayProto {
 	string iconAddress = 1;
 	string displayStringId = 2;
@@ -12238,6 +12246,7 @@ message GameMasterClientTemplateProto {
 	PokeballThrowPropertySettingsProto pokeballThrowPropertySettings = 238;
 	SourdoughMoveMappingSettingsProto sourdoughMoveMappingSettings = 239;
 	PokemonInfoPanelSettingsProto pokemonInfoPanelSettings = 242;
+	StampCollectionSettingsProto stampCollectionSettings = 243;
 	AvatarItemDisplayProto avatarItemDisplay = 245;
 	CodeGateProto codeGateProto = 247;
 	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
