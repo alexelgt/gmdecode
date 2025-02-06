@@ -295,7 +295,7 @@ enum CombatPlayerFinishState {
 	COMBAT_PLAYER_FINISH_STATE_DRAW = 2;
 }
 
-enum CombatExperimentProto {
+enum CombatExperiment {
 	BASELINE = 0;
 	FAST_MOVE_ALWAYS_LEAK = 1;
 	MINIGAME_FAST_MOVE_CLEAR = 2;
@@ -7683,7 +7683,7 @@ message CombatLeagueProto {
 	LeagueType leagueType = 11;
 	string goieepknooc = 12;
 	bool allowTempEvos = 13;
-	repeated CombatExperimentProto combatExperiment = 14;
+	repeated CombatExperiment combatExperiment = 14;
 }
 
 message CombatLeagueSettingsProto {
@@ -7985,7 +7985,7 @@ message CombatSettingsProto {
 	float shadowPokemonAttackBonusMultiplier = 30;
 	float shadowPokemonDefenseBonusMultiplier = 31;
 	float purifiedPokemonAttackMultiplierVsShadow = 32;
-	repeated CombatExperimentProto combatExperiment = 35;
+	repeated CombatExperiment combatExperiment = 35;
 	bool showQuickSwapButtonsDuringCountdown = 36;
 	bool obCombatSettingsNotPushedBool2 = 37;
 	ClockSyncSettings clockSyncSettings = 38;
@@ -11466,24 +11466,32 @@ message NonCombatMoveSettingsProto {
 		int32 stardustCost = 2;
 	}
 
-	message BonusEffect {
-		message TimeBonus {
+	message BonusEffectSettingsProto {
+		message TimeBonusSettingsProto {
 			repeated Item affectedItems = 1;
 		}
 
-		message SpaceBonus {
+		message SpaceBonusSettingsProto {
 			double pokemonVisibleRangeMeters = 1;
 			double encounterRangeMeters = 2;
 			double serverAllowableEncounterRangeMeters = 3;
 		}
 
-		message DayNightBonus {
+		message DayNightBonusSettingsProto {
 			Item incenseItem = 1;
 		}
 
-		TimeBonus timeBonus = 1;
-		SpaceBonus spaceBonus = 2;
-		DayNightBonus dayNightBonus = 3;
+		message SlowFreezePlayerBonusSettingsProto {
+			float catchCircleTimeScaleOverride = 1;
+			float catchRateIncreaseMultiplier = 2;
+			float catchCircleSpeedChangeThreshold = 3;
+			float catchCircleOuterTimeScaleOverride = 4;
+		}
+
+		TimeBonusSettingsProto timeBonus = 1;
+		SpaceBonusSettingsProto spaceBonus = 2;
+		DayNightBonusSettingsProto dayNightBonus = 3;
+		SlowFreezePlayerBonusSettingsProto slowFreezeBonus = 4;
 	}
 
 	enum BonusType {
@@ -11496,7 +11504,7 @@ message NonCombatMoveSettingsProto {
 
 	HoloPokemonMove uniqueId = 1;
 	Cost cost = 2;
-	BonusEffect bonusEffect = 3;
+	BonusEffectSettingsProto bonusEffect = 3;
 	int64 durationMs = 4;
 	BonusType bonusType = 5;
 	bool enableMultiUse = 6;
@@ -14991,6 +14999,14 @@ message EventPassPointAttributesProto {
 	string eventPassId = 1;
 }
 
+message TimePeriodCounterSettingsProto {
+	int32 limit = 1;
+}
+
+message ItemTimePeriodCountersSettingsProto {
+	TimePeriodCounterSettingsProto playerActivity = 1;
+}
+
 message ItemSettingsProto {
 	message ReplenishMpAttributesProto {
 		int32 mpAmount = 1;
@@ -15020,6 +15036,7 @@ message ItemSettingsProto {
 	string descriptionOverride = 26;
 	ReplenishMpAttributesProto replenishMp = 29;
 	EventPassPointAttributesProto eventPassPoint = 31;
+	ItemTimePeriodCountersSettingsProto timePeriodCounters = 32;
 }
 
 message ItemTelemetry {
@@ -17651,7 +17668,7 @@ message OpenCombatSessionOutProto {
 	Result result = 1;
 	CombatProto gojmdloblde = 2;
 	bool alhidolenbb = 3;
-	repeated CombatExperimentProto combat_refactor_toggle = 4;
+	repeated CombatExperiment combat_refactor_toggle = 4;
 	string khokkhgibne = 5;
 }
 
