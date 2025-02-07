@@ -11977,6 +11977,17 @@ message AvatarItemDisplayProto {
 	string displayStringId = 2;
 }
 
+message PokedexV2FeatureFlagProto {
+	bool isFeatureEnabled = 1;
+	int32 navigationFlag = 2;
+	int32 detailV1Flag = 3;
+	int32 detailEvoFlag = 4;
+	int32 detailBattleFlag = 5;
+	int32 celebV1Flag = 6;
+	int32 celebV2Flag = 7;
+	int32 notificationFlag = 8;
+}
+
 message CodeGateProto {
 	message Types {
 		message SubCodeGateProto {
@@ -12153,7 +12164,7 @@ message GameMasterClientTemplateProto {
 	GM1SettingsProto ob_gm_1_settings = 110;
 	GM2SettingsProto ob_gm_2_settings = 111;
 	AppraisalStarThresholdSettings appraisal_star_threshold_settings = 112;
-	PokedexCategoriesSettings pokedex_categories_settings = 114;
+	PokedexCategoriesSettingsProto pokedexCategoriesSettings = 114;
 	BattleVisualSettings battleVisualSettings = 115;
 	AddressablePokemonSettings addressable_pokemon_settings = 116;
 	VerboseLogRaidSettingsProto verboseLogRaidSettings = 117;
@@ -12256,6 +12267,7 @@ message GameMasterClientTemplateProto {
 	PokemonInfoPanelSettingsProto pokemonInfoPanelSettings = 242;
 	StampCollectionSettingsProto stampCollectionSettings = 243;
 	AvatarItemDisplayProto avatarItemDisplay = 245;
+	PokedexV2FeatureFlagProto pokedexv2FeatureFlags = 246;
 	CodeGateProto codeGateProto = 247;
 	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
@@ -18547,7 +18559,7 @@ message PokecoinPurchaseDisplaySettingsProto {
 	bool jjpceeedfbm = 4;
 }
 
-message PokedexCategoriesSettings {
+message PokedexCategoriesSettingsProto {
 	message PokedexCategorySettingsInOrder {
 		PokedexCategory pokedexCategory = 1;
 		int32 milestoneGoal = 2;
@@ -18558,6 +18570,8 @@ message PokedexCategoriesSettings {
 	repeated PokedexCategorySettingsInOrder pokedexCategorySettingsInOrder = 2;
 	bool clientShinyFormCheck = 3;
 	bool searchEnabled = 4;
+	bool showDexAfterNewFormEnabled = 5;
+	bool showShinyDexCelebrationEnabled = 6;
 }
 
 message PokedexCategoryMilestoneProto {
