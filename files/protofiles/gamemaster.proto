@@ -12014,6 +12014,54 @@ message BreadLobbyUpdateSettingsProto {
 	int64 serverPublishRateLimitIntervalMs = 3;
 }
 
+message BattleEventProto {
+	message Type {
+		enum EventType {
+			UNSET_EVENT_TYPE = 0;
+			START_BATTLE = 1;
+			BATTLE_JOIN = 2;
+			BATTLE_QUIT = 3;
+			ATTACK = 4;
+			DODGE = 5;
+			SHIELD = 6;
+			SWAP_POKEMON = 7;
+			ITEM = 8;
+			ACTOR_ABILITY = 9;
+			STAT_CHANGE = 10;
+			ATTACK_TELEGRAPH = 11;
+			MINIGAME = 12;
+			TRANSFORM = 15;
+			ABILITY_TRIGGER = 16;
+			ACTOR_MOVE = 17;
+			BATTLE_END = 18;
+			COUNTDOWN = 19;
+			DODGE_SUCCESS = 21;
+			FLINCH = 22;
+			BREAD_MODE = 23;
+			BREAD_MOVE = 24;
+			SIDELINE_ACTION = 25;
+			ADD_FIELD_ACTOR = 26;
+			REMOVE_FIELD_ACTOR = 27;
+			ENRAGE = 28;
+			ENRAGE_TELEGRAPH = 29;
+			MODIFY_ACTOR_AURA = 30;
+			CINEMATIC = 31;
+			CONSENSUS = 32;
+			BREAD_MODE_REVERT = 33;
+			ATTACK_BOOST = 34;
+		}
+	}
+}
+
+message BattleInputBufferPriorityList {
+	repeated BattleEventProto.Type.EventType eventPriority = 1;
+}
+
+message BattleInputBufferSettingsProto {
+	BattleInputBufferPriorityList raidsInputBufferPriorityList = 1;
+	BattleInputBufferPriorityList breadInputBufferPriorityList = 2;
+}
+
 message ItemInventoryUpdateSettingsProto {
 	message CategoryProto {
 		repeated HoloItemCategory category = 1;
@@ -12271,6 +12319,7 @@ message GameMasterClientTemplateProto {
 	CodeGateProto codeGateProto = 247;
 	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
+	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
 }
 
 message GameMasterLocalProto {
