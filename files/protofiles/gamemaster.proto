@@ -13522,6 +13522,7 @@ message GlobalEventTicketAttributesProto {
 	Item giftItem = 14;
 	string cnnkfighcfj = 15;
 	string eventBannerUrl = 16;
+	repeated string conflictStoryQuestIds = 19;
 	bool displayV2Enabled = 20;
 	string backgroundImageUrl = 21;
 	string titleImageUrl = 22;
@@ -14948,6 +14949,7 @@ message InventorySettingsProto {
 	repeated ObInventorySettingsMessage1 bagUpgradeTimerStages = 20;
 	repeated BagUpgradeBannerContexts bagUpgradeBannerContexts = 21;
 	bool easyIncubatorBuyEnabled = 22;
+	bool luckyFriendApplicatorSettingsToggleEnabled = 23;
 }
 
 message InventoryUpgradeAttributesProto {
