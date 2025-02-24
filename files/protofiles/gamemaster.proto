@@ -11977,6 +11977,11 @@ message AvatarItemDisplayProto {
 	string displayStringId = 2;
 }
 
+message AvatarStoreLinkProto {
+	string articleId = 1;
+	string groupName = 2;
+}
+
 message PokedexV2FeatureFlagProto {
 	bool isFeatureEnabled = 1;
 	int32 navigationFlag = 2;
@@ -14881,7 +14886,7 @@ message IncidentPrioritySettingsProto {
 }
 
 message IncidentRewardProto {
-	string behbebjmmlf = 1;
+	string invasionSpawnGroupTemplateId = 1;
 }
 
 message IncidentTicketAttributesProto {
@@ -18830,13 +18835,13 @@ message PokemonCameraAttributesProto {
 }
 
 message PokemonCandyRewardProto {
-	HoloPokemonId ghegmkffbcn = 1;
-	int32 lndgdlpphjj = 2;
+	HoloPokemonId pokemonId = 1;
+	int32 amount = 2;
 }
 
 message PokemonCombatStatsProto {
-	int32 fehnhioanjj = 1;
-	int32 hpceebhjhko = 2;
+	int32 numWon = 1;
+	int32 numTotal = 2;
 }
 
 message PokemonCompareChallenge {
@@ -21473,6 +21478,16 @@ message NeutralAvatarLootItemTemplateProto {
 	string displayTemplateId = 2;
 }
 
+message NeutralAvatarLootItemDisplayProto {
+	AvatarItemDisplayProto display = 1;
+	AvatarStoreLinkProto link = 2;
+}
+
+message PokemonEggRewardProto {
+	// EggSlotType eggSlotType = 1;
+	// double hatchDistKm = 2;
+}
+
 message QuestRewardProto {
 	enum Type {
 		UNSET = 0;
@@ -21497,17 +21512,21 @@ message QuestRewardProto {
 		ItemRewardProto item = 3;
 		int32 stardust = 4;
 		PokemonCandyRewardProto candy = 5;
-		string avatar_template_id = 6;
-		string quest_template_id = 7;
-		PokemonEncounterRewardProto pokemon_encounter = 8;
+		string avatarTemplateId = 6;
+		string questTemplateId = 7;
+		PokemonEncounterRewardProto pokemonEncounter = 8;
 		int32 pokecoin = 9;
-		PokemonCandyRewardProto xl_candy = 10;
-		int32 level_cap = 11;
+		PokemonCandyRewardProto xlCandy = 10;
+		int32 levelCap = 11;
 		StickerRewardProto sticker = 12;
-		PokemonCandyRewardProto mega_resource = 13;
+		PokemonCandyRewardProto megaResource = 13;
 		IncidentRewardProto incident = 14;
-		PlayerAttributeRewardProto player_attribute = 15;
-		NeutralAvatarLootItemTemplateProto neutralAvatarItemTemplate = 18; // NOTE: might be incorrect
+		PlayerAttributeRewardProto playerAttribute = 15;
+		HoloBadgeType eventBadgeId = 16;
+		string neutralAvatarTemplateId = 17;
+		NeutralAvatarLootItemTemplateProto neutralAvatarItemTemplate = 18;
+		NeutralAvatarLootItemDisplayProto neutralAvatarItemDisplay = 19;
+		PokemonEggRewardProto PokemonEgg = 20;
 	}
 
 	Type type = 1;
@@ -23269,8 +23288,8 @@ message StickerProto {
 }
 
 message StickerRewardProto {
-	string klgphmefdhj = 1;
-	int32 lndgdlpphjj = 2;
+	string stickerId = 1;
+	int32 amount = 2;
 }
 
 message StickerSentProto {

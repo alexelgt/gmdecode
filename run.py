@@ -187,6 +187,10 @@ blocks_meta_info = [
 # .*".*(MOVE|VN_BM)_(.*)".*\n\tpublic const.* = (\d{1,});
 #   $1_$2 = $3;
 
+# RewardOneofCase
+# .*RewardOneofCase (.*) = (\d{1,});
+#   $1 = $2;
+
 
 def read_txt_file(path_to_file):
     try:
