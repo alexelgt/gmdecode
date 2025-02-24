@@ -12008,6 +12008,141 @@ message JoinRaidViaFriendListSettingsProto {
 	int64 friendActivitiesBackgroundUpdatePeriodMs = 4;
 }
 
+message BonusBoxProto {
+	message Types {
+		enum IconType {
+			UNSET = 0;
+			ADVENTURE_SYNC = 1;
+			BUDDY = 2;
+			CANDY_GENERAL = 3;
+			EGG = 4;
+			EGG_INCUBATOR = 5;
+			EVENT_MOVE = 6;
+			EVOLUTION = 7;
+			FIELD_RESEARCH = 8;
+			FRIENDSHIP = 9;
+			GIFT = 10;
+			INCENSE = 11;
+			LUCKY_EGG = 12;
+			LURE_MODULE = 13;
+			PHOTOBOMB = 14;
+			POKESTOP = 15;
+			RAID = 16;
+			RAID_PASS = 17;
+			SPAWN_UNKNOWN = 18;
+			STAR_PIECE = 19;
+			STARDUST = 20;
+			TEAM_ROCKET = 21;
+			TRADE = 22;
+			TRANSFER_CANDY = 23;
+			BATTLE = 24;
+			XP = 25;
+			SHOP = 26;
+			LOCATION = 27;
+			EVENT = 28;
+			MYSTERY_BOX = 29;
+			TRADE_BALL = 30;
+			CANDY_XL = 31;
+			HEART = 32;
+			TIMER = 33;
+			POSTCARD = 34;
+			STICKER = 35;
+			ADVENTURE_EFFECT = 36;
+			BREAD = 37;
+			MAX_PARTICLE = 38;
+			LEGENDARY = 39;
+			POWER_UP_POKEMON = 40;
+		}
+		
+		enum AdditionalDisplay{
+			NONE = 0;
+			PARTY_PLAY = 1;
+			EVENT_PASS = 2;
+		}
+	}
+
+	string text = 1;
+	BonusBoxProto.Types.IconType iconType = 2;
+	BonusBoxProto.Types.AdditionalDisplay additionalDisplay = 3;
+	int32 quantity = 4;
+}
+
+message EventPassDisplaySettingsProto {
+	message Types {
+		message EventPassTrackUpgradeDescriptionProto {
+			string passTrackUpgradeHeaderDescription = 1;
+			EventPassSettingsProto.Types.EventPassTrack eventPassTrackToUpgradeTo = 2;
+			string trackUnlockSkuId = 3;
+			string trackUnlockPlusPointsSkuId = 4;
+			string eventDurationKey = 5;
+			string upgradeDescriptionKey = 6;
+			repeated int32 ranksToHighlightRewards = 7;
+			string detailsLinkKey = 8;
+			HoloPokemonId passTrackUpgradeHeaderPokedexId = 9;
+			PokemonDisplayProto passTrackUpgradeHeaderPokemonDisplay = 10;
+			string trackUnlockImageUrl = 11;
+			string trackUnlockPlusPointsImageUrl = 12;
+		}
+
+		enum TodayViewSectionDisplay {
+			EVENT_PASS_SECTION = 0;
+			SEASONAL_EVENT_PASS_SECTION = 1;
+		}
+	}
+
+	string bonusDisplayTitle = 1;
+	string bonusDisplayBody = 2;
+	repeated BonusBoxProto bonusBoxes = 3;
+	repeated EventPassDisplaySettingsProto.Types.EventPassTrackUpgradeDescriptionProto eventPassTrackUpgradeDescriptions = 4;
+	string eventPassTitleKey = 5;
+	string headerIconUrl = 6;
+	string premiumRewardBannerTop = 7;
+	string premiumRewardBannerMiddle = 8;
+	string premiumRewardBannerBottom = 9;
+	string premiumRewardBannerImageUrl = 10;
+	string premiumRewardsDescription = 11;
+	EventPassDisplaySettingsProto.Types.TodayViewSectionDisplay todayViewSection = 12;
+}
+
+message EventPassSettingsProto {
+	message Types {
+		enum EventPassTrack {
+			EVENT_PASS_TRACK_UNSET = 0;
+			FREE = 1;
+			PREMIUM = 2;
+		}
+
+		message EventPassTrackConditionProto {
+			EventPassSettingsProto.Types.EventPassTrack track = 1;
+			HoloBadgeType badge = 2;
+			bool isLocked = 3;
+			string trackTitleKey = 4;
+		}
+	}
+
+	string prefix = 1;
+	Item pointsItemId = 2;
+	repeated EventPassSettingsProto.Types.EventPassTrackConditionProto trackConditions = 3;
+	string expirationTime = 4;
+	int32 maxTierLevel = 5;
+	int32 additionalBonusTiersLevel = 6;
+	EventPassDisplaySettingsProto eventPassDisplaySettings = 7;
+	string gracePeriodEndTime = 8;
+}
+
+message EventPassTierBonusSettingsProto {
+	string eventName = 1;
+	repeated BonusBoxProto bonusBoxes = 2;
+}
+
+message EventPassTierSettingsProto {
+	int32 rank = 1;
+	EventPassSettingsProto.Types.EventPassTrack track = 2;
+	int32 minPointsRequired = 3;
+	repeated QuestRewardProto rewards = 4;
+	EventPassTierBonusSettingsProto bonusSettings = 5;
+}
+
 message BreadLobbyUpdateSettingsProto {
 	string subscriptionNamespace = 1;
 	int64 joinPublishCutoffTimeMs = 2;
@@ -12318,6 +12453,8 @@ message GameMasterClientTemplateProto {
 	PokedexV2FeatureFlagProto pokedexv2FeatureFlags = 246;
 	CodeGateProto codeGateProto = 247;
 	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
+	EventPassSettingsProto eventPassSettings = 250;
+	EventPassTierSettingsProto eventPassTierSettings = 251;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
 }
@@ -18245,9 +18382,10 @@ message PlatypusRolloutSettingsProto {
 }
 
 message PlayerAttributeRewardProto {
-	string lkemmeaanlf = 1;
-	string lkicloglhih = 2;
-	bool dkjpphhlimp = 3;
+	string key = 1;
+	string value = 2;
+	bool overwriteExistingAttribute = 3;
+	int32 durationMins = 4;
 }
 
 message PlayerAttributesProto {
@@ -19957,6 +20095,11 @@ message PokemonDisplayProto {
 	Costume kihblbclamc = 12;
 	int64 mimamnoaeoc = 13;
 	PokemonMegaEvolutionLevelProto mega_evolution_level = 14;
+	LocationCardDisplayProto locationCard = 15;
+}
+
+message LocationCardDisplayProto {
+	LocationCardSettingsProto.LocationCard locationCard = 1;
 }
 
 message PokemonEncounterAttributesProto {
@@ -19984,6 +20127,31 @@ message PokemonEncounterAttributesProto {
 	float shadowDodgeProbability = 22;
 }
 
+enum HoloPokemonSize {
+	POKEMON_SIZE_UNSET = 0;
+	XXS = 1;
+	XS = 2;
+	M = 3;
+	XL = 4;
+	XXL = 5;
+}
+
+message PokemonStatsLimitsProto {
+	int32 minPokemonLevel = 1;
+	int32 maxPokemonLevel = 2;
+	int32 minAttack = 3;
+	int32 maxAttack = 4;
+	int32 minDefense = 5;
+	int32 maxDefense = 6;
+	int32 minHp = 7;
+	int32 maxHp = 8;
+}
+
+enum QuestEncounterType {
+	QUEST_ENCOUNTER_UNSET = 0;
+	ULTRA_BEAST = 1;
+}
+
 message PokemonEncounterRewardProto {
 	oneof Type {
 		HoloPokemonId pokemon_id = 1;
@@ -19991,9 +20159,17 @@ message PokemonEncounterRewardProto {
 	}
 
 	PokemonDisplayProto pokemonDisplay = 3;
-	bool ggacglmkmjh = 4;
-	PokemonDisplayProto cholbdicbii = 5;
-	Item nkchocbeefb = 6;
+	float shinyProbability = 9;
+	bool isFeaturedPokemon = 13;
+
+	// I do not know
+	// bool isHiddenDitto = 4;
+	// PokemonDisplayProto dittoDisplay = 5;
+	// Item pokeBallOverride = 6;
+	// HoloPokemonSize sizeOverride = 8;
+	// PokemonStatsLimitsProto statsLimitsOverride = 9;
+	// QuestEncounterType questEncounterType = 10;
+	// int32 isFeaturedPokemon = 11;
 }
 
 message PokemonEvolutionQuestProto {
