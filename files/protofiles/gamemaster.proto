@@ -3519,6 +3519,7 @@ enum HoloPokemonMove {
 	FLOWER_TRICK = 465;
 	FREEZE_SHOCK = 466;
 	ICE_BURN = 467;
+	TORCH_SONG = 468;
 }
 
 enum HoloPokemonMovementType {
@@ -11057,6 +11058,7 @@ message LocationCardSettingsProto {
 		LC_SPECIALBACKGROUND_2025_SEASON17 = 69;
 		LC_SPECIALBACKGROUND_2024_DECEMBERCDRECAP = 70;
 		LC_SPECIALBACKGROUND_2025_GLOBAL_ENIGMA_001 = 71;
+		LC_SPECIALBACKGROUND_2025_S18 = 76;
 	}
 
 	enum CardType {
@@ -11388,8 +11390,10 @@ message BootSettingsProto {
 	bool asyncAddressableDependencyEnabled = 8;
 }
 
-message OptimizationsProtoProto {
+message OptimizationsProto {
 	bool optimizationPhysicsToggleEnabled = 1;
+	float adaptivePerformanceUpdateInterval = 3;
+	float adaptivePerformanceMinResolutionScale = 8;
 }
 
 message NearbyPokemonSettings {
@@ -11640,6 +11644,7 @@ message IrisSocialSettingsProto {
 	bool removeAllVpsPgoBans = 47;
 	double minVpsScore = 48;
 	bool gameplayReportsActive = 49;
+	bool enableSqcGuidance = 60;
 }
 
 message AdditiveSceneSettingsProto {
@@ -12415,7 +12420,7 @@ message GameMasterClientTemplateProto {
 	StyleShopSettingsProto styleShopSettings = 187;
 	PartyPlayGeneralSettingsProto partyPlayGeneralSettings = 188;
 	BootSettingsProto bootSettings = 189;
-	OptimizationsProtoProto optimizationsProto = 190;
+	OptimizationsProto optimizationsProto = 190;
 	NearbyPokemonSettings nearbyPokemonSettings = 191;
 	ExtendedPrimalSettingsProto extendedPrimalSettings = 193;
 	VistaGeneralSettingsProto vistaGeneralSettings = 198;
