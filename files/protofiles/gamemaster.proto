@@ -11311,6 +11311,7 @@ message NeutralAvatarSettingsProto {
 	SliderSettings bodySliderSettings = 20;
 	int32 neutralAvatarLegacyMappingVersion = 100;
 	bool obMoveSettingsNumber120 = 120;
+	bool obMoveSettingsNumber123 = 123;
 }
 
 message SquashSettingsProto {
@@ -12011,6 +12012,12 @@ message CodeGateProto {
 	CodeGateProto.Types.SubCodeGateProto subCodeGateList = 3;
 }
 
+message PokedexV2SettingsProto {
+	int32 maxTrackedPokemon = 1;
+	repeated HoloPokemonId pokemonAlertExcluded = 2;
+	repeated HoloPokemonId pokemonAlertAutoTracked = 3;
+}
+
 message JoinRaidViaFriendListSettingsProto {
 	bool enabled = 1;
 	int32 minPlayerLevel = 2;
@@ -12462,6 +12469,7 @@ message GameMasterClientTemplateProto {
 	AvatarItemDisplayProto avatarItemDisplay = 245;
 	PokedexV2FeatureFlagProto pokedexv2FeatureFlags = 246;
 	CodeGateProto codeGateProto = 247;
+	PokedexV2SettingsProto pokedexV2Settings = 248;
 	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
 	EventPassSettingsProto eventPassSettings = 250;
 	EventPassTierSettingsProto eventPassTierSettings = 251;
@@ -20089,6 +20097,7 @@ message PokemonDisplayProto {
 		PIKACHU_GOTOUR_2025_B = 2857;
 		PIKACHU_GOTOUR_2025_A_02 = 2858;
 		PIKACHU_GOTOUR_2025_B_02 = 2859;
+		PIKACHU_KURTA = 2863;
 	}
 
 	Costume costume = 1;
