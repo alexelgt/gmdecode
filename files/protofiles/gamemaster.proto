@@ -1435,6 +1435,34 @@ enum HoloBadgeType {
 	BADGE_GO_TOUR_2025_NEW_TAIPEI_CITY_VIP = 5762;
 	BADGE_GO_TOUR_2025_GLOBAL_BLACK_VERSION = 5763;
 	BADGE_GO_TOUR_2025_GLOBAL_WHITE_VERSION = 5764;
+	BADGE_SAFARI_2025_SANTIAGO_ADD_ON_RAID = 5788;
+	BADGE_SAFARI_2025_MUMBAI_DAY_01 = 5776;
+	BADGE_SAFARI_2025_SINGAPORE_ADD_ON_RAID = 5795;
+	BADGE_SAFARI_2025_MILAN_ADD_ON_HATCH_TEST = 5771;
+	BADGE_SAFARI_2025_MILAN_DAY_01 = 5769;
+	BADGE_SAFARI_2025_SANTIAGO_ADD_ON_RAID_TEST = 5787;
+	BADGE_SAFARI_2025_MILAN_TEST = 5768;
+	BADGE_SAFARI_2025_SINGAPORE_TEST = 5789;
+	BADGE_SAFARI_2025_SANTIAGO_TEST = 5782;
+	BADGE_SAFARI_2025_SANTIAGO_ADD_ON_HATCH = 5786;
+	BADGE_SAFARI_2025_MILAN_ADD_ON_HATCH = 5772;
+	BADGE_SAFARI_2025_SINGAPORE_ADD_ON_HATCH_TEST = 5792;
+	BADGE_SAFARI_2025_SINGAPORE_ADD_ON_RAID_TEST = 5794;
+	BADGE_SAFARI_2025_SINGAPORE_DAY_02 = 5791;
+	BADGE_SAFARI_2025_MUMBAI_TEST = 5775;
+	BADGE_SAFARI_2025_MILAN_DAY_02 = 5770;
+	BADGE_SAFARI_2025_MUMBAI_ADD_ON_RAID = 5781;
+	BADGE_SAFARI_2025_MUMBAI_DAY_02 = 5777;
+	BADGE_SAFARI_2025_SANTIAGO_DAY_01 = 5783;
+	BADGE_SAFARI_2025_SANTIAGO_DAY_02 = 5784;
+	BADGE_SAFARI_2025_SINGAPORE_ADD_ON_HATCH = 5793;
+	BADGE_SAFARI_2025_MUMBAI_ADD_ON_HATCH = 5779;
+	BADGE_SAFARI_2025_MUMBAI_ADD_ON_HATCH_TEST = 5778;
+	BADGE_SAFARI_2025_MILAN_ADD_ON_RAID_TEST = 5773;
+	BADGE_SAFARI_2025_MUMBAI_ADD_ON_RAID_TEST = 5780;
+	BADGE_SAFARI_2025_SINGAPORE_DAY_01 = 5790;
+	BADGE_SAFARI_2025_SANTIAGO_ADD_ON_HATCH_TEST = 5785;
+	BADGE_SAFARI_2025_MILAN_ADD_ON_RAID = 5774;
 }
 
 enum HoloIapItemCategory {
@@ -12160,6 +12188,29 @@ message EventPassTierSettingsProto {
 	EventPassTierBonusSettingsProto bonusSettings = 5;
 }
 
+message PlannedEventSettingsProto {
+	message Types {
+		enum MessagingSendTime {
+			UNSET = 0;
+			TIMESLOT_START = 1;
+			TIMESLOT_EARLY = 2;
+		}
+
+		message EventMessageTimingProto {
+			int32 messageSendBeforeEventSeconds = 1;
+			PlannedEventSettingsProto.Types.MessagingSendTime messageSendTime = 2;
+		}
+	}
+
+	repeated PlannedEventSettingsProto.Types.EventMessageTimingProto messageTiming = 13;
+}
+
+message PlannerSettingsProto {
+	bool enabled = 1;
+	repeated PlannedEventSettingsProto eventSettings = 2;
+
+}
+
 message BreadLobbyUpdateSettingsProto {
 	string subscriptionNamespace = 1;
 	int64 joinPublishCutoffTimeMs = 2;
@@ -12334,7 +12385,7 @@ message GameMasterClientTemplateProto {
 	MonodepthSettingsProto monodepth_settings = 78;
 	LevelUpRewardsSettingsProto level_up_reward_settings = 79;
 	RaidClientSettingsProto raidSettings = 81;
-	TappableSettingsProto tappable_settings = 82;
+	TappableSettingsProto tappableSettings = 82;
 	RoutePlaySettingsProto routePlaySettings = 83;
 	SponsoredGeofenceGiftSettingsProto sponsoredGeofenceGiftSettings = 84;
 	StickerMetadataProto stickerMetadata = 85;
@@ -12473,6 +12524,7 @@ message GameMasterClientTemplateProto {
 	JoinRaidViaFriendListSettingsProto joinRaidViaFriendListSettings = 249;
 	EventPassSettingsProto eventPassSettings = 250;
 	EventPassTierSettingsProto eventPassTierSettings = 251;
+	PlannerSettingsProto plannerSettings = 253;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
 }
@@ -23538,6 +23590,7 @@ message TappableSettingsProto {
 	float avgTappablesInView = 7;
 	bool removeWhenTapped = 8;
 	Type type = 10;
+	string tappableAssetKey = 11;
 }
 
 message TeamChangeInfoProto {
