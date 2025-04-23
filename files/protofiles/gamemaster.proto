@@ -3690,6 +3690,8 @@ enum Item {
 	ITEM_LUCKY_EGG = 301;
 	ITEM_MAX_BOOST = 302;
 	ITEM_LUCKY_FRIEND_APPLICATOR = 303;
+	ITEM_SINGLE_STAT_INCREASE = 304;
+	ITEM_TRIPLE_STAT_INCREASE = 305;
 	ITEM_INCENSE_ORDINARY = 401;
 	ITEM_INCENSE_SPICY = 402;
 	ITEM_INCENSE_COOL = 403;
@@ -3736,6 +3738,10 @@ enum Item {
 	ITEM_GEN4_EVOLUTION_STONE = 1106;
 	ITEM_GEN5_EVOLUTION_STONE = 1107;
 	ITEM_OTHER_EVOLUTION_STONE_A = 1150;
+	ITEM_OTHER_EVOLUTION_STONE_MAPLE_A = 1151;
+	ITEM_OTHER_EVOLUTION_STONE_MAPLE_B = 1152;
+	ITEM_RESOURCE_CROWNED_ZACIAN = 1153;
+	ITEM_RESOURCE_CROWNED_ZAMAZENTA = 1154;
 	ITEM_MOVE_REROLL_FAST_ATTACK = 1201;
 	ITEM_MOVE_REROLL_SPECIAL_ATTACK = 1202;
 	ITEM_MOVE_REROLL_ELITE_FAST_ATTACK = 1203;
@@ -3815,8 +3821,6 @@ enum Item {
 	ITEM_EVENT_PASS_POINT_LIVE_OPS_02 = 2102;
 	ITEM_EVENT_PASS_POINT_LIVE_OPS_03 = 2103;
 	ITEM_EVENT_PASS_POINT_LIVE_OPS_04 = 2104;
-	ITEM_RESOURCE_CROWNED_ZACIAN = 1153;
-	ITEM_RESOURCE_CROWNED_ZAMAZENTA = 1154;
 }
 
 enum ItemUseTelemetryIds {
@@ -11380,6 +11384,7 @@ message NeutralAvatarSettingsProto {
 	int32 neutralAvatarLegacyMappingVersion = 100;
 	bool obMoveSettingsNumber120 = 120;
 	bool obMoveSettingsNumber123 = 123;
+	bool obMoveSettingsNumber124 = 124;
 }
 
 message SquashSettingsProto {
@@ -11829,11 +11834,15 @@ message BreadBattleClientSettingsProto {
 }
 
 message BreadMoveLevelSettingsProto {
-	message Settings {
-		int32 mpCost = 1;
-		int32 candyCost = 2;
-		int32 xlCandyCost = 3;
-		int32 xpRewards = 5;
+	message Types {
+		message BreadMoveLevelProto {
+			int32 mpCost = 1;
+			int32 candyCost = 2;
+			int32 xlCandyCost = 3;
+			float multiplier = 4;
+			int32 xpRewards = 5;
+			int32 stardustCost = 6;
+		}
 	}
 
 	enum Group {
@@ -11845,9 +11854,9 @@ message BreadMoveLevelSettingsProto {
 	}
 
 	Group group = 1;
-	repeated Settings aSettings = 2;
-	repeated Settings bSettings = 3;
-	repeated Settings cSettings = 4;
+	repeated BreadMoveLevelSettingsProto.Types.BreadMoveLevelProto aSettings = 2;
+	repeated BreadMoveLevelSettingsProto.Types.BreadMoveLevelProto bSettings = 3;
+	repeated BreadMoveLevelSettingsProto.Types.BreadMoveLevelProto cSettings = 4;
 	repeated int32 xpReward = 5;
 }
 
@@ -12024,10 +12033,17 @@ message PokeballThrowPropertySettingsProto {
 	repeated ThrowProperties throwProperties = 1;
 }
 
+message OptionalMoveOverrideProto {
+	bool override = 1;
+	HoloPokemonMove move = 2;
+}
+
 message SourdoughMoveMappingProto {
 	HoloPokemonId pokemonId = 1;
 	PokemonDisplayProto.Form form = 2;
 	HoloPokemonMove move = 3;
+	OptionalMoveOverrideProto optionalBMoveOverride = 4;
+	OptionalMoveOverrideProto optionalCMoveOverride = 5;
 }
 
 message SourdoughMoveMappingSettingsProto {
