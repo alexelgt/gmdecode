@@ -10771,6 +10771,8 @@ message CampfireSettingsProto {
 	bool catchCardShareCampfireEnabled = 8;
 	bool arCatchCardShareCampfireEnabled = 9;
 	int64 meetupQueryTimerMs = 10;
+	bool campfireNotificationsEnabled = 11;
+	bool passwordlessLoginEnabled = 12;
 }
 
 message DailyAdventureIncenseSettingsProto {
@@ -10984,6 +10986,14 @@ message BreadOverrideExtendedProto {
 			float collisionHeightM = 2;
 			float collisionHeadRadiusM = 3;
 		}
+
+		message MaxPokemonVisualSettingsProto {
+			float scale = 1;
+			float cameraDistance = 2;
+			float maxReticleSize = 3;
+			float xOffset = 4;
+			float yOffset = 5;
+		}
 	}
 
 	BreadSharedSettingsProto.BreadMode breadMode = 1;
@@ -10994,6 +11004,10 @@ message BreadOverrideExtendedProto {
 	float modelScaleV2 = 6;
 	float modelHeight = 7;
 	BreadOverrideExtendedProto.Types.BreadCatchOverrideProto catchOverrideSettings = 8;
+	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxEncounterVisualSettings = 9;
+	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxBattleVisualSettings = 10;
+	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxBattleTrainerVisualSettings = 11;
+	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxPowerspotTopperVisualSettings = 12;
 }
 
 message PokemonExtendedSettingsProto {
@@ -20208,6 +20222,7 @@ message PokemonDisplayProto {
 		PIKACHU_GOTOUR_2025_A_02 = 2858;
 		PIKACHU_GOTOUR_2025_B_02 = 2859;
 		PIKACHU_KURTA = 2863;
+		FALINKS_NORMAL = 2325;
 	}
 
 	Costume costume = 1;
