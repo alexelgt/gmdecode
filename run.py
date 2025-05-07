@@ -238,6 +238,9 @@ def main():
                 gamemaster_template_json = gamemaster_json["template"]
                 gamemaster_template_json.sort(key=lambda x: x["templateId"])
 
+                print(f"batchId: {gamemaster_json['batchId']}")
+                print("-"*10)
+
                 try:
                     for element in gamemaster_template_json:
                         for blocks_meta_element in blocks_meta_info:
@@ -296,10 +299,6 @@ def main():
                     for block_element in blocks_missing_enums_element["block_elements"]:
                         for enum_key, enum_value in block_element.items():
                             print(f'{enum_key} = {enum_value};')
-
-                    print("-"*10)
-
-                print(f"batchId: {gamemaster_json['batchId']}")
             except:
                 pass
     except:
