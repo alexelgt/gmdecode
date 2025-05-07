@@ -299,6 +299,8 @@ def main():
                     for block_element in blocks_missing_enums_element["block_elements"]:
                         for enum_key, enum_value in block_element.items():
                             print(f'{enum_key} = {enum_value};')
+
+                    print("-"*10)
             except:
                 pass
     except:
