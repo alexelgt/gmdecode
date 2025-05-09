@@ -1594,6 +1594,8 @@ enum HoloItemCategory {
 	ITEM_CATEGORY_MP = 27;
 	ITEM_CATEGORY_BREAD = 28;
 	ITEM_CATEGORY_EVENT_PASS_POINT = 29;
+	ITEM_CATEGORY_STAT_INCREASE = 30;
+	ITEM_CATEGORY_EXPIRING = 31;
 }
 
 enum HoloItemEffect {
@@ -1650,6 +1652,7 @@ enum HoloItemType {
 	ITEM_TYPE_MP_REPLENISH = 29;
 	ITEM_TYPE_EVENT_PASS_POINT = 30;
 	ITEM_TYPE_FRIEND_BOOST = 31;
+	ITEM_TYPE_STAT_INCREASE = 32;
 }
 
 enum HoloPokemonClass {
@@ -15432,6 +15435,10 @@ message ItemTimePeriodCountersSettingsProto {
 	TimePeriodCounterSettingsProto playerActivity = 1;
 }
 
+message StatIncreaseAttributesProto {
+	int32 statsToIncreaseLimit = 1;
+}
+
 message ItemSettingsProto {
 	message ReplenishMpAttributesProto {
 		int32 mpAmount = 1;
@@ -15463,6 +15470,7 @@ message ItemSettingsProto {
 	EventPassPointAttributesProto eventPassPoint = 31;
 	ItemTimePeriodCountersSettingsProto timePeriodCounters = 32;
 	bool hideItemInInventory = 33;
+	StatIncreaseAttributesProto statIncrease_ = 34;
 }
 
 message ItemTelemetry {
