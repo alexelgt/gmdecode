@@ -11932,11 +11932,6 @@ message BreadBattleClientSettingsProto {
 	bool canInviteFriendsRemotely = 8;
 	int32 maxPlayersPerBreadLobby = 9;
 	int32 maxRemotePlayersPerBreadLobby = 10;
-
-
-
-
-
 	int64 inviteCooldownDurationMillis = 11;
 	int32 maxNumFriendInvitesPerAction = 12;
 	bool prepareBreadLobbyEnabled = 13;
