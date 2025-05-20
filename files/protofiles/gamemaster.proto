@@ -11091,7 +11091,8 @@ message BreadOverrideExtendedProto {
 	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxEncounterVisualSettings = 9;
 	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxBattleVisualSettings = 10;
 	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxBattleTrainerVisualSettings = 11;
-	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxPowerspotTopperVisualSettings = 12;
+	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxStationVisualSettings = 12;
+	BreadOverrideExtendedProto.Types.MaxPokemonVisualSettingsProto maxPowerspotTopperVisualSettings = 13;
 }
 
 message PokemonExtendedSettingsProto {
@@ -11823,21 +11824,24 @@ message AdditiveSceneSettingsProto {
 	bool enabled = 1;
 }
 
-message MpSharedSettingsProto {
-	message BattleMpCostPerTier {
-		enum BattleLevel {
-			BREAD_BATTLE_LEVEL_UNSET = 0;
-			BREAD_BATTLE_LEVEL_1 = 1;
-			BREAD_BATTLE_LEVEL_2 = 2;
-			BREAD_BATTLE_LEVEL_3 = 3;
-			BREAD_BATTLE_LEVEL_4 = 4;
-			BREAD_BATTLE_LEVEL_5 = 5;
-			BREAD_BATTLE_LEVEL_6 = 6;
-			BREAD_DOUGH_BATTLE_LEVEL_1 = 7;
-		}
+enum BreadBattleLevel {
+	BREAD_BATTLE_LEVEL_UNSET = 0;
+	BREAD_BATTLE_LEVEL_1 = 1;
+	BREAD_BATTLE_LEVEL_2 = 2;
+	BREAD_BATTLE_LEVEL_3 = 3;
+	BREAD_BATTLE_LEVEL_4 = 4;
+	BREAD_BATTLE_LEVEL_5 = 5;
+	BREAD_BATTLE_LEVEL_6 = 6;
+	BREAD_DOUGH_BATTLE_LEVEL_1 = 7;
+}
 
-		int32 breadBattleCatchMpCost = 1;
-		BattleLevel battleLevel = 2;
+message MpSharedSettingsProto {
+	message Types {
+		message BreadBattleMpCostPerTier {
+			int32 breadBattleCatchMpCost = 1;
+			BreadBattleLevel battleLevel = 2;
+			int32 breadBattleRemoteCatchMpCost = 3;
+		}
 	}
 
 	int32 numMpFromWalkQuest = 2;
@@ -11848,7 +11852,7 @@ message MpSharedSettingsProto {
 	int32 mpCapacity = 9;
 	int32 mpBaseDailyLimit = 10;
 	float mpClaimParticleSpeedMultiplier = 13;
-	repeated BattleMpCostPerTier battleMpCostPerTier = 14;
+	repeated MpSharedSettingsProto.Types.BreadBattleMpCostPerTier battleMpCostPerTier = 14;
 	int32 ftueMpCapacity = 15;
 }
 
@@ -11918,17 +11922,36 @@ message IrisSocialUserExperienceFunnelSettingsProto {
 }
 
 message BreadBattleClientSettingsProto {
+	bool remoteBreadBattleEnabled = 1;
+	// int32 maxPowerCrystalAllowed = 2;
 	int32 breadBattleMinPlayerLevel = 3;
+	int32 remoteBreadBattleMinPlayerLevel = 4;
 	int32 maxNumFriendInvites = 5;
 	int32 friendInviteCutoffTimeSec = 6;
+	bool canInviteFriendsInPerson = 7;
+	bool canInviteFriendsRemotely = 8;
 	int32 maxPlayersPerBreadLobby = 9;
+	int32 maxRemotePlayersPerBreadLobby = 10;
+
+
+
+
+
 	int64 inviteCooldownDurationMillis = 11;
 	int32 maxNumFriendInvitesPerAction = 12;
 	bool prepareBreadLobbyEnabled = 13;
+	bool friendRequestsEnabled = 14;
+	bool failedFriendInviteInfoEnabled = 15;
 	int32 minPlayersToPrepareBreadLobby = 16;
 	int32 prepareBreadLobbyCutoffMs = 17;
 	int32 prepareBreadLobbySoloMs = 18;
 	int32 rvnVersion = 19;
+	int32 minPlayersToPrepareBreadDoughLobby = 22;
+	int32 maxRemoteBreadBattlePassesAllowed = 24;
+	// bool remoteBreadBattleDistanceValidation = 26;
+	int32 maxNumFriendInvitesToBreadDoughLobbyPerAction = 27;
+	bool fetchProfileFromSocialEnabled = 28;
+	int32 maxPlayersToPrepareBreadDoughLobby = 29;
 }
 
 message BreadMoveLevelSettingsProto {
@@ -12206,6 +12229,9 @@ message JoinRaidViaFriendListSettingsProto {
 	int32 minPlayerLevel = 2;
 	int32 minFriendshipScore = 3;
 	int64 friendActivitiesBackgroundUpdatePeriodMs = 4;
+	bool maxBattleEnabled = 6;
+	int32 maxBattleMinPlayerLevel = 7;
+	int32 maxBattleMinFriendshipScore = 8;
 }
 
 message BonusBoxProto {
@@ -12363,12 +12389,31 @@ message PlannedEventSettingsProto {
 	}
 
 	PlannedEventSettingsProto.Types.EventType eventType = 1;
+	int32 timeslotGapSeconds = 2;
+	int32 rsvpTimeslotDurationSeconds = 3;
+	int32 maxRsvpsPerSlot = 6;
+	int32 maxTimeslots = 10;
+	int32 rsvpClearInventoryMinutes = 12;
 	repeated PlannedEventSettingsProto.Types.EventMessageTimingProto messageTiming = 13;
+	int32 rsvpBonusTimeWindowMinutes = 14;
+	bool rsvpInviteEnabled = 16;
 }
 
 message PlannerSettingsProto {
 	bool enabled = 1;
 	repeated PlannedEventSettingsProto eventSettings = 2;
+	bool newNearbyMenuEnabled = 3;
+	int32 maxRsvpsPerTrainer = 4;
+	int32 maxRsvpInvites = 5;
+	int32 maxPendingRsvpInvites = 6;
+	bool nearbyRsvpTabEnabled = 7;
+	string rsvpCountPushGatewayNamespace = 8;
+	bool sendRsvpInviteEnabled = 9;
+	int32 maxRsvpDisplayDistanceM = 10;
+	int32 activeReminderTimeSeconds = 11;
+	string rsvpCountGeoPushGatewayNamespace = 12;
+	int32 rsvpCountUpdateTimeSeconds = 13;
+	int32 rsvpCountTopperPollingTimeSeconds = 14;
 
 }
 
