@@ -11935,18 +11935,24 @@ message BreadBattleClientSettingsProto {
 	int64 inviteCooldownDurationMillis = 11;
 	int32 maxNumFriendInvitesPerAction = 12;
 	bool prepareBreadLobbyEnabled = 13;
-	bool friendRequestsEnabled = 14;
-	bool failedFriendInviteInfoEnabled = 15;
+	// bool friendRequestsEnabled = 14;
+	// bool failedFriendInviteInfoEnabled = 15;
 	int32 minPlayersToPrepareBreadLobby = 16;
 	int32 prepareBreadLobbyCutoffMs = 17;
 	int32 prepareBreadLobbySoloMs = 18;
 	int32 rvnVersion = 19;
-	int32 minPlayersToPrepareBreadDoughLobby = 22;
+	// int32 battleRewardsVersion = ??; // 20
+	// int32 maxPlayersPerBreadDoughLobby = ??; // 21
+	int32 maxRemotePlayersPerBreadDoughLobby = 22;
+	// int32 minPlayersToPrepareBreadDoughLobby = ??; // 23
 	int32 maxRemoteBreadBattlePassesAllowed = 24;
+	// repeated BreadBattleLevel unsupportedBreadBattleLevelsForFriendInvites = 25;
 	// bool remoteBreadBattleDistanceValidation = 26;
 	int32 maxNumFriendInvitesToBreadDoughLobbyPerAction = 27;
 	bool fetchProfileFromSocialEnabled = 28;
 	int32 maxPlayersToPrepareBreadDoughLobby = 29;
+	// int32 maxBattleStartOffsetMs = 30;
+	// int32 lobbyRefreshint32ervalMs = 31;
 }
 
 message BreadMoveLevelSettingsProto {
