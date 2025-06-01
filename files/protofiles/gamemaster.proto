@@ -3644,6 +3644,8 @@ enum HoloPokemonMove {
 	BEHEMOTH_BASH = 470;
 	UPPER_HAND = 471;
 	THUNDER_CAGE = 472;
+	CRUSH_GRIP = 485;
+	DRAGON_ENERGY = 486;
 }
 
 enum HoloPokemonMovementType {
@@ -11230,6 +11232,7 @@ message LocationCardSettingsProto {
 		LC_2025_OSAKA_EVENT_005 = 96;
 		LC_2025_OSAKA_EVENT_006 = 97;
 		LC_2025_CHERRY_BLOSSOM_FESTIVAL = 98;
+		LC_SPECIALBACKGROUND_2025_SEASON19 = 108;
 	}
 
 	enum CardType {
