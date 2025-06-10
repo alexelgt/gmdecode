@@ -11691,7 +11691,7 @@ message RoutesNearbyNotifSettingsProto {
 message AttackDefenseBonusAttributeSettingsProto {
 	repeated CombatType combatTypes = 1;
 	float attackMultiplier = 2;
-	float defenseMultiplier_ = 3;
+	float defenseMultiplier = 3;
 }
 
 message NonCombatMoveSettingsProto {
