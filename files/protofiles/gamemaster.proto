@@ -11739,6 +11739,11 @@ message NonCombatMoveSettingsProto {
 		SPACE_BONUS = 2;
 		DAY_BONUS = 3;
 		NIGHT_BONUS = 4;
+		FREEZE_BONUS = 5;
+		SLOW_BONUS = 6;
+		ATTACK_BONUS = 7;
+		DEFENSE_BONUS = 8;
+		MAX_MOVE_BONUS = 9;
 	}
 
 	HoloPokemonMove uniqueId = 1;
