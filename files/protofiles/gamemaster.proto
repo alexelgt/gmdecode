@@ -10368,6 +10368,48 @@ message MoveReassignmentProto {
 	repeated HoloPokemonMove replacementMoves = 2;
 }
 
+message FormChangeMoveRequirementProto {
+	repeated HoloPokemonMove requiredMoves = 1;
+}
+
+message BreadMoveSlotProto {
+	message Types {
+		enum BreadMoveType {
+			UNSET = 0;
+			A = 1;
+			B = 2;
+			C = 3;
+		}
+	}
+
+	BreadMoveSlotProto.Types.BreadMoveType moveType = 1;
+	BreadMoveLevels moveLevel = 2;
+}
+
+enum BreadMoveLevels {
+	LEVELS_UNSET = 0;
+	LEVEL_1 = 1;
+	LEVEL_2 = 2;
+	LEVEL_3 = 3;
+}
+
+message FormChangeBreadMoveRequirementProto {
+	repeated BreadMoveSlotProto.Types.BreadMoveType moveTypes = 1;
+	BreadMoveLevels moveLevel = 2;
+}
+
+message FormChangeBonusAttributesProto {
+	PokemonDisplayProto.Form targetForm = 1;
+	BreadModeEnum.Types.Modifier breadMode = 2;
+	bool clearBreadMode = 3;
+	repeated BreadMoveSlotProto maxMoves = 4;
+}
+
+message FormChangeLocationCardBasicSettingsProto {
+	LocationCardSettingsProto.LocationCard existingLocationCard = 1;
+	LocationCardSettingsProto.LocationCard replacementLocationCard = 2;
+}
+
 message FormChangeProto {
 	message ComponentPokemonSettings {
 		enum FormChangeType {
@@ -10402,6 +10444,12 @@ message FormChangeProto {
 	int32 itemCostCount = 6;
 	ComponentPokemonSettings componentPokemonSettings = 7;
 	FormChangeMoveReassignmentProto moveReassignment = 8;
+	repeated FormChangeMoveRequirementProto requiredQuickMoves = 9;
+	repeated FormChangeMoveRequirementProto requiredCinematicMoves = 10;
+	repeated FormChangeBreadMoveRequirementProto requiredBreadMoves = 11;
+	int32 priority = 12;
+	repeated FormChangeBonusAttributesProto formChangeBonusAttributes = 13;
+	repeated FormChangeLocationCardBasicSettingsProto locationCardSettings = 14;
 }
 
 message FormChangeSettingsProto {
@@ -11640,6 +11688,12 @@ message RoutesNearbyNotifSettingsProto {
 	int64 timeBetweenNotifsMs = 2;
 }
 
+message AttackDefenseBonusAttributeSettingsProto {
+	repeated CombatType combatTypes = 1;
+	float attackMultiplier = 2;
+	float defenseMultiplier_ = 3;
+}
+
 message NonCombatMoveSettingsProto {
 	message Cost {
 		int32 candyCost = 1;
@@ -11668,10 +11722,15 @@ message NonCombatMoveSettingsProto {
 			float catchCircleOuterTimeScaleOverride = 4;
 		}
 
+		message AttackDefenseBonusSettingsProto {
+			repeated AttackDefenseBonusAttributeSettingsProto attributes = 1;
+		}
+
 		TimeBonusSettingsProto timeBonus = 1;
 		SpaceBonusSettingsProto spaceBonus = 2;
 		DayNightBonusSettingsProto dayNightBonus = 3;
 		SlowFreezePlayerBonusSettingsProto slowFreezeBonus = 4;
+		AttackDefenseBonusSettingsProto attackDefenseBonus = 5;
 	}
 
 	enum BonusType {
@@ -12475,6 +12534,14 @@ message BattleInputBufferSettingsProto {
 	BattleInputBufferPriorityList breadInputBufferPriorityList = 2;
 }
 
+message AvatarStoreSubcategoryFilteringEnabledProto {
+	bool enabled = 1;
+}
+
+message TwoForOneEnabledProto {
+	bool enabled = 1;
+}
+
 message ItemInventoryUpdateSettingsProto {
 	message CategoryProto {
 		repeated HoloItemCategory category = 1;
@@ -12737,6 +12804,8 @@ message GameMasterClientTemplateProto {
 	PlannerSettingsProto plannerSettings = 253;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
+	AvatarStoreSubcategoryFilteringEnabledProto avatarStoreSubcategoryFilteringFlags = 268;
+	TwoForOneEnabledProto twoForOneFlags = 269;
 }
 
 message GameMasterLocalProto {
@@ -15019,6 +15088,8 @@ message IapItemDisplayProto {
 	bool showDiscountTag = 19;
 	bool showStrikethroughPrice = 20;
 	int32 totalValue = 21;
+	string webstoreSkuId = 22;
+	int32 webstoreSkuPriceE6 = 23;
 }
 
 message IapSettingsProto {
@@ -20401,6 +20472,7 @@ message BreadModeEnum {
 			BREAD_MODE = 1;
 			BREAD_DOUGH_MODE = 2;
 			BREAD_DOUGH_MODE_2 = 3;
+			BREAD_SPECIAL_MODE = 4;
 		}
 	}
 }
@@ -20467,6 +20539,7 @@ message PokemonEncounterRewardProto {
 
 	PokemonDisplayProto pokemonDisplay = 3;
 	float shinyProbability = 9;
+	PokemonStatsLimitsProto statsLimitsOverride = 11;
 	bool isFeaturedPokemon = 13;
 
 	// I do not know
@@ -20474,9 +20547,7 @@ message PokemonEncounterRewardProto {
 	// PokemonDisplayProto dittoDisplay = 5;
 	// Item pokeBallOverride = 6;
 	// HoloPokemonSize sizeOverride = 8;
-	// PokemonStatsLimitsProto statsLimitsOverride = 9;
 	// QuestEncounterType questEncounterType = 10;
-	// int32 isFeaturedPokemon = 11;
 }
 
 message PokemonEvolutionQuestProto {
@@ -21950,6 +22021,12 @@ message RaidClientLogsProto {
 	IEDCDCIEKGA bdgcdhmhgff = 1;
 }
 
+message PokemonMusicOverrideConfig {
+	HoloPokemonId pokemon = 1;
+	repeated PokemonDisplayProto.Form forms = 2;
+	string battleMusicKey = 3;
+}
+
 message RaidClientSettingsProto {
 	bool remoteRaidEnabled = 1;
 	int32 maxRemoteRaidPasses = 2;
@@ -21979,6 +22056,7 @@ message RaidClientSettingsProto {
 	int32 bootSoloMs = 27;
 	int32 obRaidClientSettingsNumber1 = 28;
 	int32 obRaidClientSettingsNumber29 = 29;
+	repeated PokemonMusicOverrideConfig pokemonMusicOverrides = 30;
 }
 
 message RaidCreateDetail {
