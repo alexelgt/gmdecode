@@ -12057,6 +12057,7 @@ message ItemExpirationSettingsProto {
 	string expirationTime = 2;
 	bool emergencyExpirationEnabled = 3;
 	string emergencyExpirationTime = 4;
+	LootProto consolationItems = 5;
 }
 
 message BreadMoveMappingsProto {
