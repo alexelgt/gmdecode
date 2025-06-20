@@ -11283,7 +11283,17 @@ message LocationCardSettingsProto {
 		LC_2025_OSAKA_EVENT_005 = 96;
 		LC_2025_OSAKA_EVENT_006 = 97;
 		LC_2025_CHERRY_BLOSSOM_FESTIVAL = 98;
+		LC_2025_OSAKA_EVENT_007 = 99;
+		LC_SPECIALBACKGROUND_KR2025_LOTTE_01 = 100;
+		LC_2025_MANCHESTER_ROADTRIP_001 = 101;
+		LC_2025_LONDON_ROADTRIP_001 = 102;
+		LC_2025_PARIS_ROADTRIP_001 = 103;
+		LC_2025_VALENCIA_ROADTRIP_001 = 104;
+		LC_2025_BERLIN_ROADTRIP_001 = 105;
+		LC_2025_HAGUE_ROADTRIP_001 = 106;
+		LC_2025_COLOGNE_ROADTRIP_001 = 107;
 		LC_SPECIALBACKGROUND_2025_SEASON19 = 108;
+		LC_SPECIALBACKGROUND_2025_9THANNIVERSARY = 109;
 	}
 
 	enum CardType {
@@ -12551,6 +12561,24 @@ message TwoForOneEnabledProto {
 	bool enabled = 1;
 }
 
+message QuickInviteSettingsProto {
+	bool enabled = 1;
+	string suggestedPlayersVariation = 2;
+}
+
+message ClientBattleConfigProto {
+	int64 battleEndTimeoutThresholdMs = 1;
+	int64 badNetworkWarningThresholdTurns = 2;
+	int64 deadNetworkDisconnectThresholdTurns = 3;
+	int64 noOpponentConnectionDisconnectThresholdTurns = 4;
+}
+
+message VNextBattleClientSettingsProto {
+	ClientBattleConfigProto raidsBattleConfig = 1;
+	ClientBattleConfigProto maxBattleConfig = 2;
+	ClientBattleConfigProto pvpBattleConfig = 3;
+}
+
 message ItemInventoryUpdateSettingsProto {
 	message CategoryProto {
 		repeated HoloItemCategory category = 1;
@@ -12815,6 +12843,8 @@ message GameMasterClientTemplateProto {
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
 	AvatarStoreSubcategoryFilteringEnabledProto avatarStoreSubcategoryFilteringFlags = 268;
 	TwoForOneEnabledProto twoForOneFlags = 269;
+	QuickInviteSettingsProto quickInviteSettings = 272;
+	VNextBattleClientSettingsProto vnextBattleConfig = 277;
 }
 
 message GameMasterLocalProto {
