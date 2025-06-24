@@ -6742,6 +6742,7 @@ message BuddyLevelSettings {
 		FIND_ATTRACTIVE_POIS = 6;
 		BEST_BUDDY_ASSET = 7;
 		CP_BOOST = 8;
+		TRAINING = 9;
 	}
 
 	BuddyLevel level = 1;
@@ -10738,6 +10739,9 @@ message FriendshipLevelMilestoneSettingsProto {
 		FORM_NON_POKEDEX = 5;
 		LEGENDARY_NON_POKEDEX = 6;
 		SHINY_NON_POKEDEX = 7;
+		GMAX_NON_POKEDEX = 8;
+		GMAX_IN_POKEDEX = 9;
+		REMOTE = 10;
 	}
 
 	int32 minPointsToReach = 1;
