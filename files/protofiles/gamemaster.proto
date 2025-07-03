@@ -12557,12 +12557,28 @@ message BattleInputBufferSettingsProto {
 	BattleInputBufferPriorityList breadInputBufferPriorityList = 2;
 }
 
+message AvatarStoreFooterEnabledProto {
+	bool enabled = 1;
+}
+
 message AvatarStoreSubcategoryFilteringEnabledProto {
 	bool enabled = 1;
 }
 
 message TwoForOneEnabledProto {
 	bool enabled = 1;
+}
+
+message EventPlannerPopularNotificationSettings {
+	int64 scanIntervalSeconds = 1;
+	int64 firstScanOffsetSeconds = 2;
+	int32 nearbyPoiThreshold = 3;
+	int32 urbanThreshold = 4;
+	int32 ruralThreshold = 5;
+	int32 maxNotifPerDay = 7;
+	int64 notifDelayIntervalsSeconds = 8;
+	int64 timeslotBufferWindowSeconds = 9;
+	repeated int32 battleLevels = 10;
 }
 
 message QuickInviteSettingsProto {
@@ -12845,8 +12861,10 @@ message GameMasterClientTemplateProto {
 	PlannerSettingsProto plannerSettings = 253;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
+	AvatarStoreFooterEnabledProto avatarStoreFooterFlags = 267;
 	AvatarStoreSubcategoryFilteringEnabledProto avatarStoreSubcategoryFilteringFlags = 268;
 	TwoForOneEnabledProto twoForOneFlags = 269;
+	EventPlannerPopularNotificationSettings eventPlannerPopularNotificationSettings = 270;
 	QuickInviteSettingsProto quickInviteSettings = 272;
 	VNextBattleClientSettingsProto vnextBattleConfig = 277;
 }
