@@ -3650,6 +3650,7 @@ enum HoloPokemonMove {
 	CLANGING_SCALES = 484;
 	CRUSH_GRIP = 485;
 	DRAGON_ENERGY = 486;
+	AQUA_STEP = 487;
 }
 
 enum HoloPokemonMovementType {
