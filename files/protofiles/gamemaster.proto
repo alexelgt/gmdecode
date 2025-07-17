@@ -11624,6 +11624,7 @@ message PartyPlayGeneralSettingsProto {
 	bool partyCatchTagsEnabled = 16;
 	bool partyQuestEncounterRewardEnabled = 17;
 	int32 maxStackedEncounterReward = 18;
+	int32 minNumPlayersToStartParty = 22;
 }
 
 message BootSettingsProto {
@@ -12416,6 +12417,7 @@ message EventPassDisplaySettingsProto {
 	string premiumRewardBannerImageUrl = 10;
 	string premiumRewardsDescription = 11;
 	EventPassDisplaySettingsProto.Types.TodayViewSectionDisplay todayViewSection = 12;
+	int32 sectionDisplayPriority = 14;
 }
 
 message EventPassSettingsProto {
@@ -12557,6 +12559,17 @@ message BattleInputBufferPriorityList {
 message BattleInputBufferSettingsProto {
 	BattleInputBufferPriorityList raidsInputBufferPriorityList = 1;
 	BattleInputBufferPriorityList breadInputBufferPriorityList = 2;
+}
+
+message IBFCLightweightSettings {
+	float defaultDefenseMultiplier = 1;
+	float defaultDefenseOverride = 2;
+	float defaultAttackMultiplier = 3;
+	float defaultAttackOverride = 4;
+	float defaultStaminaMultiplier = 5;
+	float defaultStaminaOverride = 6;
+	float defaultEnergyChargeMultiplier = 7;
+	float defaultEnergyChargeOverride = 8;
 }
 
 message AvatarStoreFooterEnabledProto {
@@ -12863,6 +12876,7 @@ message GameMasterClientTemplateProto {
 	PlannerSettingsProto plannerSettings = 253;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
+	IBFCLightweightSettings ibfcLightweightSettings = 266;
 	AvatarStoreFooterEnabledProto avatarStoreFooterFlags = 267;
 	AvatarStoreSubcategoryFilteringEnabledProto avatarStoreSubcategoryFilteringFlags = 268;
 	TwoForOneEnabledProto twoForOneFlags = 269;
