@@ -3818,6 +3818,7 @@ enum Item {
 	ITEM_INCUBATOR_BASIC_UNLIMITED = 901;
 	ITEM_INCUBATOR_BASIC = 902;
 	ITEM_INCUBATOR_SUPER = 903;
+	ITEM_INCUBATOR_TIMED = 904;
 	ITEM_POKEMON_STORAGE_UPGRADE = 1001;
 	ITEM_ITEM_STORAGE_UPGRADE = 1002;
 	ITEM_POSTCARD_STORAGE_UPGRADE = 1003;
@@ -3831,6 +3832,7 @@ enum Item {
 	ITEM_OTHER_EVOLUTION_STONE_A = 1150;
 	ITEM_OTHER_EVOLUTION_STONE_MAPLE_A = 1151;
 	ITEM_OTHER_EVOLUTION_STONE_MAPLE_B = 1152;
+	ITEM_OTHER_EVOLUTION_STONE_MAPLE_C = 1155;
 	ITEM_RESOURCE_CROWNED_ZACIAN = 1153;
 	ITEM_RESOURCE_CROWNED_ZAMAZENTA = 1154;
 	ITEM_MOVE_REROLL_FAST_ATTACK = 1201;
@@ -7476,7 +7478,7 @@ message ClientPredictionInconsistencyDataProto {
 
 message ClientQuestProto {
 	QuestProto quest = 1;
-	QuestDisplayProto giocpghpbde = 2;
+	QuestDisplayProto questDisplay = 2;
 }
 
 message ClientSettingsTelemetry {
@@ -9593,9 +9595,20 @@ message EggHatchTelemetry {
 }
 
 message EggIncubatorAttributesProto {
+	message Types {
+		message ExpiredIncubatorReplacementProto {
+			Item incubatorReplacement = 1;
+			int32 usesCountOverride = 2;
+			float distanceMultiplierOverride = 3;
+		}
+	}
+
 	EggIncubatorType incubatorType = 1;
 	int32 uses = 2;
 	float distanceMultiplier = 3;
+	EggIncubatorAttributesProto.Types.ExpiredIncubatorReplacementProto expiredIncubatorReplacement = 4;
+	bool useBonusIncubatorAttributes = 5;
+	int32 maxHatchSummaryEntries = 6;
 }
 
 message EggIncubatorProto {
@@ -11136,6 +11149,8 @@ message BreadOverrideExtendedProto {
 			float maxReticleSize = 3;
 			float xOffset = 4;
 			float yOffset = 5;
+			float heightOffset = 6;
+			float cameraFov = 7;
 		}
 	}
 
@@ -12924,6 +12939,7 @@ message GameMasterClientTemplateProto {
 	PlannerSettingsProto plannerSettings = 253;
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
+	ClientQuestProto clientQuestTemplate = 260;
 	IBFCLightweightSettings ibfcLightweightSettings = 266;
 	AvatarStoreFooterEnabledProto avatarStoreFooterFlags = 267;
 	AvatarStoreSubcategoryFilteringEnabledProto avatarStoreSubcategoryFilteringFlags = 268;
@@ -17381,7 +17397,7 @@ message MoveSettingsProto {
 }
 
 message MultiPartQuestProto {
-	repeated QuestProto pgjfjjlhfmp = 1;
+	repeated QuestProto subQuests = 1;
 }
 
 message MusicSettingsProto {
@@ -20402,6 +20418,7 @@ message PokemonDisplayProto {
 		PIKACHU_DOCTOR = 3013;
 		PIKACHU_WCS_2023 = 3014;
 		PIKACHU_WCS_2024 = 3015;
+		PIKACHU_WCS_2025 = 3017;
 		ORICORIO_BAILE = 2679;
 		ORICORIO_POMPOM = 2680;
 		ORICORIO_PAU = 2681;
@@ -20572,7 +20589,6 @@ message PokemonDisplayProto {
 		PIKACHU_GOFEST_2025_MONOCLE_BLUE = 2868;
 		PIKACHU_GOFEST_2025_MONOCLE_YELLOW = 2869;
 		FALINKS_GOFEST_2025_TRAIN_CONDUCTOR = 2870;
-		PIKACHU_WCS_2025 = 3017;
 		GIMMIGHOUL_COIN_A1 = 3018;
 	}
 
@@ -20660,10 +20676,15 @@ enum QuestEncounterType {
 	ULTRA_BEAST = 1;
 }
 
+message PokemonEncounterDistributionRewardProto {
+	string questDistributionTemplateId = 1;
+}
+
 message PokemonEncounterRewardProto {
 	oneof Type {
-		HoloPokemonId pokemon_id = 1;
-		bool use_quest_pokemon_encounter_distribuition = 2;
+		HoloPokemonId pokemonId = 1;
+		bool useQuestPokemonEncounterDistribuition = 2;
+		PokemonEncounterDistributionRewardProto pokemonEncounterDistribution = 15;
 	}
 
 	PokemonDisplayProto pokemonDisplay = 3;
@@ -20671,9 +20692,11 @@ message PokemonEncounterRewardProto {
 	PokemonStatsLimitsProto statsLimitsOverride = 11;
 	bool isFeaturedPokemon = 13;
 
+	// Maybe
+	bool isHiddenDitto = 6;
+	PokemonDisplayProto dittoDisplay = 8;
+
 	// I do not know
-	// bool isHiddenDitto = 4;
-	// PokemonDisplayProto dittoDisplay = 5;
 	// Item pokeBallOverride = 6;
 	// HoloPokemonSize sizeOverride = 8;
 	// QuestEncounterType questEncounterType = 10;
@@ -21603,34 +21626,34 @@ message QuestBranchRewardProto {
 message QuestConditionProto {
 	oneof Condition {
 		WithPokemonTypeProto with_pokemon_type = 2;
-		WithPokemonCategoryProto with_pokemon_category = 3;
+		WithPokemonCategoryProto withPokemonCategory = 3;
 		WithWeatherBoostProto with_weather_boost = 4;
 		WithDailyCaptureBonusProto with_daily_capture_bonus = 5;
 		WithDailySpinBonusProto with_daily_spin_bonus = 6;
 		WithWinRaidStatusProto with_win_raid_status = 7;
-		WithRaidLevelProto with_raid_level = 8;
-		WithThrowTypeProto with_throw_type = 9;
+		WithRaidLevelProto withRaidLevel = 8;
+		WithThrowTypeProto withThrowType = 9;
 		WithWinGymBattleStatusProto with_win_gym_battle_status = 10;
 		WithSuperEffectiveChargeMoveProto with_super_effective_charge_move = 11;
 		WithItemProto with_item = 12;
 		WithUniquePokestopProto with_unique_pokestop = 13;
 		WithQuestContextProto with_quest_context = 14;
-		WithBadgeTypeProto with_badge_type = 15;
+		WithBadgeTypeProto withBadgeType = 15;
 		WithPlayerLevelProto with_player_level = 16;
 		WithWinBattleStatusProto with_win_battle_status = 17;
 		WithUniquePokemonProto with_unique_pokemon = 18;
 		WithNpcCombatProto with_npc_combat = 19;
-		WithPvpCombatProto with_pvp_combat = 20;
+		WithPvpCombatProto withPvpCombat = 20;
 		WithLocationProto with_location = 21;
-		WithDistanceProto with_distance = 22;
-		WithInvasionCharacterProto with_invasion_character = 23;
+		WithDistanceProto withDistance = 22;
+		WithInvasionCharacterProto withInvasionCharacter = 23;
 		WithPokemonAlignmentProto with_pokemon_alignment = 24;
 		WithBuddyProto with_buddy = 25;
 		WithDailyBuddyAffectionProto with_daily_buddy_affection = 26;
-		WithPokemonLevelProto with_pokemon_level = 27;
-		WithMaxCpProto with_max_cp = 28;
+		WithPokemonLevelProto withPokemonLevel = 27;
+		WithMaxCpProto withMaxCp = 28;
 		WithTempEvoIdProto with_temp_evo_id = 29;
-		WithGblRankProto with_gbl_rank = 30;
+		WithGblRankProto withGblRank = 30;
 		WithEncounterTypeProto with_encounter_type = 31;
 		WithCombatTypeProto with_combat_type = 32;
 		WithItemTypeProto with_item_type = 33;
@@ -21752,12 +21775,12 @@ message QuestDialogProto {
 }
 
 message QuestDisplayProto {
-	string ofnpmcbogpe = 1;
+	string questId = 1;
 	repeated QuestDialogProto dialog = 2;
 	string description = 3;
 	string title = 4;
 	int32 dpapfbidhki = 5;
-	repeated QuestDisplayProto khdmoljbgfm = 6;
+	repeated QuestDisplayProto subquestDisplays = 6;
 	bool eghppmhejmp = 7;
 	string kfilcffmppg = 8;
 	string nmmieegjjce = 9;
@@ -21926,7 +21949,7 @@ message QuestProto {
 
 	oneof Quest {
 		DailyQuestProto daily_quest = 2;
-		MultiPartQuestProto multi_part = 3;
+		MultiPartQuestProto multiPart = 3;
 		CatchPokemonQuestProto catch_pokemon = 4;
 		AddFriendQuestProto add_friend = 5;
 		TradePokemonQuestProto trade_pokemon = 6;
@@ -21946,17 +21969,17 @@ message QuestProto {
 		bool klbpkhnbkfm = 2;
 	}
 
-	QuestType felhpbliafd = 1;
+	QuestType questType = 1;
 	WithSingleDayProto with_single_day = 98;
 	DaysWithARowQuestProto days_in_arow = 99;
-	string ofnpmcbogpe = 100;
+	string questId = 100;
 	int64 beknbmmjdic = 101;
-	Context naobbcknjkk = 102;
-	string template_id = 103;
+	Context questContext = 102;
+	string templateId = 103;
 	int32 iiifkflebfc = 104;
 	QuestGoalProto goal = 105;
 	Status status = 106;
-	repeated QuestRewardProto quest_rewards = 107;
+	repeated QuestRewardProto questRewards = 107;
 	int64 fhbcmdadlgk = 108;
 	int64 pncabkhpibn = 109;
 	int64 leepdfahnma = 110;
@@ -25262,10 +25285,10 @@ message WildPokemonProto {
 }
 
 message WithBadgeTypeProto {
-	repeated HoloBadgeType djfflfljoai = 1;
-	int32 cignkmlogdm = 2;
-	int32 lndgdlpphjj = 3;
-	repeated HoloBadgeType gfnakolfdmf = 4;
+	repeated HoloBadgeType badgeType = 1;
+	int32 badgeRank = 2;
+	int32 amount = 3;
+	repeated HoloBadgeType badgeTypesToExclude = 4;
 }
 
 message WithBuddyProto {
@@ -25288,7 +25311,7 @@ message WithDailySpinBonusProto {
 }
 
 message WithDistanceProto {
-	double decacaijakg = 1;
+	double distanceKm = 1;
 }
 
 message WithElapsedTimeProto {
@@ -25309,12 +25332,12 @@ message WithFriendsRaidProto {
 }
 
 message WithGblRankProto {
-	int32 lcnliemdbop = 1;
+	int32 rank = 1;
 }
 
 message WithInvasionCharacterProto {
-	repeated EnumWrapper.CharacterCategory jeipgnjohmk = 1;
-	repeated EnumWrapper.InvasionCharacter glmkkmbfeek = 2;
+	repeated EnumWrapper.CharacterCategory category = 1;
+	repeated EnumWrapper.InvasionCharacter invasionCharacter = 2;
 }
 
 message WithItemProto {
@@ -25330,7 +25353,7 @@ message WithLocationProto {
 }
 
 message WithMaxCpProto {
-	int32 djdfkjkepnh = 1;
+	int32 maxCp = 1;
 }
 
 message WithNpcCombatProto {
@@ -25347,8 +25370,8 @@ message WithPokemonAlignmentProto {
 }
 
 message WithPokemonCategoryProto {
-	string npicgklohcf = 1;
-	repeated HoloPokemonId majeggfjdpf = 2;
+	string categoryName = 1;
+	repeated HoloPokemonId pokemonIds = 2;
 }
 
 message WithPokemonCostumeProto {
@@ -25371,7 +25394,7 @@ message WithPokemonCpProto {
 }
 
 message WithPokemonLevelProto {
-	bool pjgjnedbbpk = 1;
+	bool maxLevel = 1;
 }
 
 message WithPokemonTypeProto {
@@ -25379,9 +25402,9 @@ message WithPokemonTypeProto {
 }
 
 message WithPvpCombatProto {
-	bool kjdmigiadho = 1;
-	repeated string moldhmcjdbo = 2;
-	HoloBadgeType elloolommgh = 3;
+	bool requiresWin = 1;
+	repeated string combatLeagueTemplateId = 2;
+	HoloBadgeType combatLeagueBadge = 3;
 }
 
 message WithQuestContextProto {
@@ -25389,7 +25412,7 @@ message WithQuestContextProto {
 }
 
 message WithRaidLevelProto {
-	repeated RaidLevel bkdlbfkmahg = 1;
+	repeated RaidLevel raidLevel = 1;
 }
 
 message WithRaidLocationProto {
@@ -25409,7 +25432,7 @@ message WithTempEvoIdProto {
 
 message WithThrowTypeProto {
 	oneof Throw {
-		HoloActivityType throw_type = 1;
+		HoloActivityType throwType = 1;
 		bool hit = 2;
 	}
 }
