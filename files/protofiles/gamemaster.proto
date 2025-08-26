@@ -7345,7 +7345,7 @@ message ClientEvolutionQuestTemplateProto {
 	string questTemplateId = 1;
 	QuestType questType = 2;
 	repeated QuestGoalProto goals = 3;
-	QuestProto.Context context = 4;
+	QuestProto.Types.Context context = 4;
 	QuestDisplayProto display = 5;
 }
 
@@ -11357,6 +11357,8 @@ message LocationCardSettingsProto {
 		LC_2025_CANCUN_CITYSAFARI_001 = 148;
 		LC_2025_VALENCIA_CITYSAFARI_001 = 149;
 		LC_2025_VANCOUVER_CITYSAFARI_001 = 150;
+		LC_2025_PARIS_001 = 151;
+		LC_2025_PARIS_002 = 152;
 	}
 
 	enum CardType {
@@ -12092,7 +12094,7 @@ message BreadBattleClientSettingsProto {
 	int32 prepareBreadLobbySoloMs = 18;
 	int32 rvnVersion = 19;
 	// int32 battleRewardsVersion = ??; // 20
-	// int32 maxPlayersPerBreadDoughLobby = ??; // 21
+	int32 maxPlayersPerBreadDoughLobby = 21;
 	int32 maxRemotePlayersPerBreadDoughLobby = 22;
 	// int32 minPlayersToPrepareBreadDoughLobby = ??; // 23
 	int32 maxRemoteBreadBattlePassesAllowed = 24;
@@ -21926,19 +21928,39 @@ message QuestPreconditionProto {
 }
 
 message QuestProto {
-	enum Context {
-		UNSET = 0;
-		STORY_QUEST = 1;
-		CHALLENGE_QUEST = 2;
-		DAILY_COIN_QUEST = 3;
-		TIMED_STORY_QUEST = 4;
-		NON_NARRATIVE_STORY_QUEST = 5;
-		LEVEL_UP_QUEST = 6;
-		TGC_TRACKING_QUEST = 7;
-		EVOLUTION_QUEST = 8;
-		TIMED_MINI_COLLECTION_QUEST = 9;
-		REFERRAL_QUEST = 10;
-		BRANCHING_QUEST = 11;
+	message Types {
+		enum Context {
+			UNSET = 0;
+			STORY_QUEST = 1;
+			CHALLENGE_QUEST = 2;
+			DAILY_COIN_QUEST = 3;
+			TIMED_STORY_QUEST = 4;
+			NON_NARRATIVE_STORY_QUEST = 5;
+			LEVEL_UP_QUEST = 6;
+			TGC_TRACKING_QUEST = 7;
+			EVOLUTION_QUEST = 8;
+			TIMED_MINI_COLLECTION_QUEST = 9;
+			REFERRAL_QUEST = 10;
+			BRANCHING_QUEST = 11;
+			PARTY_QUEST = 12;
+			MP_WALK_QUEST = 13;
+			SERVER_CHALLENGE_QUEST = 14;
+			TUTORIAL_QUEST = 15;
+			PERSONALIZED_TIMED_CHALLENGE_QUEST = 16;
+			TIMED_BRANCHING_QUEST = 17;
+			EVENT_PASS_BONUS_QUEST = 19;
+			WEEKLY_CHALLENGE_QUEST = 20;
+			POKEMON_TRAINING_QUEST = 21;
+		}
+
+		enum Difficulty {
+			UNDEFINED = 0;
+			VERY_EASY = 1;
+			EASY = 2;
+			NORMAL = 3;
+			HARD = 4;
+			VERY_HARD = 5;
+		}
 	}
 
 	enum Status {
@@ -21974,7 +21996,7 @@ message QuestProto {
 	DaysWithARowQuestProto days_in_arow = 99;
 	string questId = 100;
 	int64 beknbmmjdic = 101;
-	Context questContext = 102;
+	QuestProto.Types.Context questContext = 102;
 	string templateId = 103;
 	int32 iiifkflebfc = 104;
 	QuestGoalProto goal = 105;
@@ -21996,6 +22018,7 @@ message QuestProto {
 	ReferralInfoProto cepgokikmhj = 121;
 	repeated QuestBranchRewardProto branch_rewards = 122;
 	bool olkihbgfggk = 123;
+	QuestProto.Types.Difficulty difficulty = 127;
 }
 
 message NeutralAvatarLootItemTemplateProto {
@@ -22011,6 +22034,25 @@ message NeutralAvatarLootItemDisplayProto {
 message PokemonEggRewardProto {
 	// EggSlotType eggSlotType = 1;
 	// double hatchDistKm = 2;
+}
+
+enum PokemonIndividualStatType {
+	STAT_UNSET = 0;
+	ATTACK = 1;
+	DEFENSE = 2;
+	STAMINA = 3;
+}
+
+message PokemonIndividualStatRewardProto {
+	// uint64 pokemonId = 1;
+	// PokemonIndividualStatType statType = 2;
+	// int32 statIncreaseAmount = 3;
+}
+
+message LootTableRewardProto {
+	// string lootTable = 1;
+	// int32 multiplier = 2;
+	// int32 bonus = 3;
 }
 
 message QuestRewardProto {
@@ -22030,6 +22072,11 @@ message QuestRewardProto {
 		MEGA_RESOURCE = 12;
 		INCIDENT = 13;
 		PLAYER_ATTRIBUTE = 14;
+		EVENT_BADGE = 15;
+		POKEMON_EGG = 16;
+		POKEMON_INDIVIDUAL_STAT = 17;
+		LOOT_TABLE = 18;
+		FRIENDSHIP_POINTS = 19;
 	}
 
 	oneof Reward {
@@ -22051,7 +22098,10 @@ message QuestRewardProto {
 		string neutralAvatarTemplateId = 17;
 		NeutralAvatarLootItemTemplateProto neutralAvatarItemTemplate = 18;
 		NeutralAvatarLootItemDisplayProto neutralAvatarItemDisplay = 19;
-		PokemonEggRewardProto PokemonEgg = 20;
+		PokemonEggRewardProto pokemonEgg = 20;
+		PokemonIndividualStatRewardProto pokemonIndividualStat = 21;
+		// LootTableRewardProto lootTable = 22;
+		int32 friendshipPoints = 23;
 	}
 
 	Type type = 1;
@@ -22071,7 +22121,7 @@ message QuestStampCardProto {
 }
 
 message QuestStampProto {
-	QuestProto.Context context = 1;
+	QuestProto.Types.Context context = 1;
 	uint64 timestamp_ms = 2;
 }
 
@@ -25408,7 +25458,7 @@ message WithPvpCombatProto {
 }
 
 message WithQuestContextProto {
-	QuestProto.Context context = 1;
+	QuestProto.Types.Context context = 1;
 }
 
 message WithRaidLevelProto {
