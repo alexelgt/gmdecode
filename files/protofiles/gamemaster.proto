@@ -3651,6 +3651,7 @@ enum HoloPokemonMove {
 	CRUSH_GRIP = 485;
 	DRAGON_ENERGY = 486;
 	AQUA_STEP = 487;
+	CHILLING_WATER = 488;
 }
 
 enum HoloPokemonMovementType {
@@ -20592,6 +20593,7 @@ message PokemonDisplayProto {
 		PIKACHU_GOFEST_2025_MONOCLE_YELLOW = 2869;
 		FALINKS_GOFEST_2025_TRAIN_CONDUCTOR = 2870;
 		GIMMIGHOUL_COIN_A1 = 3018;
+		PSYDUCK_SWIM_2025 = 3019;
 	}
 
 	Costume costume = 1;
