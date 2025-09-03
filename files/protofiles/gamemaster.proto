@@ -12523,6 +12523,7 @@ message EventPassTierSettingsProto {
 	int32 minPointsRequired = 3;
 	repeated QuestRewardProto rewards = 4;
 	EventPassTierBonusSettingsProto bonusSettings = 5;
+	EventPassTierBonusSettingsProto activeBonusDisplaySettings = 6;
 }
 
 message PlannedEventSettingsProto {
@@ -12625,6 +12626,7 @@ message BattleInputBufferPriorityList {
 message BattleInputBufferSettingsProto {
 	BattleInputBufferPriorityList raidsInputBufferPriorityList = 1;
 	BattleInputBufferPriorityList breadInputBufferPriorityList = 2;
+	BattleInputBufferPriorityList combatInputBufferPriorityList = 3;
 }
 
 message IBFCLightweightSettings {
