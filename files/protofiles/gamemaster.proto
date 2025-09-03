@@ -15739,7 +15739,7 @@ message ItemSettingsProto {
 	EventPassPointAttributesProto eventPassPoint = 31;
 	ItemTimePeriodCountersSettingsProto timePeriodCounters = 32;
 	bool hideItemInInventory = 33;
-	StatIncreaseAttributesProto statIncrease_ = 34;
+	StatIncreaseAttributesProto statIncrease = 34;
 }
 
 message ItemTelemetry {
