@@ -21237,6 +21237,8 @@ message PokemonSettingsProto {
 		GROUP_4 = 4;
 		GROUP_5 = 5;
 		GROUP_6 = 6;
+		GROUP_Z = 7;
+		GROUP_8 = 8;
 	}
 
 	message IbfcProto {
