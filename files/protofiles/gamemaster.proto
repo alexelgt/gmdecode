@@ -3853,6 +3853,7 @@ enum HoloPokemonMove {
 	DRAGON_ENERGY = 486;
 	AQUA_STEP = 487;
 	CHILLING_WATER = 488;
+	SECRET_SWORD = 489;
 }
 
 enum HoloPokemonMovementType {
@@ -11550,6 +11551,8 @@ message LocationCardSettingsProto {
 		LC_2025_VANCOUVER_CITYSAFARI_001 = 150;
 		LC_2025_PARIS_001 = 151;
 		LC_2025_PARIS_002 = 152;
+		LC_SPECIALBACKGROUND_2025_GOWA_GLOBAL = 156;
+		LC_JEJU_STAMP_RALLY = 158;
 	}
 
 	enum CardType {
@@ -12837,6 +12840,10 @@ message BattleInputBufferSettingsProto {
 	BattleInputBufferPriorityList combatInputBufferPriorityList = 3;
 }
 
+message RollBackProto {
+	int32 rollbackPercentage = 1;
+}
+
 message IBFCLightweightSettings {
 	float defaultDefenseMultiplier = 1;
 	float defaultDefenseOverride = 2;
@@ -12875,6 +12882,10 @@ message EventPlannerPopularNotificationSettings {
 message QuickInviteSettingsProto {
 	bool enabled = 1;
 	string suggestedPlayersVariation = 2;
+}
+
+message AvatarFeatureFlagsProto {
+	bool corndogEnabled = 1;
 }
 
 message ClientBattleConfigProto {
@@ -13153,12 +13164,14 @@ message GameMasterClientTemplateProto {
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
 	ClientQuestProto clientQuestTemplate = 260;
+	RollBackProto rollBack = 265;
 	IBFCLightweightSettings ibfcLightweightSettings = 266;
 	AvatarStoreFooterEnabledProto avatarStoreFooterFlags = 267;
 	AvatarStoreSubcategoryFilteringEnabledProto avatarStoreSubcategoryFilteringFlags = 268;
 	TwoForOneEnabledProto twoForOneFlags = 269;
 	EventPlannerPopularNotificationSettings eventPlannerPopularNotificationSettings = 270;
 	QuickInviteSettingsProto quickInviteSettings = 272;
+	AvatarFeatureFlagsProto avatarFeatureFlags = 273;
 	VNextBattleClientSettingsProto vnextBattleConfig = 277;
 }
 
