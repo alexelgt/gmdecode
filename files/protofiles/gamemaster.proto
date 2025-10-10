@@ -694,6 +694,8 @@ enum HoloBadgeType {
 	BADGE_BUTTERFLY_COLLECTOR = 1003;
 	BADGE_MAX_SIZE_FIRST_PLACE_WIN = 1004;
 	BADGE_STAMP_RALLY = 1005;
+	BADGE_SMORES_00 = 1006;
+	BADGE_SMORES_01 = 1007;
 	BADGE_EVENT_MIN = 2000;
 	BADGE_CHICAGO_FEST_JULY_2017 = 2001;
 	BADGE_PIKACHU_OUTBREAK_YOKOHAMA_2017 = 2002;
@@ -1697,8 +1699,8 @@ enum HoloBadgeType {
 	BADGE_SAFARI_2025_VANCOUVER_ADD_ON_HATCH = 6024;
 	BADGE_SAFARI_2025_VANCOUVER_ADD_ON_RAID_TEST = 6025;
 	BADGE_SAFARI_2025_VANCOUVER_ADD_ON_RAID = 6026;
-	BADGE_SMORES_00 = 6027;
-	BADGE_SMORES_01 = 6028;
+	DEPRECATED_BADGE_SMORES_00 = 6027;
+	DEPRECATED_BADGE_SMORES_01 = 6028;
 	BADGE_GOWA_2025_SPECIAL_RESEARCH_A = 6029;
 	BADGE_GOWA_2025_SPECIAL_RESEARCH_B = 6030;
 	BADGE_GOWA_2025_IRL_FRIDAY_TICKETED_CITY = 6031;
@@ -1715,6 +1717,27 @@ enum HoloBadgeType {
 	BADGE_GOWA_2025_IRL_FULLTEST = 6042;
 	BADGE_GOWA_2025_GLOBAL = 6043;
 	BADGE_GOWA_2025_GLOBAL_TEST = 6044;
+	BADGE_SAFARI_2025_BUENOS_AIRES_TEST = 6045;
+	BADGE_SAFARI_2025_BUENOS_AIRES_SATURDAY = 6046;
+	BADGE_SAFARI_2025_BUENOS_AIRES_SUNDAY = 6047;
+	BADGE_SAFARI_2025_BUENOS_AIRES_ADD_ON_HATCH_TEST = 6048;
+	BADGE_SAFARI_2025_BUENOS_AIRES_ADD_ON_HATCH = 6049;
+	BADGE_SAFARI_2025_BUENOS_AIRES_ADD_ON_RAID_TEST = 6050;
+	BADGE_SAFARI_2025_BUENOS_AIRES_ADD_ON_RAID = 6051;
+	BADGE_SAFARI_2025_MIAMI_TEST = 6052;
+	BADGE_SAFARI_2025_MIAMI_SATURDAY = 6053;
+	BADGE_SAFARI_2025_MIAMI_SUNDAY = 6054;
+	BADGE_SAFARI_2025_MIAMI_ADD_ON_HATCH_TEST = 6055;
+	BADGE_SAFARI_2025_MIAMI_ADD_ON_HATCH = 6056;
+	BADGE_SAFARI_2025_MIAMI_ADD_ON_RAID_TEST = 6057;
+	BADGE_SAFARI_2025_MIAMI_ADD_ON_RAID = 6058;
+	BADGE_SAFARI_2025_SYDNEY_TEST = 6059;
+	BADGE_SAFARI_2025_SYDNEY_SATURDAY = 6060;
+	BADGE_SAFARI_2025_SYDNEY_SUNDAY = 6061;
+	BADGE_SAFARI_2025_SYDNEY_ADD_ON_HATCH_TEST = 6062;
+	BADGE_SAFARI_2025_SYDNEY_ADD_ON_HATCH = 6063;
+	BADGE_SAFARI_2025_SYDNEY_ADD_ON_RAID_TEST = 6064;
+	BADGE_SAFARI_2025_SYDNEY_ADD_ON_RAID = 6065;
 }
 
 enum HoloIapItemCategory {
@@ -12954,7 +12977,7 @@ message GameMasterClientTemplateProto {
 	TypeEffectiveSettingsProto type_effective = 8;
 	BadgeSettingsProto badgeSettings = 10;
 	CameraSettingsProto camera = 11;
-	PlayerLevelSettingsProto player_level = 12;
+	PlayerLevelSettingsProto playerLevel = 12;
 	GymLevelSettingsProto gym_level = 13;
 	GymBattleSettingsProto battle_settings = 14;
 	EncounterSettingsProto encounter_settings = 15;
@@ -13019,7 +13042,7 @@ message GameMasterClientTemplateProto {
 	AvatarGroupOrderSettingsProto avatar_group_order_settings = 76;
 	PokemonFamilySettingsProto pokemonFamily = 77;
 	MonodepthSettingsProto monodepth_settings = 78;
-	LevelUpRewardsSettingsProto level_up_reward_settings = 79;
+	LevelUpRewardsSettingsProto levelUpRewards = 79;
 	RaidClientSettingsProto raidSettings = 81;
 	TappableSettingsProto tappableSettings = 82;
 	RoutePlaySettingsProto routePlaySettings = 83;
@@ -16817,6 +16840,11 @@ message LevelUpRewardsSettingsProto {
 	repeated int32 itemsCount = 3;
 	repeated Item itemsUnlocked = 4;
 	repeated string avatarTemplateIds = 5;
+	// int32 pokecoins = 6;
+	NeutralAvatarLootItemTemplateProto neutralAvatarItemTemplates = 7;
+	// Feature featuresUnlocked = 8;
+	float obLevelUpRewardsNumber9 = 9;
+	bool isBackfill = 11;
 }
 
 message LeveledUpFriendsProto {
@@ -22524,6 +22552,7 @@ message RaidClientSettingsProto {
 	int32 obRaidClientSettingsNumber1 = 28;
 	int32 obRaidClientSettingsNumber29 = 29;
 	repeated PokemonMusicOverrideConfig pokemonMusicOverrides = 30;
+	bool fetchProfileFromSocialEnabled = 32;
 }
 
 message RaidCreateDetail {

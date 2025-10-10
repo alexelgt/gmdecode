@@ -1,5 +1,6 @@
 __pycache__
 .DS_STORE
+.DS_Store
 gamemasterinput
 gamemasteroutput
 pyproto
