@@ -10428,17 +10428,6 @@ message FbTokenProto {
 	string token = 1;
 }
 
-message Feature {
-	oneof Metadata {
-		BuildingMetadata building_metadata = 3;
-		RoadMetadata road_metadata = 4;
-		TransitMetadata transit_metadata = 5;
-	}
-
-	Geometry geometry = 1;
-	Label label = 2;
-}
-
 message FeedPokemonTelemetry {
 	int32 status = 1;
 	PokemonTelemetry pokemon = 2;
@@ -11940,10 +11929,48 @@ message StyleShopSettingsProto {
 	bool cartDisabled = 6;
 }
 
+message DayOfWeekAndTimeProto {
+	int32 dayOfWeek = 1;
+	int32 hourOfDay = 2;
+}
+
+message NotificationSchedule {
+	bool enabled = 1;
+	bool isLocal = 2;
+	DayOfWeekAndTimeProto time = 3;
+	int32 avalibleWindowHours = 4;
+}
+
+message RecurringChallengeScheduleProto {
+	oneof StartTimeOneofCase {
+		DayOfWeekAndTimeProto dayAndTimeStartTime = 2;
+		int64 startTimestampMs = 3;
+	}
+
+	oneof EndTimeOneofCase {
+		DayOfWeekAndTimeProto dayAndTimeEndTime = 4;
+		int64 endTimestampMs = 5;
+	}
+
+	string timezoneId = 1;
+	NotificationSchedule startNotification = 6;
+	NotificationSchedule nearEndNotification = 7;
+	int32 maxNumChallengePerCycle = 8;
+}
+
 message PartyPlayGeneralSettingsProto {
 	enum PgDeliveryMechanic {
 		UNSET = 0;
 		POLLING_BIT = 2;
+	}
+
+	message Types {
+		message PartySchedulingSettingsProto {
+			oneof ScheduleTypeOneofCase {
+				RecurringChallengeScheduleProto recurringChallengeSchedule = 1;
+				int64 partyExpiryDurationMs = 2;
+			}
+		}
 	}
 
 	bool enabled = 1;
@@ -11962,8 +11989,15 @@ message PartyPlayGeneralSettingsProto {
 	bool partyCatchTagsEnabled = 16;
 	bool partyQuestEncounterRewardEnabled = 17;
 	int32 maxStackedEncounterReward = 18;
-	int32 minNumPlayersToStartParty = 22;
-	// int32 maxPartySize = 24;
+	bool fallbackPartyQuestEnabled = 22;
+	int32 minNumPlayersToStartParty = 23;
+	int32 maxPartySize = 24;
+	PartyPlayGeneralSettingsProto.Types.PartySchedulingSettingsProto partySchedulingSettings = 26;
+	bool sendInviteEnabled = 28;
+	int32 inviteExpirationMs = 29;
+	repeated double notificationMilestones = 30;
+	int64 partyRewardGracePeriodMs = 33;
+	int32 maxInvitesPerPlayer = 34;
 }
 
 message BootSettingsProto {
@@ -12980,10 +13014,34 @@ message ClientBattleConfigProto {
 	int64 noOpponentConnectionDisconnectThresholdTurns = 4;
 }
 
+message BattleAnimationConfigProto {
+	message Types {
+		message AttackAnimationSettings {
+			float normalizedStartOffset = 1;
+			float crossFadeDurationSeconds = 2;
+			bool useLegacyStartOffset = 3;
+		}
+	}
+	BattleAnimationConfigProto.Types.AttackAnimationSettings fastAttackSettings = 1;
+}
+
+message BattleAnimationSettingsProto {
+	BattleAnimationConfigProto raidsAnimationConfiguration = 1;
+	BattleAnimationConfigProto maxBattleAnimationConfiguration = 2;
+	// BattleAnimationConfigProto combatAnimationConfiguration = 3;
+}
+
 message VNextBattleClientSettingsProto {
 	ClientBattleConfigProto raidsBattleConfig = 1;
 	ClientBattleConfigProto maxBattleConfig = 2;
 	ClientBattleConfigProto pvpBattleConfig = 3;
+}
+
+message SpecialEggSettingsProto {
+	bool enabled = 1;
+	int32 minLevel = 2;
+	// bool mapIconEnabled = 3;
+	int32 xpReward = 4;
 }
 
 message ItemInventoryUpdateSettingsProto {
@@ -13257,7 +13315,9 @@ message GameMasterClientTemplateProto {
 	EventPlannerPopularNotificationSettings eventPlannerPopularNotificationSettings = 270;
 	QuickInviteSettingsProto quickInviteSettings = 272;
 	AvatarFeatureFlagsProto avatarFeatureFlags = 273;
+	BattleAnimationSettingsProto battleAnimationSettings = 276;
 	VNextBattleClientSettingsProto vnextBattleConfig = 277;
+	SpecialEggSettingsProto specialEggSettings = 280;
 }
 
 message GameMasterLocalProto {
@@ -15893,6 +15953,7 @@ message InventorySettingsProto {
 	repeated BagUpgradeBannerContexts bagUpgradeBannerContexts = 21;
 	bool easyIncubatorBuyEnabled = 22;
 	bool luckyFriendApplicatorSettingsToggleEnabled = 23;
+	int32 baseDailyAdventureEggs = 25;
 }
 
 message InventoryUpgradeAttributesProto {
@@ -16791,7 +16852,17 @@ message LanguageTelemetry {
 }
 
 message Layer {
-	repeated Feature features = 1;
+	message Feature {
+		oneof Metadata {
+			BuildingMetadata building_metadata = 3;
+			RoadMetadata road_metadata = 4;
+			TransitMetadata transit_metadata = 5;
+		}
+
+		Geometry geometry = 1;
+		Label label = 2;
+	}
+	repeated Layer.Feature features = 1;
 }
 
 message LayerRule {
@@ -16896,6 +16967,28 @@ message LevelUpRewardsOutProto {
 	repeated string olippecblin = 5;
 }
 
+enum Feature {
+	FEATURE_UNKNOWN = 0;
+	FEATURE_GYM = 1;
+	FEATURE_RAID = 2;
+	FEATURE_ROCKET = 3;
+	FEATURE_COMBAT_LEAGUE = 4;
+	FEATURE_MAX_BATTLE = 5;
+	FEATURE_EGG_HATCHING = 6;
+	FEATURE_MEGA = 7;
+	FEATURE_TAG = 8;
+	FEATURE_TRADE = 9;
+	FEATURE_PARTY_PLAY = 10;
+	FEATURE_WEEKLY_CHALLENGES = 11;
+	FEATURE_HIGHLIGHTS = 12;
+	FEATURE_ROUTES = 13;
+	FEATURE_ROUTES_CREATION = 14;
+	FEATURE_POKESTOP_NOMINATION = 15;
+	FEATURE_CANDY_XL = 16;
+	FEATURE_EGG_SPECIAL = 17;
+	FEATURE_LUCKY_CHANCE_INCREASE = 18;
+}
+
 message LevelUpRewardsSettingsProto {
 	int32 level = 1;
 	repeated Item items = 2;
@@ -16904,8 +16997,9 @@ message LevelUpRewardsSettingsProto {
 	repeated string avatarTemplateIds = 5;
 	// int32 pokecoins = 6;
 	NeutralAvatarLootItemTemplateProto neutralAvatarItemTemplates = 7;
-	// Feature featuresUnlocked = 8;
+	repeated Feature featuresUnlocked = 8;
 	float obLevelUpRewardsNumber9 = 9;
+	bool clientOverrideDisplayOrder = 10;
 	bool isBackfill = 11;
 }
 
@@ -19266,6 +19360,30 @@ message PlayerHudNotificationClickTelemetry {
 }
 
 message PlayerLevelSettingsProto {
+	message Types {
+		message XpRewardV2Threshold {
+			message Types {
+				enum Source {
+					UNSET = 0;
+					RAID = 1;
+					MAX_BATTLE = 2;
+					UNLOCK_MAX_MOVE = 3;
+					CATCH_POKEMON = 4;
+					HATCH_EGG = 5;
+					FRIENDSHIP_MILESTONE = 6;
+					QUEST_PAGE = 7;
+					QUEST_STAMPS = 8;
+					COMPLETE_ROUTE = 9;
+					FORT_SEARCH = 10;
+					EVENT_PASS = 11;
+				}
+			}
+
+			PlayerLevelSettingsProto.Types.XpRewardV2Threshold.Types.Source source = 1;
+			int32 threshold = 2;
+		}
+	}
+
 	repeated int32 rankNum = 1;
 	repeated int32 requiredExperience = 2;
 	repeated float cpMultiplier = 3;
@@ -19275,6 +19393,12 @@ message PlayerLevelSettingsProto {
 	int32 maxQuestEncounterPlayerLevel = 7;
 	int32 dbcflbcpokl = 8;
 	int32 extendedPlayerLevelThreshold = 9;
+	bool levelUpScreenV3Enabled = 14;
+	repeated int32 milestoneLevels = 16;
+	bool levelRequirementsV2Enabled = 18;
+	bool xpRewardV2Enabled = 19;
+	PlayerLevelSettingsProto.Types.XpRewardV2Threshold xpRewardV2Thresholds = 22;
+	string smoreFtueImageUrl = 25;
 }
 
 message PlayerPreferencesProto {
