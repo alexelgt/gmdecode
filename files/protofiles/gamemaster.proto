@@ -12529,6 +12529,8 @@ message BreadSharedSettingsProto {
 message StationedPokemonTableSettingsProto {
 	enum StationedPokemonTableEnum {
 		UNSET = 0;
+		BREAD_STATIONED_POKEMON_SPAWN_BOOST_TABLE_SETTINGS = 1;
+		SOURDOUGH_STATIONED_POKEMON_SPAWN_BOOST_TABLE_SETTINGS = 2;
 		STATIONED_POKEMON_POWER_BOOST_TABLE_SETTINGS = 3;
 	}
 
