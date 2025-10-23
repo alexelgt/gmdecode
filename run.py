@@ -208,101 +208,103 @@ def main():
     try:
         gamemaster_filename = args.gamemaster_filename
 
+        if not gamemaster_filename:
+            gamemaster_filename = 'v2_GAME_MASTER'
+
         call(
             f'protoc --proto_path="{proto_folder}" --python_out="{pythonfiles_folder}" --pyi_out="{pythonfiles_folder}" {proto_filename}', shell=True)
 
-        if gamemaster_filename:
-            proto_file = f"{proto_folder}/{proto_filename}"
+        proto_file = f"{proto_folder}/{proto_filename}"
 
-            gamemaster_output_file = f"{gamemaster_output_folder}/{gamemaster_filename}.txt"
+        gamemaster_output_file = f"{gamemaster_output_folder}/{gamemaster_filename}.txt"
 
-            call(
-                f'protoc --proto_path="{proto_folder}" --decode {pogo_gm_protos_target} "{proto_file}" <"{gamemaster_input_folder}/{gamemaster_filename}"> "{gamemaster_output_file}"', shell=True)
+        call(
+            f'protoc --proto_path="{proto_folder}" --decode {pogo_gm_protos_target} "{proto_file}" <"{gamemaster_input_folder}/{gamemaster_filename}"> "{gamemaster_output_file}"', shell=True)
+
+        try:
+            from pyproto.gamemaster_pb2 import DownloadGmTemplatesResponseProto  # pylint: disable=import-outside-toplevel, no-name-in-module
+
+            gamemaster_txt = read_txt_file(gamemaster_output_file)
+
+            gamemaster_txt_parsed = text_format.Parse(
+                gamemaster_txt,
+                DownloadGmTemplatesResponseProto(),
+                allow_unknown_field=True
+            )
+
+            gamemaster_json_string = json_format.MessageToJson(
+                gamemaster_txt_parsed)
+
+            gamemaster_json = json.loads(gamemaster_json_string)
+
+            gamemaster_template_json = gamemaster_json["template"]
+            gamemaster_template_json.sort(key=lambda x: x["templateId"])
+
+            print(f"batchId: {gamemaster_json['batchId']}")
+            print("-"*10)
 
             try:
-                from pyproto.gamemaster_pb2 import DownloadGmTemplatesResponseProto
+                for element in gamemaster_template_json:
+                    for blocks_meta_element in blocks_meta_info:
+                        try:
+                            if blocks_meta_element["regex_find"] is not None:
+                                is_template_id = bool(
+                                    blocks_meta_element["regex_find"].search(element["templateId"]))
+                            elif blocks_meta_element["string_find"] is not None:
+                                is_template_id = blocks_meta_element["string_find"] in element["templateId"]
+                            else:
+                                is_template_id = False
 
-                gamemaster_txt = read_txt_file(gamemaster_output_file)
+                            if blocks_meta_element["block_name"] == "POKEMON_ID_BLOCK":
+                                if "form" in element["data"][blocks_meta_element["element_first_level"]]:
+                                    continue
 
-                gamemaster_txt_parsed = text_format.Parse(
-                    gamemaster_txt,
-                    DownloadGmTemplatesResponseProto(),
-                    allow_unknown_field=True
-                )
-
-                gamemaster_json_string = json_format.MessageToJson(
-                    gamemaster_txt_parsed)
-
-                gamemaster_json = json.loads(gamemaster_json_string)
-
-                gamemaster_template_json = gamemaster_json["template"]
-                gamemaster_template_json.sort(key=lambda x: x["templateId"])
-
-                print(f"batchId: {gamemaster_json['batchId']}")
-                print("-"*10)
-
-                try:
-                    for element in gamemaster_template_json:
-                        for blocks_meta_element in blocks_meta_info:
-                            try:
-                                if blocks_meta_element["regex_find"] is not None:
-                                    is_template_id = bool(
-                                        blocks_meta_element["regex_find"].search(element["templateId"]))
-                                elif blocks_meta_element["string_find"] is not None:
-                                    is_template_id = blocks_meta_element["string_find"] in element["templateId"]
+                            if is_template_id and isinstance(
+                                    element["data"][blocks_meta_element["element_first_level"]][blocks_meta_element["element_second_level"]], int):
+                                if blocks_meta_element["enum_key_default_value"]:
+                                    enum_key = blocks_meta_element["enum_key_default_value"]
+                                elif blocks_meta_element["regex_find"] is not None:
+                                    _, enum_key = blocks_meta_element["regex_find"].search(
+                                        element["templateId"]).groups()
                                 else:
-                                    is_template_id = False
+                                    enum_key = element["templateId"]
 
-                                if blocks_meta_element["block_name"] == "POKEMON_ID_BLOCK":
-                                    if "form" in element["data"][blocks_meta_element["element_first_level"]]:
-                                        continue
+                                if blocks_meta_element["enum_key_prefix"]:
+                                    enum_key = blocks_meta_element["enum_key_prefix"] + enum_key
 
-                                if is_template_id and isinstance(
-                                        element["data"][blocks_meta_element["element_first_level"]][blocks_meta_element["element_second_level"]], int):
-                                    if blocks_meta_element["enum_key_default_value"]:
-                                        enum_key = blocks_meta_element["enum_key_default_value"]
-                                    elif blocks_meta_element["regex_find"] is not None:
-                                        _, enum_key = blocks_meta_element["regex_find"].search(
-                                            element["templateId"]).groups()
-                                    else:
-                                        enum_key = element["templateId"]
+                                if len(blocks_meta_element["enum_key_replace"]) == 2:
+                                    enum_key.replace(
+                                        *blocks_meta_element["enum_key_replace"])
 
-                                    if blocks_meta_element["enum_key_prefix"]:
-                                        enum_key = blocks_meta_element["enum_key_prefix"] + enum_key
+                                enum_value = element["data"][blocks_meta_element["element_first_level"]
+                                                             ][blocks_meta_element["element_second_level"]]
 
-                                    if len(blocks_meta_element["enum_key_replace"]) == 2:
-                                        enum_key.replace(
-                                            *blocks_meta_element["enum_key_replace"])
-
-                                    enum_value = element["data"][blocks_meta_element["element_first_level"]
-                                                                 ][blocks_meta_element["element_second_level"]]
-
-                                    blocks_meta_element["block_elements"].append({
-                                        enum_key: enum_value
-                                    })
-                            except:
-                                pass
-                except:
-                    pass
-
-                with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
-                    json.dump(gamemaster_template_json, f, indent=4)
-
-                blocks_missing_enums_info = [{
-                    "block_name": blocks_meta_element["block_name"],
-                    "block_elements": [dict(t) for t in {tuple(d.items()) for d in blocks_meta_element["block_elements"]}]
-                } for blocks_meta_element in blocks_meta_info if len(blocks_meta_element["block_elements"]) > 0]
-
-                for blocks_missing_enums_element in blocks_missing_enums_info:
-                    print(blocks_missing_enums_element["block_name"])
-
-                    for block_element in blocks_missing_enums_element["block_elements"]:
-                        for enum_key, enum_value in block_element.items():
-                            print(f'{enum_key} = {enum_value};')
-
-                    print("-"*10)
+                                blocks_meta_element["block_elements"].append({
+                                    enum_key: enum_value
+                                })
+                        except:
+                            pass
             except:
                 pass
+
+            with open(gamemaster_json_output_file, 'w', encoding="utf-8") as f:
+                json.dump(gamemaster_template_json, f, indent=4)
+
+            blocks_missing_enums_info = [{
+                "block_name": blocks_meta_element["block_name"],
+                "block_elements": [dict(t) for t in {tuple(d.items()) for d in blocks_meta_element["block_elements"]}]
+            } for blocks_meta_element in blocks_meta_info if len(blocks_meta_element["block_elements"]) > 0]
+
+            for blocks_missing_enums_element in blocks_missing_enums_info:
+                print(blocks_missing_enums_element["block_name"])
+
+                for block_element in blocks_missing_enums_element["block_elements"]:
+                    for enum_key, enum_value in block_element.items():
+                        print(f'{enum_key} = {enum_value};')
+
+                print("-"*10)
+        except:
+            pass
     except:
         pass
 

@@ -13042,8 +13042,8 @@ message VNextBattleClientSettingsProto {
 message SpecialEggSettingsProto {
 	bool enabled = 1;
 	int32 minLevel = 2;
-	// bool mapIconEnabled = 3;
-	int32 xpReward = 4;
+	bool mapIconEnabled = 4;
+	int32 xpReward = 5;
 }
 
 message ItemInventoryUpdateSettingsProto {
@@ -21367,6 +21367,19 @@ message PokemonDisplayProto {
 		DUBWOOL_NORMAL = 2862;
 		WOOLOO_NORMAL = 2861;
 		DEDENNE_NORMAL = 2860;
+		IRONLEAVES_NORMAL = 3325;
+		PECHARUNT_NORMAL = 3336;
+		IRONCROWN_NORMAL = 3335;
+		IRONBOULDER_NORMAL = 3334;
+		FEZANDIPITI_NORMAL = 3329;
+		DIPPLIN_NORMAL = 3326;
+		HYDRAPPLE_NORMAL = 3331;
+		RAGINGBOLT_NORMAL = 3333;
+		GOUGINGFIRE_NORMAL = 3332;
+		ARCHALUDON_NORMAL = 3330;
+		OKIDOGI_NORMAL = 3327;
+		MUNKIDORI_NORMAL = 3328;
+		WALKINGWAKE_NORMAL = 3324;
 	}
 
 	Costume costume = 1;
