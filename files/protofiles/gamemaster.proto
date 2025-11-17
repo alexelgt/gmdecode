@@ -1,4 +1,6 @@
 /*
+* Copyright 2025 alexelgt.
+*
 * Copyright 2016-2022 --=FurtiF=--.
 *
 * Licensed under the
@@ -14,7 +16,7 @@
 *	or implied. See the License for the specific language governing
 *	permissions and limitations under the License.
 *
-* Version: Base compatible 0.241.x partial obfuscated.
+* Original file: https://github.com/Furtif/POGOProtos/blob/master/base/v0.241.x_p_obf.proto
 *
 */
 
@@ -1738,6 +1740,8 @@ enum HoloBadgeType {
 	BADGE_SAFARI_2025_SYDNEY_ADD_ON_HATCH = 6063;
 	BADGE_SAFARI_2025_SYDNEY_ADD_ON_RAID_TEST = 6064;
 	BADGE_SAFARI_2025_SYDNEY_ADD_ON_RAID = 6065;
+	BADGE_WEEKLY_CHALLENGE_ELIGIBLE = 6066;
+	BADGE_BEST_FRIENDS_PLUS_ELIGIBLE = 6067;
 }
 
 enum HoloIapItemCategory {
@@ -3877,6 +3881,7 @@ enum HoloPokemonMove {
 	AQUA_STEP = 487;
 	CHILLING_WATER = 488;
 	SECRET_SWORD = 489;
+	BEAK_BLAST = 490;
 }
 
 enum HoloPokemonMovementType {
@@ -10975,7 +10980,8 @@ message FriendshipLevelMilestoneSettingsProto {
 	int32 raidBallBonus = 4;
 	repeated PokemonTradingType unlockedTrading = 5;
 	float tradingDiscount = 6;
-	int32 obFriendshipLevelMilestoneSettingsNumber7 = 7;
+	bool unlockedLuckyFriendApplicator = 7;
+	int32 RelativePointsToReach = 8;
 }
 
 message GAFGIKCOEKH {
@@ -11626,6 +11632,7 @@ message LocationCardSettingsProto {
 		LC_POKELID_HIROSHIMA = 207;
 		LC_POKELID_KUMAMOTO = 208;
 		LC_POKELID_OITA = 209;
+		LC_SPECIALBACKGROUND_OBSERVATORY_EXHIBITION_TOUR = 211;
 	}
 
 	enum CardType {
@@ -12448,12 +12455,24 @@ message BreadMoveLevelSettingsProto {
 	repeated int32 xpReward = 5;
 }
 
+message ItemEnablementSettingsProto {
+	message Types {
+		message EnabledTimePeriodProto {
+			string enabledStartTime = 1;
+			string enabledEndTime = 2;
+		}
+	}
+
+	repeated ItemEnablementSettingsProto.Types.EnabledTimePeriodProto enabledTimePeriods = 1;
+}
+
 message ItemExpirationSettingsProto {
 	Item item = 1;
 	string expirationTime = 2;
 	bool emergencyExpirationEnabled = 3;
 	string emergencyExpirationTime = 4;
 	LootProto consolationItems = 5;
+	ItemEnablementSettingsProto itemEnablementSettings = 6;
 }
 
 message BreadMoveMappingsProto {
