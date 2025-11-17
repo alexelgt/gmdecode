@@ -10981,7 +10981,7 @@ message FriendshipLevelMilestoneSettingsProto {
 	repeated PokemonTradingType unlockedTrading = 5;
 	float tradingDiscount = 6;
 	bool unlockedLuckyFriendApplicator = 7;
-	int32 RelativePointsToReach = 8;
+	int32 relativePointsToReach = 8;
 }
 
 message GAFGIKCOEKH {
