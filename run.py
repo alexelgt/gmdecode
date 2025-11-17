@@ -1,4 +1,5 @@
 import json
+import re
 import os
 import argparse
 from subprocess import call
@@ -6,7 +7,9 @@ from subprocess import call
 from google.protobuf import text_format
 from google.protobuf import json_format
 
-from sharedmodules.pokemon.regex import MOVE_GYMS_REGEX, FAMILY_REGEX, EXTENDED_POKEMON_REGEX
+MOVE_GYMS_REGEX = re.compile(r'V(\d{4})_MOVE_(.*)')
+FAMILY_REGEX = re.compile(r'V(\d{4})_FAMILY_(.*)')
+EXTENDED_POKEMON_REGEX = re.compile(r'EXTENDED_V(\d{4})_POKEMON_(.*)')
 
 parser = argparse.ArgumentParser()
 
