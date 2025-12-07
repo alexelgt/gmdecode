@@ -21403,7 +21403,7 @@ message PokemonDisplayProto {
 
 	Costume costume = 1;
 	Gender gender = 2;
-	bool kglealcogbg = 3;
+	bool shiny = 3;
 	Form form = 4;
 	GameplayWeatherProto.WeatherCondition gnmbfkmefop = 5;
 	Alignment hmnjdjmldim = 6;
