@@ -3882,6 +3882,8 @@ enum HoloPokemonMove {
 	CHILLING_WATER = 488;
 	SECRET_SWORD = 489;
 	BEAK_BLAST = 490;
+	MIND_BLOWN = 491;
+	DRUM_BEATING = 492;
 }
 
 enum HoloPokemonMovementType {
@@ -13045,18 +13047,44 @@ message BattleAnimationConfigProto {
 		}
 	}
 	BattleAnimationConfigProto.Types.AttackAnimationSettings fastAttackSettings = 1;
+	float projectedHealthAnimationDurationSeconds = 2;
+}
+
+message RemoteTradeSettingsProto {
+	bool enabled = 1;
+	int32 requestedPokemonCount = 3;
+	int32 pokemonUntradableDays = 4;
+	int32 maxRemoteTradesPerDay = 7;
+	int32 taggingUnlockPointThreshold = 8;
+	int32 tradeExpiryReminderMinutes = 9;
+	int32 timeLimitMinutes = 10;
+}
+
+message BestFriendsPlusSettingsProto {
+	bool enabled = 1;
+	int64 tutorialTimeCutoff = 2;
 }
 
 message BattleAnimationSettingsProto {
 	BattleAnimationConfigProto raidsAnimationConfiguration = 1;
 	BattleAnimationConfigProto maxBattleAnimationConfiguration = 2;
-	// BattleAnimationConfigProto combatAnimationConfiguration = 3;
+	BattleAnimationConfigProto combatAnimationConfiguration = 3;
 }
 
 message VNextBattleClientSettingsProto {
 	ClientBattleConfigProto raidsBattleConfig = 1;
 	ClientBattleConfigProto maxBattleConfig = 2;
 	ClientBattleConfigProto pvpBattleConfig = 3;
+}
+
+message ARPhotoPokemonExcludedForms {
+	HoloPokemonId pokemonId = 1;
+	repeated PokemonDisplayProto.Form excludedForms = 2;
+}
+
+message ARPhotoFeatureFlagProto {
+	repeated HoloPokemonId excludedPokemonIds = 2;
+	repeated ARPhotoPokemonExcludedForms pokemonWithExcludedForms = 3;
 }
 
 message SpecialEggSettingsProto {
@@ -13337,8 +13365,11 @@ message GameMasterClientTemplateProto {
 	EventPlannerPopularNotificationSettings eventPlannerPopularNotificationSettings = 270;
 	QuickInviteSettingsProto quickInviteSettings = 272;
 	AvatarFeatureFlagsProto avatarFeatureFlags = 273;
+	RemoteTradeSettingsProto remoteTradeSettings = 274;
+	BestFriendsPlusSettingsProto bestFriendsPlusSettings = 275;
 	BattleAnimationSettingsProto battleAnimationSettings = 276;
 	VNextBattleClientSettingsProto vnextBattleConfig = 277;
+	ARPhotoFeatureFlagProto arPhotoFeatureFlags = 278;
 	SpecialEggSettingsProto specialEggSettings = 280;
 }
 
@@ -21068,6 +21099,9 @@ message PokemonDisplayProto {
 		PIKACHU_GOTOUR_2025_B = 2857;
 		PIKACHU_GOTOUR_2025_A_02 = 2858;
 		PIKACHU_GOTOUR_2025_B_02 = 2859;
+		DEDENNE_NORMAL = 2860;
+		WOOLOO_NORMAL = 2861;
+		DUBWOOL_NORMAL = 2862;
 		PIKACHU_KURTA = 2863;
 		PIKACHU_GOFEST_2025_GOGGLES_RED = 2864;
 		PIKACHU_GOFEST_2025_GOGGLES_BLUE = 2865;
@@ -21384,22 +21418,28 @@ message PokemonDisplayProto {
 		CHIYU_NORMAL = 3312;
 		ROARINGMOON_NORMAL = 3313;
 		IRONVALIANT_NORMAL = 3314;
-		DUBWOOL_NORMAL = 2862;
-		WOOLOO_NORMAL = 2861;
-		DEDENNE_NORMAL = 2860;
+		SUDOWOODO_WINTER_2025 = 3315;
+		CHARJABUG_WINTER_2025 = 3316;
+		VIKAVOLT_WINTER_2025 = 3317;
+		PIKACHU_GOTOUR_2026_A = 3318;
+		PIKACHU_GOTOUR_2026_A_02 = 3319;
+		PIKACHU_GOTOUR_2026_B = 3320;
+		PIKACHU_GOTOUR_2026_B_02 = 3321;
+		PIKACHU_GOTOUR_2026_C = 3322;
+		PIKACHU_GOTOUR_2026_C_02 = 3323;
+		WALKINGWAKE_NORMAL = 3324;
 		IRONLEAVES_NORMAL = 3325;
-		PECHARUNT_NORMAL = 3336;
-		IRONCROWN_NORMAL = 3335;
-		IRONBOULDER_NORMAL = 3334;
-		FEZANDIPITI_NORMAL = 3329;
 		DIPPLIN_NORMAL = 3326;
-		HYDRAPPLE_NORMAL = 3331;
-		RAGINGBOLT_NORMAL = 3333;
-		GOUGINGFIRE_NORMAL = 3332;
-		ARCHALUDON_NORMAL = 3330;
 		OKIDOGI_NORMAL = 3327;
 		MUNKIDORI_NORMAL = 3328;
-		WALKINGWAKE_NORMAL = 3324;
+		FEZANDIPITI_NORMAL = 3329;
+		ARCHALUDON_NORMAL = 3330;
+		HYDRAPPLE_NORMAL = 3331;
+		GOUGINGFIRE_NORMAL = 3332;
+		RAGINGBOLT_NORMAL = 3333;
+		IRONBOULDER_NORMAL = 3334;
+		IRONCROWN_NORMAL = 3335;
+		PECHARUNT_NORMAL = 3336;
 	}
 
 	Costume costume = 1;
