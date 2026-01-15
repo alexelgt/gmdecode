@@ -1742,6 +1742,46 @@ enum HoloBadgeType {
 	BADGE_SAFARI_2025_SYDNEY_ADD_ON_RAID = 6065;
 	BADGE_WEEKLY_CHALLENGE_ELIGIBLE = 6066;
 	BADGE_BEST_FRIENDS_PLUS_ELIGIBLE = 6067;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_SUNDAY_MEGA_NIGHT = 6088;
+	BADGE_GO_TOUR_2026_TAINAN_SATURDAY_CITY = 6096;
+	BADGE_GO_TOUR_2026_TAINAN_MEGA_NIGHT_TEST = 6106;
+	BADGE_GO_TOUR_2026_GLOBAL_SECRET_01 = 6113;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_FRIDAY_CITY = 6072;
+	BADGE_GO_TOUR_2026_DELUXE_PASS = 6115;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_FRIDAY_MEGA_NIGHT = 6086;
+	BADGE_GO_TOUR_2026_TAINAN_ADD_ON_RAID = 6102;
+	BADGE_GO_TOUR_2026_TAINAN_FRIDAY_CITY = 6093;
+	BADGE_GO_TOUR_2026_TAINAN_ADD_ON_RAID_TEST = 6101;
+	BADGE_GO_TOUR_2026_TAINAN_SUNDAY_MEGA_NIGHT = 6109;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_SUNDAY_PARK = 6077;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_VIP = 6084;
+	BADGE_GO_TOUR_2026_GLOBAL_TEST = 6114;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_SATURDAY_CITY = 6075;
+	BADGE_GO_TOUR_2026_TAINAN_ADD_ON_HATCH = 6104;
+	BADGE_GO_TOUR_2026_TAINAN_SATURDAY_PARK = 6095;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_MEGA_NIGHT_TEST = 6085;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_ADD_ON_HATCH_TEST = 6082;
+	BADGE_GO_TOUR_2026_TAINAN_SATURDAY_MEGA_NIGHT = 6108;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_TEST_CITY = 6069;
+	BADGE_GO_TOUR_2026_TAINAN_FRIDAY_PARK = 6092;
+	BADGE_GO_TOUR_2026_GLOBAL_X_VERSION = 6110;
+	BADGE_GO_TOUR_2026_TAINAN_TEST_PARK = 6089;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_ADD_ON_RAID_TEST = 6080;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_TEST_PARK = 6068;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_ADD_ON_HATCH = 6083;
+	BADGE_GO_TOUR_2026_GLOBAL = 6112;
+	BADGE_GO_TOUR_2026_TAINAN_SUNDAY_PARK = 6098;
+	BADGE_GO_TOUR_2026_TAINAN_TEST_CITY = 6090;
+	BADGE_GO_TOUR_2026_TAINAN_FRIDAY_MEGA_NIGHT = 6107;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_SATURDAY_MEGA_NIGHT = 6087;
+	BADGE_GO_TOUR_2026_TAINAN_VIP = 6105;
+	BADGE_GO_TOUR_2026_TAINAN_ADD_ON_HATCH_TEST = 6103;
+	BADGE_GO_TOUR_2026_TAINAN_SUNDAY_CITY = 6099;
+	BADGE_GO_TOUR_2026_GLOBAL_Y_VERSION = 6111;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_ADD_ON_RAID = 6081;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_SATURDAY_PARK = 6074;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_SUNDAY_CITY = 6078;
+	BADGE_GO_TOUR_2026_LOS_ANGELES_FRIDAY_PARK = 6071;
 }
 
 enum HoloIapItemCategory {
@@ -11634,8 +11674,27 @@ message LocationCardSettingsProto {
 		LC_POKELID_HIROSHIMA = 207;
 		LC_POKELID_KUMAMOTO = 208;
 		LC_POKELID_OITA = 209;
+		LC_2025_KR_BUSAN_FIREWORKS_FESTIVAL = 210;
 		LC_SPECIALBACKGROUND_OBSERVATORY_EXHIBITION_TOUR = 211;
+		LC_2025_KR_PYEONGCHANG_WINTER_FESTIVAL = 212;
+		LC_SPECIALBACKGROUND_2026_COMMUNITYDAY = 213;
 		LC_2025_NFL_001 = 225;
+		LC_2025_NFL_002 = 226;
+		LC_2025_NFL_003 = 227;
+		LC_2025_NFL_004 = 228;
+		LC_2025_NFL_005 = 229;
+		LC_2025_NFL_006 = 230;
+		LC_2025_NFL_007 = 231;
+		LC_2025_NFL_008 = 232;
+		LC_2025_NFL_009 = 233;
+		LC_2025_NFL_010 = 234;
+		LC_2025_NFL_011 = 235;
+		LC_2025_NFL_012 = 236;
+		LC_2025_NFL_013 = 237;
+		LC_2025_NFL_014 = 238;
+		LC_2025_NFL_015 = 239;
+		LC_ID_CAR_FREE_DAY = 240;
+		LC_2026_PPK_001 = 241;
 	}
 
 	enum CardType {
@@ -12006,6 +12065,7 @@ message PartyPlayGeneralSettingsProto {
 	bool sendInviteEnabled = 28;
 	int32 inviteExpirationMs = 29;
 	repeated double notificationMilestones = 30;
+	bool matchmakingEnabled = 32;
 	int64 partyRewardGracePeriodMs = 33;
 	int32 maxInvitesPerPlayer = 34;
 }
@@ -12983,6 +13043,11 @@ message BattleInputBufferSettingsProto {
 	BattleInputBufferPriorityList combatInputBufferPriorityList = 3;
 }
 
+message FeatureGateProto {
+	int32 status = 1;
+	int32 rolloutPercentage = 2;
+}
+
 message RollBackProto {
 	int32 rollbackPercentage = 1;
 }
@@ -13082,9 +13147,25 @@ message ARPhotoPokemonExcludedForms {
 	repeated PokemonDisplayProto.Form excludedForms = 2;
 }
 
+message ErrorReportingSettingsProto {
+	bool isEnabled = 1;
+	float percentChancePlayerSends = 3;
+	int32 maxEventsPerSlidingWindow = 6;
+	int32 slidingWindowLengthS = 7;
+	int64 maxTotalEventsBeforeShutdown = 8;
+}
+
 message ARPhotoFeatureFlagProto {
 	repeated HoloPokemonId excludedPokemonIds = 2;
 	repeated ARPhotoPokemonExcludedForms pokemonWithExcludedForms = 3;
+	int32 mainMenuEntryEnabled = 5;
+	int32 shareFunctionalityEnabled = 7;
+	float preLoginRollOutRatio = 8;
+	repeated string preLoginDeviceAllowList = 9;
+	int32 lapsedDaysCutoff = 11;
+	int32 newDaysCutoff = 12;
+	repeated string rollOutCountryCodes = 14;
+	ErrorReportingSettingsProto errorReportingSettings = 18;
 }
 
 message SpecialEggSettingsProto {
@@ -13357,6 +13438,7 @@ message GameMasterClientTemplateProto {
 	BreadLobbyUpdateSettingsProto breadLobbyUpdateSettings = 255;
 	BattleInputBufferSettingsProto battleInputBufferSettings = 259;
 	ClientQuestProto clientQuestTemplate = 260;
+	FeatureGateProto featureGate = 264;
 	RollBackProto rollBack = 265;
 	IBFCLightweightSettings ibfcLightweightSettings = 266;
 	AvatarStoreFooterEnabledProto avatarStoreFooterFlags = 267;
