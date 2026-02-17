@@ -11154,6 +11154,8 @@ message GiftingSettingsProto {
 	bool enableGiftToStardust = 1;
 	int32 stardustPerGift = 2;
 	repeated StardustMultiplier stardustMultiplier = 3;
+	bool flowPolishEnabled = 4;
+	bool multiMajorRewardUiEnabled = 5;
 }
 
 message GM11SettingsProto {
@@ -11695,6 +11697,19 @@ message LocationCardSettingsProto {
 		LC_2025_NFL_015 = 239;
 		LC_ID_CAR_FREE_DAY = 240;
 		LC_2026_PPK_001 = 241;
+		LC_2026_RIODEJANEIRO_CARNIVAL_001 = 243;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_MEGA_001 = 224;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_GOLD_001 = 216;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_PEARL_001 = 221;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_X_001 = 222;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_Y_001 = 223;
+		LC_2026_TAINAN_GOTOUR_001 = 215;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_DIAMOND_001 = 220;
+		LC_2026_COLOGNE_CARNIVAL_001 = 244;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_SILVER_001 = 217;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_SAPPHIRE_001 = 219;
+		LC_2026_LOSANGELES_GOTOUR_001 = 214;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_RUBY_001 = 218;
 	}
 
 	enum CardType {
@@ -13044,8 +13059,17 @@ message BattleInputBufferSettingsProto {
 }
 
 message FeatureGateProto {
+	message Types {
+		message SubFeatureGateProto {
+			string name = 1;
+			int32 status = 2;
+			int32 rolloutPercentage = 3;
+		}
+	}
+
 	int32 status = 1;
 	int32 rolloutPercentage = 2;
+	repeated FeatureGateProto.Types.SubFeatureGateProto subFeatureGateList = 3;
 }
 
 message RollBackProto {
@@ -13155,17 +13179,40 @@ message ErrorReportingSettingsProto {
 	int64 maxTotalEventsBeforeShutdown = 8;
 }
 
+enum ShowSticker {
+	NEVER_SHOW = 0;
+	ALWAYS_SHOW = 1;
+	SOMETIMES_SHOW = 2;
+}
+
+message ARPhotoCaptureSettings {
+	int32 countdownSeconds = 1;
+	float contextualCheckIntervalSeconds = 2;
+}
+
+message ClientArPhotoIncentiveDetails {
+	string incentiveStringKey = 1;
+	string incentiveIconName = 2;
+}
+
 message ARPhotoFeatureFlagProto {
+	bool isFeatureEnabled = 1;
 	repeated HoloPokemonId excludedPokemonIds = 2;
 	repeated ARPhotoPokemonExcludedForms pokemonWithExcludedForms = 3;
+	ShowSticker showSticker = 4;
 	int32 mainMenuEntryEnabled = 5;
+	int32 arMenuEntryEnabled = 6;
 	int32 shareFunctionalityEnabled = 7;
 	float preLoginRollOutRatio = 8;
 	repeated string preLoginDeviceAllowList = 9;
 	int32 lapsedDaysCutoff = 11;
 	int32 newDaysCutoff = 12;
+	ARPhotoCaptureSettings captureSettings = 13;
 	repeated string rollOutCountryCodes = 14;
+	repeated ClientArPhotoIncentiveDetails incentives = 15;
+	bool incentivesEnabled = 17;
 	ErrorReportingSettingsProto errorReportingSettings = 18;
+	int32 preLoginMetricsEnabled = 19;
 }
 
 message SpecialEggSettingsProto {
@@ -13173,6 +13220,13 @@ message SpecialEggSettingsProto {
 	int32 minLevel = 2;
 	bool mapIconEnabled = 4;
 	int32 xpReward = 5;
+}
+
+message NaturalArtDayNightFeatureSettingsProto {
+	string dayStartTime = 1;
+	string dayEndTime = 2;
+	string nightEndTime = 3;
+	float dbsSpawnRadiusMeters = 4;
 }
 
 message ItemInventoryUpdateSettingsProto {
@@ -13348,7 +13402,7 @@ message GameMasterClientTemplateProto {
 	PostcardCollectionGmtSettingsProto postcardCollectionSettings = 134;
 	GM6SettingsProto ob_gm_6_settings = 135;
 	VerboseLogCombatSettingsProto verboseLogCombatSettings = 136;
-	MegaEvoLevelSettingsProto megaEvoLevelSettings = 137;
+	MegaEvolutionLevelSettingsProto megaEvoLevelSettings = 137;
 	AdvancedSettingsProto advancedSettings = 138;
 	GM9SettingsProto ob_gm_9_settings = 139;
 	ImpressionTrackingSettingsProto impressionTrackingSettings = 140;
@@ -13453,6 +13507,7 @@ message GameMasterClientTemplateProto {
 	VNextBattleClientSettingsProto vnextBattleConfig = 277;
 	ARPhotoFeatureFlagProto arPhotoFeatureFlags = 278;
 	SpecialEggSettingsProto specialEggSettings = 280;
+	NaturalArtDayNightFeatureSettingsProto naturalArtDayNightFeatureSettings = 283;
 }
 
 message GameMasterLocalProto {
@@ -17811,30 +17866,34 @@ message MegaEvolvePokemonSpeciesProto {
 	int32 napejlgdndd = 2;
 }
 
-message MegaLevelCooldownSettingsProto {
+message MegaEvolutionCooldownSettingsProto {
 	int64 durationMs = 1;
 	int32 bypassCostInitial = 2;
 	int32 mhcfeepjcmd = 3;
 	int32 bypassCostRoundingValue = 4;
 }
 
-message MegaLevelPerksProto {
+message MegaEvolutionEffectsSettingsProto {
 	float differentTypeAttackBoost = 1;
 	float sameTypeAttackBoost = 2;
 	int32 sameTypeExtraCatchCandy = 3;
 	int32 sameTypeExtraCatchXp = 4;
 	float sameTypeExtraCatchCandyXlChance = 5;
+	int32 selfCpBoostAdditionalLevel = 6;
 }
 
-message MegaEvoLevelSettingsProto {
+message MegaEvolutionLevelSettingsProto {
 	int32 level = 1;
 	HoloPokemonId pokemonId = 2;
-	MegaLevelUnlockSettingsProto progression = 3;
-	MegaLevelCooldownSettingsProto cooldown = 4;
-	MegaLevelPerksProto effects = 5;
+	MegaEvolutionProgressionSettingsProto progression = 3;
+	MegaEvolutionCooldownSettingsProto cooldown = 4;
+	MegaEvolutionEffectsSettingsProto effects = 5;
+	// int32 evolutionLengthMs = 6;
+	int32 megaEnergyCostToUnlock = 7;
+	int64 FtueExpirationTimestamp = 8;
 }
 
-message MegaLevelUnlockSettingsProto {
+message MegaEvolutionProgressionSettingsProto {
 	int32 pointsRequired = 1;
 	int32 pointsLimitPerPeriod = 2;
 	int32 pointsPerMegaEvoAction = 3;
@@ -22951,6 +23010,7 @@ message QuestProto {
 	repeated QuestBranchRewardProto branch_rewards = 122;
 	bool olkihbgfggk = 123;
 	QuestProto.Types.Difficulty difficulty = 127;
+	double questUpdateToastProgressPercentageThreshold = 131;
 }
 
 message NeutralAvatarLootItemTemplateProto {
