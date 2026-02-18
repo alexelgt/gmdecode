@@ -17907,7 +17907,7 @@ message MegaEvolutionLevelSettingsProto {
 	MegaEvolutionEffectsSettingsProto effects = 5;
 	// int32 evolutionLengthMs = 6;
 	int32 megaEnergyCostToUnlock = 7;
-	int64 FtueExpirationTimestamp = 8;
+	int64 ftueExpirationTimestamp = 8;
 }
 
 message MegaEvolutionProgressionSettingsProto {
