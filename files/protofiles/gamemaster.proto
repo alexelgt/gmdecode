@@ -3929,6 +3929,7 @@ enum HoloPokemonMove {
 	BEAK_BLAST = 490;
 	MIND_BLOWN = 491;
 	DRUM_BEATING = 492;
+	PYROBALL = 493;
 }
 
 enum HoloPokemonMovementType {
@@ -21598,6 +21599,8 @@ message PokemonDisplayProto {
 		IRONBOULDER_NORMAL = 3334;
 		IRONCROWN_NORMAL = 3335;
 		PECHARUNT_NORMAL = 3336;
+		DITTO_SPRING_2026_A = 3337;
+		DITTO_SPRING_2026_B = 3338;
 	}
 
 	Costume costume = 1;
