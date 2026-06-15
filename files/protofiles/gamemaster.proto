@@ -11541,7 +11541,7 @@ message BreadOverrideExtendedProto {
 		}
 	}
 
-	BreadSharedSettingsProto.BreadMode breadMode = 1;
+	BreadModeEnum.Types.Modifier breadMode = 1;
 	float averageHeightM = 2;
 	float averageWeightKg = 3;
 	PokemonSizeSettingsProto sizeSettings = 4;
@@ -12820,37 +12820,42 @@ message BreadLobbyCounterSettingsProto {
 }
 
 message BreadPokemonScalingSettingsProto {
-	message VisualData {
-		message BreadPokemonVisualDataProto {
-			float scale = 1;
-			float cameraDistance = 2;
-			float maxReticleSize = 3;
-			float xOffset = 4;
-			float yOffset = 5;
+	message Types {
+		message BreadPokemonVisualSettingsProto {
+			message Types {
+				message BreadPokemonFormVisualDataProto {
+					message Types {
+						message BreadPokemonModeVisualDataProto {
+							message Types {
+								message BreadPokemonVisualDataProto{
+									float scale = 1;
+									float cameraDistance = 2;
+									float maxReticleSize = 3;
+									float xOffset = 4;
+									float yOffset = 5;
+								}
+							}
+
+							BreadModeEnum.Types.Modifier breadMode = 1;
+							BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto.Types.BreadPokemonFormVisualDataProto.Types.BreadPokemonModeVisualDataProto.Types.BreadPokemonVisualDataProto breadEncounterVisualData = 2;
+							BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto.Types.BreadPokemonFormVisualDataProto.Types.BreadPokemonModeVisualDataProto.Types.BreadPokemonVisualDataProto breadBattleVisualData = 3;
+							BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto.Types.BreadPokemonFormVisualDataProto.Types.BreadPokemonModeVisualDataProto.Types.BreadPokemonVisualDataProto breadBattleBossVisualData = 4;
+							BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto.Types.BreadPokemonFormVisualDataProto.Types.BreadPokemonModeVisualDataProto.Types.BreadPokemonVisualDataProto breadBattleTrainerVisualData = 5;
+							BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto.Types.BreadPokemonFormVisualDataProto.Types.BreadPokemonModeVisualDataProto.Types.BreadPokemonVisualDataProto breadStationVisualData = 6;
+						}
+					}
+
+					PokemonDisplayProto.Form pokemonForm = 1;
+					repeated BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto.Types.BreadPokemonFormVisualDataProto.Types.BreadPokemonModeVisualDataProto visualData = 2;
+				}
+			}
+
+			HoloPokemonId pokemonId = 1;
+			repeated BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto.Types.BreadPokemonFormVisualDataProto pokemonFormData = 2;
 		}
-
-		BreadSharedSettingsProto.BreadMode breadMode = 1;
-		BreadPokemonVisualDataProto breadEncounterVisiualData = 2;
-		BreadPokemonVisualDataProto breadBattleVisualData = 3;
-		BreadPokemonVisualDataProto breadBattleBossVisualData = 4;
-		BreadPokemonVisualDataProto breadBattleTrainerVisualData = 5;
-		BreadPokemonVisualDataProto breadStationVisualData = 6;
 	}
 
-	message PokemonFormData {
-		PokemonDisplayProto.Form pokemonForm = 1;
-		repeated VisualData visualData = 2;
-	}
-
-	message VisualSettings {
-		HoloPokemonId pokemonId = 1;
-		repeated PokemonFormData pokemonFormData = 2;
-	}
-
-	repeated VisualSettings visualSettings = 1;
-	int32 subscribeS2Level = 2;
-	string subscriptionNamespace = 3;
-	int64 publishCutoffTimeMs = 4;
+	repeated BreadPokemonScalingSettingsProto.Types.BreadPokemonVisualSettingsProto visualSettings = 1;
 }
 
 message PokeballThrowPropertySettingsProto {
