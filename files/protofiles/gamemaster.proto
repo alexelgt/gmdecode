@@ -4043,8 +4043,105 @@ enum HoloPokemonMove {
 	PYROBALL = 493;
 	GIGATON_HAMMER = 494;
 	PLASMA_FISTS = 497;
+	TEMP_EVOLUTION_MEGA_X_V0150_POKEMON_MEWTWO = 495;
+	TEMP_EVOLUTION_MEGA_Y_V0150_POKEMON_MEWTWO = 496;
+	TEMP_EVOLUTION_MEGA_V0003_POKEMON_VENUSAUR = 498;
+	TEMP_EVOLUTION_MEGA_X_V0006_POKEMON_CHARIZARD = 499;
+	TEMP_EVOLUTION_MEGA_Y_V0006_POKEMON_CHARIZARD = 500;
+	TEMP_EVOLUTION_MEGA_V0009_POKEMON_BLASTOISE = 501;
+	TEMP_EVOLUTION_MEGA_V0015_POKEMON_BEEDRILL = 502;
+	TEMP_EVOLUTION_MEGA_V0018_POKEMON_PIDGEOT = 503;
+	TEMP_EVOLUTION_MEGA_X_V0026_POKEMON_RAICHU = 504;
+	TEMP_EVOLUTION_MEGA_Y_V0026_POKEMON_RAICHU = 505;
+	TEMP_EVOLUTION_MEGA_V0036_POKEMON_CLEFABLE = 506;
+	TEMP_EVOLUTION_MEGA_V0065_POKEMON_ALAKAZAM = 507;
+	TEMP_EVOLUTION_MEGA_V0071_POKEMON_VICTREEBEL = 508;
+	TEMP_EVOLUTION_MEGA_V0080_POKEMON_SLOWBRO = 509;
+	TEMP_EVOLUTION_MEGA_V0094_POKEMON_GENGAR = 510;
+	TEMP_EVOLUTION_MEGA_V0115_POKEMON_KANGASKHAN = 511;
+	TEMP_EVOLUTION_MEGA_V0121_POKEMON_STARMIE = 512;
+	TEMP_EVOLUTION_MEGA_V0127_POKEMON_PINSIR = 513;
+	TEMP_EVOLUTION_MEGA_V0130_POKEMON_GYARADOS = 514;
+	TEMP_EVOLUTION_MEGA_V0149_POKEMON_DRAGONITE = 515;
+	TEMP_EVOLUTION_MEGA_V0154_POKEMON_MEGANIUM = 516;
+	TEMP_EVOLUTION_MEGA_V0160_POKEMON_FERALIGATR = 517;
+	TEMP_EVOLUTION_MEGA_V0181_POKEMON_AMPHAROS = 518;
+	TEMP_EVOLUTION_MEGA_V0208_POKEMON_STEELIX = 519;
+	TEMP_EVOLUTION_MEGA_V0212_POKEMON_SCIZOR = 520;
+	TEMP_EVOLUTION_MEGA_V0214_POKEMON_HERACROSS = 521;
+	TEMP_EVOLUTION_MEGA_V0227_POKEMON_SKARMORY = 522;
+	TEMP_EVOLUTION_MEGA_V0229_POKEMON_HOUNDOOM = 523;
+	TEMP_EVOLUTION_MEGA_V0248_POKEMON_TYRANITAR = 524;
+	TEMP_EVOLUTION_MEGA_V0254_POKEMON_SCEPTILE = 525;
+	TEMP_EVOLUTION_MEGA_V0257_POKEMON_BLAZIKEN = 526;
+	TEMP_EVOLUTION_MEGA_V0260_POKEMON_SWAMPERT = 527;
+	TEMP_EVOLUTION_MEGA_V0282_POKEMON_GARDEVOIR = 528;
+	TEMP_EVOLUTION_MEGA_V0302_POKEMON_SABLEYE = 529;
+	TEMP_EVOLUTION_MEGA_V0303_POKEMON_MAWILE = 530;
+	TEMP_EVOLUTION_MEGA_V0306_POKEMON_AGGRON = 531;
+	TEMP_EVOLUTION_MEGA_V0308_POKEMON_MEDICHAM = 532;
+	TEMP_EVOLUTION_MEGA_V0310_POKEMON_MANECTRIC = 533;
+	TEMP_EVOLUTION_MEGA_V0319_POKEMON_SHARPEDO = 534;
+	TEMP_EVOLUTION_MEGA_V0323_POKEMON_CAMERUPT = 535;
+	TEMP_EVOLUTION_MEGA_V0334_POKEMON_ALTARIA = 536;
+	TEMP_EVOLUTION_MEGA_V0354_POKEMON_BANETTE = 537;
+	TEMP_EVOLUTION_MEGA_V0358_POKEMON_CHIMECHO = 538;
+	TEMP_EVOLUTION_MEGA_V0359_POKEMON_ABSOL = 539;
+	TEMP_EVOLUTION_MEGA_Z_V0359_POKEMON_ABSOL = 540;
+	TEMP_EVOLUTION_MEGA_V0362_POKEMON_GLALIE = 541;
+	TEMP_EVOLUTION_MEGA_V0373_POKEMON_SALAMENCE = 542;
+	TEMP_EVOLUTION_MEGA_V0376_POKEMON_METAGROSS = 543;
+	TEMP_EVOLUTION_MEGA_V0380_POKEMON_LATIAS = 544;
+	TEMP_EVOLUTION_MEGA_V0381_POKEMON_LATIOS = 545;
+	TEMP_EVOLUTION_MEGA_V0384_POKEMON_RAYQUAZA = 546;
+	TEMP_EVOLUTION_MEGA_V0398_POKEMON_STARAPTOR = 547;
+	TEMP_EVOLUTION_MEGA_V0428_POKEMON_LOPUNNY = 548;
+	TEMP_EVOLUTION_MEGA_V0445_POKEMON_GARCHOMP = 549;
+	TEMP_EVOLUTION_MEGA_Z_V0445_POKEMON_GARCHOMP = 550;
+	TEMP_EVOLUTION_MEGA_V0448_POKEMON_LUCARIO = 551;
+	TEMP_EVOLUTION_MEGA_Z_V0448_POKEMON_LUCARIO = 552;
+	TEMP_EVOLUTION_MEGA_V0460_POKEMON_ABOMASNOW = 553;
+	TEMP_EVOLUTION_MEGA_V0475_POKEMON_GALLADE = 554;
+	TEMP_EVOLUTION_MEGA_V0478_POKEMON_FROSLASS = 555;
+	TEMP_EVOLUTION_MEGA_V0485_POKEMON_HEATRAN = 556;
+	TEMP_EVOLUTION_MEGA_V0491_POKEMON_DARKRAI = 557;
+	TEMP_EVOLUTION_MEGA_V0500_POKEMON_EMBOAR = 558;
+	TEMP_EVOLUTION_MEGA_V0530_POKEMON_EXCADRILL = 559;
+	TEMP_EVOLUTION_MEGA_V0531_POKEMON_AUDINO = 560;
+	TEMP_EVOLUTION_MEGA_V0545_POKEMON_SCOLIPEDE = 561;
+	TEMP_EVOLUTION_MEGA_V0560_POKEMON_SCRAFTY = 562;
+	TEMP_EVOLUTION_MEGA_V0604_POKEMON_EELEKTROSS = 563;
+	TEMP_EVOLUTION_MEGA_V0609_POKEMON_CHANDELURE = 564;
+	TEMP_EVOLUTION_MEGA_V0623_POKEMON_GOLURK = 565;
+	TEMP_EVOLUTION_MEGA_V0652_POKEMON_CHESNAUGHT = 566;
+	TEMP_EVOLUTION_MEGA_V0655_POKEMON_DELPHOX = 567;
+	TEMP_EVOLUTION_MEGA_V0658_POKEMON_GRENINJA = 568;
+	TEMP_EVOLUTION_MEGA_V0668_POKEMON_PYROAR = 569;
+	TEMP_EVOLUTION_MEGA_V0670_POKEMON_FLOETTE = 570;
+	TEMP_EVOLUTION_MEGA_V0678_POKEMON_MEOWSTIC = 571;
+	TEMP_EVOLUTION_MEGA_V0687_POKEMON_MALAMAR = 572;
+	TEMP_EVOLUTION_MEGA_V0689_POKEMON_BARBARACLE = 573;
+	TEMP_EVOLUTION_MEGA_V0691_POKEMON_DRAGALGE = 574;
+	TEMP_EVOLUTION_MEGA_V0701_POKEMON_HAWLUCHA = 575;
+	TEMP_EVOLUTION_MEGA_V0718_POKEMON_ZYGARDE = 576;
+	TEMP_EVOLUTION_MEGA_V0719_POKEMON_DIANCIE = 577;
+	TEMP_EVOLUTION_MEGA_V0740_POKEMON_CRABOMINABLE = 578;
+	TEMP_EVOLUTION_MEGA_V0768_POKEMON_GOLISOPOD = 579;
+	TEMP_EVOLUTION_MEGA_V0780_POKEMON_DRAMPA = 580;
+	TEMP_EVOLUTION_MEGA_V0801_POKEMON_MAGEARNA = 581;
+	TEMP_EVOLUTION_MEGA_V0807_POKEMON_ZERAORA = 582;
+	TEMP_EVOLUTION_MEGA_V0870_POKEMON_FALINKS = 583;
+	TEMP_EVOLUTION_MEGA_V0952_POKEMON_SCOVILLAIN = 584;
+	TEMP_EVOLUTION_MEGA_V0970_POKEMON_GLIMMORA = 585;
+	TEMP_EVOLUTION_MEGA_V0978_POKEMON_TATSUGIRI = 586;
+	TEMP_EVOLUTION_MEGA_V0998_POKEMON_BAXCALIBUR = 587;
+	TEMP_EVOLUTION_PRIMAL_V0382_POKEMON_KYOGRE = 588;
+	TEMP_EVOLUTION_PRIMAL_V0383_POKEMON_GROUDON = 589;
 	GLAIVE_RUSH = 590;
 	SNIPE_SHOT = 592;
+	DIVE = 593;
+	GULP_MISSILE_GULPING = 594;
+	GULP_MISSILE_GORGING = 595;
 }
 
 enum HoloPokemonMovementType {
@@ -4210,6 +4307,7 @@ enum Item {
 	ITEM_STICKER_INVENTORY = 802;
 	ITEM_POSTCARD_INVENTORY = 803;
 	ITEM_SOFT_SFIDA = 804;
+	ITEM_SOFT_SFIDA_LIMIT_UPGRADE_EARNED = 805;
 	ITEM_INCUBATOR_BASIC_UNLIMITED = 901;
 	ITEM_INCUBATOR_BASIC = 902;
 	ITEM_INCUBATOR_SUPER = 903;
@@ -4316,10 +4414,30 @@ enum Item {
 	ITEM_EVENT_PASS_POINT_LIVE_OPS_06 = 2106;
 	ITEM_EVENT_PASS_POINT_LIVE_OPS_07 = 2107;
 	ITEM_EVENT_PASS_POINT_LIVE_OPS_08 = 2108;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_09 = 2109;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_10 = 2110;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_11 = 2111;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_12 = 2112;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_13 = 2113;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_14 = 2114;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_15 = 2115;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_16 = 2116;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_17 = 2117;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_18 = 2118;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_19 = 2119;
+	ITEM_EVENT_PASS_POINT_LIVE_OPS_20 = 2120;
 	ITEM_EVENT_PASS_POINT_MONTHLY_01 = 2151;
 	ITEM_EVENT_PASS_POINT_MONTHLY_02 = 2152;
 	ITEM_EVENT_PASS_POINT_MONTHLY_03 = 2153;
 	ITEM_EVENT_PASS_POINT_MONTHLY_04 = 2154;
+	ITEM_EVENT_PASS_POINT_MONTHLY_05 = 2155;
+	ITEM_EVENT_PASS_POINT_MONTHLY_06 = 2156;
+	ITEM_EVENT_PASS_POINT_MONTHLY_07 = 2157;
+	ITEM_EVENT_PASS_POINT_MONTHLY_08 = 2158;
+	ITEM_EVENT_PASS_POINT_MONTHLY_09 = 2159;
+	ITEM_EVENT_PASS_POINT_MONTHLY_10 = 2160;
+	ITEM_EVENT_PASS_POINT_MONTHLY_11 = 2161;
+	ITEM_EVENT_PASS_POINT_MONTHLY_12 = 2162;
 	ITEM_GIFTBOX_STORAGE_UPGRADE = 2200;
 	ITEM_POKEMON_STORAGE_UPGRADE_EARNED = 2201;
 	ITEM_ITEM_STORAGE_UPGRADE_EARNED = 2202;
@@ -4328,9 +4446,51 @@ enum Item {
 	ITEM_EVENT_TICKET_S23_2026_01 = 2205;
 	ITEM_EVENT_TICKET_S23_2026_02 = 2206;
 	ITEM_EVENT_TICKET_S23_2026_03 = 2207;
+	ITEM_EVENT_TICKET_S23_2026_04 = 2208;
+	ITEM_EVENT_TICKET_S23_2026_05 = 2209;
+	ITEM_EVENT_TICKET_S23_2026_06 = 2210;
+	ITEM_EVENT_TICKET_S23_2026_07 = 2211;
+	ITEM_EVENT_TICKET_S23_2026_08 = 2212;
 	ITEM_EVENT_TICKET_S23_2026_09 = 2213;
+	ITEM_EVENT_TICKET_S23_2026_10 = 2214;
+	ITEM_EVENT_TICKET_S23_2026_11 = 2215;
+	ITEM_EVENT_TICKET_S23_2026_12 = 2216;
+	ITEM_EVENT_TICKET_S23_2026_13 = 2217;
+	ITEM_EVENT_TICKET_S23_2026_14 = 2218;
+	ITEM_EVENT_TICKET_S23_2026_15 = 2219;
+	ITEM_EVENT_TICKET_S23_2026_16 = 2220;
+	ITEM_EVENT_TICKET_S23_2026_17 = 2221;
+	ITEM_EVENT_TICKET_S23_2026_18 = 2222;
+	ITEM_EVENT_TICKET_S23_2026_19 = 2223;
+	ITEM_EVENT_TICKET_S23_2026_20 = 2224;
+	ITEM_EVENT_TICKET_S23_2026_21 = 2225;
+	ITEM_EVENT_TICKET_S23_2026_22 = 2226;
+	ITEM_EVENT_TICKET_S23_2026_23 = 2227;
+	ITEM_EVENT_TICKET_S23_2026_24 = 2228;
+	ITEM_EVENT_TICKET_S23_2026_25 = 2229;
+	ITEM_EVENT_TICKET_S23_2026_26 = 2230;
+	ITEM_EVENT_TICKET_S23_2026_27 = 2231;
+	ITEM_EVENT_TICKET_S23_2026_28 = 2232;
+	ITEM_EVENT_TICKET_S23_2026_29 = 2233;
+	ITEM_EVENT_TICKET_S23_2026_30 = 2234;
+	ITEM_EVENT_TICKET_S23_2026_31 = 2235;
+	ITEM_EVENT_TICKET_S23_2026_32 = 2236;
 	ITEM_EVENT_TICKET_S23_2026_01_TO_GIFT = 2237;
 	ITEM_EVENT_TICKET_S23_2026_02_TO_GIFT = 2238;
+	ITEM_EVENT_TICKET_S23_2026_03_TO_GIFT = 2239;
+	ITEM_EVENT_TICKET_S23_2026_04_TO_GIFT = 2240;
+	ITEM_EVENT_TICKET_S23_2026_05_TO_GIFT = 2241;
+	ITEM_EVENT_TICKET_S23_2026_06_TO_GIFT = 2242;
+	ITEM_EVENT_TICKET_S23_2026_07_TO_GIFT = 2243;
+	ITEM_EVENT_TICKET_S23_2026_08_TO_GIFT = 2244;
+	ITEM_EVENT_TICKET_S23_2026_09_TO_GIFT = 2245;
+	ITEM_EVENT_TICKET_S23_2026_10_TO_GIFT = 2246;
+	ITEM_EVENT_TICKET_S23_2026_11_TO_GIFT = 2247;
+	ITEM_EVENT_TICKET_S23_2026_12_TO_GIFT = 2248;
+	ITEM_EVENT_TICKET_S23_2026_13_TO_GIFT = 2249;
+	ITEM_EVENT_TICKET_S23_2026_14_TO_GIFT = 2250;
+	ITEM_EVENT_TICKET_S23_2026_15_TO_GIFT = 2251;
+	ITEM_EVENT_TICKET_S23_2026_16_TO_GIFT = 2252;
 }
 
 enum ItemUseTelemetryIds {
@@ -5030,8 +5190,14 @@ enum RaidLevel {
 	RAID_LEVEL_EXTENDED_EGG = 9;
 	RAID_LEVEL_PRIMAL = 10;
 	RAID_LEVEL_1_SHADOW = 11;
+	RAID_LEVEL_2_SHADOW = 12;
 	RAID_LEVEL_3_SHADOW = 13;
+	RAID_LEVEL_4_SHADOW = 14;
 	RAID_LEVEL_5_SHADOW = 15;
+	RAID_LEVEL_4_MEGA_ENHANCED = 16;
+	RAID_LEVEL_5_MEGA_ENHANCED = 17;
+	RAID_LEVEL_COORDINATED_1 = 18;
+	RAID_LEVEL_COORDINATED_2 = 19;
 }
 
 enum RaidLocationRequirement {
@@ -11367,12 +11533,14 @@ message FeatureUnlockLevelSettingsProto {
 }
 
 message AdvancedSettingsProto {
-	int32 oocicpkhpec = 1;
-	repeated int32 jenbkjdidog = 2;
-	repeated int32 lephfeklhhm = 3;
-	repeated int32 mjglogomhlh = 4;
-	repeated int32 imdjmhmcdhg = 5;
+	int32 advancedSettingsVersion = 1;
+	repeated int32 unityCacheSizeMaxMegabytes = 2;
+	repeated int32 storedDataSizeMaxMegabytes = 3;
+	repeated int32 diskCacheSizeMaxMegabytes = 4;
+	repeated int32 imageRamCacheSizeMaxMegabytes = 5;
 	bool downloadAllAssetsEnabled = 6;
+	int32 maxDeviceMemoryForHighQualityModeMb = 11;
+	int32 maxDeviceMemoryForStandardQualityModeMb = 12;
 }
 
 message GM6SettingsProto {
@@ -11886,6 +12054,36 @@ message LocationCardSettingsProto {
 		LC_2026_MLB_SDPADRES = 279;
 		LC_2026_BR_001 = 280;
 		LC_SPECIALBACKGROUND_LEGO_2026_01 = 281;
+		LC_NT_1 = 282;
+		LC_NT_2 = 283;
+		LC_NT_3 = 284;
+		LC_NT_4 = 285;
+		LC_NT_5 = 286;
+		LC_NT_6 = 287;
+		LC_NT_7 = 288;
+		LC_NT_8 = 289;
+		LC_NT_9 = 290;
+		LC_NT_10 = 291;
+		LC_NT_11 = 292;
+		LC_NT_12 = 293;
+		LC_NT_13 = 294;
+		LC_NT_14 = 295;
+		LC_NT_15 = 296;
+		LC_NT_16 = 297;
+		LC_NT_17 = 298;
+		LC_NT_18 = 299;
+		LC_NT_19 = 300;
+		LC_NT_20 = 301;
+		LC_NT_21 = 302;
+		LC_NT_22 = 303;
+		LC_NT_23 = 304;
+		LC_NT_24 = 305;
+		LC_NT_25 = 306;
+		LC_NT_26 = 307;
+		LC_NT_27 = 308;
+		LC_2026_JP_RED = 309;
+		LC_2026_JP_GREEN = 310;
+		LC_2026_JP_BLUE = 311;
 		LC_JAPAN_STAMP_RALLY_1 = 312;
 		LC_JAPAN_STAMP_RALLY_2 = 313;
 		LC_JAPAN_STAMP_RALLY_3 = 314;
@@ -11904,7 +12102,15 @@ message LocationCardSettingsProto {
 		LC_JAPAN_STAMP_RALLY_16 = 327;
 		LC_JAPAN_STAMP_RALLY_17 = 328;
 		LC_JAPAN_STAMP_RALLY_18 = 329;
+		LC_JAPAN_STAMP_RALLY_19 = 330;
+		LC_SPECIALBACKGROUND_2026_GLOBAL_MEGA_002 = 331;
+		LC_2026_SANFRANCISCO_WCS_001 = 332;
 		LC_SPECIALBACKGROUND_GG2026 = 333;
+		LC_TPC30_MY = 334;
+		LC_TPC30_TW = 335;
+		LC_TPC30_SG = 336;
+		LC_TPC30_PH = 337;
+		LC_TPC30_TH = 338;
 	}
 
 	enum CardType {
@@ -12499,8 +12705,14 @@ message MainMenuCameraButtonSettingsProto {
 	bool enabled = 1;
 }
 
+message FusionAlignmentSettingsProto {
+	bool disableShadowPokemonAsComponent = 1;
+	bool disablePurifiedPokemonAsComponent = 2;
+}
+
 message SharedFusionSettingsProto {
 	bool fusionEnabled = 1;
+	FusionAlignmentSettingsProto fusionAlignmentSettings = 2;
 }
 
 enum IrisFtueVersion {
@@ -13350,11 +13562,17 @@ message BattleAnimationConfigProto {
 			float transitionInterimDelaySeconds = 2;
 			float transitionOutDurationSeconds = 3;
 		}
+
+		message MissedFastAttackRecoverySettings {
+			bool enabled = 1;
+			int32 maxCatchUpAttacks = 2;
+		}
 	}
 
 	BattleAnimationConfigProto.Types.AttackAnimationSettings fastAttackSettings = 1;
 	float projectedHealthAnimationDurationSeconds = 2;
 	BattleAnimationConfigProto.Types.UiCameraAnimationSettings uiCameraAnimationSettings = 3;
+	BattleAnimationConfigProto.Types.MissedFastAttackRecoverySettings missedFastAttackRecoverySettings = 5;
 }
 
 message RemoteTradeSettingsProto {
@@ -13452,6 +13670,68 @@ message NaturalArtDayNightFeatureSettingsProto {
 	float dbsSpawnRadiusMeters = 4;
 }
 
+message SoftSfidaSettingsProto {
+	int32 minPlayerLevel = 6;
+	int32 catchActionDelayMs = 7;
+	int32 spinActionDelayMs = 8;
+	int32 reservedGeofenceCount = 9;
+	float geofenceSizeM = 10;
+}
+
+message RaidEntryCostProto {
+	message Types {
+		message ItemRequirementProto {
+			Item item = 1;
+			int32 count = 2;
+		}
+	}
+
+	RaidLocationRequirement raidType = 1;
+	RaidEntryCostProto.Types.ItemRequirementProto itemRequirement = 2;
+}
+
+message RaidLevelEntryCostProto {
+	RaidLevel raidLevel = 1;
+	repeated RaidEntryCostProto raidEntryCost = 2;
+}
+
+message RaidEntryCostSettingsProto {
+	repeated RaidLevelEntryCostProto raidLevelEntryCost = 1;
+}
+
+message SpecialResearchVisualRefreshSettingsProto {
+	bool newQuestIndicatorsEnabled = 2;
+	bool specialResearchCategoriesEnabled = 3;
+	bool specialResearchCategoryColorsEnabled = 4;
+	bool updatedSortingEnabled = 5;
+	bool multipleFavoritesEnabled = 6;
+	bool tagNewQuestFromLapsedState = 7;
+}
+
+message QuestDialogueTriggerProto {
+	message Types {
+		enum Trigger {
+			UNSET = 0;
+			CATCH_POKEMON = 1;
+			PLAYER_PROFILE = 2;
+			INCENSE = 3;
+			ROUTE = 4;
+			TGR = 5;
+			PARTY_PLAY = 6;
+			MEGA_ENERGY = 7;
+			POWER_SPOT = 8;
+		}
+	}
+
+	QuestDialogueTriggerProto.Types.Trigger trigger = 1;
+	int32 numberOfInteractions = 2;
+}
+
+message QuestDialogueInboxSettingsProto {
+	int64 cooldownDurationMs = 2;
+	repeated QuestDialogueTriggerProto QuestDialogueTriggers = 4;
+}
+
 message ItemCurrencyValues {
 	message Types {
 		message ItemCoinValue {
@@ -13461,6 +13741,28 @@ message ItemCurrencyValues {
 	}
 
 	repeated ItemCurrencyValues.Types.ItemCoinValue itemCoinValues = 1;
+}
+
+message WelcomeBackRewardsSettingsProto {
+	message Types {
+		message CarouselDisplaySettings {
+			message Types {
+				message QuestIconCarousel {
+					string questTemplateId = 1;
+					repeated QuestRewardProto rewardData = 2;
+				}
+			}
+
+			repeated WelcomeBackRewardsSettingsProto.Types.CarouselDisplaySettings.Types.QuestIconCarousel questIconCarousels = 1;
+		}
+	}
+
+	bool enableMultiDayRewards = 2;
+	WelcomeBackRewardsSettingsProto.Types.CarouselDisplaySettings carouselDisplaySettings = 3;
+}
+
+message EventMapRefreshSettingsProto {
+	string eventServerSettingsHash = 1;
 }
 
 message ItemInventoryUpdateSettingsProto {
@@ -13519,7 +13821,7 @@ message GameMasterClientTemplateProto {
 	PlayerLevelSettingsProto playerLevel = 12;
 	GymLevelSettingsProto gym_level = 13;
 	GymBattleSettingsProto battle_settings = 14;
-	EncounterSettingsProto encounter_settings = 15;
+	EncounterSettingsProto encounterSettings = 15;
 	IapItemDisplayProto iapItemDisplay = 16;
 	IapSettingsProto iap_settings = 17;
 	PokemonUpgradeSettingsProto pokemon_upgrades = 18;
@@ -13743,7 +14045,13 @@ message GameMasterClientTemplateProto {
 	ARPhotoFeatureFlagProto arPhotoFeatureFlags = 278;
 	SpecialEggSettingsProto specialEggSettings = 280;
 	NaturalArtDayNightFeatureSettingsProto naturalArtDayNightFeatureSettings = 283;
+	SoftSfidaSettingsProto softSfidaSettings = 284;
+	RaidEntryCostSettingsProto raidEntryCostSettings = 285;
+	SpecialResearchVisualRefreshSettingsProto specialResearchVisualRefreshSettings = 286;
+	QuestDialogueInboxSettingsProto questDialogueInboxSettings = 287;
 	ItemCurrencyValues itemCurrencyValues = 289;
+	WelcomeBackRewardsSettingsProto welcomeBackRewardsSettings = 290;
+	EventMapRefreshSettingsProto eventMapRefreshSettings = 293;
 }
 
 message GameMasterLocalProto {
@@ -18066,6 +18374,11 @@ message MegaEvoGlobalSettingsProto {
 	bool jinbfkcdhia = 4;
 }
 
+message TempEvoPokemonBranch {
+	HoloPokemonId pokedexId = 1;
+	HoloTemporaryEvolutionId tempEvoId = 2;
+}
+
 message MegaEvoSettingsProto {
 	int64 evolutionLengthMs = 1;
 	float attackBoostFromMegaDifferentType = 2;
@@ -18078,6 +18391,7 @@ message MegaEvoSettingsProto {
 	int32 numMegaLevels = 9;
 	int32 clientMegaCooldownBufferMs = 10;
 	bool enableMegaLevelLegacyAward = 11;
+	repeated TempEvoPokemonBranch separatedTempEvoBranches = 14;
 }
 
 message MegaEvolvePokemonOutProto {
@@ -18128,6 +18442,7 @@ message MegaEvolutionLevelSettingsProto {
 	// int32 evolutionLengthMs = 6;
 	int32 megaEnergyCostToUnlock = 7;
 	int64 ftueExpirationTimestamp = 8;
+	int32 megaEnergyCostPerPoint = 9;
 }
 
 message MegaEvolutionProgressionSettingsProto {
@@ -21829,7 +22144,15 @@ message PokemonDisplayProto {
 		PIKACHU_GOFEST_2026_CAP_YELLOW = 3345;
 		CATERPIE_GOFEST_2026 = 3346;
 		PIKACHU_ANNIVERSARY_2026 = 3348;
+		CRAMORANT_GULPING = 3349;
+		CRAMORANT_GORGING = 3350;
 		GIMMIGHOUL_COIN_A2_2026 = 3351;
+		PIKACHU_PXP_2026 = 3352;
+		PIKACHU_WCS_2026 = 3353;
+		CHARMANDER_GOGGLES_2026 = 3354;
+		CHARMELEON_GOGGLES_2026 = 3355;
+		CHARIZARD_GOGGLES_2026 = 3356;
+		PIKACHU_GLASS_HELMET_2026 = 3357;
 	}
 
 	Costume costume = 1;
@@ -22214,6 +22537,7 @@ message BuddyWalkedMegaEnergyProto {
 	HoloPokemonId megaPokemonId = 1;
 	int32 megaEnergyAwardAmount = 2;
 	PokemonDisplayProto.Gender genderRequirement = 3;
+	HoloTemporaryEvolutionId tempEvoId = 4;
 }
 
 message PokemonSettingsProto {
@@ -22249,6 +22573,7 @@ message PokemonSettingsProto {
 
 		IbfcTransitionSettings defaultToAlternateIbfcSettings = 7;
 		IbfcTransitionSettings alternateToDefaultIbfcSettings = 8;
+		repeated PokemonDisplayProto.Form aternateForms = 9;
 	}
 
 	HoloPokemonId pokemonId = 1;
@@ -22300,7 +22625,7 @@ message PokemonSettingsProto {
 	int32 poejmggaakg = 48;
 	repeated HoloPokemonMove eliteQuickMove = 49;
 	repeated HoloPokemonMove eliteCinematicMove = 50;
-	repeated TempEvoOverrideProto temp_evo_overrides = 51;
+	repeated TempEvoOverrideProto tempEvoOverrides = 51;
 	int32 buddyWalkedMegaEnergyAward = 52;
 	repeated BuddyWalkedMegaEnergyProto buddyWalkedMegaEnergyAwards = 53;
 	bool disableTransferToPokemonHome = 61;
@@ -23470,6 +23795,12 @@ message PokemonMusicOverrideConfig {
 	string battleMusicKey = 3;
 }
 
+message RaidLevelEncounterTimingSettings {
+	bool showCatchLootOnPokemonPage = 1;
+	int32 autoThrowCountdownStartSeconds = 2;
+	int32 autoThrowSeconds = 3;
+}
+
 message RaidClientSettingsProto {
 	bool remoteRaidEnabled = 1;
 	int32 maxRemoteRaidPasses = 2;
@@ -23501,6 +23832,7 @@ message RaidClientSettingsProto {
 	int32 obRaidClientSettingsNumber29 = 29;
 	repeated PokemonMusicOverrideConfig pokemonMusicOverrides = 30;
 	bool fetchProfileFromSocialEnabled = 32;
+	repeated RaidLevelEncounterTimingSettings raidLevelEncounterTimings = 35;
 }
 
 message RaidCreateDetail {
