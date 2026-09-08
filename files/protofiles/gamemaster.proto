@@ -1893,6 +1893,49 @@ enum HoloBadgeType {
 	BADGE_CR_2026_001 = 6215;
 	BADGE_REDUCED_ENTRY_FLOW_ROLLOUT = 6216;
 	BADGE_REDUCED_ENTRY_FLOW_CONTROL = 6217;
+	BADGE_SAFARI_2026_BRISBANE_DAY_00 = 6219;
+	BADGE_SAFARI_2026_BRISBANE_DAY_01 = 6220;
+	BADGE_SAFARI_2026_BRISBANE_DAY_02 = 6221;
+	BADGE_SAFARI_2026_BRISBANE_ADD_ON_HATCH = 6222;
+	BADGE_SAFARI_2026_BRISBANE_ADD_ON_HATCH_TEST = 6223;
+	BADGE_SAFARI_2026_BRISBANE_ADD_ON_RAID = 6224;
+	BADGE_SAFARI_2026_BRISBANE_ADD_ON_RAID_TEST = 6225;
+	BADGE_SAFARI_2026_MUNICH_DAY_00 = 6226;
+	BADGE_SAFARI_2026_MUNICH_DAY_01 = 6227;
+	BADGE_SAFARI_2026_MUNICH_DAY_02 = 6228;
+	BADGE_SAFARI_2026_MUNICH_ADD_ON_HATCH = 6229;
+	BADGE_SAFARI_2026_MUNICH_ADD_ON_HATCH_TEST = 6230;
+	BADGE_SAFARI_2026_MUNICH_ADD_ON_RAID = 6231;
+	BADGE_SAFARI_2026_MUNICH_ADD_ON_RAID_TEST = 6232;
+	BADGE_SAFARI_2026_MARSEILLE_DAY_00 = 6233;
+	BADGE_SAFARI_2026_MARSEILLE_DAY_01 = 6234;
+	BADGE_SAFARI_2026_MARSEILLE_DAY_02 = 6235;
+	BADGE_SAFARI_2026_MARSEILLE_ADD_ON_HATCH = 6236;
+	BADGE_SAFARI_2026_MARSEILLE_ADD_ON_HATCH_TEST = 6237;
+	BADGE_SAFARI_2026_MARSEILLE_ADD_ON_RAID = 6238;
+	BADGE_SAFARI_2026_MARSEILLE_ADD_ON_RAID_TEST = 6239;
+	BADGE_SAFARI_2026_LISBON_DAY_00 = 6240;
+	BADGE_SAFARI_2026_LISBON_DAY_01 = 6241;
+	BADGE_SAFARI_2026_LISBON_DAY_02 = 6242;
+	BADGE_SAFARI_2026_LISBON_ADD_ON_HATCH = 6243;
+	BADGE_SAFARI_2026_LISBON_ADD_ON_HATCH_TEST = 6244;
+	BADGE_SAFARI_2026_LISBON_ADD_ON_RAID = 6245;
+	BADGE_SAFARI_2026_LISBON_ADD_ON_RAID_TEST = 6246;
+	BADGE_SAFARI_2026_RDJ_DAY_00 = 6247;
+	BADGE_SAFARI_2026_RDJ_DAY_01 = 6248;
+	BADGE_SAFARI_2026_RDJ_DAY_02 = 6249;
+	BADGE_SAFARI_2026_RDJ_ADD_ON_HATCH = 6250;
+	BADGE_SAFARI_2026_RDJ_ADD_ON_HATCH_TEST = 6251;
+	BADGE_SAFARI_2026_RDJ_ADD_ON_RAID = 6252;
+	BADGE_SAFARI_2026_RDJ_ADD_ON_RAID_TEST = 6253;
+	BADGE_SAFARI_2026_BOSTON_DAY_00 = 6254;
+	BADGE_SAFARI_2026_BOSTON_DAY_01 = 6255;
+	BADGE_SAFARI_2026_BOSTON_DAY_02 = 6256;
+	BADGE_SAFARI_2026_BOSTON_ADD_ON_HATCH = 6257;
+	BADGE_SAFARI_2026_BOSTON_ADD_ON_HATCH_TEST = 6258;
+	BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID = 6259;
+	BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID_TEST = 6260;
+	BADGE_GOFEST_FINALE_2026_EVENT_PASS_DELUXE = 6261;
 }
 
 enum HoloIapItemCategory {
@@ -4308,6 +4351,7 @@ enum Item {
 	ITEM_POSTCARD_INVENTORY = 803;
 	ITEM_SOFT_SFIDA = 804;
 	ITEM_SOFT_SFIDA_LIMIT_UPGRADE_EARNED = 805;
+	ITEM_PENDING_PREMIUM_GIFT_INVENTORY = 806;
 	ITEM_INCUBATOR_BASIC_UNLIMITED = 901;
 	ITEM_INCUBATOR_BASIC = 902;
 	ITEM_INCUBATOR_SUPER = 903;
@@ -4491,6 +4535,28 @@ enum Item {
 	ITEM_EVENT_TICKET_S23_2026_14_TO_GIFT = 2250;
 	ITEM_EVENT_TICKET_S23_2026_15_TO_GIFT = 2251;
 	ITEM_EVENT_TICKET_S23_2026_16_TO_GIFT = 2252;
+	ITEM_EVENT_TICKET_S24_SEP_12_COMMUNITY = 2253;
+	ITEM_EVENT_TICKET_S24_SEP_12_COMMUNITY_TO_GIFT = 2254;
+	ITEM_EVENT_TICKET_S24_SEP_19_MEGARAID = 2255;
+	ITEM_EVENT_TICKET_S24_SEP_19_MEGARAID_TO_GIFT = 2256;
+	ITEM_EVENT_TICKET_S24_SEP_26_CATCH = 2257;
+	ITEM_EVENT_TICKET_S24_SEP_26_CATCH_TO_GIFT = 2258;
+	ITEM_EVENT_TICKET_S24_OCT_3_MAXBATTLE = 2259;
+	ITEM_EVENT_TICKET_S24_OCT_3_MAXBATTLE_TO_GIFT = 2260;
+	ITEM_EVENT_TICKET_S24_OCT_10_COMMUNITY = 2261;
+	ITEM_EVENT_TICKET_S24_OCT_10_COMMUNITY_TO_GIFT = 2262;
+	ITEM_EVENT_TICKET_S24_OCT_17_HATCH = 2263;
+	ITEM_EVENT_TICKET_S24_OCT_17_HATCH_TO_GIFT = 2264;
+	ITEM_EVENT_TICKET_S24_OCT_24_MAXBATTLE = 2265;
+	ITEM_EVENT_TICKET_S24_OCT_24_MAXBATTLE_TO_GIFT = 2266;
+	ITEM_EVENT_TICKET_S24_OCT31_MEGARAID = 2267;
+	ITEM_EVENT_TICKET_S24_OCT31_MEGARAID_TO_GIFT = 2268;
+	ITEM_EVENT_TICKET_S24_NOV9_GOWAOL = 2269;
+	ITEM_EVENT_TICKET_S24_NOV9_GOWAOL_TO_GIFT = 2270;
+	ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY = 2271;
+	ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY_TO_GIFT = 2272;
+	ITEM_EVENT_TICKET_S24_NOV28_MEGARAID = 2273;
+	ITEM_EVENT_TICKET_S24_NOV28_MEGARAID_TO_GIFT = 2274;
 }
 
 enum ItemUseTelemetryIds {
@@ -11505,6 +11571,7 @@ message DailyAdventureIncenseSettingsProto {
 	bool canBePaused = 7;
 	int32 pushNotificationAfterTimeOfDayMinutes = 8;
 	int32 pushNotificationBeforeTimeOfDayMinutes = 9;
+	bool mapIconDisabled = 10;
 }
 
 message GM1SettingsProto {
@@ -12111,6 +12178,72 @@ message LocationCardSettingsProto {
 		LC_TPC30_SG = 336;
 		LC_TPC30_PH = 337;
 		LC_TPC30_TH = 338;
+		LC_NT_28 = 339;
+		LC_SAFARI_2026_BRISBANE = 342;
+		LC_SAFARI_2026_MUNICH = 343;
+		LC_SAFARI_2026_MARSEILLE = 344;
+		LC_SAFARI_2026_LISBON = 345;
+		LC_SAFARI_2026_RDJ = 346;
+		LC_SAFARI_2026_BOSTON = 347;
+		LC_SPECIALBACKGROUND_S24_SEP_2026 = 349;
+		LC_SPECIALBACKGROUND_MIDAUTUMN_2026 = 350;
+		LC_2026_LATW_ARTICUNO = 351;
+		LC_2026_LATW_ZAPDOS = 352;
+		LC_2026_LATW_MOLTRES = 353;
+		LC_2026_LATW_MEWTWO = 354;
+		LC_2026_LATW_RAIKOU = 355;
+		LC_2026_LATW_ENTEI = 356;
+		LC_2026_LATW_SUICUNE = 357;
+		LC_2026_LATW_LUGIA = 358;
+		LC_2026_LATW_HO_OH = 359;
+		LC_2026_LATW_REGIROCK = 360;
+		LC_2026_LATW_REGICE = 361;
+		LC_2026_LATW_REGISTEEL = 362;
+		LC_2026_LATW_KYOGRE = 363;
+		LC_2026_LATW_GROUDON = 364;
+		LC_2026_LATW_RAYQUAZA = 365;
+		LC_2026_LATW_LATIAS = 366;
+		LC_2026_LATW_LATIOS = 367;
+		LC_2026_LATW_UXIE = 368;
+		LC_2026_LATW_MESPRIT = 369;
+		LC_2026_LATW_AZELF = 370;
+		LC_2026_LATW_DIALGA = 371;
+		LC_2026_LATW_PALKIA = 372;
+		LC_2026_LATW_HEATRAN = 373;
+		LC_2026_LATW_REGIGIGAS = 374;
+		LC_2026_LATW_GIRATINA = 375;
+		LC_2026_LATW_CRESSELIA = 376;
+		LC_2026_LATW_COBALION = 377;
+		LC_2026_LATW_TERRAKION = 378;
+		LC_2026_LATW_VIRIZION = 379;
+		LC_2026_LATW_TORNADUS = 380;
+		LC_2026_LATW_THUNDURUS = 381;
+		LC_2026_LATW_RESHIRAM = 382;
+		LC_2026_LATW_ZEKROM = 383;
+		LC_2026_LATW_KYUREM = 384;
+		LC_2026_LATW_LANDORUS = 385;
+		LC_2026_LATW_XERNEAS = 386;
+		LC_2026_LATW_YVELTAL = 387;
+		LC_2026_LATW_TAPU_KOKO = 388;
+		LC_2026_LATW_TAPU_LELE = 389;
+		LC_2026_LATW_TAPU_BULU = 390;
+		LC_2026_LATW_TAPU_FINI = 391;
+		LC_2026_LATW_NECROZMA = 392;
+		LC_2026_LATW_REGIELEKI = 393;
+		LC_2026_LATW_REGIDRAGO = 394;
+		LC_2026_LATW_NIHILEGO = 395;
+		LC_2026_LATW_BUZZWOLE = 396;
+		LC_2026_LATW_PHEROMOSA = 397;
+		LC_2026_LATW_XURKITREE = 398;
+		LC_2026_LATW_CELESTEELA = 399;
+		LC_2026_LATW_KARTANA = 400;
+		LC_2026_LATW_GUZZLORD = 401;
+		LC_2026_LATW_NAGANADEL = 402;
+		LC_2026_LATW_BLACEPHALON = 403;
+		LC_2026_LATW_STAKATAKA = 404;
+		LC_2026_LATW_POIPOLE = 405;
+		LC_SPECIALBACKGROUND_BATIK_2026 = 406;
+		LC_SPECIALBACKGROUND_2026_10TH_ANNIVERSARY_001 = 407;
 	}
 
 	enum CardType {
@@ -12574,49 +12707,75 @@ message AttackDefenseBonusAttributeSettingsProto {
 	float defenseMultiplier = 3;
 }
 
-message NonCombatMoveSettingsProto {
-	message Cost {
-		int32 candyCost = 1;
-		int32 stardustCost = 2;
+message CostSettingsProto {
+	message Types {
+		message TempEvoResourceCostProto {
+			TempEvoPokemonBranch tempEvoPokemonBranch = 1;
+			int32 megaEnergyCost = 2;
+		}
 	}
 
-	message BonusEffectSettingsProto {
-		message TimeBonusSettingsProto {
-			repeated Item affectedItems = 1;
-		}
+	int32 candyCost = 1;
+	int32 stardustCost = 2;
+	CostSettingsProto.Types.TempEvoResourceCostProto tempEvoResourceCost = 3;
+}
 
-		message SpaceBonusSettingsProto {
-			double pokemonVisibleRangeMeters = 1;
-			double encounterRangeMeters = 2;
-			double serverAllowableEncounterRangeMeters = 3;
-		}
+message TimeBonusSettingsProto {
+	repeated Item affectedItems = 1;
+}
 
-		message DayNightBonusSettingsProto {
-			Item incenseItem = 1;
-		}
+message SpaceBonusSettingsProto {
+	double pokemonVisibleRangeMeters = 1;
+	double encounterRangeMeters = 2;
+	double serverAllowableEncounterRangeMeters = 3;
+}
 
-		message SlowFreezePlayerBonusSettingsProto {
-			float catchCircleTimeScaleOverride = 1;
-			float catchRateIncreaseMultiplier = 2;
-			float catchCircleSpeedChangeThreshold = 3;
-			float catchCircleOuterTimeScaleOverride = 4;
-		}
+message DayNightBonusSettingsProto {
+	Item incenseItem = 1;
+}
 
-		message AttackDefenseBonusSettingsProto {
-			repeated AttackDefenseBonusAttributeSettingsProto attributes = 1;
-		}
+message SlowFreezePlayerBonusSettingsProto {
+	float catchCircleTimeScaleOverride = 1;
+	float catchRateIncreaseMultiplier = 2;
+	float catchCircleSpeedChangeThreshold = 3;
+	float catchCircleOuterTimeScaleOverride = 4;
+}
 
-		message MaxMoveBonusSettingsProto {
-			repeated HoloPokemonId excludedPokedexIds = 1;
-			int32 numAllMaxMoveLevelIncrease = 2;
-		}
+message AttackDefenseBonusSettingsProto {
+	repeated AttackDefenseBonusAttributeSettingsProto attributes = 1;
+}
 
+message MaxMoveBonusSettingsProto {
+	repeated HoloPokemonId excludedPokedexIds = 1;
+	int32 numAllMaxMoveLevelIncrease = 2;
+}
+
+message MegaMoveBonusSettingsProto {
+	HoloPokemonMove specialMove = 1;
+	float attackMultiplier = 2;
+	int32 extraMegaRaidShieldBreak = 3;
+	repeated int32 visibleAppraisalStarTiers = 4;
+}
+
+message BonusEffectSettingsProto {
+	oneof BonusEffect {
 		TimeBonusSettingsProto timeBonus = 1;
 		SpaceBonusSettingsProto spaceBonus = 2;
 		DayNightBonusSettingsProto dayNightBonus = 3;
 		SlowFreezePlayerBonusSettingsProto slowFreezeBonus = 4;
 		AttackDefenseBonusSettingsProto attackDefenseBonus = 5;
 		MaxMoveBonusSettingsProto maxMoveBonus = 6;
+		MegaMoveBonusSettingsProto megaMoveBonus = 7;
+	}
+}
+
+message NonCombatMoveSettingsProto {
+	message Types {
+		message InLobbyActivationSettingsProto {
+			bool enableActivationInRaidLobby = 1;
+			bool enableActivationInMegaRaidLobby = 2;
+			bool enableActivationInMaxLobby = 3;
+		}
 	}
 
 	enum BonusType {
@@ -12633,13 +12792,14 @@ message NonCombatMoveSettingsProto {
 	}
 
 	HoloPokemonMove uniqueId = 1;
-	Cost cost = 2;
+	CostSettingsProto cost = 2;
 	BonusEffectSettingsProto bonusEffect = 3;
 	int64 durationMs = 4;
 	BonusType bonusType = 5;
 	bool enableMultiUse = 6;
 	int64 extraDurationMs = 7;
 	bool enableNonCombatMove = 8;
+	NonCombatMoveSettingsProto.Types.InLobbyActivationSettingsProto innLobbyActivationSettings = 9;
 }
 
 message RouteNpcGiftSettingsProto {
@@ -13293,6 +13453,27 @@ message EventPassDisplaySettingsProto {
 		enum TodayViewSectionDisplay {
 			EVENT_PASS_SECTION = 0;
 			SEASONAL_EVENT_PASS_SECTION = 1;
+			GLOBAL_EVENT_PASS_SECTION = 2;
+		}
+
+		enum TodayViewBackgroundConfiguration {
+			DEFAULT_BACKGROUND = 0;
+			EVENT_PASS_BACKGROUND_GO_TOUR_01 = 1;
+			EVENT_PASS_BACKGROUND_GO_TOUR_02 = 2;
+			EVENT_PASS_BACKGROUND_GO_TOUR_03 = 3;
+			EVENT_PASS_BACKGROUND_GO_TOUR_04 = 4;
+			EVENT_PASS_BACKGROUND_GO_FEST_01 = 101;
+			EVENT_PASS_BACKGROUND_GO_FEST_02 = 102;
+			EVENT_PASS_BACKGROUND_GO_FEST_03 = 103;
+			EVENT_PASS_BACKGROUND_GO_FEST_04 = 104;
+			EVENT_PASS_BACKGROUND_GO_WILD_AREA_01 = 201;
+			EVENT_PASS_BACKGROUND_GO_WILD_AREA_02 = 202;
+			EVENT_PASS_BACKGROUND_GO_WILD_AREA_03 = 203;
+			EVENT_PASS_BACKGROUND_GO_WILD_AREA_04 = 204;
+			EVENT_PASS_BACKGROUND_LIVE_OPS_01 = 301;
+			EVENT_PASS_BACKGROUND_LIVE_OPS_02 = 302;
+			EVENT_PASS_BACKGROUND_LIVE_OPS_03 = 303;
+			EVENT_PASS_BACKGROUND_LIVE_OPS_04 = 304;
 		}
 	}
 
@@ -13308,6 +13489,7 @@ message EventPassDisplaySettingsProto {
 	string premiumRewardBannerImageUrl = 10;
 	string premiumRewardsDescription = 11;
 	EventPassDisplaySettingsProto.Types.TodayViewSectionDisplay todayViewSection = 12;
+	EventPassDisplaySettingsProto.Types.TodayViewBackgroundConfiguration backgroundConfiguration = 13;
 	int32 sectionDisplayPriority = 14;
 }
 
@@ -13349,6 +13531,7 @@ message EventPassTierSettingsProto {
 	repeated QuestRewardProto rewards = 4;
 	EventPassTierBonusSettingsProto bonusSettings = 5;
 	EventPassTierBonusSettingsProto activeBonusDisplaySettings = 6;
+	bool isMilestoneRank = 7;
 }
 
 message PlannedEventSettingsProto {
@@ -13671,6 +13854,7 @@ message NaturalArtDayNightFeatureSettingsProto {
 }
 
 message SoftSfidaSettingsProto {
+	bool enable = 1;
 	int32 minPlayerLevel = 6;
 	int32 catchActionDelayMs = 7;
 	int32 spinActionDelayMs = 8;
@@ -13757,12 +13941,37 @@ message WelcomeBackRewardsSettingsProto {
 		}
 	}
 
+	bool enableWelcomeBackRewards = 1;
 	bool enableMultiDayRewards = 2;
 	WelcomeBackRewardsSettingsProto.Types.CarouselDisplaySettings carouselDisplaySettings = 3;
 }
 
 message EventMapRefreshSettingsProto {
 	string eventServerSettingsHash = 1;
+}
+
+message ArBackendSettingsProto {
+	message Types {
+		enum ArFeature {
+			UNSET = 0;
+			ENCOUNTER = 1;
+			BUDDY = 2;
+			IRIS = 3;
+			AR_PHOTO_SOCIAL = 4;
+		}
+
+		enum ArBackend {
+			NATIVE = 0;
+			CUSTOM = 1;
+		}
+
+		message ArFeatureBackendConfig {
+			ArBackendSettingsProto.Types.ArFeature arFeature = 1;
+			ArBackendSettingsProto.Types.ArBackend arBackend = 2;
+		}
+	}
+
+	repeated ArBackendSettingsProto.Types.ArFeatureBackendConfig featureBackendConfigs = 1;
 }
 
 message ItemInventoryUpdateSettingsProto {
@@ -13878,7 +14087,7 @@ message GameMasterClientTemplateProto {
 	PlatypusRolloutSettingsProto platypus_rollout_settings = 70;
 	BuddyHungerSettings buddy_hunger_settings = 72;
 	ProjectVacationProto project_vacation = 73;
-	MegaEvoSettingsProto mega_evo_settings = 74;
+	MegaEvoSettingsProto megaEvoSettings = 74;
 	TemporaryEvolutionSettingsProto temporaryEvolutionSettings = 75;
 	AvatarGroupOrderSettingsProto avatar_group_order_settings = 76;
 	PokemonFamilySettingsProto pokemonFamily = 77;
@@ -14052,6 +14261,7 @@ message GameMasterClientTemplateProto {
 	ItemCurrencyValues itemCurrencyValues = 289;
 	WelcomeBackRewardsSettingsProto welcomeBackRewardsSettings = 290;
 	EventMapRefreshSettingsProto eventMapRefreshSettings = 293;
+	ArBackendSettingsProto arBackendSettings = 294;
 }
 
 message GameMasterLocalProto {
@@ -16839,6 +17049,7 @@ message ItemSettingsProto {
 	bool ignoreInventorySpace = 19;
 	int32 itemCap = 22;
 	string nameOverride = 24;
+	string namePluralOverride = 25;
 	string descriptionOverride = 26;
 	ReplenishMpAttributesProto replenishMp = 29;
 	EventPassPointAttributesProto eventPassPoint = 31;
@@ -18391,7 +18602,9 @@ message MegaEvoSettingsProto {
 	int32 numMegaLevels = 9;
 	int32 clientMegaCooldownBufferMs = 10;
 	bool enableMegaLevelLegacyAward = 11;
+	int32 minLevelForSpecialMove = 13;
 	repeated TempEvoPokemonBranch separatedTempEvoBranches = 14;
+	bool enableSpecialMove = 15;
 }
 
 message MegaEvolvePokemonOutProto {
@@ -21666,6 +21879,7 @@ message PokemonDisplayProto {
 		MINIOR_METEOR_RED = 2742;
 		MINIOR_METEOR_VIOLET = 2743;
 		MINIOR_METEOR_YELLOW = 2744;
+		MINIOR_METEOR = 3380;
 		MINIOR_BLUE = 2708;
 		MINIOR_GREEN = 2709;
 		MINIOR_INDIGO = 2710;
@@ -22153,6 +22367,15 @@ message PokemonDisplayProto {
 		CHARMELEON_GOGGLES_2026 = 3355;
 		CHARIZARD_GOGGLES_2026 = 3356;
 		PIKACHU_GLASS_HELMET_2026 = 3357;
+		PIKACHU_ANNIVERSARY_2026_MALAYSIA_01 = 3358;
+		PIKACHU_ANNIVERSARY_2026_SINGAPORE_01 = 3359;
+		PIKACHU_ANNIVERSARY_2026_TAIWAN_01 = 3360;
+		PIKACHU_K_2026_A_01 = 3361;
+		PIKACHU_ANNIVERSARY_2026_PHILIPPINE_01 = 3375;
+		PIKACHU_ANNIVERSARY_2026_THAILAND_01 = 3376;
+		PIKACHU_K_2026_B_01 = 3377;
+		PIKACHU_ANNIVERSARY_2026_INDONESIA_01 = 3378;
+		PIKACHU_HALLOWEEN_2026 = 3379;
 	}
 
 	Costume costume = 1;
@@ -23621,6 +23844,11 @@ message LootTableRewardProto {
 	// int32 bonus = 3;
 }
 
+message TempEvoResourceRewardProto {
+	TempEvoPokemonBranch tempEvoPokemonBranch = 1;
+	int32 amount = 2;
+}
+
 message QuestRewardProto {
 	enum Type {
 		UNSET = 0;
@@ -23668,6 +23896,7 @@ message QuestRewardProto {
 		PokemonIndividualStatRewardProto pokemonIndividualStat = 21;
 		// LootTableRewardProto lootTable = 22;
 		int32 friendshipPoints = 23;
+		TempEvoResourceRewardProto tempEvoResource = 24;
 	}
 
 	Type type = 1;
@@ -25727,6 +25956,7 @@ message TempEvoOverrideProto {
 	float raidBossDistanceOffset = 15;
 	PokemonSizeSettingsProto sizeSettings = 16;
 	repeated float buddyPortraitRotation = 17;
+	HoloPokemonMove specialMove = 18;
 }
 
 message TemplateVariable {
