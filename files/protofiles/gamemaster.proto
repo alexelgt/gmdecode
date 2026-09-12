@@ -12789,6 +12789,8 @@ message NonCombatMoveSettingsProto {
 		ATTACK_BONUS = 7;
 		DEFENSE_BONUS = 8;
 		MAX_MOVE_BONUS = 9;
+		MEGA_X_BONUS = 10;
+		MEGA_Y_BONUS = 11;
 	}
 
 	HoloPokemonMove uniqueId = 1;
