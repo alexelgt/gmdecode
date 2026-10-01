@@ -12244,6 +12244,7 @@ message LocationCardSettingsProto {
 		LC_2026_LATW_POIPOLE = 405;
 		LC_SPECIALBACKGROUND_BATIK_2026 = 406;
 		LC_SPECIALBACKGROUND_2026_10TH_ANNIVERSARY_001 = 407;
+		LC_2026_COMICCON_MALAGA = 416;
 	}
 
 	enum CardType {
@@ -22798,7 +22799,7 @@ message PokemonSettingsProto {
 
 		IbfcTransitionSettings defaultToAlternateIbfcSettings = 7;
 		IbfcTransitionSettings alternateToDefaultIbfcSettings = 8;
-		repeated PokemonDisplayProto.Form alternateForm = 9;
+		repeated PokemonDisplayProto.Form AlternateForms = 9;
 	}
 
 	HoloPokemonId pokemonId = 1;
