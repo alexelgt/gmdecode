@@ -19,6 +19,7 @@ args = parser.parse_args()
 RUN_FOLDER = os.path.dirname(__file__) + "/"
 
 proto_filename = "gamemaster.proto"
+proto_raw_filename = "gamemasterraw.proto"
 
 files_folder = f"{RUN_FOLDER}files"
 proto_folder = f"{files_folder}/protofiles"
@@ -28,6 +29,7 @@ gamemaster_output_folder = f"{files_folder}/gamemasteroutput"
 gamemaster_json_output_file = f"{RUN_FOLDER}GAME_MASTER.json"
 
 pythonfiles_folder = f"{RUN_FOLDER}pyproto"
+pythonfiles_raw_folder = f"{RUN_FOLDER}pyprotoraw"
 
 pogo_gm_protos_target = "POGOProtos.Rpc.DownloadGmTemplatesResponseProto"
 pogo_ga_protos_target = "POGOProtos.Rpc.AssetDigestOutProto"
@@ -212,11 +214,22 @@ def main():
         if not gamemaster_filename:
             gamemaster_filename = "v2_GAME_MASTER"
 
+        # ==== Get pyproto files ==== #
+        # Normal
         call(
             f'protoc --proto_path="{proto_folder}" --python_out="{pythonfiles_folder}" --pyi_out="{pythonfiles_folder}" {proto_filename}',
             shell=True,
         )
 
+        # RAW
+        call(
+            f'protoc --proto_path="{proto_folder}" --python_out="{pythonfiles_raw_folder}" --pyi_out="{pythonfiles_raw_folder}" {proto_raw_filename}',
+            shell=True,
+        )
+        # == Get pyproto files == #
+
+        # ==== Get txt gamemaster ==== #
+        # Normal
         proto_file = f"{proto_folder}/{proto_filename}"
 
         gamemaster_output_file = f"{gamemaster_output_folder}/{gamemaster_filename}.txt"
@@ -225,6 +238,17 @@ def main():
             f'protoc --proto_path="{proto_folder}" --decode {pogo_gm_protos_target} "{proto_file}" <"{gamemaster_input_folder}/{gamemaster_filename}"> "{gamemaster_output_file}"',
             shell=True,
         )
+
+        # RAW
+        proto_raw_file = f"{proto_folder}/{proto_raw_filename}"
+
+        gamemaster_raw_output_file = f"{gamemaster_output_folder}/{gamemaster_filename}_RAW.txt"
+
+        call(
+            f'protoc --proto_path="{proto_folder}" --decode {pogo_gm_protos_target} "{proto_raw_file}" <"{gamemaster_input_folder}/{gamemaster_filename}"> "{gamemaster_raw_output_file}"',
+            shell=True,
+        )
+        # == Get txt gamemaster == #
 
         try:
             from pyproto.gamemaster_pb2 import (
@@ -243,6 +267,9 @@ def main():
 
             gamemaster_template_json = gamemaster_json["template"]
             gamemaster_template_json.sort(key=lambda x: x["templateId"])
+
+            with open(gamemaster_json_output_file, "w", encoding="utf-8") as f:
+                json.dump(gamemaster_template_json, f, indent=4)
 
             print(f"batchId: {gamemaster_json['batchId']}")
             print("-" * 10)
@@ -300,9 +327,6 @@ def main():
                             pass
             except:
                 pass
-
-            with open(gamemaster_json_output_file, "w", encoding="utf-8") as f:
-                json.dump(gamemaster_template_json, f, indent=4)
 
             blocks_missing_enums_info = [
                 {
