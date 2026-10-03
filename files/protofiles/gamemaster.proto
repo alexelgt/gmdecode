@@ -20401,11 +20401,13 @@ message PlayerLevelSettingsProto {
 	int32 maxQuestEncounterPlayerLevel = 7;
 	int32 dbcflbcpokl = 8;
 	int32 extendedPlayerLevelThreshold = 9;
+	uint32 defaultLevelCap = 12;
 	bool levelUpScreenV3Enabled = 14;
 	repeated int32 milestoneLevels = 16;
 	bool levelRequirementsV2Enabled = 18;
 	bool xpRewardV2Enabled = 19;
-	PlayerLevelSettingsProto.Types.XpRewardV2Threshold xpRewardV2Thresholds = 22;
+	repeated PlayerLevelSettingsProto.Types.XpRewardV2Threshold xpRewardV2Thresholds = 22;
+	int32 nextLevelPreviewIntervalS = 23;
 	string smoreFtueImageUrl = 25;
 }
 
