@@ -4225,6 +4225,7 @@ enum HoloPokemonMove {
 	DIVE = 593;
 	GULP_MISSILE_GULPING = 594;
 	GULP_MISSILE_GORGING = 595;
+	KOWTOW_CLEAVE = 615;
 }
 
 enum HoloPokemonMovementType {
