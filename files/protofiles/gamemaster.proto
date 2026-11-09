@@ -692,6 +692,7 @@ enum HoloBadgeType {
 	BADGE_BREAD_BATTLES_DOUGH_WON = 88;
 	BADGE_BREAD_UNIQUE = 89;
 	BADGE_BREAD_DOUGH_UNIQUE = 90;
+	BADGE_WORLDWIDE_POKEMON = 93;
 	BADGE_DYNAMIC_MIN = 1000;
 	BADGE_MINI_COLLECTION = 1002;
 	BADGE_BUTTERFLY_COLLECTOR = 1003;
@@ -1936,46 +1937,146 @@ enum HoloBadgeType {
 	BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID = 6259;
 	BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID_TEST = 6260;
 	BADGE_GOFEST_FINALE_2026_EVENT_PASS_DELUXE = 6261;
-	BADGE_GOWA_2026_CDMX_ADDON_BATTLE = 6289;
-	BADGE_GOWA_2026_CDMX_TEST = 6291;
-	BADGE_GOWA_2026_CDMX_SUNDAY = 6283;
+	BADGE_GOWA_2026_SENDAI_FRIDAY = 6262;
 	BADGE_GOWA_2026_SENDAI_FRIDAY_ESSENTIAL = 6263;
-	BADGE_GOWA_2026_SENDAI_SUNDAY = 6266;
-	BADGE_GOWA_2026_SPECIAL_RESEARCH_A = 6300;
-	BADGE_GOWA_2026_SPECIAL_RESEARCH_B = 6301;
-	BADGE_GOWA_2026_GLOBAL = 6298;
-	BADGE_GOWA_2026_CDMX_FRIDAY_ESSENTIAL = 6280;
-	BADGE_GOWA_2026_SENDAI_ADDON_SATURDAY = 6269;
-	BADGE_GOWA_2026_CDMX_ADDON_SATURDAY = 6286;
-	BADGE_GOWA_2026_SENDAI_VIP = 6273;
-	BADGE_GOWA_2026_SENDAI_ADDON_SUNDAY = 6270;
-	BADGE_GOWA_2026_SENDAI_SUNDAY_ESSENTIAL = 6267;
-	BADGE_GOWA_2026_SENDAI_ADDON_FRIDAY = 6268;
-	BADGE_GOWA_2026_CDMX_TEST_ADDON_BATTLE = 6295;
-	BADGE_GOWA_2026_CDMX_ADDON_FRIDAY = 6285;
-	BADGE_GOWA_2026_CDMX_VIP = 6290;
-	BADGE_GOWA_2026_CDMX_TEST_ADDON_HATCH = 6294;
-	BADGE_GOWA_2026_SENDAI_TEST = 6274;
-	BADGE_GOWA_2026_CDMX_TEST_ADDON_EXTRA_DAY = 6293;
 	BADGE_GOWA_2026_SENDAI_SATURDAY = 6264;
 	BADGE_GOWA_2026_SENDAI_SATURDAY_ESSENTIAL = 6265;
-	BADGE_GOWA_2026_CDMX_ADDON_HATCH = 6288;
-	BADGE_GOWA_2026_CDMX_SATURDAY = 6281;
-	BADGE_GOWA_2026_SENDAI_TEST_ESSENTIAL = 6275;
-	BADGE_GOWA_2026_CDMX_SUNDAY_ESSENTIAL = 6284;
-	BADGE_GOWA_2026_SENDAI_TEST_ADDON_EXTRA_DAY = 6276;
-	BADGE_GOWA_2026_CDMX_ADDON_SUNDAY = 6287;
-	BADGE_GOWA_2026_SENDAI_FRIDAY = 6262;
-	BADGE_GOWA_2026_EVENT_02 = 6297;
-	BADGE_GOWA_2026_SENDAI_TEST_ADDON_HATCH = 6277;
-	BADGE_GOWA_2026_CDMX_FRIDAY = 6279;
-	BADGE_GOWA_2026_CDMX_SATURDAY_ESSENTIAL = 6282;
-	BADGE_GOWA_2026_GLOBAL_TEST = 6299;
+	BADGE_GOWA_2026_SENDAI_SUNDAY = 6266;
+	BADGE_GOWA_2026_SENDAI_SUNDAY_ESSENTIAL = 6267;
+	BADGE_GOWA_2026_SENDAI_ADDON_FRIDAY = 6268;
+	BADGE_GOWA_2026_SENDAI_ADDON_SATURDAY = 6269;
+	BADGE_GOWA_2026_SENDAI_ADDON_SUNDAY = 6270;
 	BADGE_GOWA_2026_SENDAI_ADDON_HATCH = 6271;
-	BADGE_GOWA_2026_CDMX_TEST_ESSENTIAL = 6292;
-	BADGE_GOWA_2026_EVENT_01 = 6296;
 	BADGE_GOWA_2026_SENDAI_ADDON_BATTLE = 6272;
+	BADGE_GOWA_2026_SENDAI_VIP = 6273;
+	BADGE_GOWA_2026_SENDAI_TEST = 6274;
+	BADGE_GOWA_2026_SENDAI_TEST_ESSENTIAL = 6275;
+	BADGE_GOWA_2026_SENDAI_TEST_ADDON_EXTRA_DAY = 6276;
+	BADGE_GOWA_2026_SENDAI_TEST_ADDON_HATCH = 6277;
 	BADGE_GOWA_2026_SENDAI_TEST_ADDON_BATTLE = 6278;
+	BADGE_GOWA_2026_CDMX_FRIDAY = 6279;
+	BADGE_GOWA_2026_CDMX_FRIDAY_ESSENTIAL = 6280;
+	BADGE_GOWA_2026_CDMX_SATURDAY = 6281;
+	BADGE_GOWA_2026_CDMX_SATURDAY_ESSENTIAL = 6282;
+	BADGE_GOWA_2026_CDMX_SUNDAY = 6283;
+	BADGE_GOWA_2026_CDMX_SUNDAY_ESSENTIAL = 6284;
+	BADGE_GOWA_2026_CDMX_ADDON_FRIDAY = 6285;
+	BADGE_GOWA_2026_CDMX_ADDON_SATURDAY = 6286;
+	BADGE_GOWA_2026_CDMX_ADDON_SUNDAY = 6287;
+	BADGE_GOWA_2026_CDMX_ADDON_HATCH = 6288;
+	BADGE_GOWA_2026_CDMX_ADDON_BATTLE = 6289;
+	BADGE_GOWA_2026_CDMX_VIP = 6290;
+	BADGE_GOWA_2026_CDMX_TEST = 6291;
+	BADGE_GOWA_2026_CDMX_TEST_ESSENTIAL = 6292;
+	BADGE_GOWA_2026_CDMX_TEST_ADDON_EXTRA_DAY = 6293;
+	BADGE_GOWA_2026_CDMX_TEST_ADDON_HATCH = 6294;
+	BADGE_GOWA_2026_CDMX_TEST_ADDON_BATTLE = 6295;
+	BADGE_GOWA_2026_EVENT_01 = 6296;
+	BADGE_GOWA_2026_EVENT_02 = 6297;
+	BADGE_GOWA_2026_GLOBAL = 6298;
+	BADGE_GOWA_2026_GLOBAL_TEST = 6299;
+	BADGE_GOWA_2026_SPECIAL_RESEARCH_A = 6300;
+	BADGE_GOWA_2026_SPECIAL_RESEARCH_B = 6301;
+	BADGE_EVENT_0281 = 6302;
+	BADGE_EVENT_0282 = 6303;
+	BADGE_EVENT_0283 = 6304;
+	BADGE_EVENT_0284 = 6305;
+	BADGE_EVENT_0285 = 6306;
+	BADGE_EVENT_0286 = 6307;
+	BADGE_EVENT_0287 = 6308;
+	BADGE_EVENT_0288 = 6309;
+	BADGE_EVENT_0289 = 6310;
+	BADGE_EVENT_0290 = 6311;
+	BADGE_EVENT_0291 = 6312;
+	BADGE_EVENT_0292 = 6313;
+	BADGE_EVENT_0293 = 6314;
+	BADGE_EVENT_0294 = 6315;
+	BADGE_EVENT_0295 = 6316;
+	BADGE_EVENT_0296 = 6317;
+	BADGE_EVENT_0297 = 6318;
+	BADGE_EVENT_0298 = 6319;
+	BADGE_EVENT_0299 = 6320;
+	BADGE_EVENT_0300 = 6321;
+	BADGE_EVENT_0301 = 6322;
+	BADGE_EVENT_0302 = 6323;
+	BADGE_EVENT_0303 = 6324;
+	BADGE_EVENT_0304 = 6325;
+	BADGE_EVENT_0305 = 6326;
+	BADGE_EVENT_0306 = 6327;
+	BADGE_EVENT_0307 = 6328;
+	BADGE_EVENT_0308 = 6329;
+	BADGE_EVENT_0309 = 6330;
+	BADGE_EVENT_0310 = 6331;
+	BADGE_EVENT_0311 = 6332;
+	BADGE_EVENT_0312 = 6333;
+	BADGE_EVENT_0313 = 6334;
+	BADGE_EVENT_0314 = 6335;
+	BADGE_EVENT_0315 = 6336;
+	BADGE_EVENT_0316 = 6337;
+	BADGE_EVENT_0317 = 6338;
+	BADGE_EVENT_0318 = 6339;
+	BADGE_EVENT_0319 = 6340;
+	BADGE_EVENT_0320 = 6341;
+	BADGE_EVENT_0321 = 6342;
+	BADGE_EVENT_0322 = 6343;
+	BADGE_EVENT_0323 = 6344;
+	BADGE_EVENT_0324 = 6345;
+	BADGE_EVENT_0325 = 6346;
+	BADGE_EVENT_0326 = 6347;
+	BADGE_EVENT_0327 = 6348;
+	BADGE_EVENT_0328 = 6349;
+	BADGE_EVENT_0329 = 6350;
+	BADGE_EVENT_0330 = 6351;
+	BADGE_EVENT_0331 = 6352;
+	BADGE_EVENT_0332 = 6353;
+	BADGE_EVENT_0333 = 6354;
+	BADGE_EVENT_0334 = 6355;
+	BADGE_EVENT_0335 = 6356;
+	BADGE_EVENT_0336 = 6357;
+	BADGE_EVENT_0337 = 6358;
+	BADGE_EVENT_0338 = 6359;
+	BADGE_EVENT_0339 = 6360;
+	BADGE_EVENT_0340 = 6361;
+	BADGE_EVENT_0341 = 6362;
+	BADGE_EVENT_0342 = 6363;
+	BADGE_EVENT_0343 = 6364;
+	BADGE_EVENT_0344 = 6365;
+	BADGE_EVENT_0345 = 6366;
+	BADGE_EVENT_0346 = 6367;
+	BADGE_EVENT_0347 = 6368;
+	BADGE_EVENT_0348 = 6369;
+	BADGE_EVENT_0349 = 6370;
+	BADGE_EVENT_0350 = 6371;
+	BADGE_EVENT_0351 = 6372;
+	BADGE_EVENT_0352 = 6373;
+	BADGE_EVENT_0353 = 6374;
+	BADGE_EVENT_0354 = 6375;
+	BADGE_EVENT_0355 = 6376;
+	BADGE_EVENT_0356 = 6377;
+	BADGE_EVENT_0357 = 6378;
+	BADGE_EVENT_0358 = 6379;
+	BADGE_EVENT_0359 = 6380;
+	BADGE_EVENT_0360 = 6381;
+	BADGE_EVENT_0361 = 6382;
+	BADGE_EVENT_0362 = 6383;
+	BADGE_EVENT_0363 = 6384;
+	BADGE_EVENT_0364 = 6385;
+	BADGE_EVENT_0365 = 6386;
+	BADGE_EVENT_0366 = 6387;
+	BADGE_EVENT_0367 = 6388;
+	BADGE_EVENT_0368 = 6389;
+	BADGE_EVENT_0369 = 6390;
+	BADGE_EVENT_0370 = 6391;
+	BADGE_EVENT_0371 = 6392;
+	BADGE_EVENT_0372 = 6393;
+	BADGE_EVENT_0373 = 6394;
+	BADGE_EVENT_0374 = 6395;
+	BADGE_EVENT_0375 = 6396;
+	BADGE_EVENT_0376 = 6397;
+	BADGE_EVENT_0377 = 6398;
+	BADGE_EVENT_0378 = 6399;
+	BADGE_EVENT_0379 = 6400;
+	BADGE_EVENT_0380 = 6401;
 }
 
 enum HoloIapItemCategory {
@@ -4145,6 +4246,7 @@ enum HoloPokemonMove {
 	TEMP_EVOLUTION_MEGA_V0121_POKEMON_STARMIE = 512;
 	TEMP_EVOLUTION_MEGA_V0127_POKEMON_PINSIR = 513;
 	TEMP_EVOLUTION_MEGA_V0130_POKEMON_GYARADOS = 514;
+	TEMP_EVOLUTION_MEGA_V0142_POKEMON_AERODACTYL = 619;
 	TEMP_EVOLUTION_MEGA_V0149_POKEMON_DRAGONITE = 515;
 	TEMP_EVOLUTION_MEGA_V0154_POKEMON_MEGANIUM = 516;
 	TEMP_EVOLUTION_MEGA_V0160_POKEMON_FERALIGATR = 517;
@@ -4220,12 +4322,14 @@ enum HoloPokemonMove {
 	TEMP_EVOLUTION_MEGA_V0998_POKEMON_BAXCALIBUR = 587;
 	TEMP_EVOLUTION_PRIMAL_V0382_POKEMON_KYOGRE = 588;
 	TEMP_EVOLUTION_PRIMAL_V0383_POKEMON_GROUDON = 589;
+	TEMP_EVOLUTION_ULTRA_V0800_POKEMON_NECROZMA = 596;
 	GLAIVE_RUSH = 590;
 	SNIPE_SHOT = 592;
 	DIVE = 593;
 	GULP_MISSILE_GULPING = 594;
 	GULP_MISSILE_GORGING = 595;
 	KOWTOW_CLEAVE = 615;
+	SOAK_FAST = 616;
 }
 
 enum HoloPokemonMovementType {
@@ -8426,6 +8530,12 @@ message CombatIdMismatchDataProto {
 }
 
 message CombatLeagueProto {
+	message Types {
+		message PokemonGroupConditionProto {
+			repeated HoloPokemonClass pokemonClass = 5;
+		}
+	}
+
 	enum ConditionType {
 		UNSET = 0;
 		WITH_POKEMON_CP_LIMIT = 1;
@@ -8470,8 +8580,9 @@ message CombatLeagueProto {
 	}
 
 	message PokemonBanlist {
-		string lgdbihdlhod = 1;
+		string name = 1;
 		repeated PokemonWithForm pokemon = 2;
+		CombatLeagueProto.Types.PokemonGroupConditionProto groupCondition = 3;
 	}
 
 	message UnlockConditionProto {
@@ -8515,6 +8626,8 @@ message CombatLeagueProto {
 	string goieepknooc = 12;
 	bool allowTempEvos = 13;
 	repeated CombatExperiment combatExperiment = 14;
+	bool allowTempEvoCpDownscaling = 15;
+	bool removeTempEvoSelfCpBoostAdditionalLevels = 16;
 }
 
 message CombatLeagueSettingsProto {
@@ -11160,6 +11273,7 @@ message FormProto {
 	bool isCostume = 4;
 	FormPokedexSizeProto sizeData = 5;
 	SillouetteObfuscationGroup sillouetteObfuscationGroup = 6;
+	bool unsilhouetteOnSpeciesCapture = 7;
 }
 
 message FormSettingsProto {
@@ -11878,7 +11992,21 @@ message LocationCardFeatureSettingsProto {
 	bool enabled = 1;
 }
 
+enum CardTreatment {
+	CARD_TREATMENT_UNSET = 0;
+	CROP_BLEED = 1;
+	EXTENDED_HEIGHT = 2;
+}
+
 message LocationCardSettingsProto {
+	message Types {
+		enum BackgroundEligibilityStatus {
+			UNSET = 0;
+			ELIGIBLE = 1;
+			INELIGIBLE = 2;
+		}
+	}
+
 	// LOCATION_CARD_BLOCK
 	enum LocationCard {
 		LOCATION_CARD_UNSET = 0;
@@ -12286,6 +12414,8 @@ message LocationCardSettingsProto {
 		LC_2026_LATW_POIPOLE = 405;
 		LC_SPECIALBACKGROUND_BATIK_2026 = 406;
 		LC_SPECIALBACKGROUND_2026_10TH_ANNIVERSARY_001 = 407;
+		LC_TPC30_IND = 408;
+		LC_TPC30_IN = 409;
 		LC_EMEA_MUSEUM_01 = 410;
 		LC_EMEA_MUSEUM_02 = 411;
 		LC_EMEA_MUSEUM_03 = 412;
@@ -12293,6 +12423,18 @@ message LocationCardSettingsProto {
 		LC_EMEA_MUSEUM_05 = 414;
 		LC_EMEA_MUSEUM_06 = 415;
 		LC_2026_COMICCON_MALAGA = 416;
+		LC_2026_FC_SEOUL = 417;
+		LC_2026_GOWA_SENDAI = 418;
+		LC_2026_GOWA_MEXICOCITY = 419;
+		LC_SPECIALBACKGROUND_2026_GOWA = 420;
+		LC_2026_LOSANGELES_NO_001 = 421;
+		LC_2026_LONDON_NO_001 = 422;
+		LC_SPECIALBACKGROUND_PTR_001 = 423;
+		LC_SPECIALBACKGROUND_FOL_2026 = 424;
+		LC_2026_PARADE = 425;
+		LC_SPECIALBACKGROUND_CHA_2026 = 426;
+		LC_2026_LATW_LUNALA = 427;
+		LC_2026_LATW_SOLGALEO = 428;
 	}
 
 	enum CardType {
@@ -12305,6 +12447,8 @@ message LocationCardSettingsProto {
 	string imageUrl = 2;
 	CardType cardType = 3;
 	string vfxAddress = 4;
+	LocationCardSettingsProto.Types.BackgroundEligibilityStatus backgroundEligibilityStatus = 8;
+	CardTreatment cardTreatment = 10;
 }
 
 message ConversationSettingsProto {
@@ -13724,6 +13868,7 @@ message FeatureGateProto {
 	int32 status = 1;
 	int32 rolloutPercentage = 2;
 	repeated FeatureGateProto.Types.SubFeatureGateProto subFeatureGateList = 3;
+	string minClientVersion = 6;
 }
 
 message RollBackProto {
@@ -13774,13 +13919,23 @@ message AvatarFeatureFlagsProto {
 	bool corndogEnabled = 1;
 }
 
+message LatencyTrackingSettingsProto {
+	bool isEnabled = 1;
+	int32 maxNumberEvents = 2;
+	int32 maxNumberGetState = 3;
+	bool isUpstreamEnabled = 4;
+	bool isDownstreamEnabled = 5;
+}
+
 message ClientBattleConfigProto {
 	int64 battleEndTimeoutThresholdMs = 1;
 	int64 badNetworkWarningThresholdTurns = 2;
 	int64 deadNetworkDisconnectThresholdTurns = 3;
 	int64 noOpponentConnectionDisconnectThresholdTurns = 4;
+	LatencyTrackingSettingsProto latencyTrackingSettings = 6;
 	bool submitTurnNumberWithPlayerAction = 7;
 	int64 preResponseInputBlockDurationMs = 8;
+	int32 swapButtonEndOfCooldownInputBlockDurationMs = 10;
 }
 
 message BattleAnimationConfigProto {
@@ -13789,6 +13944,7 @@ message BattleAnimationConfigProto {
 			float normalizedStartOffset = 1;
 			float crossFadeDurationSeconds = 2;
 			bool useLegacyStartOffset = 3;
+			bool allowFastMoveAnimPriority = 4;
 		}
 
 		message UiCameraAnimationSettings {
@@ -13834,6 +13990,8 @@ message VNextBattleClientSettingsProto {
 	ClientBattleConfigProto raidsBattleConfig = 1;
 	ClientBattleConfigProto maxBattleConfig = 2;
 	ClientBattleConfigProto pvpBattleConfig = 3;
+	ClientBattleConfigProto tgrBattleConfig = 4;
+	ClientBattleConfigProto teamLeaderBattleConfig = 5;
 }
 
 message ARPhotoPokemonExcludedForms {
@@ -13887,6 +14045,7 @@ message ARPhotoFeatureFlagProto {
 	bool downloadMessageEnabled = 21;
 	bool shareMessageEnabled = 22;
 	bool signInButtonEnabled = 23;
+	bool showShareCard = 24;
 	bool reorderSummary = 25;
 }
 
@@ -14025,6 +14184,49 @@ message ArBackendSettingsProto {
 	repeated ArBackendSettingsProto.Types.ArFeatureBackendConfig featureBackendConfigs = 1;
 }
 
+message DayOfYearProto {
+	int32 month = 1;
+	int32 day = 2;
+}
+
+message TimeOfDayProto {
+	int32 hour = 1;
+	int32 minute = 2;
+}
+
+message TimeBoxedSpawnEventProto {
+	message Types {
+		enum TimeBoxedSpawnEventType {
+			UNSET = 0;
+			METEOR_SHOWER = 1;
+		}
+	}
+
+	DayOfYearProto startDayLocal = 1;
+	TimeOfDayProto startTimeLocal = 2;
+	DayOfYearProto endDayLocal = 3;
+	TimeOfDayProto endTimeLocal = 4;
+	TimeOfDayProto startPeakTimeLocal = 5;
+	TimeOfDayProto endPeakTimeLocal = 6;
+	string titleStringKey = 7;
+	string descriptionStringKey = 8;
+	TimeBoxedSpawnEventProto.Types.TimeBoxedSpawnEventType timeBoxedSpawnEventType = 12;
+}
+
+message TimeBoxedSpawnEventsSettingsProto {
+	repeated TimeBoxedSpawnEventProto timeBoxedSpawnEvents = 1;
+}
+
+message MapObjectCollisionAvoidanceSettingsProto {
+	float mapPlaceCollisionBufferDistance = 1;
+	float pokemonCollisionBufferDistance = 2;
+	float pokemonCollisionRadiusScaleFactor = 3;
+}
+
+message GymTopperDistanceSettingsProto {
+	float guardPokemonMaxVisualDistanceMeters = 1;
+}
+
 message ItemInventoryUpdateSettingsProto {
 	message CategoryProto {
 		repeated HoloItemCategory category = 1;
@@ -14101,7 +14303,7 @@ message GameMasterClientTemplateProto {
 	LuckyPokemonSettingsProto lucky_pokemon_settings = 32;
 	CombatSettingsProto combatSettings = 33;
 	CombatLeagueSettingsProto combat_league_settings = 34;
-	CombatLeagueProto combat_league = 35;
+	CombatLeagueProto combatLeague = 35;
 	ExRaidSettingsProto ex_raid_settings = 36;
 	CombatMoveSettingsProto combat_move = 37;
 	BackgroundModeSettingsProto background_mode_settings = 38;
@@ -14313,6 +14515,9 @@ message GameMasterClientTemplateProto {
 	WelcomeBackRewardsSettingsProto welcomeBackRewardsSettings = 290;
 	EventMapRefreshSettingsProto eventMapRefreshSettings = 293;
 	ArBackendSettingsProto arBackendSettings = 294;
+	TimeBoxedSpawnEventsSettingsProto timeBoxedSpawnEventsSettings = 299;
+	MapObjectCollisionAvoidanceSettingsProto mapObjectCollisionAvoidanceSettings = 300;
+	GymTopperDistanceSettingsProto gymTopperDistanceSettings = 302;
 }
 
 message GameMasterLocalProto {
@@ -15661,6 +15866,7 @@ message GuiSearchSettingsProto {
 	bool showAllButtonEnabled = 6;
 	string searchHelpUrl = 7;
 	repeated string completeStartLetterCountPerLanguage = 8;
+	bool transferWarning100Enabled = 11;
 }
 
 message GymBadgeGmtSettingsProto {
@@ -18641,6 +18847,11 @@ message TempEvoPokemonBranch {
 	HoloTemporaryEvolutionId tempEvoId = 2;
 }
 
+message TempEvoSpecialAttackBoost {
+	float gymsAndRaidsMultiplier = 1;
+	float trainerBattlesMultiplier = 2;
+}
+
 message MegaEvoSettingsProto {
 	int64 evolutionLengthMs = 1;
 	float attackBoostFromMegaDifferentType = 2;
@@ -18656,6 +18867,7 @@ message MegaEvoSettingsProto {
 	int32 minLevelForSpecialMove = 13;
 	repeated TempEvoPokemonBranch separatedTempEvoBranches = 14;
 	bool enableSpecialMove = 15;
+	repeated TempEvoSpecialAttackBoost tempEvoSpecialAttackBoosts = 16;
 }
 
 message MegaEvolvePokemonOutProto {
@@ -22424,6 +22636,13 @@ message PokemonDisplayProto {
 		PIKACHU_ANNIVERSARY_2026_SINGAPORE_01 = 3359;
 		PIKACHU_ANNIVERSARY_2026_TAIWAN_01 = 3360;
 		PIKACHU_K_2026_A_01 = 3361;
+		ZUBAT_HALLOWEEN_2026_01 = 3362;
+		GOLBAT_HALLOWEEN_2026_01 = 3363;
+		CROBAT_HALLOWEEN_2026_01 = 3364;
+		SINISTEA_P_HALLOWEEN_2026_01 = 3365;
+		SINISTEA_A_HALLOWEEN_2026_01 = 3366;
+		POLTEAGEIST_P_HALLOWEEN_2026_01 = 3367;
+		POLTEAGEIST_A_HALLOWEEN_2026_01 = 3368;
 		MACHAMP_WILDAREA_2026_01 = 3369;
 		PIKACHU_ANNIVERSARY_2026_PHILIPPINE_01 = 3375;
 		PIKACHU_ANNIVERSARY_2026_THAILAND_01 = 3376;
@@ -22850,7 +23069,8 @@ message PokemonSettingsProto {
 
 		IbfcTransitionSettings defaultToAlternateIbfcSettings = 7;
 		IbfcTransitionSettings alternateToDefaultIbfcSettings = 8;
-		repeated PokemonDisplayProto.Form AlternateForms = 9;
+		repeated PokemonDisplayProto.Form alternateForms = 9;
+		repeated PokemonDisplayProto.Form defaultForms = 10;
 	}
 
 	HoloPokemonId pokemonId = 1;
@@ -24116,6 +24336,7 @@ message RaidClientSettingsProto {
 	repeated PokemonMusicOverrideConfig pokemonMusicOverrides = 30;
 	bool fetchProfileFromSocialEnabled = 32;
 	repeated RaidLevelEncounterTimingSettings raidLevelEncounterTimings = 35;
+	repeated RaidLevel unsupportedRaidLevelsForRsvp = 37;
 }
 
 message RaidCreateDetail {
